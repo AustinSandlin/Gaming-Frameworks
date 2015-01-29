@@ -5,7 +5,7 @@
 
 class EventHandler {
 public:
-	virtual void HandleEvent( Event * event ) = 0;
+    virtual void HandleEvent( Event * event ) = 0;
 };
 
 #endif
