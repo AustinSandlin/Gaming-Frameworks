@@ -7,10 +7,10 @@ ObjectPropertyTable::~ObjectPropertyTable() {
 }
 
 void ObjectPropertyTable::AddObject( ObjectProperty * prop ) {
-	auto id = GetStringID( str );
+	auto id = prop->GetID();
 	auto it = table.find( id );
 	if ( it == table.end() ) {
-		table[ id ] = obj;
+		table[ id ] = prop;
 	}
 }
 
@@ -22,9 +22,9 @@ void ObjectPropertyTable::RemoveObject( StringID id ) {
 	}
 }
 
-Object * ObjectPropertyTable::GetObject( StringID id ) {
+ObjectProperty * ObjectPropertyTable::GetObject( StringID id ) {
 	auto it = table.find( id );
-	if ( id == table.end() ) {
+	if ( it == table.end() ) {
 		return NULL;
 	}
 	else {

@@ -1,12 +1,17 @@
 #include "Object.h"
 
 Object::~Object() {
+	// Iterate over the unordered map's values.
+	// Commented because .enum_values() throws a 'no member' error.
+
+	/*
 	for ( auto * property : properties.enum_values() ) {
 		// Release property from property table
 	}
+	*/
 }
 
-void Object::SetProperty( ObjectProperty * property ) {
+void Object::SetProperty( ObjectProperty* property ) {
 	if ( property == NULL ) {
 		// don't do this!
 	}
@@ -22,7 +27,7 @@ void Object::ClearProperty( StringID id ) {
 	}
 }
 
-ObjectProperty * Object::GetProperty( StringID id ) {
+ObjectProperty* Object::GetProperty( StringID id ) {
 	auto it = properties.find( id );
 	if ( it != properties.end() ) {
 		

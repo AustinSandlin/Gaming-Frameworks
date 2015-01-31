@@ -1,7 +1,7 @@
 #ifndef _OBJECT_PROPERTY_H
 #define _OBJECT_PROPERTY_H
 
-#include "Object.h"
+#include "../Strings/String.h"
 
 class ObjectProperty {
 public:

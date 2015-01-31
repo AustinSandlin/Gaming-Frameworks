@@ -5,6 +5,7 @@
 
 class EventHandler {
 public:
+    // virtual ~EventHandler() = 0;
     virtual void HandleEvent( Event * event ) = 0;
 };
 

@@ -25,12 +25,14 @@ void StringTable::RemoveString( const StringID id ) {
 }
 
 StringID StringTable::GetStringID( const String str ) const {
-	return /* CRC-32 */;
+	// Inserted blank because compiler errors were thrown.
+	StringID temp = 0;
+	return temp; /* CRC-32 */
 }
 
 const String StringTable::GetString( StringID id ) const {
 	auto it = table.find( id );
-	if ( id == table.end() ) {
+	if ( it == table.end() ) {
 		return NULL;
 	}
 	else {

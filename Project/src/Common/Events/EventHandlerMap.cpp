@@ -29,7 +29,7 @@ void EventHandlerMap::HandleEvent( Event * event ) {
 	auto it = handlers.find( id );
 	if ( it != handlers.end() ) {
 		for ( auto it2 = it->second.begin(); it2 != it->second.end(); it2++ ) {
-			it2->HandleEvent( event );
+			(*it2)->HandleEvent( event );
 		}
 	}
 }

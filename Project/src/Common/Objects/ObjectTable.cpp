@@ -7,7 +7,7 @@ ObjectTable::~ObjectTable() {
 }
 
 void ObjectTable::AddObject( Object * obj ) {
-	auto id = GetStringID( str );
+	auto id = obj->GetID();
 	auto it = table.find( id );
 	if ( it == table.end() ) {
 		table[ id ] = obj;
@@ -24,7 +24,7 @@ void ObjectTable::RemoveObject( StringID id ) {
 
 Object * ObjectTable::GetObject( StringID id ) {
 	auto it = table.find( id );
-	if ( id == table.end() ) {
+	if ( it == table.end() ) {
 		return NULL;
 	}
 	else {
