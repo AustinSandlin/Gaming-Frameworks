@@ -3,7 +3,7 @@
 
 class GameUpdate : public Event {
 public:
-	GameUpdate();
+	GameUpdate() {}
 };
 
 #endif
