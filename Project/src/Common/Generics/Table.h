@@ -10,7 +10,7 @@ using namespace std;
 template < class T > class Table {
 protected:
 	HashTable() {}
-	~HashTable() {}
+	virtual ~HashTable() {}
 	void Add( StringID id, T * element ) {
 		auto it = elements.find( id );
 		if ( it == elements.end() ) {

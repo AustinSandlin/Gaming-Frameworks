@@ -9,7 +9,7 @@ public:
 	}
 protected:
 	Singleton() {}
-	~Singleton() {}
+	virtual ~Singleton() {}
 private:
 	Singleton( Singleton const & ) {}
 };

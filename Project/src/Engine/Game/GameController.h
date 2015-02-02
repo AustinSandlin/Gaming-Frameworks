@@ -3,7 +3,7 @@
 
 #include "../../Common/Events/EventHandlerMap.h"
 
-class GameController : EventHandlerMap {
+class GameController : public EventHandlerMap {
 public:
 	static GameController & GetInstance() {
 		static GameController singleton;

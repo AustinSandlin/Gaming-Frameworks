@@ -1,0 +1,32 @@
+// The body of the main game loop could be implemented as an EventHandler for GameUpdateEvent which would call the following Update() function:
+// Note: The update interval could be specified as a parameter of GameUpdateEvent
+
+void Update() {
+	Input();
+	Game();
+	Render();
+	Reset();
+}
+
+void Input() {
+	auto model = InputModel::GetInstance();
+	auto event = new InputUpdateEvent( model );
+	InputController::HandleEvent( event );
+}
+
+void Game() {
+	// Update game state...
+}
+
+void Render() {
+	auto model = RenderModel::GetInstance();
+	auto event = new RenderDrawEvent( model );
+	RenderController::HandleEvent( event );
+}
+
+void Reset() {
+	auto model = ClockModel::GetInstance();
+	auto controller = GameController::GetInstance();
+	auto event = new ClockTimerEvent( model, controller );
+	ClockController::HandleEvent( event );
+}

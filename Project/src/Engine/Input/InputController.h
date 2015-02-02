@@ -10,7 +10,7 @@ public:
 		return singleton;
 	}
 private:
-	InputController() {}
+	InputController();
 };
 
 #endif
