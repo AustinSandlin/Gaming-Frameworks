@@ -28,7 +28,7 @@ void init() {
     glEnable(GL_DEPTH_TEST);
 
     // Get the input controller instance.
-    ic = &(ic->GetInstance());
+    //ic = &(ic->GetInstance());
 
     // Default to !useKeyUp;
     useKeyUp = false;
