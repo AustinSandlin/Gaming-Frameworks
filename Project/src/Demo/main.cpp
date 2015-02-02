@@ -1,11 +1,13 @@
 /* Author: Austin Sandlin
  * Title: Primary Demo Shell
- * Date Last Modified: 01/28/15
+ * Date Last Modified: 02/2/15
  * Description: Registers callbacks with OpenGL. Attempts to connect the
  *              callbacks to an input listener class.
  */
 
 #include "../Engine/Input/InputController.h"
+#include <iostream>
+#include <sstream>
 
 #if defined(_WIN32) || defined(WIN32)   
 #include <GL/glut.h>
@@ -14,6 +16,8 @@
 #endif
 
 bool useKeyUp;
+bool editMode;
+string inputStr;
 InputController* ic;
 
 void init() {
@@ -30,8 +34,10 @@ void init() {
     // Get the input controller instance.
     //ic = &(ic->GetInstance());
 
-    // Default to !useKeyUp;
+    // Default to !useKeyUp.
     useKeyUp = false;
+    // Default to not edit mode.
+    editMode = false;
 
     // Set the default background color to white.
     glClearColor(1.0, 1.0, 1.0, 0);
@@ -49,6 +55,20 @@ void display() {
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
+    while(editMode) {
+        cout << "Reading Input: ";
+        getline(cin, inputStr);
+        cout << endl;
+        istringstream instream(inputStr);
+        instream >> inputStr;
+        cout << "Read: " << inputStr << endl;;
+        if(inputStr == "exit") {
+            editMode = false;
+        }
+    }
+
+    // loadHud();
+
     // Figure out the aspect ratio.
     // int winWidth = glutGet(GLUT_WINDOW_WIDTH);
     // int winHeight = glutGet(GLUT_WINDOW_HEIGHT);
@@ -58,17 +78,14 @@ void display() {
 }
 
 // Callback for when keys are pressed down.
-void keyDown(unsigned char key, int x, int y) {
-    if(!useKeyUp) {
-        //ic.keyDown(key);
+void keyboard(unsigned char key, int x, int y) {
+    switch(key) {
+        case 'e': editMode = true;
+                  cout << "editmode true" << endl;
+                  break;
+        default: break;
     }
-}
-
-// Callback for when keys are released
-void keyUp(unsigned char key, int x, int y) {
-    if(useKeyUp) {
-        //ic.keyUp(key);
-    }
+    glutPostRedisplay();
 }
 
 // Callback for when the mouse button is pressed.
@@ -92,8 +109,7 @@ int main(int argc, char **argv) {
 
     // Register all our callbacks.
     glutDisplayFunc(display);
-    glutKeyboardFunc(keyDown);
-    glutKeyboardUpFunc(keyUp);
+    glutKeyboardFunc(keyboard);
     glutMouseFunc(mouse);
 
     // Register our first timer callback.
