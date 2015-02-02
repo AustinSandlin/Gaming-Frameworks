@@ -1,17 +1,19 @@
 CC=g++
-CFLAGS=-std=c++11 -Wall -Wno-deprecated -framework GLUT -framework OpenGL -framework Cocoa
-VPATH=Project/src/Common:Project/src/Demo
-SOURCES=main.cpp Objects/ObjectPropertyTable.cpp Objects/ObjectTable.cpp Strings/StringTable.cpp Objects/Object.cpp Events/EventHandlerMap.cpp
+CFLAGS=-std=c++11 -Wall -Wno-deprecated
+LDFLAGS=-framework GLUT -framework OpenGL -framework Cocoa
+VPATH=Project/src/Common/Objects:Project/src/Common/Strings:Project/src/Common/Events:Project/src/Demo
+SOURCES=main.cpp ObjectPropertyTable.cpp ObjectTable.cpp StringTable.cpp Object.cpp EventHandlerMap.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=main
 
 all: $(SOURCES) $(EXECUTABLE)
+		$(MAKE) clean
 
 $(EXECUTABLE): $(OBJECTS)
 		$(CC) $(LDFLAGS) $(OBJECTS) -o $@
 
-.cpp.o:
-		$(CC) $(CFLAGS) $< -o $@
+%.o: %.cpp
+		$(CC) $(CFLAGS) -c $<
 
 clean:
 		rm -rf *.o
