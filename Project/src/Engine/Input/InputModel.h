@@ -15,7 +15,7 @@ public:
 	void PushCommand( InputCommand * command );
 	InputCommand * PopCommand();
 private:
-	InputModel() {}
+    InputModel() {}
 	std::queue< InputCommand * > commands;
 };
 

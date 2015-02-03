@@ -14,7 +14,7 @@ void keyboard( unsigned char key, int x, int y ) {
 
 class InputCommand : public Event {
 public:
-	InputCommand( unsigned char key ) : key{ key } {}
+	InputCommand( unsigned char key ) :  Event( GetID() ), key{ key } {}
 	static StringID GetID() {
 		static auto table = StringTable::GetInstance();
 		static auto id = table.GetStringID( "InputCommand" );

@@ -19,7 +19,7 @@ public:
 		static auto id = InputUpdate::GetID();
 		if ( event.GetID() == id ) {
 			while ( model.HasCommands() ) {
-				auto command = ( InputCommand * ) model.PopCommand();
+				auto command = model.PopCommand();
 				std::cout << command->GetKey() << std::endl;
 			}
 		}

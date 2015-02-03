@@ -1,4 +1,5 @@
 #include "EventHandlerMap.h"
+#include "../Strings/StringTable.h"
 
 EventHandlerMap::~EventHandlerMap() {
 	for ( auto it = handlers.begin(); it != handlers.end(); it++ ) {

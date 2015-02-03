@@ -6,6 +6,8 @@
  */
 
 #include "../Engine/Input/InputController.h"
+#include "../Engine/Input/Events/InputUpdate.h"
+ #include "../Engine/Input/Events/InputCommand.h"
 #include <iostream>
 #include <sstream>
 
@@ -21,13 +23,11 @@ void editFunc() {
         istringstream instream;
         string inputStr;
         
-        cout << "Reading Input: ";
+        cout << "Console: ";
         getline(cin, inputStr);
 
         instream.str(inputStr);
         instream >> inputStr;
-        
-        cout << "Read: " << inputStr << endl;;
         
         if(inputStr == "exit") {
             editMode = false;
@@ -40,7 +40,7 @@ void editFunc() {
                 // Make a new Pane object here?
             }
             else if(inputStr == "object") {
-                int x, y, z;
+                double x, y, z;
                 instream >> x >> y >> z;
                 // Make a new Object here?
             }
@@ -50,7 +50,7 @@ void editFunc() {
     return;
 }
 
-void Game() {
+void game() {
     return;
 }
 
@@ -63,9 +63,6 @@ void init() {
     glutCreateWindow("Game Engine Demo");
     // Enable 3D depth.
     glEnable(GL_DEPTH_TEST);
-
-    // Get the input controller instance.
-    static InputController* ic = &(ic->GetInstance());
 
     // Set the default background color to white.
     glClearColor(1.0, 1.0, 1.0, 0);
@@ -89,11 +86,21 @@ void display() {
 
 // Callback for when keys are pressed down.
 void keyboard(unsigned char key, int x, int y) {
+    static auto controller = InputController::GetInstance();
+    auto event = new InputCommand( key );
+    auto event2 = new InputUpdate();
     switch(key) {
         case '~': editFunc();
                   break;
+        case 27: exit(0);
+                 break;
+        case 'a': controller.HandleEvent( *event2 );
+                  break;
         default: ;
     }
+
+    // Get the input controller instance.
+    controller.HandleEvent( *event );
 }
 
 // Callback called when our timer goes off. 
@@ -101,13 +108,13 @@ void timerFunction(int value) {
     // Input is handled from the keyboard callback.
 
     // Update game state.
-    Game();
+    game();
 
     // Render the display.
     glutPostRedisplay();
 
     // Register a new timer.
-    glutTimerFunc(20, timerFunction, 0);
+    glutTimerFunc(20000, timerFunction, 0);
 }
 
 int main(int argc, char **argv) {
