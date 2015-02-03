@@ -15,9 +15,7 @@
 #include <GLUT/glut.h>
 #endif
 
-bool useKeyUp;
 bool editMode;
-string inputStr;
 InputController* ic;
 
 void init() {
@@ -34,8 +32,6 @@ void init() {
     // Get the input controller instance.
     //ic = &(ic->GetInstance());
 
-    // Default to !useKeyUp.
-    useKeyUp = false;
     // Default to not edit mode.
     editMode = false;
 
@@ -56,17 +52,37 @@ void display() {
     glLoadIdentity();
 
     while(editMode) {
+        istringstream instream;
+        string inputStr;
+        
         cout << "Reading Input: ";
         getline(cin, inputStr);
         cout << endl;
-        istringstream instream(inputStr);
+
+        instream.str(inputStr);
         instream >> inputStr;
+        
         cout << "Read: " << inputStr << endl;;
+        
         if(inputStr == "exit") {
             editMode = false;
         }
+        if(inputStr == "make") {
+            instream >> inputStr;
+            if(inputStr == "pane") {
+                int x, y;
+                instream >> x >> y;
+                // Make a new Pane object here?
+            }
+            else if(inputStr == "object") {
+                int x, y, z;
+                instream >> x >> y >> z;
+                // Make a new Object here?
+            }
+        }
     }
-
+    
+    // editMode();
     // loadHud();
 
     // Figure out the aspect ratio.
@@ -93,8 +109,7 @@ void mouse(int button, int state, int x, int y) {
     //ic.mouse(button, state, x, y);
 }
 
-// Callback called when our timer goes off.  Tell the chess object
-// what the application time is in milliseconds.
+// Callback called when our timer goes off. 
 void timerFunction(int value) {
     // Register a new timer.
     glutTimerFunc(20, timerFunction, 0);

@@ -9,8 +9,8 @@ void Update() {
 }
 
 void Input() {
-	auto model = InputModel::GetInstance();
-	auto event = new InputUpdateEvent( model );
+	static auto model = InputModel::GetInstance();
+	static auto event = new InputUpdateEvent( model );
 	InputController::HandleEvent( event );
 }
 
@@ -19,14 +19,14 @@ void Game() {
 }
 
 void Render() {
-	auto model = RenderModel::GetInstance();
-	auto event = new RenderDrawEvent( model );
+	static auto model = RenderModel::GetInstance();
+	static auto event = new RenderDrawEvent( model );
 	RenderController::HandleEvent( event );
 }
 
 void Reset() {
-	auto model = ClockModel::GetInstance();
-	auto controller = GameController::GetInstance();
-	auto event = new ClockTimerEvent( model, controller );
+	static auto model = ClockModel::GetInstance();
+	static auto controller = GameController::GetInstance();
+	static auto event = new ClockTimerEvent( model, controller );
 	ClockController::HandleEvent( event );
 }

@@ -5,7 +5,7 @@
 
 class ObjectProperty {
 public:
-	StringID GetID() { return id; }
+	const StringID GetID() { return id; }
 protected:
 	ObjectProperty( StringID id ) : id{ id } {};
 private:
