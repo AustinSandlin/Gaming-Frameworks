@@ -70,8 +70,7 @@
     <ClInclude Include="..\..\Project\src\Common\Events\Event.h" />
     <ClInclude Include="..\..\Project\src\Common\Events\EventHandler.h" />
     <ClInclude Include="..\..\Project\src\Common\Events\EventHandlerMap.h" />
-    <ClInclude Include="..\..\Project\src\Common\Generics\Singleton.h" />
-    <ClInclude Include="..\..\Project\src\Common\Generics\Table.h" />
+    <ClInclude Include="..\..\Project\src\Common\Events\EventParameter.h" />
     <ClInclude Include="..\..\Project\src\Common\Objects\Object.h" />
     <ClInclude Include="..\..\Project\src\Common\Objects\ObjectProperty.h" />
     <ClInclude Include="..\..\Project\src\Common\Objects\ObjectPropertyTable.h" />
@@ -79,11 +78,9 @@
     <ClInclude Include="..\..\Project\src\Common\Strings\String.h" />
     <ClInclude Include="..\..\Project\src\Common\Strings\StringTable.h" />
     <ClInclude Include="..\..\Project\src\Engine\Animation\AnimationController.h" />
-    <ClInclude Include="..\..\Project\src\Engine\Animation\AnimationEvents.h" />
     <ClInclude Include="..\..\Project\src\Engine\Animation\AnimationModel.h" />
     <ClInclude Include="..\..\Project\src\Engine\Clock\ClockController.h" />
     <ClInclude Include="..\..\Project\src\Engine\Clock\ClockModel.h" />
-    <ClInclude Include="..\..\Project\src\Engine\Clock\Events\ClockTimerEvent.h" />
     <ClInclude Include="..\..\Project\src\Engine\Game\Events\GameUpdate.h" />
     <ClInclude Include="..\..\Project\src\Engine\Game\Events\GameUpdateHandler.h" />
     <ClInclude Include="..\..\Project\src\Engine\Game\GameController.h" />
@@ -93,7 +90,6 @@
     <ClInclude Include="..\..\Project\src\Engine\Input\Events\InputUpdateHandler.h" />
     <ClInclude Include="..\..\Project\src\Engine\Input\InputController.h" />
     <ClInclude Include="..\..\Project\src\Engine\Input\InputDevice.h" />
-    <ClInclude Include="..\..\Project\src\Engine\Input\InputEvents.h" />
     <ClInclude Include="..\..\Project\src\Engine\Input\InputMap.h" />
     <ClInclude Include="..\..\Project\src\Engine\Input\InputModel.h" />
     <ClInclude Include="..\..\Project\src\Engine\Physics\PhysicsController.h" />

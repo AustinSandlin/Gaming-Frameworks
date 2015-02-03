@@ -180,12 +180,6 @@
     <ClInclude Include="..\..\Project\src\Common\Events\EventHandlerMap.h">
       <Filter>Header Files\src\Common\Events</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Project\src\Common\Generics\Singleton.h">
-      <Filter>Header Files\src\Common\Generics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Project\src\Common\Generics\Table.h">
-      <Filter>Header Files\src\Common\Generics</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Project\src\Common\Strings\String.h">
       <Filter>Header Files\src\Common\Strings</Filter>
     </ClInclude>
@@ -207,9 +201,6 @@
     <ClInclude Include="..\..\Project\src\Engine\Animation\AnimationController.h">
       <Filter>Header Files\src\Engine\Animation</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Project\src\Engine\Animation\AnimationEvents.h">
-      <Filter>Header Files\src\Engine\Animation</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Project\src\Engine\Animation\AnimationModel.h">
       <Filter>Header Files\src\Engine\Animation</Filter>
     </ClInclude>
@@ -218,9 +209,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Project\src\Engine\Clock\ClockModel.h">
       <Filter>Header Files\src\Engine\Clock</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Project\src\Engine\Clock\Events\ClockTimerEvent.h">
-      <Filter>Header Files\src\Engine\Clock\Events</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Project\src\Engine\Game\GameController.h">
       <Filter>Header Files\src\Engine\Game</Filter>
@@ -241,9 +229,6 @@
       <Filter>Header Files\src\Engine\Input</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Project\src\Engine\Input\InputDevice.h">
-      <Filter>Header Files\src\Engine\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Project\src\Engine\Input\InputEvents.h">
       <Filter>Header Files\src\Engine\Input</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Project\src\Engine\Input\InputMap.h">
@@ -269,6 +254,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Project\src\Engine\Physics\PhysicsModel.h">
       <Filter>Header Files\src\Engine\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Common\Events\EventParameter.h">
+      <Filter>Header Files\src\Common\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
