@@ -2,6 +2,7 @@
 #define _INPUT_UPDATE_H
 
 #include "../../../Common/Events/Event.h"
+#include "../../../Common/Strings/StringTable.h"
 
 class InputUpdate : public Event {
 public:

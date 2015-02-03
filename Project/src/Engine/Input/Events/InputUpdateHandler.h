@@ -2,6 +2,8 @@
 #define _INPUT_UPDATE_HANDLER_H
 
 #include "InputUpdate.h"
+#include "../../../Common/Events/EventHandler.h"
+#include "../InputModel.h"
 
 class InputUpdateHandler : public EventHandler {
 public:

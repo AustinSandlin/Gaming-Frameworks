@@ -1,4 +1,6 @@
-#include "Events/InputUpdate.h"
+#include "Events/InputUpdateHandler.h"
+#include "InputController.h"
+#include "InputModel.h"
 
 InputController::InputController() {
 	auto table = StringTable::GetInstance();
