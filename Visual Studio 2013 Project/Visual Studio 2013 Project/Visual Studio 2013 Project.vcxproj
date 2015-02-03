@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{2BD6E4D7-F325-438E-9A00-298D5DCC92DA}</ProjectGuid>
+    <RootNamespace>VisualStudio2013Project</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <NuGetPackageImportStamp>b8447c58</NuGetPackageImportStamp>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Project\src\Common\Events\Event.h" />
+    <ClInclude Include="..\..\Project\src\Common\Events\EventHandler.h" />
+    <ClInclude Include="..\..\Project\src\Common\Events\EventHandlerMap.h" />
+    <ClInclude Include="..\..\Project\src\Common\Generics\Singleton.h" />
+    <ClInclude Include="..\..\Project\src\Common\Generics\Table.h" />
+    <ClInclude Include="..\..\Project\src\Common\Objects\Object.h" />
+    <ClInclude Include="..\..\Project\src\Common\Objects\ObjectProperty.h" />
+    <ClInclude Include="..\..\Project\src\Common\Objects\ObjectPropertyTable.h" />
+    <ClInclude Include="..\..\Project\src\Common\Objects\ObjectTable.h" />
+    <ClInclude Include="..\..\Project\src\Common\Strings\String.h" />
+    <ClInclude Include="..\..\Project\src\Common\Strings\StringTable.h" />
+    <ClInclude Include="..\..\Project\src\Engine\Animation\AnimationController.h" />
+    <ClInclude Include="..\..\Project\src\Engine\Animation\AnimationEvents.h" />
+    <ClInclude Include="..\..\Project\src\Engine\Animation\AnimationModel.h" />
+    <ClInclude Include="..\..\Project\src\Engine\Clock\ClockController.h" />
+    <ClInclude Include="..\..\Project\src\Engine\Clock\ClockModel.h" />
+    <ClInclude Include="..\..\Project\src\Engine\Clock\Events\ClockTimerEvent.h" />
+    <ClInclude Include="..\..\Project\src\Engine\Game\Events\GameUpdate.h" />
+    <ClInclude Include="..\..\Project\src\Engine\Game\Events\GameUpdateHandler.h" />
+    <ClInclude Include="..\..\Project\src\Engine\Game\GameController.h" />
+    <ClInclude Include="..\..\Project\src\Engine\Game\GameModel.h" />
+    <ClInclude Include="..\..\Project\src\Engine\Game\GameView.h" />
+    <ClInclude Include="..\..\Project\src\Engine\Input\Events\InputUpdate.h" />
+    <ClInclude Include="..\..\Project\src\Engine\Input\Events\InputUpdateHandler.h" />
+    <ClInclude Include="..\..\Project\src\Engine\Input\InputController.h" />
+    <ClInclude Include="..\..\Project\src\Engine\Input\InputDevice.h" />
+    <ClInclude Include="..\..\Project\src\Engine\Input\InputEvents.h" />
+    <ClInclude Include="..\..\Project\src\Engine\Input\InputMap.h" />
+    <ClInclude Include="..\..\Project\src\Engine\Input\InputModel.h" />
+    <ClInclude Include="..\..\Project\src\Engine\Physics\PhysicsController.h" />
+    <ClInclude Include="..\..\Project\src\Engine\Physics\PhysicsModel.h" />
+    <ClInclude Include="..\..\Project\src\Engine\Render\RenderController.h" />
+    <ClInclude Include="..\..\Project\src\Engine\Render\RenderModel.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Project\src\Common\Events\EventHandlerMap.cpp" />
+    <ClCompile Include="..\..\Project\src\Common\Objects\Object.cpp" />
+    <ClCompile Include="..\..\Project\src\Common\Objects\ObjectPropertyTable.cpp" />
+    <ClCompile Include="..\..\Project\src\Common\Objects\ObjectTable.cpp" />
+    <ClCompile Include="..\..\Project\src\Common\Strings\StringTable.cpp" />
+    <ClCompile Include="..\..\Project\src\Demo\main.cpp" />
+    <ClCompile Include="..\..\Project\src\Engine\Input\InputController.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\packages\nupengl.core.redist.0.0.0.1\build\native\nupengl.core.redist.targets" Condition="Exists('..\packages\nupengl.core.redist.0.0.0.1\build\native\nupengl.core.redist.targets')" />
+    <Import Project="..\packages\nupengl.core.0.0.0.1\build\native\nupengl.core.targets" Condition="Exists('..\packages\nupengl.core.0.0.0.1\build\native\nupengl.core.targets')" />
+  </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\nupengl.core.redist.0.0.0.1\build\native\nupengl.core.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\nupengl.core.redist.0.0.0.1\build\native\nupengl.core.redist.targets'))" />
+    <Error Condition="!Exists('..\packages\nupengl.core.0.0.0.1\build\native\nupengl.core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\nupengl.core.0.0.0.1\build\native\nupengl.core.targets'))" />
+  </Target>
+</Project>

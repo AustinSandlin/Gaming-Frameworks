@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\src">
+      <UniqueIdentifier>{42c1fcc7-3ad4-4a24-87e1-fcc669de72a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src">
+      <UniqueIdentifier>{09c388c3-543c-45d0-b20b-010425964afc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\Common">
+      <UniqueIdentifier>{2b2e07ab-0670-48ae-81b4-9bf50bb4c414}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\Demo">
+      <UniqueIdentifier>{2308d546-55a8-4ea4-91d0-d30f9fec0b0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\Engine">
+      <UniqueIdentifier>{6ab9c4d3-9c2c-436a-85d3-f4cddfa00d15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\Common">
+      <UniqueIdentifier>{b09ac335-cee8-4960-8bc2-2dfb05fc5bf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\Demo">
+      <UniqueIdentifier>{e871ba3e-1651-4eb5-9e80-c184d8824b3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\Engine">
+      <UniqueIdentifier>{712e4fff-cd3c-4bae-b18d-a37827ae6dff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\Common\Events">
+      <UniqueIdentifier>{f55c0974-961c-4a25-a0c5-7a3114362b9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\Common\Generics">
+      <UniqueIdentifier>{c1c5130e-897d-46f2-ac0e-0f39e7422e7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\Common\Objects">
+      <UniqueIdentifier>{70e46b80-c15c-41c1-9a4d-4a42efcb01aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\Common\Strings">
+      <UniqueIdentifier>{fa6371ff-cb38-4954-927e-c20aca5b6c3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\Common\Events">
+      <UniqueIdentifier>{44d2c29c-5ad8-4242-9d49-15a4cb485a07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\Common\Generics">
+      <UniqueIdentifier>{847c387d-accb-4b20-9167-6e838075d281}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\Common\Strings">
+      <UniqueIdentifier>{f462609b-8276-4e0b-8266-22c4394f1ad8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\Common\Objects">
+      <UniqueIdentifier>{17946350-01bf-4dba-8835-b049fad9a722}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\Engine\Animation">
+      <UniqueIdentifier>{014a8a54-b548-4160-a424-dec1ddd96a8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\Engine\Clock">
+      <UniqueIdentifier>{a19737cf-d670-4203-96df-4ec8a1242a92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\Engine\Game">
+      <UniqueIdentifier>{3403bde5-4bb8-4618-9d07-c315dc0055b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\Engine\Input">
+      <UniqueIdentifier>{af4ca297-9f55-416e-8119-567fd7d30ee4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\Engine\Physics">
+      <UniqueIdentifier>{243c29dd-7347-41e3-a2cf-05780f34a96c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\Engine\Render">
+      <UniqueIdentifier>{82ef666d-870d-4b29-bdce-35591f154380}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\Engine\Animation">
+      <UniqueIdentifier>{b2fbc8f0-0602-4513-840b-1ed55ac278b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\Engine\Clock">
+      <UniqueIdentifier>{00cfb2c6-a788-495c-858b-a2047cd14eaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\Engine\Game">
+      <UniqueIdentifier>{e42e6515-6b7c-4619-b11f-60a56b31dc4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\Engine\Input">
+      <UniqueIdentifier>{923000af-c302-4565-a0a0-49e9cb910a2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\Engine\Render">
+      <UniqueIdentifier>{94c4f3c9-f0f0-4dd3-8ded-24a2c370a53a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\Engine\Physics">
+      <UniqueIdentifier>{5c93f524-ab56-426d-a381-d4dfdcd6f791}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\Engine\Animation\Events">
+      <UniqueIdentifier>{c706cc33-5bac-49ab-8823-4720fbe86498}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\Engine\Animation\Properties">
+      <UniqueIdentifier>{3085264d-eb96-4c25-8398-1dbf2b51fcf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\Engine\Clock\Events">
+      <UniqueIdentifier>{ab901198-14d2-4274-9819-5275005ae570}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\Engine\Clock\Properties">
+      <UniqueIdentifier>{69574211-5017-4bd8-a23b-88a66d4fc433}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\Engine\Game\Events">
+      <UniqueIdentifier>{09004f3b-6f72-4132-a723-30f191755ecb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\Engine\Game\Properties">
+      <UniqueIdentifier>{3088f747-a1f9-4ad3-beeb-0d13ac5ed147}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\Engine\Input\Events">
+      <UniqueIdentifier>{da84eea5-4e9b-467b-a636-2422f176a249}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\Engine\Input\Properties">
+      <UniqueIdentifier>{bf998066-68dd-4d9a-8e2e-b024fd0ea0bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\Engine\Render\Events">
+      <UniqueIdentifier>{0e00b1da-54de-49f8-8d42-0760fa7c28cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\Engine\Render\Properties">
+      <UniqueIdentifier>{aad2d367-68c7-49e3-aa5d-7e66c7a09cad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\Engine\Physics\Events">
+      <UniqueIdentifier>{0632d252-74e8-4a16-889b-d6e8e3407461}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\Engine\Physics\Properties">
+      <UniqueIdentifier>{d35aeb5e-8639-480d-aedb-263aedfcbf9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\Engine\Animation\Events">
+      <UniqueIdentifier>{9e6224eb-c25e-474a-a5da-9a32d19e9949}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\Engine\Animation\Properties">
+      <UniqueIdentifier>{1c71b52f-a7cf-48e4-925d-bec3e43528ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\Engine\Clock\Events">
+      <UniqueIdentifier>{1fc9e681-1a4c-4f1d-8760-2a82e29403d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\Engine\Clock\Properties">
+      <UniqueIdentifier>{e41fd53a-dc4e-4520-a116-e95771c657a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\Engine\Game\Events">
+      <UniqueIdentifier>{26a0b8fb-222e-4f5d-bacb-cd6b872ed32b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\Engine\Game\Properties">
+      <UniqueIdentifier>{43b351c2-ac60-4e32-bb44-03197258d38f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\Engine\Input\Events">
+      <UniqueIdentifier>{74f2ef73-974f-4974-a020-bc7ae7360d21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\Engine\Input\Properties">
+      <UniqueIdentifier>{ead71ae5-b741-4488-a4bc-48e0a03f501c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\Engine\Physics\Events">
+      <UniqueIdentifier>{f1bc2948-6d46-4f92-9030-4420974e8977}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\Engine\Physics\Properties">
+      <UniqueIdentifier>{af3491d8-b860-44b0-89be-40af40b380a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\Engine\Render\Events">
+      <UniqueIdentifier>{764c5d96-ac71-4758-9979-598a0b7a18ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\Engine\Render\Properties">
+      <UniqueIdentifier>{f30aa420-dc7e-457d-8a27-4bbe4bb9e1b1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Project\src\Common\Events\Event.h">
+      <Filter>Header Files\src\Common\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Common\Events\EventHandler.h">
+      <Filter>Header Files\src\Common\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Common\Events\EventHandlerMap.h">
+      <Filter>Header Files\src\Common\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Common\Generics\Singleton.h">
+      <Filter>Header Files\src\Common\Generics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Common\Generics\Table.h">
+      <Filter>Header Files\src\Common\Generics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Common\Strings\String.h">
+      <Filter>Header Files\src\Common\Strings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Common\Strings\StringTable.h">
+      <Filter>Header Files\src\Common\Strings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Common\Objects\Object.h">
+      <Filter>Header Files\src\Common\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Common\Objects\ObjectProperty.h">
+      <Filter>Header Files\src\Common\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Common\Objects\ObjectPropertyTable.h">
+      <Filter>Header Files\src\Common\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Common\Objects\ObjectTable.h">
+      <Filter>Header Files\src\Common\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Engine\Animation\AnimationController.h">
+      <Filter>Header Files\src\Engine\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Engine\Animation\AnimationEvents.h">
+      <Filter>Header Files\src\Engine\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Engine\Animation\AnimationModel.h">
+      <Filter>Header Files\src\Engine\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Engine\Clock\ClockController.h">
+      <Filter>Header Files\src\Engine\Clock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Engine\Clock\ClockModel.h">
+      <Filter>Header Files\src\Engine\Clock</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Engine\Clock\Events\ClockTimerEvent.h">
+      <Filter>Header Files\src\Engine\Clock\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Engine\Game\GameController.h">
+      <Filter>Header Files\src\Engine\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Engine\Game\GameModel.h">
+      <Filter>Header Files\src\Engine\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Engine\Game\GameView.h">
+      <Filter>Header Files\src\Engine\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Engine\Game\Events\GameUpdate.h">
+      <Filter>Header Files\src\Engine\Game\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Engine\Game\Events\GameUpdateHandler.h">
+      <Filter>Header Files\src\Engine\Game\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Engine\Input\InputController.h">
+      <Filter>Header Files\src\Engine\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Engine\Input\InputDevice.h">
+      <Filter>Header Files\src\Engine\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Engine\Input\InputEvents.h">
+      <Filter>Header Files\src\Engine\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Engine\Input\InputMap.h">
+      <Filter>Header Files\src\Engine\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Engine\Input\InputModel.h">
+      <Filter>Header Files\src\Engine\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Engine\Input\Events\InputUpdate.h">
+      <Filter>Header Files\src\Engine\Input\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Engine\Input\Events\InputUpdateHandler.h">
+      <Filter>Header Files\src\Engine\Input\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Engine\Render\RenderController.h">
+      <Filter>Header Files\src\Engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Engine\Render\RenderModel.h">
+      <Filter>Header Files\src\Engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Engine\Physics\PhysicsController.h">
+      <Filter>Header Files\src\Engine\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Project\src\Engine\Physics\PhysicsModel.h">
+      <Filter>Header Files\src\Engine\Physics</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Project\src\Common\Events\EventHandlerMap.cpp">
+      <Filter>Source Files\src\Common\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Project\src\Common\Objects\Object.cpp">
+      <Filter>Source Files\src\Common\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Project\src\Common\Objects\ObjectPropertyTable.cpp">
+      <Filter>Source Files\src\Common\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Project\src\Common\Objects\ObjectTable.cpp">
+      <Filter>Source Files\src\Common\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Project\src\Common\Strings\StringTable.cpp">
+      <Filter>Source Files\src\Common\Strings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Project\src\Demo\main.cpp">
+      <Filter>Source Files\src\Demo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Project\src\Engine\Input\InputController.cpp">
+      <Filter>Source Files\src\Engine\Input</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>
