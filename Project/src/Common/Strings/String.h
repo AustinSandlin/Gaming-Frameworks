@@ -1,9 +1,9 @@
 #ifndef _STRING_H
 #define _STRING_H
 
-#include <cstdint>
+#include <string>
 
-typedef char * String;		// Should this be a class w/ auto-alloc, free, etc. ?
-typedef uint32_t StringID;
+typedef int StringID;
+typedef std::string String;
 
 #endif

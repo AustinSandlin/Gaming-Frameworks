@@ -3,15 +3,17 @@
 
 class InputUpdateHandler : public EventHandler {
 public:
-	InputUpdateHandler( InputModel * model ) : model{ model } {}
-	void HandleEvent( Event * event ) {
-		if ( event->GetSystemID() != INPUT ) {
-		}
-		switch ( event->GetEventID() ) {
+	InputUpdateHandler( InputModel & model ) : model{ model } {}
+	void HandleEvent( Event & event ) {
+		static auto table = StringTable::GetInstance();
+		static auto id = table.GetStringID( "InputUpdateHandler" );
+		if ( event.GetID() == id ) {
+			// Do stuff...
 		}
 	}
+	const static 
 private:
-	InputModel * model;
+	InputModel & model;
 };
 
 #endif

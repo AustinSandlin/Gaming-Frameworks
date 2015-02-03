@@ -1,33 +1,20 @@
 #include "StringTable.h"
 
-#include <string>
+#include <boost/crc.hpp>
 
-StringTable::~StringTable() {
-	for ( auto it = table.begin(); it != table.end(); it++ ) {
-		delete[] it->second;
-	}
-}
-
-void StringTable::AddString( const String str ) {
-	auto id = GetStringID( str );
+void StringTable::AddString( const String & string ) {
+	auto id = GetStringID( string );
 	auto it = table.find( id );
 	if ( it == table.end() ) {
-		table[ id ] = strdup( str );
+		table[ id ] = string;
 	}
 }
 
 void StringTable::RemoveString( const StringID id ) {
 	auto it = table.find( id );
 	if ( it != table.end() ) {
-		delete[] it->second;
 		table.erase( it );
 	}
-}
-
-StringID StringTable::GetStringID( const String str ) const {
-	// Inserted blank because compiler errors were thrown.
-	StringID temp = 0;
-	return temp; /* CRC-32 */
 }
 
 const String StringTable::GetString( StringID id ) const {
@@ -38,4 +25,10 @@ const String StringTable::GetString( StringID id ) const {
 	else {
 		return it->second;
 	}
+}
+
+const StringID StringTable::GetStringID( const String & string ) const {
+	boost::crc_32_type result;
+	result.process_bytes( string.data(), string.length() );
+	return result.checksum();
 }

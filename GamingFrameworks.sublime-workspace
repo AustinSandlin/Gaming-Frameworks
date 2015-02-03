@@ -1,0 +1,705 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Event",
+				"EventParemeter"
+			],
+			[
+				"In",
+				"InputUpdateEvent"
+			],
+			[
+				"eleme",
+				"element"
+			],
+			[
+				"ele",
+				"elements"
+			],
+			[
+				"Inputm",
+				"InputMap"
+			],
+			[
+				"Str",
+				"StringID"
+			],
+			[
+				"St",
+				"StringID"
+			],
+			[
+				"pro",
+				"properties"
+			],
+			[
+				"prop",
+				"property"
+			],
+			[
+				"Ob",
+				"ObjectProperty"
+			],
+			[
+				"Objec",
+				"ObjectTable"
+			],
+			[
+				"Eve",
+				"EventID"
+			],
+			[
+				"Even",
+				"EventHandler"
+			],
+			[
+				"Pro",
+				"Property"
+			],
+			[
+				"previ",
+				"previousMoves"
+			],
+			[
+				"cur",
+				"currentMove"
+			],
+			[
+				"Comp",
+				"CompoundMove"
+			],
+			[
+				"curren",
+				"currentMove"
+			],
+			[
+				"object",
+				"objectList"
+			],
+			[
+				"el",
+				"elapsed"
+			],
+			[
+				"camera",
+				"cameraMatrix"
+			],
+			[
+				"camer",
+				"cameraMatrix"
+			],
+			[
+				"selec",
+				"selections"
+			],
+			[
+				"select",
+				"selectGeometry"
+			],
+			[
+				"pass",
+				"passiveMotion"
+			],
+			[
+				"GL",
+				"GLint"
+			],
+			[
+				"obse",
+				"observers"
+			],
+			[
+				"compu",
+				"computeControlPoints"
+			],
+			[
+				"ap",
+				"animationProgress"
+			],
+			[
+				"G",
+				"GLfloat"
+			],
+			[
+				"draw",
+				"drawConstruction"
+			],
+			[
+				"dis",
+				"displayConstruction"
+			],
+			[
+				"get",
+				"getAnimationProgress"
+			],
+			[
+				"glut",
+				"glutPostRedisplay"
+			],
+			[
+				"key",
+				"keyboard"
+			],
+			[
+				"add",
+				"addControlPoint"
+			],
+			[
+				"observ",
+				"observeWindow"
+			],
+			[
+				"no",
+				"notifyObservers"
+			],
+			[
+				"wi",
+				"window"
+			],
+			[
+				"not",
+				"notifyObserver"
+			],
+			[
+				"wid",
+				"widthScale"
+			],
+			[
+				"setHe",
+				"setHeightScale"
+			],
+			[
+				"noti",
+				"notifyObservers"
+			],
+			[
+				"ob",
+				"observable"
+			],
+			[
+				"setWi",
+				"setWindow"
+			],
+			[
+				"con",
+				"controlPoints"
+			],
+			[
+				"map",
+				"mapControlPoints"
+			],
+			[
+				"inc",
+				"include"
+			],
+			[
+				"C",
+				"ControlPoint"
+			],
+			[
+				"co",
+				"controlPoints"
+			],
+			[
+				"c",
+				"controlPoints"
+			],
+			[
+				"glfl",
+				"GLfloat"
+			],
+			[
+				"contro",
+				"controlPoints"
+			],
+			[
+				"gl",
+				"glPopMatrix"
+			],
+			[
+				"drawC",
+				"drawCube"
+			],
+			[
+				"dr",
+				"drawCylinder"
+			],
+			[
+				"glP",
+				"glPopMatrix"
+			],
+			[
+				"vecto",
+				"Vector"
+			],
+			[
+				"Rec",
+				"RecordQueue"
+			],
+			[
+				"Sch",
+				"SchedulingPolicy"
+			],
+			[
+				"Sche",
+				"SchedulingPolicy"
+			],
+			[
+				"p",
+				"prp"
+			],
+			[
+				"pr",
+				"process_record"
+			],
+			[
+				"_",
+				"_KERNEL_MODULE_C"
+			],
+			[
+				"smoo",
+				"smoothEnabled"
+			],
+			[
+				"v",
+				"vLoc"
+			],
+			[
+				"comp",
+				"computHeight"
+			],
+			[
+				"compute",
+				"computeCenter"
+			],
+			[
+				"com",
+				"computeEye"
+			],
+			[
+				"world",
+				"worldMap"
+			],
+			[
+				"Gl",
+				"GLfloat"
+			],
+			[
+				"tran",
+				"transformBrick"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "Project/src/Common/Events/Event.h",
+			"settings":
+			{
+				"buffer_size": 403,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Project/src/Common/Events/EventParameter.h",
+			"settings":
+			{
+				"buffer_size": 293,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/C++/C++.sublime-build",
+	"command_palette":
+	{
+		"height": 375.0,
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"package control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"file",
+				"File: Close All"
+			],
+			[
+				"file sa",
+				"File: Save All"
+			],
+			[
+				"File",
+				"File: Close All"
+			]
+		],
+		"width": 435.0
+	},
+	"console":
+	{
+		"height": 227.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Events",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/Events"
+	],
+	"file_history":
+	[
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/Events/InputUpdateHandler.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/Events/InputUpdate.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/InputModel.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/InputController.cpp",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/InputController.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/InputDevice.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Game/GameController.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Game/Properties/temp.txt",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/Events/InputUpdateEvent.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Game/Events/GameStartEvent.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Generics/Singleton.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Generics/Table.h",
+		"/Users/tim/Desktop/Singleton.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Project/src/Engine/Input/InputModel.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Project/src/Engine/Input/InputMap.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Project/src/Engine/Input/InputController.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Project/src/Engine/Render/RenderController.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Project/src/Engine/Physics/PhysicsController.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Project/src/Engine/Game/GameController.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Project/src/Engine/Clock/ClockController.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Project/src/Engine/Animation/AnimationController.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Project/src/Engine/Animation/AnimationModel.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Project/src/Engine/Game/GameModel.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Project/src/Engine/Physics/PhysicsModel.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Project/src/Engine/Render/RenderModel.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Project/src/Engine/Clock/ClockModel.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Project/src/Engine/Clock/Events/ClockTimerEvent.h",
+		"/Users/tim/Desktop/src/Base/Strings/String.h",
+		"/Users/tim/Desktop/src/Base/Strings/StringTable.cpp",
+		"/Users/tim/Desktop/src/StringTable.h",
+		"/Users/tim/Desktop/src/Base/Strings/StringTable.h",
+		"/Users/tim/Desktop/src/Base/Common/StringID.h",
+		"/Users/tim/Desktop/src/Base/Patterns/Singleton.h",
+		"/Users/tim/Documents/StringTable.h",
+		"/Users/tim/Desktop/src/Base/Strings/StringID.h",
+		"/Users/tim/Desktop/src/Base/Events/EventHandlerMap.cpp",
+		"/Users/tim/Desktop/src/Base/Objects/Object.h",
+		"/Users/tim/Desktop/src/Base/Objects/Object.cpp",
+		"/Users/tim/Desktop/src/Engine/Clock/ClockModel.h",
+		"/Users/tim/Desktop/src/Engine/Clock/ClockController.h",
+		"/Users/tim/Desktop/src/Base/Models/ModelTable.h",
+		"/Users/tim/Desktop/src/Engine/Input/InputEvents.h",
+		"/Users/tim/Desktop/src/Base/Events/EventHandlerMap.h",
+		"/Users/tim/Desktop/src/Base/Objects/ObjectProperty.h",
+		"/Users/tim/Desktop/src/Base/Events/Event.h",
+		"/Users/tim/Desktop/src/Base/Events/EventHandler.h",
+		"/Users/tim/Desktop/src/Base/Objects/ObjectTable.h",
+		"/Users/tim/Desktop/src/Base/Objects/ObjectPropertyTable.h",
+		"/Users/tim/Desktop/src/Base/Events/Events.cpp",
+		"/Users/tim/Desktop/src/Engine/Input/InputMap.h",
+		"/Users/tim/Desktop/src/Base/Events/Events.h",
+		"/Users/tim/Desktop/src/Base/Models/Model.h",
+		"/Users/tim/Desktop/src/Engine/Game/GameController.h",
+		"/Users/tim/Desktop/src/Engine/Input/InputController.h",
+		"/Users/tim/Desktop/src/Engine/Render/RenderController.h",
+		"/Users/tim/Desktop/src/Engine/Game/GameController.cpp",
+		"/Users/tim/Desktop/src/Engine/Game/GameObjectProperty",
+		"/Users/tim/Desktop/src/Engine/Animation/AnimationEvents.h",
+		"/Users/tim/Desktop/src/Engine/Input/InputModel.h",
+		"/Users/tim/Desktop/src/Engine/Render/RenderView.h",
+		"/Users/tim/Desktop/src/Engine/Input/InputView",
+		"/Users/tim/Desktop/src/Engine/Render/RenderModel.h",
+		"/Users/tim/Desktop/src/Engine/Game/GameModel.h",
+		"/Users/tim/Desktop/src/Engine/Animation/AnimationController.h",
+		"/Users/tim/Desktop/src/Engine/Animation/AnimationModel.h",
+		"/Users/tim/Desktop/src/Base/Events.h",
+		"/Users/tim/Desktop/src/Base/Events.cpp",
+		"/Users/tim/Desktop/src/Engine/Game/GameObject.cpp",
+		"/Users/tim/Desktop/Models.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/src/Base/Event.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/src/Base/EventHandler.h",
+		"/Volumes/Data/config/setup.sh",
+		"/Volumes/Data/config/setup-all.sh",
+		"/Users/tim/Desktop/players",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/src/Base/Object.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/src/Base/Model.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/src/Engine/Game/GameObject.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/src/Engine/Game/GameModel.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/src/Engine/Physics/PhysicsObject.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/src/Engine/Game/GameController.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/src/Engine/Game/GameLoader.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/src/Engine/Game/Main.cpp",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/src/Engine/Game/GameEvent.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/src/Engine/Game/GameMain.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/src/Game/GameModel.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/src/Game/GameController.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/src/Game/GameUpdateEvent",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/src/Engine/EngineUpdateEvent",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Engine/Base/Controller.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Engine/Base/Model.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Engine/Base/Event.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Engine/Base/Object.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Engine/Base/View.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Engine/Physics/PhysicsModel.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Engine/Physics/PhysicsObject.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Engine/Physics/PhysicsEvent.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Engine/Model.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Engine/Physics/PhysicsManager.h",
+		"/Users/tim/Documents/Engine/untitled",
+		"/Users/tim/Desktop/Final.txt",
+		"/Users/tim/Documents/2014/Baylor/Fall/CSS/3300/Final.txt",
+		"/Users/tim/Downloads/cv_9.tex",
+		"/Users/tim/Documents/2014/Baylor/Fall/CSI/4341/Workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.core.resources.prefs",
+		"/Users/tim/Documents/2014/Baylor/Fall/CSI/4341/Assignments/Assignment 6/Move.h",
+		"/Users/tim/Documents/2014/Baylor/Fall/CSI/4341/Assignments/Assignment 6/TranslateMove.cpp",
+		"/Users/tim/Documents/2014/Baylor/Fall/CSI/4341/Assignments/Assignment 6/CompoundMove.h",
+		"/Users/tim/Documents/2014/Baylor/Fall/CSI/4341/Assignments/Assignment 6/CompoundMove.cpp",
+		"/Users/tim/Documents/2014/Baylor/Fall/CSI/4341/Assignments/Assignment 6/Move.cpp",
+		"/Users/tim/Documents/2014/Baylor/Fall/CSI/4341/Assignments/Assignment 6/TranslateMove.h",
+		"/Users/tim/Documents/2014/Baylor/Fall/CSI/4341/Assignments/Assignment 6/Face.cpp",
+		"/Users/tim/Documents/2014/Baylor/Fall/CSI/4341/Assignments/Assignment 6/Makefile",
+		"/Users/tim/Documents/2014/Baylor/Fall/CSI/4341/Assignments/Assignment 6/Mesh.h",
+		"/Users/tim/Documents/2014/Baylor/Fall/CSI/4341/Assignments/Assignment 6/Face.h",
+		"/Users/tim/Documents/2014/Baylor/Fall/CSI/4341/Assignments/Assignment 6/Mesh.cpp",
+		"/Users/tim/Documents/2014/Baylor/Fall/CSI/4341/Assignments/Assignment 6/Geometry.h",
+		"/Users/tim/Documents/2014/Baylor/Fall/CSI/4341/Assignments/Assignment 6/Geometry.cpp",
+		"/Users/tim/Documents/2014/Baylor/Fall/CSI/4341/Assignments/Assignment 6/Chess.cpp",
+		"/Users/tim/Documents/2014/Baylor/Fall/CSI/4341/Assignments/Assignment 6/NormalMove.h",
+		"/Users/tim/Documents/2014/Baylor/Fall/CSI/4341/Assignments/Assignment 6/SimpleMove.h",
+		"/Users/tim/Documents/2014/Baylor/Fall/CSI/4341/Assignments/Assignment 6/Image.cpp",
+		"/Users/tim/Documents/2014/Baylor/Fall/CSI/4341/Assignments/Assignment 6/triangulate.cpp",
+		"/Users/tim/Desktop/triangulate.cpp",
+		"/Users/tim/Documents/2014/Baylor/Fall/CSI/4341/Assignments/Assignment 6/rook.mesh",
+		"/Applications/eclipse/Eclipse.app/Contents/MacOS/eclipse.ini",
+		"/Users/tim/Documents/2014/Baylor/Fall/CSI/4341/Assignments/Assignment 6/Image.h",
+		"/Users/tim/Documents/2014/Baylor/Fall/CSI/4341/Assignments/Assignment 5/Makefile",
+		"/Users/tim/Desktop/test.txt",
+		"/Users/tim/Desktop/temp.txt"
+	],
+	"find":
+	{
+		"height": 22.0
+	},
+	"find_in_files":
+	{
+		"height": 95.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"selection",
+			"selectionStack",
+			"stack",
+			"scal",
+			"draw",
+			"size",
+			"computeNormal",
+			"mouse",
+			"Drawable",
+			"Wireframe",
+			"eye"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"n",
+			"Observable"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "Project/src/Common/Events/Event.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 403,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								88,
+								88
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Project/src/Common/Events/EventParameter.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 293,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								180,
+								180
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 22.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 96.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "GamingFrameworks.sublime-project",
+	"replace":
+	{
+		"height": 40.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 261.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

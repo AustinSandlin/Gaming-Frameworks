@@ -5,8 +5,13 @@
 
 class EventHandler {
 public:
+<<<<<<< Updated upstream
     virtual ~EventHandler() {};
     virtual void HandleEvent( Event * event ) = 0;
+=======
+    virtual ~EventHandler();
+    virtual void HandleEvent( Event & event ) = 0;
+>>>>>>> Stashed changes
 };
 
 #endif

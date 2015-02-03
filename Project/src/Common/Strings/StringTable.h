@@ -5,22 +5,20 @@
 
 #include <unordered_map>
 
-using namespace std;
-
 class StringTable {
 public:
 	static StringTable & GetInstance() {
 		static StringTable singleton;
 		return singleton;
 	}
-	~StringTable();
-	void AddString( const String str );
+	~StringTable() {}
+	void AddString( const String & string );
 	void RemoveString( const StringID id );
-	StringID GetStringID( const String str ) const;
 	const String GetString( const StringID id ) const;
+	const StringID GetStringID( const String & string ) const;
 private:
 	StringTable() {}
-	unordered_map< StringID, String > table;
+	std::unordered_map< StringID, String > table;
 };
 
 #endif

@@ -5,11 +5,16 @@
 
 class Event {
 public:
-	StringID GetID() { return id; }
+	virtual ~Event();
+	const StringID GetID() const { return id; }
+	//void AddParameter( StringID id, EventParemeter parameter );
+	//void RemoveParameter( StringID id );
+	//const EventParemeter GetParameter( StringID id ) const;
 protected:
 	Event( StringID id ) : id{ id } {};
 private:
 	StringID id;
+	//unordered_map< StringID, EventParemeter > parameters;
 };
 
 #endif
