@@ -13,7 +13,7 @@ public:
 	virtual ~EventHandlerMap();
 	void AddEventHandler( StringID id, EventHandler * handler );
 	void RemoveEventHandler( StringID id );
-	void HandleEvent( Event * event );
+	void HandleEvent( Event & event );
 private:
 	std::unordered_map< StringID, std::vector< EventHandler * > > handlers;
 };
