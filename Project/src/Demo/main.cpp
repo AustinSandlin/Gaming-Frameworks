@@ -15,8 +15,44 @@
 #include <GLUT/glut.h>
 #endif
 
-bool editMode;
-InputController* ic;
+void editFunc() {
+    bool editMode = true;
+    while(editMode) {
+        istringstream instream;
+        string inputStr;
+        
+        cout << "Reading Input: ";
+        getline(cin, inputStr);
+
+        instream.str(inputStr);
+        instream >> inputStr;
+        
+        cout << "Read: " << inputStr << endl;;
+        
+        if(inputStr == "exit") {
+            editMode = false;
+        }
+        else if(inputStr == "add") {
+            instream >> inputStr;
+            if(inputStr == "pane") {
+                int x, y;
+                instream >> x >> y;
+                // Make a new Pane object here?
+            }
+            else if(inputStr == "object") {
+                int x, y, z;
+                instream >> x >> y >> z;
+                // Make a new Object here?
+            }
+        }
+    }
+
+    return;
+}
+
+void Game() {
+    return;
+}
 
 void init() {
     // Set these preferences for the window. (RBG color, double buffer, 3D).
@@ -25,15 +61,11 @@ void init() {
     glutInitWindowSize(600, 600);
     // Set the title.
     glutCreateWindow("Game Engine Demo");
-
     // Enable 3D depth.
     glEnable(GL_DEPTH_TEST);
 
     // Get the input controller instance.
-    //ic = &(ic->GetInstance());
-
-    // Default to not edit mode.
-    editMode = false;
+    static InputController* ic = &(ic->GetInstance());
 
     // Set the default background color to white.
     glClearColor(1.0, 1.0, 1.0, 0);
@@ -51,66 +83,29 @@ void display() {
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-    while(editMode) {
-        istringstream instream;
-        string inputStr;
-        
-        cout << "Reading Input: ";
-        getline(cin, inputStr);
-        cout << endl;
-
-        instream.str(inputStr);
-        instream >> inputStr;
-        
-        cout << "Read: " << inputStr << endl;;
-        
-        if(inputStr == "exit") {
-            editMode = false;
-        }
-        if(inputStr == "make") {
-            instream >> inputStr;
-            if(inputStr == "pane") {
-                int x, y;
-                instream >> x >> y;
-                // Make a new Pane object here?
-            }
-            else if(inputStr == "object") {
-                int x, y, z;
-                instream >> x >> y >> z;
-                // Make a new Object here?
-            }
-        }
-    }
-    
-    // editMode();
-    // loadHud();
-
-    // Figure out the aspect ratio.
-    // int winWidth = glutGet(GLUT_WINDOW_WIDTH);
-    // int winHeight = glutGet(GLUT_WINDOW_HEIGHT);
-
-    // Show it to the user.
+    // Show changes to the user.
     glutSwapBuffers();
 }
 
 // Callback for when keys are pressed down.
 void keyboard(unsigned char key, int x, int y) {
     switch(key) {
-        case 'e': editMode = true;
-                  cout << "editmode true" << endl;
+        case '~': editFunc();
                   break;
-        default: break;
+        default: ;
     }
-    glutPostRedisplay();
-}
-
-// Callback for when the mouse button is pressed.
-void mouse(int button, int state, int x, int y) {
-    //ic.mouse(button, state, x, y);
 }
 
 // Callback called when our timer goes off. 
 void timerFunction(int value) {
+    // Input is handled from the keyboard callback.
+
+    // Update game state.
+    Game();
+
+    // Render the display.
+    glutPostRedisplay();
+
     // Register a new timer.
     glutTimerFunc(20, timerFunction, 0);
 }
@@ -125,7 +120,6 @@ int main(int argc, char **argv) {
     // Register all our callbacks.
     glutDisplayFunc(display);
     glutKeyboardFunc(keyboard);
-    glutMouseFunc(mouse);
 
     // Register our first timer callback.
     glutTimerFunc(20, timerFunction, 0);
