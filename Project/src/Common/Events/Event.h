@@ -5,12 +5,13 @@
 
 class Event {
 public:
-	virtual ~Event();
+	virtual ~Event() {}
 	const StringID GetID() const { return id; }
 	//void AddParameter( StringID id, EventParemeter parameter );
 	//void RemoveParameter( StringID id );
 	//const EventParemeter GetParameter( StringID id ) const;
 protected:
+	Event();
 	Event( StringID id ) : id{ id } {};
 private:
 	StringID id;
