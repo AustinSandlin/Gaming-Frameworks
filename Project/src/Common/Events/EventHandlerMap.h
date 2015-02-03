@@ -15,7 +15,7 @@ public:
 	void RemoveEventHandler( StringID id );
 	void HandleEvent( Event * event );
 private:
-	unordered_map< StringID, vector< EventHandler * > > handlers;
+	std::unordered_map< StringID, std::vector< EventHandler * > > handlers;
 };
 
 #endif

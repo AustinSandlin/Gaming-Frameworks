@@ -1,9 +1,9 @@
-#include "Events/InputUpdateEvent.h"
+#include "Events/InputUpdate.h"
 
 InputController::InputController() {
 	auto table = StringTable::GetInstance();
-	auto id = table.GetStringID( InputUpdate::ID );
 	auto model = InputModel::GetInstance();
+	auto id = InputUpdate::GetID();
 	auto handler = new InputUpdateHandler( model );
 	EventHandlerMap::AddEventHandler( id, handler );
 }
