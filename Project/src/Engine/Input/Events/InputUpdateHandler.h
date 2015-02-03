@@ -5,6 +5,8 @@
 #include "../../../Common/Events/EventHandler.h"
 #include "../InputModel.h"
 
+#include <iostream>
+
 class InputUpdateHandler : public EventHandler {
 public:
 	InputUpdateHandler( InputModel & model ) : model{ model } {}
@@ -16,7 +18,10 @@ public:
 	void HandleEvent( Event & event ) {
 		static auto id = InputUpdate::GetID();
 		if ( event.GetID() == id ) {
-			// Do stuff...
+			while ( model.HasCommands() ) {
+				auto command = ( InputCommand * ) model.PopCommand();
+				std::cout << command->GetKey() << std::endl;
+			}
 		}
 	}
 private:

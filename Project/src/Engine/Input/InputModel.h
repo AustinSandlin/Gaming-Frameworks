@@ -1,7 +1,9 @@
 #ifndef _INPUT_MODEL_H
 #define _INPUT_MODEL_H
 
-#include "InputMap.h"
+#include "Events/InputCommand.h"
+
+#include <queue>
 
 class InputModel {
 public:
@@ -9,11 +11,12 @@ public:
 		static InputModel singleton;
 		return singleton;
 	}
-	void SetInputMap( InputMap * map );
-	InputMap * GetInputMap();
+	bool HasCommands();
+	void PushCommand( InputCommand * command );
+	InputCommand * PopCommand();
 private:
 	InputModel() {}
-	InputMap * map;
+	std::queue< InputCommand * > commands;
 };
 
 #endif
