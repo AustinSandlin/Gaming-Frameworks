@@ -1,15 +1,17 @@
 #include "InputModel.h"
 
-bool InputModel::HasCommands() {
-	return !commands.empty();
-}
-
 void InputModel::PushCommand( InputCommand * command ) {
 	commands.push( command );
 }
 
-InputCommand * InputModel::PopCommand() {
-	auto command = commands.front();
+void InputModel::PopCommand() {
 	commands.pop();
-	return command;
+}
+
+bool InputModel::HasCommands() {
+	return commands.size() > 0;
+}
+
+InputCommand * InputModel::NextCommand() {
+	return commands.front();
 }

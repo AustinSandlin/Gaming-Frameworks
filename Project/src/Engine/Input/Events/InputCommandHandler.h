@@ -7,20 +7,19 @@
 
 class InputCommandHandler : public EventHandler {
 public:
-	InputCommandHandler( InputModel & model ) : model{ model } {}
+	InputCommandHandler() {}
 	static StringID GetID() {
-		static auto table = StringTable::GetInstance();
+		static auto & table = StringTable::GetInstance();
 		static auto id = table.GetStringID( "InputCommandHandler" );
 		return id;
 	}
-	void HandleEvent( Event & event ) {
+	void HandleEvent( Event * event ) {
+		static auto & model = InputModel::GetInstance();
 		static auto id = InputCommand::GetID();
-		if ( event.GetID() == id ) {
-			model.PushCommand( ( InputCommand * ) & event );
+		if ( event->GetID() == id ) {
+			model.PushCommand( ( InputCommand * ) event );
 		}
 	}
-private:
-	InputModel & model;
 };
 
 #endif

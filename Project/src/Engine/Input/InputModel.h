@@ -11,9 +11,10 @@ public:
 		static InputModel singleton;
 		return singleton;
 	}
-	bool HasCommands();
 	void PushCommand( InputCommand * command );
-	InputCommand * PopCommand();
+	void PopCommand();
+	bool HasCommands();
+	InputCommand * NextCommand();
 private:
     InputModel() {}
 	std::queue< InputCommand * > commands;

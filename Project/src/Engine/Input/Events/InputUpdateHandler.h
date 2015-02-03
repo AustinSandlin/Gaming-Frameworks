@@ -9,23 +9,25 @@
 
 class InputUpdateHandler : public EventHandler {
 public:
-	InputUpdateHandler( InputModel & model ) : model{ model } {}
+	InputUpdateHandler() {}
 	static StringID GetID() {
-		static auto table = StringTable::GetInstance();
+		static auto & table = StringTable::GetInstance();
 		static auto id = table.GetStringID( "InputUpdateHandler" );
 		return id;
 	}
-	void HandleEvent( Event & event ) {
+	void HandleEvent( Event * event ) {
+		static auto & model = InputModel::GetInstance();
 		static auto id = InputUpdate::GetID();
-		if ( event.GetID() == id ) {
+		if ( event->GetID() == id ) {
+			std::cout << "Keys Pressed: ";
 			while ( model.HasCommands() ) {
-				auto command = model.PopCommand();
-				std::cout << command->GetKey() << std::endl;
+				auto command = model.NextCommand();
+				std::cout << "<" << command->GetKey() << "> ";
+				model.PopCommand();
 			}
+			std::cout << std::endl;
 		}
 	}
-private:
-	InputModel & model;
 };
 
 #endif

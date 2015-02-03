@@ -8,7 +8,7 @@ class InputUpdate : public Event {
 public:
 	InputUpdate() : Event( GetID() ) {}
 	static StringID GetID() {
-		static auto table = StringTable::GetInstance();
+		static auto & table = StringTable::GetInstance();
 		static auto id = table.GetStringID( "InputUpdate" );
 		return id;
 	}

@@ -25,12 +25,12 @@ void EventHandlerMap::RemoveEventHandler( StringID id ) {
 	}
 }
 
-void EventHandlerMap::HandleEvent( Event & event ) {
-	auto id = event.GetID();
+void EventHandlerMap::HandleEvent( Event * event ) {
+	auto id = event->GetID();
 	auto it = handlers.find( id );
 	if ( it != handlers.end() ) {
-		for ( auto it2 = it->second.begin(); it2 != it->second.end(); it2++ ) {
-			(*it2)->HandleEvent( event );
+		for ( auto handler : it->second ) {
+			handler->HandleEvent( event );
 		}
 	}
 }

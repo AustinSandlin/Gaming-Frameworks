@@ -86,21 +86,16 @@ void display() {
 
 // Callback for when keys are pressed down.
 void keyboard(unsigned char key, int x, int y) {
-    static auto controller = InputController::GetInstance();
-    auto event = new InputCommand( key );
-    auto event2 = new InputUpdate();
+    static auto & controller = InputController::GetInstance();
     switch(key) {
         case '~': editFunc();
                   break;
         case 27: exit(0);
                  break;
-        case 'a': controller.HandleEvent( *event2 );
+        case 'a': controller.HandleEvent( new InputUpdate() );
                   break;
-        default: ;
+        default: controller.HandleEvent( new InputCommand( key ) );
     }
-
-    // Get the input controller instance.
-    controller.HandleEvent( *event );
 }
 
 // Callback called when our timer goes off. 
