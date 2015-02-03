@@ -88,13 +88,13 @@ void display() {
 void keyboard(unsigned char key, int x, int y) {
     static auto & controller = InputController::GetInstance();
     switch(key) {
-        case '~': editFunc();
-                  break;
-        case 27: exit(0);
-                 break;
-        case 'a': controller.HandleEvent( new InputUpdate() );
-                  break;
-        default: controller.HandleEvent( new InputCommand( key ) );
+        case '~':	editFunc();
+                	break;
+        case 27:	exit(0);
+                	break;
+        case 13:	controller.HandleEvent( new InputUpdate() );
+                	break;
+        default:	controller.HandleEvent( new InputCommand( key ) );
     }
 }
 
