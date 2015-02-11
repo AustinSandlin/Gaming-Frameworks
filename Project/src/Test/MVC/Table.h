@@ -1,0 +1,128 @@
+#ifndef _TABLE_H
+#define _TABLE_H
+
+typedef int StringID;
+
+#include <unordered_map>
+
+template < typename T >
+class TableIterator {
+
+public:
+	TableIterator( typename std::unordered_map< StringID, T >::iterator iterator ) :
+		iterator{ iterator } {
+	}
+	TableIterator( const TableIterator< T > & other ) {
+		iterator = other.iterator;
+	}
+	~TableIterator() {
+	}
+	StringID id() const {
+		return iterator->first;
+	}
+	T & value() const {
+		return iterator->second;
+	}
+	TableIterator< T > & operator=( const TableIterator< T > & other) const {
+		iterator = other.iterator;
+		return *this;
+	}
+	bool operator==( const TableIterator< T > & other) const {
+		return iterator == other.iterator;
+	}
+	bool operator!=( const TableIterator< T > & other) const {
+		return iterator != other.iterator;
+	}
+	TableIterator< T > & operator*() {
+		return *this;
+	}
+    TableIterator< T > & operator++() {
+    	iterator++;
+        return *this;
+    }
+
+private:
+	typename std::unordered_map< StringID, T >::iterator iterator;
+};
+
+template < typename T >
+class ConstTableIterator {
+
+public:
+	ConstTableIterator( typename std::unordered_map< StringID, T >::const_iterator iterator ) :
+		iterator{ iterator } {
+	}
+	ConstTableIterator( const ConstTableIterator< T > & other ) {
+		iterator = other.iterator;
+	}
+	~ConstTableIterator() {
+	}
+	const StringID id() const {
+		return iterator->first;
+	}
+	const T & value() const {
+		return iterator->second;
+	}
+	ConstTableIterator< T > & operator=( const ConstTableIterator< T > & other) const {
+		iterator = other.iterator;
+		return *this;
+	}
+	bool operator==( const ConstTableIterator< T > & other) const {
+		return iterator == other.iterator;
+	}
+	bool operator!=( const ConstTableIterator< T > & other) const {
+		return iterator != other.iterator;
+	}
+	const ConstTableIterator< T > & operator*() const {
+		return *this;
+	}
+    ConstTableIterator< T > & operator++() {
+    	iterator++;
+        return *this;
+    }
+
+private:
+	typename std::unordered_map< StringID, T >::const_iterator iterator;
+};
+
+/* A generic hash table which uses hashed strings as keys
+ */
+template < typename T >
+class Table {
+
+public:
+	virtual ~Table() {
+	}
+	void add( StringID id, const T & item ) {
+		items.emplace( id, T( item ) );
+	}
+	void remove( StringID id ) {
+		items.erase( id );
+	}
+	bool has( StringID id ) const {
+		return items.find( id ) != items.end();
+	}
+	TableIterator< T > get( StringID id ) {
+		return TableIterator< T >( items.find( id ) );
+	}
+	const ConstTableIterator< T > get( StringID id ) const {
+		return ConstTableIterator< T >( items.find( id ) );
+	}
+	TableIterator< T > begin() {
+		return TableIterator< T >( items.begin() );
+	}
+	const ConstTableIterator< T > begin() const {
+		return ConstTableIterator< T >( items.begin() );
+	}
+	TableIterator< T > end() {
+		return TableIterator< T >( items.end() );
+	}
+	const ConstTableIterator< T > end() const {
+		return ConstTableIterator< T >( items.end() );
+	}
+
+private:
+	typename std::unordered_map< StringID, T > items;
+};
+
+#endif
