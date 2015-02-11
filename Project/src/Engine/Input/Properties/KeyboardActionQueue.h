@@ -3,7 +3,7 @@
 
 #include "../../../Common/Base/Queue.h"
 
-#include "../Properties/KeyboardAction.h"
+#include "../Events/KeyboardAction.h"
 
 class KeyboardActionQueue:
 

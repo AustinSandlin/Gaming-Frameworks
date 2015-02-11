@@ -2,12 +2,11 @@
 #define _INPUT_CONTROLLER_H
 
 #include "../../Common/Base/Handler.h"
-#include "../../Common/Base/Queue.h"
 #include "../../Common/Base/Singleton.h"
 
-#include "../Objects/Events/AddProperty.h"
-#include "../Objects/Events/Remove.h"
-#include "../Objects/Events/RemoveProperty.h"
+#include "../Object/Events/AddProperty.h"
+#include "../Object/Events/RemoveProperties.h"
+#include "../Object/Events/RemoveProperty.h"
 
 #include "Properties/KeyboardActionQueue.h"
 #include "Properties/MouseActionQueue.h"
@@ -24,7 +23,7 @@ namespace Input {
 		public Handler< Object::AddProperty < MouseActionQueue > >,
 		public Handler< Object::RemoveProperty < KeyboardActionQueue > >,
 		public Handler< Object::RemoveProperty < MouseActionQueue > >,
-		public Handler< Object::Remove >,
+		public Handler< Object::RemoveProperties >,
 		public Handler< PushAction< KeyboardAction > >,
 		public Handler< PushAction< MouseAction > >,
 		public Handler< PopAction< KeyboardAction > >,

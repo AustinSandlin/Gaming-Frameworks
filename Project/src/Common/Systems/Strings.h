@@ -6,13 +6,16 @@
 
 #include <boost/crc.hpp>
 
-class Strings :
+class Strings:
 
-	public Singleton< StringTable >,
+	public Singleton< Strings >,
 	protected Table< String > {
 
 private:
 	
+	friend class Singleton< Strings >;
+	Strings() {
+	}
 	StringID hash( String string ) {
 		boost::crc_32_type result;
 		result.process_bytes( string.data(), string.length() );

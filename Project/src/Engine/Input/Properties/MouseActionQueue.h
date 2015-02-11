@@ -3,7 +3,7 @@
 
 #include "../../../Common/Base/Queue.h"
 
-#include "../Properties/MouseAction.h"
+#include "../Events/MouseAction.h"
 
 class MouseActionQueue:
 

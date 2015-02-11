@@ -12,7 +12,6 @@ namespace Scheduler {
 	private:
 
 		friend class Singleton< View >;
-		
 		View() {
 		}
 

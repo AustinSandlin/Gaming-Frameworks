@@ -5,7 +5,7 @@
 
 namespace Input {
 
-	class View :
+	class View:
 
 		public Singleton< View > {
 
