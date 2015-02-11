@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"Bool",
+				"BooleanValue"
+			],
+			[
+				"pro",
+				"properties"
+			],
+			[
+				"Input",
+				"InputCommand"
+			],
+			[
 				"comm",
 				"commands"
 			],
@@ -46,10 +58,6 @@
 			[
 				"St",
 				"StringID"
-			],
-			[
-				"pro",
-				"properties"
 			],
 			[
 				"prop",
@@ -312,74 +320,29 @@
 	"buffers":
 	[
 		{
-			"file": "Project/src/Engine/Input/Events/InputCommandHandler.h",
+			"contents": "#ifndef _OBJECT_PROPERTY_H\n#define _OBJECT_PROPERTY_H\n\nunion ObjectProperty {\n\n	ObjectProperty() : ObjectProperty( false ) {}\n	ObjectProperty( bool value ) : BooleanValue{ value } {}\n	ObjectProperty( char value ) : CharacterValue{ value } {}\n	ObjectProperty( short value ) : ShortValue{ value } {}\n	ObjectProperty( int value ) : IntegerValue { value } {}\n	ObjectProperty( long value ) : LongValue{ value } {}\n	ObjectProperty( float value ) : FloatValue{ value } {}\n	ObjectProperty( double value ) : DoubleValue{ value } {}\n\n	bool BooleanValue;\n	char CharacterValue;\n	short ShortValue;\n	int IntegerValue;\n	long LongValue;\n	float FloatValue;\n	double DoubleValue;\n};\n\nclass ObjectProperty {\npublic:\n\nprivate:\n	\n};\n\n#endif\n",
+			"file": "/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Objects/ObjectProperty.h",
+			"file_size": 700,
+			"file_write_time": 130675502140000000,
 			"settings":
 			{
-				"buffer_size": 670,
+				"buffer_size": 719,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "Project/src/Engine/Input/Events/InputUpdateHandler.h",
+			"file": "/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Physics/PhysicsController.h",
 			"settings":
 			{
-				"buffer_size": 748,
+				"buffer_size": 319,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "Project/src/Engine/Input/InputController.cpp",
+			"file": "/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Events/EventParameter.h",
 			"settings":
 			{
-				"buffer_size": 537,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Project/src/Demo/main.cpp",
-			"settings":
-			{
-				"buffer_size": 3370,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Project/src/Engine/Input/InputModel.h",
-			"settings":
-			{
-				"buffer_size": 391,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Project/src/Common/Events/EventHandler.h",
-			"settings":
-			{
-				"buffer_size": 193,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Project/src/Common/Events/EventHandlerMap.h",
-			"settings":
-			{
-				"buffer_size": 467,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Project/src/Common/Events/EventHandlerMap.cpp",
-			"settings":
-			{
-				"buffer_size": 1001,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Project/src/Engine/Input/InputModel.cpp",
-			"settings":
-			{
-				"buffer_size": 409,
+				"buffer_size": 673,
 				"line_ending": "Unix"
 			}
 		}
@@ -444,20 +407,37 @@
 	},
 	"expanded_folders":
 	[
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src",
-		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Demo",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Events",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Objects",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine",
-		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input",
-		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/Devices",
-		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/Events"
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Animation",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Render"
 	],
 	"file_history":
 	[
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Sublime Text Project/Makefile",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/makefile",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Demo/main.cpp",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/Events/InputUpdate.h",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/Events/InputUpdateHandler.h",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/Events/InputCommandHandler.h",
-		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/Events/InputCommand.h",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/InputController.cpp",
-		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/Events/InputUpdate.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/Events/InputCommand.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Objects/ObjectProperty.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Objects/Object.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Events/EventParameter.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Events/EventHandlerMap.cpp",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Objects/Object.cpp",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Objects/ObjectPropertyTable.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Objects/ObjectPropertyTable.cpp",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Objects/ObjectTable.cpp",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Objects/ObjectTable.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Strings/StringTable.cpp",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Events/Event.cpp",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Events/Event.h",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/InputModel.h",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/InputModel.cpp",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/Events/InputAction.h",
@@ -465,19 +445,13 @@
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/InputDevice.h",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/Devices/InputGLUT.h",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/Events/InputActionHandler.h",
-		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Events/EventHandlerMap.cpp",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Events/EventHandlerMap.h",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Events/EventHandler.h",
-		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Objects/ObjectProperty.h",
-		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Objects/Object.h",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/InputController.h",
-		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Strings/StringTable.cpp",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Game/loop.txt",
-		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Events/Event.h",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Strings/StringTable.h",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Strings/Test.cpp",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Strings/String.h",
-		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Events/EventParameter.h",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/GamingFrameworks.sublime-project",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Game/GameController.h",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Game/Properties/temp.txt",
@@ -571,20 +545,11 @@
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Engine/Physics/PhysicsEvent.h",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Engine/Model.h",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Engine/Physics/PhysicsManager.h",
-		"/Users/tim/Documents/Engine/untitled",
-		"/Users/tim/Desktop/Final.txt",
-		"/Users/tim/Documents/2014/Baylor/Fall/CSS/3300/Final.txt",
-		"/Users/tim/Downloads/cv_9.tex",
-		"/Users/tim/Documents/2014/Baylor/Fall/CSI/4341/Workspace/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.core.resources.prefs",
-		"/Users/tim/Documents/2014/Baylor/Fall/CSI/4341/Assignments/Assignment 6/Move.h",
-		"/Users/tim/Documents/2014/Baylor/Fall/CSI/4341/Assignments/Assignment 6/TranslateMove.cpp",
-		"/Users/tim/Documents/2014/Baylor/Fall/CSI/4341/Assignments/Assignment 6/CompoundMove.h",
-		"/Users/tim/Documents/2014/Baylor/Fall/CSI/4341/Assignments/Assignment 6/CompoundMove.cpp",
-		"/Users/tim/Documents/2014/Baylor/Fall/CSI/4341/Assignments/Assignment 6/Move.cpp"
+		"/Users/tim/Documents/Engine/untitled"
 	],
 	"find":
 	{
-		"height": 37.0
+		"height": 22.0
 	},
 	"find_in_files":
 	{
@@ -630,24 +595,24 @@
 	"groups":
 	[
 		{
-			"selected": 7,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "Project/src/Engine/Input/Events/InputCommandHandler.h",
+					"file": "/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Objects/ObjectProperty.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 670,
+						"buffer_size": 719,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								446,
-								446
+								707,
+								707
 							]
 						],
 						"settings":
@@ -659,53 +624,52 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "Project/src/Engine/Input/Events/InputUpdateHandler.h",
-					"semi_transient": false,
+					"file": "/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Physics/PhysicsController.h",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 748,
+						"buffer_size": 319,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								554,
-								554
+								319,
+								319
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/C++/C++.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "Project/src/Engine/Input/InputController.cpp",
+					"file": "/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Events/EventParameter.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 537,
+						"buffer_size": 673,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								537,
-								537
+								524,
+								524
 							]
 						],
 						"settings":
@@ -718,177 +682,6 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "Project/src/Demo/main.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3370,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2671,
-								2671
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 771.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "Project/src/Engine/Input/InputModel.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 391,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								337,
-								337
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "Project/src/Common/Events/EventHandler.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 193,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								168,
-								168
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "Project/src/Common/Events/EventHandlerMap.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 467,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								364,
-								364
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "Project/src/Common/Events/EventHandlerMap.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1001,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								771,
-								771
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "Project/src/Engine/Input/InputModel.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 409,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								109,
-								109
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
 					"type": "text"
 				}
 			]
@@ -933,7 +726,7 @@
 	{
 		"height": 0.0
 	},
-	"project": "GamingFrameworks.sublime-project",
+	"project": "Gaming-Frameworks.sublime-project",
 	"replace":
 	{
 		"height": 40.0
