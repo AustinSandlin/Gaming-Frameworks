@@ -3,6 +3,7 @@
 
 #include "../Types/Time.h"
 
+template< typename T >
 class Event {
 
 private:
@@ -17,11 +18,11 @@ protected:
 
 public:
 
-	bool operator>( T const & other ) {
-		return time > other.time );
+	bool operator>( const T & other ) const {
+		return time > other.time;
 	}
-	bool operator<( T const & other ) {
-		return time < other.time );
+	bool operator<( const T & other ) const {
+		return time < other.time;
 	}
 	TimeStamp get_time() {
 		return time;

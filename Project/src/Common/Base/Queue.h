@@ -13,14 +13,17 @@ private:
 
 public:
 	
+	bool empty() const {
+		return queue.empty();
+	}
 	void push( const T & item ) {
-		queue.push( T( item ) )
+		queue.push( T( item ) );
 	}
 	void pop() {
 		queue.pop();
 	}
-	T next() {
-		queue.top();
+	const T & next() const {
+		return queue.top();
 	}
 };
 

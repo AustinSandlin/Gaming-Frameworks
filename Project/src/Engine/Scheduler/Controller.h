@@ -15,6 +15,10 @@ namespace Scheduler {
 		friend class Singleton< Controller >;
 		Controller() {
 		}
+
+	public:
+
+		void handle( );
 	};
 }
 

@@ -1,7 +1,11 @@
 #ifndef _INPUT_VIEW_H
 #define _INPUT_VIEW_H
 
-#include "Model.h"
+#include "../../Common/Base/Singleton.h"
+#include "../../Common/Base/Table.h"
+
+#include "Properties/KeyboardActionQueue.h"
+#include "Properties/MouseActionQueue.h"
 
 namespace Input {
 
@@ -17,11 +21,8 @@ namespace Input {
 
 	public:
 
-		template< typename T >
-		const Table< T > & get_table() const {
-			static auto & model = Model::instance();
-			return model.get_table< T >();
-		}
+		const Table< KeyboardActionQueue > & get_keyboard_action_queues() const;
+		const Table< MouseActionQueue > & get_mouse_action_queues() const;
 	};
 }
 

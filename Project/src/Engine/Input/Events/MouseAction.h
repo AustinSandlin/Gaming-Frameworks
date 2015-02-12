@@ -5,9 +5,9 @@
 
 namespace Input {
 	
-	class InputMouse:
+	class MouseAction:
 
-		public Event {
+		public Event< MouseAction > {
 
 	private:
 		int button;
@@ -16,8 +16,8 @@ namespace Input {
 		int y;
 		
 	public:
-		InputKeyboard( int button, int state, int x, int y ) :
-			button{ button }, state{ state }, x{ x }, y{ y } {
+		MouseAction( int button, int state, int x, int y ) :
+			Event< MouseAction >( 0 ), button{ button }, state{ state }, x{ x }, y{ y } {
 		}
 		int get_button() {
 			return button;

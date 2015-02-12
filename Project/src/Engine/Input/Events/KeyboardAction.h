@@ -7,7 +7,7 @@ namespace Input {
 	
 	class KeyboardAction:
 
-		public Event {
+		public Event< KeyboardAction > {
 			
 	private:
 		
@@ -16,16 +16,16 @@ namespace Input {
 		int y;
 
 	public:
-		KeyboardAction( unsigned char key, int x, int y ) :
-			key{ key }, x{ x }, y{ y } {
+		KeyboardAction( const unsigned char key, const int x, const int y ) :
+			Event< KeyboardAction >( 0 ), key{ key }, x{ x }, y{ y } {
 		}
-		unsigned char get_key() {
+		const unsigned char get_key() const {
 			return key;
 		}
-		int get_x() {
+		const int get_x() const {
 			return x;
 		}
-		int get_y() {
+		const int get_y() const {
 			return y;
 		}
 	};

@@ -12,7 +12,7 @@ void Controller::handle( const Object::AddProperty< KeyboardActionQueue > & even
 	keyboards.add( event.get_id(), KeyboardActionQueue() );
 }
 
-void Controller::handle( const Object::AddProperty< MouseActionQueue & event ) {
+void Controller::handle( const Object::AddProperty< MouseActionQueue > & event ) {
 	
 	// Get static references to global tables
 	static auto & model = Model::instance();
@@ -22,7 +22,7 @@ void Controller::handle( const Object::AddProperty< MouseActionQueue & event ) {
 	mice.add( event.get_id(), MouseActionQueue() );
 }
 
-void Controller::handle( const Object::RemoveProperty< KeyboardActionQueue > > & event ) {
+void Controller::handle( const Object::RemoveProperty< KeyboardActionQueue > & event ) {
 	
 	// Get static references to global tables
 	static auto & model = Model::instance();
@@ -32,7 +32,7 @@ void Controller::handle( const Object::RemoveProperty< KeyboardActionQueue > > &
 	keyboards.remove( event.get_id() );
 }
 
-void Controller::handle( const Object::RemoveProperty< MouseActionQueue & event ) {
+void Controller::handle( const Object::RemoveProperty< MouseActionQueue > & event ) {
 	
 	// Get static references to global tables
 	static auto & model = Model::instance();
@@ -42,7 +42,7 @@ void Controller::handle( const Object::RemoveProperty< MouseActionQueue & event 
 	mice.remove( event.get_id() );
 }
 
-void Controller::handle( const Object::Remove & event ) {
+void Controller::handle( const Object::RemoveProperties & event ) {
 	
 	// Get static references to global tables
 	static auto & model = Model::instance();
@@ -54,7 +54,7 @@ void Controller::handle( const Object::Remove & event ) {
 	mice.remove( event.get_id() );
 }
 
-void Controller::handle( const PushQueue< KeyboardAction > & event ) {
+void Controller::handle( const PushAction< KeyboardAction > & event ) {
 
 	// Get static references to global tables
 	static auto & model = Model::instance();
@@ -67,7 +67,7 @@ void Controller::handle( const PushQueue< KeyboardAction > & event ) {
 	}
 }
 
-void Controller::handle( const PushQueue< MouseAction > & event ) {
+void Controller::handle( const PushAction< MouseAction > & event ) {
 
 	// Get static references to global tables
 	static auto & model = Model::instance();
@@ -80,7 +80,7 @@ void Controller::handle( const PushQueue< MouseAction > & event ) {
 	}
 }
 
-void Controller::handle( const PopQueue< KeyboardAction > & event ) {
+void Controller::handle( const PopAction< KeyboardAction > & event ) {
 
 	// Get static references to global tables
 	static auto & model = Model::instance();
@@ -88,13 +88,13 @@ void Controller::handle( const PopQueue< KeyboardAction > & event ) {
 
 	// 
 	if ( keyboards.has( event.get_id() ) ) {
-		auto & it = keyboards.get( event.get_id() );
+		auto it = keyboards.get( event.get_id() );
 		auto & keyboard = it.get_value();
-		keyboard.push( event.get_action() );
+		keyboard.pop();
 	}
 }
 
-void Controller::handle( const PopQueue< MouseAction > & event ) {
+void Controller::handle( const PopAction< MouseAction > & event ) {
 
 	// Get static references to global tables
 	static auto & model = Model::instance();
@@ -102,8 +102,8 @@ void Controller::handle( const PopQueue< MouseAction > & event ) {
 
 	// 
 	if ( mice.has( event.get_id() ) ) {
-		auto & it = mice.get( event.get_id() );
+		auto it = mice.get( event.get_id() );
 		auto & mouse = it.get_value();
-		mouse.push( event.get_action() );
+		mouse.pop();
 	}
 }

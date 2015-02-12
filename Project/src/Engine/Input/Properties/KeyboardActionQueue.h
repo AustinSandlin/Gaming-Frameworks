@@ -5,9 +5,12 @@
 
 #include "../Events/KeyboardAction.h"
 
-class KeyboardActionQueue:
+namespace Input {
+	
+	class KeyboardActionQueue:
 
-	public Queue< KeyboardAction > {
-};
+		public Queue< KeyboardAction > {
+	};
+}
 
 #endif

@@ -41,7 +41,7 @@ namespace Input {
 		void handle( const Object::AddProperty< MouseActionQueue > & event );
 		void handle( const Object::RemoveProperty< KeyboardActionQueue > & event );
 		void handle( const Object::RemoveProperty< MouseActionQueue > & event );
-		void handle( const Object::Remove & event );
+		void handle( const Object::RemoveProperties & event );
 		void handle( const PushAction< KeyboardAction > & event );
 		void handle( const PushAction< MouseAction > & event );
 		void handle( const PopAction< KeyboardAction > & event );

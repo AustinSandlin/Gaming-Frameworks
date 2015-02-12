@@ -5,9 +5,12 @@
 
 #include "../Events/MouseAction.h"
 
-class MouseActionQueue:
+namespace Input {
+	
+	class MouseActionQueue:
 
-	public Queue< MouseAction > {
-};
+		public Queue< MouseAction > {
+	};
+}
 
 #endif

@@ -6,24 +6,20 @@
 namespace Input {
 
 	template< typename T >
-	class PopQueue:
+	class PopAction:
 	
-		public Event {
+		public Event< PopAction< T > > {
 
 	private:
 
-		StringID id;
-		T action;
+		const StringID id;
 
 	public:
-		PushQueue( const StringID id, const T & action ) :
-			id{ id }, action{ action } {
+		PopAction( const StringID id ) :
+			Event< PopAction< T > >( 0 ), id{ id } {
 		}
-		const StringID get_id() {
+		const StringID get_id() const {
 			return id;
-		}
-		const T & get_action() {
-			return action;
 		}
 	};
 }

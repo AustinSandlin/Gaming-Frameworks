@@ -33,7 +33,7 @@ public:
 		return Table< String >::has( id );
 	}
 	String lookup( StringID id ) {
-		return Table< String >::get( id ).value();
+		return Table< String >::get( id ).get_value();
 	}
 };
 

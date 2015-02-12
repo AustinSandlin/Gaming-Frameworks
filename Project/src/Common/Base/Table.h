@@ -24,10 +24,10 @@ public:
 	}
 	~TableIterator() {
 	}
-	StringID id() {
+	StringID get_id() {
 		return iterator->first;
 	}
-	T & value() {
+	T & get_value() {
 		return iterator->second;
 	}
 	TableIterator< T > & operator=( const TableIterator< T > & other) {
@@ -68,10 +68,10 @@ public:
 	}
 	~ConstTableIterator() {
 	}
-	StringID id() {
+	StringID get_id() {
 		return iterator->first;
 	}
-	const T & value() {
+	const T & get_value() {
 		return iterator->second;
 	}
 	ConstTableIterator< T > & operator=( const ConstTableIterator< T > & other) {
@@ -106,19 +106,19 @@ public:
 	
 	virtual ~Table() {
 	}
-	void add( StringID id, const T & item ) {
+	void add( const StringID id, const T & item ) {
 		items.emplace( id, T( item ) );
 	}
-	void remove( StringID id ) {
+	void remove( const StringID id ) {
 		items.erase( id );
 	}
-	bool has( StringID id ) const {
+	bool has( const StringID id ) const {
 		return items.find( id ) != items.end();
 	}
-	TableIterator< T > get( StringID id ) {
+	TableIterator< T > get( const StringID id ) {
 		return TableIterator< T >( items.find( id ) );
 	}
-	const ConstTableIterator< T > get( StringID id ) const {
+	const ConstTableIterator< T > get( const StringID id ) const {
 		return ConstTableIterator< T >( items.find( id ) );
 	}
 	TableIterator< T > begin() {

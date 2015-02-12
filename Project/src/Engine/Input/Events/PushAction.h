@@ -8,17 +8,18 @@ namespace Input {
 	template< typename T >
 	class PushAction:
 	
-		public Event {
+		public Event< PushAction< T > > {
 
 	private:
 
-		T action;
+		const T action;
 
 	public:
+		
 		PushAction( const T & action ) :
-			value{ value } {
+			Event< PushAction< T > >( 0 ), action{ action } {
 		}
-		const T & get_action() {
+		const T & get_action() const {
 			return action;
 		}
 	};

@@ -1,17 +1,16 @@
-#include "../Common/Tables/StringTable.h"
+#include "../Common/Systems/Strings.h"
 
-#include "../Engine/Input/InputController.h"
-#include "../Engine/Input/Tables/InputQueueTable.h"
+#include "../Engine/Input/Controller.h"
+#include "../Engine/Input/View.h"
 
 #include <iostream>
 
 int main() {
 
 	// Get the singleton for each of the following classes
-	static auto & controller = InputController::instance();
-	static auto & queues = InputQueueTable::instance();
-	static auto & strings = StringTable::instance();
-	static auto & objects = ObjectTable::instance();
+	static auto & controller = Input::Controller::instance();
+	static auto & view = Input::View::instance();
+	static auto & strings = Strings::instance();
 
 	// ==========
 	// First Test
@@ -22,55 +21,61 @@ int main() {
 	auto b = strings.intern( "World" );
 
 	// Attach input queues to these objects so that they listen for input
-	queues.add( a, InputQueue() );
-	queues.add( b, InputQueue() );
+	controller.handle( Object::AddProperty< Input::KeyboardActionQueue >( a ) );
+	controller.handle( Object::AddProperty< Input::KeyboardActionQueue >( b ) );
 
 	// Simulate a series of inputs and send them to the engine one key at a time
 	String input;
 	std::cin >> input;
 	for ( auto key : input ) {
-		controller.handle( InputUpdate( key ) );
+		Input::KeyboardAction event( key, 0, 0 );
+		controller.handle( Input::PushAction< Input::KeyboardAction >( event ) );
 	}
 
 	// Empty the queues
-	for ( auto it : queues ) {
+	auto & keyboards = view.get_keyboard_action_queues();
+	for ( auto it : keyboards ) {
 
 		// Lookup and print the string identifying the current queue
-		std::cout << strings.lookup( it.id() ) << ":" << std::endl;
+		std::cout << strings.lookup( it.get_id() ) << ":" << std::endl;
 
 		// Dequeue and print each entry in the current queue
-		auto & queue = it.value();
+		auto & queue = it.get_value();
 		while ( !queue.empty() ) {
-			std::cout << queue.dequeue() << std::endl;
+			auto & input = queue.next();
+			std::cout << input.get_key() << std::endl;
+			controller.handle( Input::PopAction< Input::KeyboardAction >( it.get_id() ) );
 		}
 	}
 
-	// ==========
-	// First Test
-	// ==========
+	// ===========
+	// Second Test
+	// ===========
 
 	// Try removing object a
-	objects.remove( a );
+	controller.handle( Object::RemoveProperty< Input::KeyboardActionQueue >( a ) );
 
 	// Simulate a series of inputs and send them to the engine one key at a time
 	std::cin >> input;
 	for ( auto key : input ) {
-		controller.handle( InputUpdate( key ) );
+		Input::KeyboardAction event( key, 0, 0 );
+		controller.handle( Input::PushAction< Input::KeyboardAction >( event ) );
 	}
 
-	// Empty the queues
-	for ( auto it : queues ) {
+	// Empty the remaining queue
+	for ( auto it : keyboards ) {
 
 		// Lookup and print the string identifying the current queue
-		std::cout << strings.lookup( it.id() ) << ":" << std::endl;
+		std::cout << strings.lookup( it.get_id() ) << ":" << std::endl;
 
 		// Dequeue and print each entry in the current queue
-		auto & queue = it.value();
+		auto & queue = it.get_value();
 		while ( !queue.empty() ) {
-			std::cout << queue.dequeue() << std::endl;
+			auto & input = queue.next();
+			std::cout << input.get_key() << std::endl;
+			controller.handle( Input::PopAction< Input::KeyboardAction >( it.get_id() ) );
 		}
 	}
-
 
 	return 0;
 }
