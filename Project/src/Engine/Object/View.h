@@ -17,11 +17,6 @@ namespace Object {
 
 	public:
 
-		template< typename T >
-		const Table< T > & get_table() const {
-			static auto & model = Model::instance();
-			return model.get_table< T >();
-		}
 	};
 }
 

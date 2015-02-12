@@ -5,7 +5,7 @@ template < typename T >
 class Handler {
 
 public:
-	virtual void handle( T const & event ) = 0;
+	virtual void handle( const T & event ) = 0;
 };
 
 #endif

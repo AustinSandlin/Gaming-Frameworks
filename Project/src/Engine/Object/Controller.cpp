@@ -5,7 +5,7 @@
 
 using namespace Object;
 
-void Controller::handle( const RemoveProperties & event ) {
+void Controller::handle( const RemoveObject & event ) {
 	
 	// Get static references to global tables
 	static auto & input = Input::Controller::instance();

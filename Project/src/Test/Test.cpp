@@ -43,6 +43,26 @@ int main() {
 		auto & queue = it.get_value();
 		while ( !queue.empty() ) {
 			auto & input = queue.next();
+
+			/*
+			if ( key_map.has( it.get_id() ) ) {
+				auto & it2 = key_map.get( it.get_id() );
+				KeyMap km = it2.get_value();
+
+				enum GAME_INPUT {
+					INPUT_1,
+					INPUT_2
+				};
+
+				switch ( km.translate( input.get_key() ) ) {
+					case INPUT_1:
+						physics_controller.handle(  );
+					case INPUT_2:
+
+				}
+			}
+			*/
+
 			std::cout << input.get_key() << std::endl;
 			controller.handle( Input::PopAction< Input::KeyboardAction >( it.get_id() ) );
 		}
