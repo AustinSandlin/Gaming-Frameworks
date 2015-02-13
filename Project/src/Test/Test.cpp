@@ -1,5 +1,4 @@
 #include "../Engine/Input/InputController.h"
-#include "../Common/Resources/Strings.h"
 
 #include <iostream>
 
@@ -7,7 +6,6 @@ int main() {
 
 	// Get the singleton for each of the following classes
 	static auto & controller = Input::InputController::instance();
-	static auto & strings = Strings::instance();
 
 	// ==========
 	// First Test
@@ -17,8 +15,7 @@ int main() {
 	String input;
 	std::cin >> input;
 	for ( auto key : input ) {
-		Input::KeyboardEvent event( key, 0, 0 );
-		controller.handleKeyboardEvent( event );
+		controller.handleKeyboardAction( key );
 	}
 
 	controller.handleKeyboardInput();

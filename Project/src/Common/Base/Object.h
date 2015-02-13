@@ -3,7 +3,7 @@
 
 #include "../Types/Types.h"
 
-template< typename T >
+//template< typename T >
 class Object {
 
 private:
@@ -14,7 +14,12 @@ private:
 protected:
 
 	Object( StringID id ) : id { id } {
+
 	}
+
+    void draw() {
+
+    }
 
 public:
 

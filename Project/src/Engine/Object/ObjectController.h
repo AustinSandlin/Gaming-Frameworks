@@ -15,13 +15,14 @@ namespace Object {
 	private:
 
 		friend class Singleton< ObjectController >;
+		Table< Object >
 
 		ObjectController() {
 		}
 
 	public:
 
-		void handle( const Event& event );
+		void handleInputEvent( const StringID& id );
 	};
 }
 
