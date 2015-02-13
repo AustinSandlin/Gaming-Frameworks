@@ -1,14 +1,14 @@
 #ifndef _EVENT_H
 #define _EVENT_H
 
-#include "../Types/Time.h"
+#include "../Types/Types.h"
 
 template< typename T >
 class Event {
 
 private:
 
-	TimeStamp time;	
+	TimeStamp time;
 
 protected:
 

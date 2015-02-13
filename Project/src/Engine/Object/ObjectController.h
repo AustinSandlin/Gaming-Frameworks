@@ -8,20 +8,20 @@
 
 namespace Object {
 
-	class Controller:
+	class ObjectController:
 		
-		public Singleton< Controller >,
-		public Handler< RemoveProperties > {
+		public Singleton< ObjectController > {
 
 	private:
 
-		friend class Singleton< Controller >;
-		Controller() {
+		friend class Singleton< ObjectController >;
+
+		ObjectController() {
 		}
 
 	public:
 
-		void handle( const RemoveProperties & event );
+		void handle( const Event& event );
 	};
 }
 

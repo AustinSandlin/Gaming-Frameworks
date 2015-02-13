@@ -1,7 +1,7 @@
-#include "../Input/Controller.h"
-#include "../Scheduler/Controller.h"
+#include "../Input/InputController.h"
+#include "../Scheduler/SchedulerController.h"
 
-#include "Model.h"
+#include "ObjectModel.h"
 
 using namespace Object;
 

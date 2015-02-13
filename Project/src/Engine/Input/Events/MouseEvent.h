@@ -1,13 +1,13 @@
-#ifndef _INPUT_MOUSE_ACTION_H
-#define _INPUT_MOUSE_ACTION_H
+#ifndef _MOUSE_EVENT_H
+#define _MOUSE_EVENT_H
 
 #include "../../../Common/Base/Event.h"
 
 namespace Input {
-	
-	class MouseAction:
 
-		public Event< MouseAction > {
+	class MouseEvent:
+
+		public Event< MouseEvent > {
 
 	private:
 		int button;
@@ -16,8 +16,8 @@ namespace Input {
 		int y;
 		
 	public:
-		MouseAction( int button, int state, int x, int y ) :
-			Event< MouseAction >( 0 ), button{ button }, state{ state }, x{ x }, y{ y } {
+		MouseEvent( int button, int state, int x, int y ) :
+			Event< MouseEvent >( 0 ), button{ button }, state{ state }, x{ x }, y{ y } {
 		}
 		int get_button() {
 			return button;

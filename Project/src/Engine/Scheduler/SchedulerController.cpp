@@ -1,4 +1,4 @@
-#include "Model.h"
+#include "SchedulerModel.h"
 
 using namespace Scheduler;
 

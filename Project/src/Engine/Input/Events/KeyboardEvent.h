@@ -1,13 +1,12 @@
-#ifndef _INPUT_KEYBOARD_ACTION_H
-#define _INPUT_KEYBOARD_ACTION_H
+#ifndef _KEYBOARD_EVENT_H
+#define _KEYBOARD_EVENT_H
 
 #include "../../../Common/Base/Event.h"
 
 namespace Input {
-	
-	class KeyboardAction:
 
-		public Event< KeyboardAction > {
+	class KeyboardEvent:
+		public Event< KeyboardEvent > {
 			
 	private:
 		
@@ -16,8 +15,8 @@ namespace Input {
 		int y;
 
 	public:
-		KeyboardAction( const unsigned char key, const int x, const int y ) :
-			Event< KeyboardAction >( 0 ), key{ key }, x{ x }, y{ y } {
+		KeyboardEvent( const unsigned char key, const int x, const int y ) :
+			Event< KeyboardEvent >( 0 ), key{ key }, x{ x }, y{ y } {
 		}
 		const unsigned char get_key() const {
 			return key;
