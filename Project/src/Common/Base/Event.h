@@ -2,18 +2,26 @@
 #define _EVENT_H
 
 #include "../Types/Types.h"
+#include "../Resources/Strings.h"
 
 template< typename T >
 class Event {
 
 private:
 
+	StringID id;
 	TimeStamp time;
 
 protected:
 
+	// static Strings& StrController;
+
 	Event( TimeStamp time ) :
 		time{ time } {
+		// StrController = Strings::instance();
+	}
+	void set_id( String str ) {
+		// id = StrController.intern(str);
 	}
 
 public:
@@ -26,6 +34,9 @@ public:
 	}
 	TimeStamp get_time() {
 		return time;
+	}
+	StringID get_id() const {
+		return id;
 	}
 };
 

@@ -4,18 +4,15 @@
 #include "../../Common/Base/Queue.h"
 #include "Events/KeyboardEvent.h"
 
-namespace Input {
+class KeyboardQueue:
+	public Queue< KeyboardEvent > {
 
-	class KeyboardQueue:
-		public Queue< KeyboardEvent > {
+    private:
 
-	private:
-
-	public:
-		KeyboardQueue() {
-			
-		}
-	};
-}
-
+    public:
+    	KeyboardQueue() {
+    		
+    	}
+};
+    
 #endif

@@ -2,26 +2,25 @@
 #define _INPUT_CONTROLLER_H
 
 #include "../../Common/Base/Singleton.h"
+#include "../Game/GameController.h"
 
 #include "KeyboardQueue.h"
 #include "MouseQueue.h"
 
 #include <iostream>
 
-namespace Input {
-
-	class InputController : public Singleton< InputController >{
+class InputController : public Singleton< InputController >{
 
 	private:
 
 		friend class Singleton< InputController >;
-		//static GameController& game_controller = Game::GameController::instance();
+
+		static GameController& game_controller;
 		KeyboardQueue kbqueue;
 		MouseQueue mqueue;
 
-		KeyboardQueueSchedule kbschedule;
-
 		InputController() {
+			game_controller = GameController::instance();
 		}
 
 	public:
@@ -30,15 +29,6 @@ namespace Input {
 
 		void handleKeyboardInput();
 		void handleMouseInput();
-
-		void scheduleKeyboardEvent( const char& key, const long &time );
-
-		void update() {
-			while ( kbschedule.empty() )
-				handleKeyboardEvent( key );
-			}
-		}
-	};
-}
+};
 
 #endif

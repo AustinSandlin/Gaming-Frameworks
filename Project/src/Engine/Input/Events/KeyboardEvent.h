@@ -3,11 +3,9 @@
 
 #include "../../../Common/Base/Event.h"
 
-namespace Input {
-
-	class KeyboardEvent:
-		public Event< KeyboardEvent > {
-			
+class KeyboardEvent:
+	public Event< KeyboardEvent > {
+		
 	private:
 		
 		unsigned char key;
@@ -17,6 +15,9 @@ namespace Input {
 	public:
 		KeyboardEvent( const unsigned char key, const int x, const int y ) :
 			Event< KeyboardEvent >( 0 ), key{ key }, x{ x }, y{ y } {
+			String temp;
+			temp += key;
+			set_id(temp);
 		}
 		const unsigned char get_key() const {
 			return key;
@@ -27,7 +28,6 @@ namespace Input {
 		const int get_y() const {
 			return y;
 		}
-	};
-}
+};
 
 #endif

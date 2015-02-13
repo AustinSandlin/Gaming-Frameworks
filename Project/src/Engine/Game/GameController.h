@@ -2,25 +2,23 @@
 #define _GAME_CONTROLLER_H
 
 #include "../../Common/Base/Singleton.h"
+#include "../../Common/Base/Table.h"
+#include "../../Common/Base/Action.h"
 
-#include "ActionTable.h"
-
-namespace Game {
-
-    class GameController : public Singleton< GameController >{
+class GameController : public Singleton< GameController >{
 
     private:
 
         friend class Singleton< GameController >;
-        Table< InputAction > action_table;
+        Table< InputAction > input_action_table;
 
         GameController() {
         }
 
     public:
         void handleInputEvent( const StringID& id );
-
-    };
-}
+        void registerInputAction( const StringID& id, const InputAction action );
+        void removeInputAction( const StringID& id );
+};
 
 #endif

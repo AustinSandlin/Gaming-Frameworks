@@ -4,19 +4,16 @@
 #include "../../Common/Base/Queue.h"
 #include "Events/MouseEvent.h"
 
-namespace Input {
+class MouseQueue:
+	public Queue< MouseEvent > {
 
-	class MouseQueue:
-		public Queue< MouseEvent > {
+    private:
+    	
+    public:
+    	MouseQueue() {
+    		
+    	}
 
-	private:
-		
-	public:
-		MouseQueue() {
-			
-		}
-
-	};
-}
+};
 
 #endif

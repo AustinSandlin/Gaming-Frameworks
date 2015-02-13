@@ -3,11 +3,9 @@
 
 #include "../../../Common/Base/Event.h"
 
-namespace Input {
+class MouseEvent:
 
-	class MouseEvent:
-
-		public Event< MouseEvent > {
+	public Event< MouseEvent > {
 
 	private:
 		int button;
@@ -18,6 +16,7 @@ namespace Input {
 	public:
 		MouseEvent( int button, int state, int x, int y ) :
 			Event< MouseEvent >( 0 ), button{ button }, state{ state }, x{ x }, y{ y } {
+			set_id("MOUSE");
 		}
 		int get_button() {
 			return button;
@@ -31,7 +30,6 @@ namespace Input {
 		int get_y() {
 			return y;
 		}
-	};
-}
+};
 
 #endif
