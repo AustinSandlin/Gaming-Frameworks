@@ -1,15 +1,14 @@
-#ifndef _EVENT_H
-#define _EVENT_H
+#ifndef _OBJECT_H
+#define _OBJECT_H
 
 #include "../Types/Types.h"
 
-//template< typename T >
+template< typename T >
 class Object {
 
 private:
 
 	StringID id;
-	vector< Properties >
 
 protected:
 
@@ -17,12 +16,10 @@ protected:
 
 	}
 
-    void draw() {
-
-    }
-
 public:
-
+    void get_id() {
+        return id;
+    }
 };
 
 #endif

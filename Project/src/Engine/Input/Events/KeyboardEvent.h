@@ -14,9 +14,9 @@ class KeyboardEvent:
 
 	public:
 		KeyboardEvent( const unsigned char key, const int x, const int y ) :
-			Event< KeyboardEvent >( 0 ), key{ key }, x{ x }, y{ y } {
+			Event< KeyboardEvent >( std::chrono::high_resolution_clock::now() ), key{ key }, x{ x }, y{ y } {
 			//I hate this. Can't send const uchar as a string.
-			String temp;
+			String temp = "";
 			temp += key;
 			set_id(temp);
 		}

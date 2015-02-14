@@ -15,7 +15,7 @@ class MouseEvent:
 		
 	public:
 		MouseEvent( int button, int state, int x, int y ) :
-			Event< MouseEvent >( 0 ), button{ button }, state{ state }, x{ x }, y{ y } {
+			Event< MouseEvent >( std::chrono::high_resolution_clock::now() ), button{ button }, state{ state }, x{ x }, y{ y } {
 			set_id("MOUSE");
 		}
 		int get_button() {

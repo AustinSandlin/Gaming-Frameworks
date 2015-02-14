@@ -1,6 +1,7 @@
 #include "../Engine/Input/InputController.h"
 #include "../Engine/Game/GameController.h"
 #include "../Common/Resources/Strings.h"
+#include "../Engine/Object/ObjectController.h"
 
 #include <iostream>
 
@@ -10,6 +11,7 @@ int main() {
 	static auto& InputController = InputController::instance();
 	static auto& GameController = GameController::instance();
 	static auto& StringController = Strings::instance();
+	static auto& ObjectController = ObjectController::instance();
 
 	// ==========
 	// Action Register Test
@@ -19,6 +21,11 @@ int main() {
 	GameController.registerInputAction(StringController.intern("a"), LEFT);
 	GameController.registerInputAction(StringController.intern("s"), DOWN);
 	GameController.registerInputAction(StringController.intern("d"), RIGHT);
+
+	// ==========
+	// Object Register Test
+	// ==========
+	ObjectController.registerGameObject(StringController.intern("BLOCK"), GameObject(StringController.intern("BLOCK"), 0, 1, true));
 
 	// ==========
 	// Input Test

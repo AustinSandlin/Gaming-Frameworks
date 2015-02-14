@@ -4,7 +4,7 @@
 #include "../Types/Types.h"
 #include "../Resources/Strings.h"
 
-static Strings& StrController = Strings::instance();
+// static Strings& StrController = Strings::instance();
 
 template< typename T >
 class Event {

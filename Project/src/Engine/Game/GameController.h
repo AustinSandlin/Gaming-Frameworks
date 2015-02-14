@@ -3,7 +3,9 @@
 
 #include "../../Common/Base/Singleton.h"
 #include "../../Common/Base/Table.h"
-#include "../../Common/Base/Action.h"
+#include "../../Common/Types/Types.h"
+
+#include "../Object/ObjectController.h"
 
 #include <iostream>
 
@@ -12,6 +14,8 @@ class GameController : public Singleton< GameController >{
     private:
 
         friend class Singleton< GameController >;
+        static ObjectController& object_controller;
+    
         Table< InputAction > input_action_table;
 
         GameController() {
