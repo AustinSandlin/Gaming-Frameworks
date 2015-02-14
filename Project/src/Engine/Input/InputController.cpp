@@ -1,30 +1,30 @@
 #include "InputController.h"
 
-GameController& InputController::game_controller = GameController::instance();
-
 //Create and add a keyboard event for the character pushed to the keyboard queue.
-void InputController::handleKeyboardEvent( const char& key ) {
-    KeyboardEvent event( key, 0, 0 );
+void InputController::queueKeyboardEvent( unsigned char key, int x, int y ) {
+    KeyboardEvent event( key, x, y );
 	kbqueue.push(event);
 }
 
 //Create and add a mouse event for the location pushed to the mouse queue.
-void InputController::handleMouseEvent( const int& x, const int& y ) {
-    MouseEvent event( 0, 0, x, y );
+void InputController::queueMouseEvent( int button, int state, int x, int y ) {
+    MouseEvent event( button, state, x, y );
 	mqueue.push(event);
 }
 
-//Empty the queue and process each input. Basically, sent to the GameController.
-void InputController::handleKeyboardInput() {
-	while(!kbqueue.empty()) {
-        game_controller.handleInputEvent(kbqueue.next().get_id());
-		kbqueue.pop();
-	}
-}
+//Return the Queue of StringIDs that the input processor dealth with.
+Queue<StringID> InputController::processInput() {
+	Queue< StringID > ret;
 
-//Same as the keyboard handler above.
-void InputController::handleMouseInput() {
-	while(!mqueue.empty()) {
-		//Tell system this event was triggered.
+	while(!kbqueue.empty()) {
+        ret.push(kbqueue.next().get_id());
+        kbqueue.pop();
 	}
+
+	while(!mqueue.empty()) {
+		ret.push(mqueue.next().get_id());
+        mqueue.pop();
+	}
+
+	return ret;
 }

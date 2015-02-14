@@ -2,13 +2,13 @@
 #define _OBJECT_CONTROLLER_H
 
 #include "../../Common/Base/Singleton.h"
-#include "../../Common/Resources/Strings.h"
 #include "../../Common/Types/Types.h"
+#include "../../Common/Resources/Strings.h"
 
 #include "GameObject.h"
 #include "PlayerObject.h"
 
-static Strings& StrController = Strings::instance();
+static Strings& ObjectStrController = Strings::instance();
 
 class ObjectController:
 	
@@ -21,7 +21,7 @@ class ObjectController:
 		Table< GameObject > game_objects;
 
 		ObjectController() : 
-			player( StrController.intern("Player1"), 0, 0 ) {
+			player( ObjectStrController.intern("Player1"), 0, 0 ) {
 		}
 
 	public:

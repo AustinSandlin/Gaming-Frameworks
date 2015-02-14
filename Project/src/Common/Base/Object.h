@@ -17,7 +17,7 @@ protected:
 	}
 
 public:
-    void get_id() {
+    StringID get_id() {
         return id;
     }
 };

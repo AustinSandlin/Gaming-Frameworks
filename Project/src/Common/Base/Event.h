@@ -4,7 +4,7 @@
 #include "../Types/Types.h"
 #include "../Resources/Strings.h"
 
-// static Strings& StrController = Strings::instance();
+static Strings& EventStrController = Strings::instance();
 
 template< typename T >
 class Event {
@@ -21,7 +21,7 @@ protected:
 	}
 
 	void set_id( String str ) {
-	    id = StrController.intern(str);
+	    id = EventStrController.intern(str);
 	}
 
 public:

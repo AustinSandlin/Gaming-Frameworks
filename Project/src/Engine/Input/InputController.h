@@ -1,11 +1,10 @@
 #ifndef _INPUT_CONTROLLER_H
 #define _INPUT_CONTROLLER_H
 
-#include "../../Common/Base/Singleton.h"
-#include "../Game/GameController.h"
+#include "../../Common/Base/Queue.h"
 
-#include "KeyboardQueue.h"
-#include "MouseQueue.h"
+#include "Events/KeyboardEvent.h"
+#include "Events/MouseEvent.h"
 
 #include <iostream>
 
@@ -14,20 +13,22 @@ class InputController : public Singleton< InputController >{
 	private:
 
 		friend class Singleton< InputController >;
-		static GameController& game_controller;
-
-		KeyboardQueue kbqueue;
-		MouseQueue mqueue;
+		// Input queues for storing events to process all at once.
+		Queue< KeyboardEvent > kbqueue;
+		Queue< MouseEvent > mqueue;
 
 		InputController() {
 		}
 
 	public:
-		void handleKeyboardEvent( const char& key );
-		void handleMouseEvent( const int& x, const int& y );
+		// These are the functions to be used in callbacks.
+		void queueKeyboardEvent( unsigned char key, int x, int y );
+		void queueMouseEvent( int button, int state, int x, int y );
 
-		void handleKeyboardInput();
-		void handleMouseInput();
+		/* This will return all the StringIDs of the keys pressed. The game
+		 * controller will take those strings and call things as necessary.
+		 */
+		Queue<StringID> processInput();
 };
 
 #endif
