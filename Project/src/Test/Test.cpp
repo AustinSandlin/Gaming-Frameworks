@@ -24,7 +24,7 @@ int main() {
 	// Input Test
 	// ==========
 
-	// Simulate a series of inputs and send them to the engine one word at a time
+	// Simulate a series of inputs and send them to the engine one letter at a time
 	String input;
 	std::cin >> input;
 	for ( auto key : input ) {

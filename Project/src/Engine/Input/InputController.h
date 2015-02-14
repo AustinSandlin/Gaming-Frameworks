@@ -14,13 +14,12 @@ class InputController : public Singleton< InputController >{
 	private:
 
 		friend class Singleton< InputController >;
-
 		static GameController& game_controller;
+
 		KeyboardQueue kbqueue;
 		MouseQueue mqueue;
 
 		InputController() {
-			game_controller = GameController::instance();
 		}
 
 	public:

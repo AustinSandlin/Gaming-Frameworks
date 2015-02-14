@@ -5,6 +5,8 @@
 #include "../../Common/Base/Table.h"
 #include "../../Common/Base/Action.h"
 
+#include <iostream>
+
 class GameController : public Singleton< GameController >{
 
     private:

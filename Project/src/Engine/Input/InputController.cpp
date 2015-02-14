@@ -1,5 +1,7 @@
 #include "InputController.h"
 
+GameController& InputController::game_controller = GameController::instance();
+
 //Create and add a keyboard event for the character pushed to the keyboard queue.
 void InputController::handleKeyboardEvent( const char& key ) {
     KeyboardEvent event( key, 0, 0 );
@@ -15,8 +17,7 @@ void InputController::handleMouseEvent( const int& x, const int& y ) {
 //Empty the queue and process each input. Basically, sent to the GameController.
 void InputController::handleKeyboardInput() {
 	while(!kbqueue.empty()) {
-		std::cout << kbqueue.next().get_key() << std::endl;
-        //game_controller.handleInputEvent(kbqueue.next().get_id());
+        game_controller.handleInputEvent(kbqueue.next().get_id());
 		kbqueue.pop();
 	}
 }
