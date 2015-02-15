@@ -5,7 +5,7 @@
 
 #include <iostream>
 
-int main() {
+int main(int argc, char **argv) {
 
 	static GameController& game_controller = GameController::instance();
 	static ObjectController& object_controller = ObjectController::instance();
@@ -19,6 +19,7 @@ int main() {
 	game_controller.registerInputAction(string_controller.intern("a"), LEFT);
 	game_controller.registerInputAction(string_controller.intern("s"), DOWN);
 	game_controller.registerInputAction(string_controller.intern("d"), RIGHT);
+	game_controller.registerInputAction(string_controller.intern("\x1b"), QUIT);
 
 	// ==========
 	// Object Register Test
@@ -30,10 +31,8 @@ int main() {
 	// ==========
 
 	//game_controller.setupGameLoop();
-	game_controller.setupGameLoop();
-	while(true) {	
-		game_controller.runGameLoop();
-	}
+	game_controller.setupGameLoop(argc, argv);
+	game_controller.runGameLoop();
 
 	return 0;
 }

@@ -13,7 +13,7 @@ typedef std::string String;
 typedef std::chrono::high_resolution_clock::time_point TimeStamp;
 
 //Enumerated Actions. More to follow?
-enum InputAction : int { UP, DOWN, LEFT, RIGHT };
+enum InputAction : int { UP, DOWN, LEFT, RIGHT, QUIT };
 enum SoundAction : int { PLAY, STOP };
 
 #endif
