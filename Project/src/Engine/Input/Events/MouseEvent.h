@@ -5,9 +5,12 @@
 
 class MouseEvent:
 
-	public Event< MouseEvent > {
+	public Event {
 
 	private:
+
+		static strings = 
+
 		int button;
 		int state;
 		int x;
@@ -15,19 +18,18 @@ class MouseEvent:
 		
 	public:
 		MouseEvent( int button, int state, int x, int y ) :
-			Event< MouseEvent >( std::chrono::high_resolution_clock::now() ), button{ button }, state{ state }, x{ x }, y{ y } {
-			set_id("MOUSE");
+			Event( "MouseEvent" ), button{ button }, state{ state }, x{ x }, y{ y } {
 		}
-		int get_button() {
+		int getButton() {
 			return button;
 		}
-		int get_state() {
+		int getState() {
 			return state;
 		}
-		int get_x() {
+		int getX() {
 			return x;
 		}
-		int get_y() {
+		int getY() {
 			return y;
 		}
 };

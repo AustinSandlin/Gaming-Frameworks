@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"String",
+				"Strings"
+			],
+			[
 				"INPUT",
 				"INPUT_2"
 			],
@@ -90,10 +94,6 @@
 			[
 				"Obje",
 				"ObjectRemover"
-			],
-			[
-				"String",
-				"StringID"
 			],
 			[
 				"in",
@@ -435,6 +435,41 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/Events/KeyboardEvent.h",
+			"settings":
+			{
+				"buffer_size": 486,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Base/Clock.h",
+			"settings":
+			{
+				"buffer_size": 346,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/Events/MouseEvent.h",
+			"settings":
+			{
+				"buffer_size": 505,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "#include \"../Common/Resources/Strings.h\"\n\n#include \"../Engine/Game/GameController.h\"\n#include \"../Engine/Object/ObjectController.h\"\n\n#include <iostream>\n\nint main(int argc, char **argv) {\n\n	static GameController& game_controller = GameController::instance();\n	static ObjectController& object_controller = ObjectController::instance();\n	static Strings& string_controller = Strings::instance();\n\n	// ==========\n	// Action Register Test\n	// ==========\n\n	game_controller.registerInputAction(string_controller.intern(\"w\"), UP);\n	game_controller.registerInputAction(string_controller.intern(\"a\"), LEFT);\n	game_controller.registerInputAction(string_controller.intern(\"s\"), DOWN);\n	game_controller.registerInputAction(string_controller.intern(\"d\"), RIGHT);\n	game_controller.registerInputAction(string_controller.intern(\"\\x1b\"), QUIT);\n\n	// ==========\n	// Object Register Test\n	// ==========\n	object_controller.registerGameObject(string_controller.intern(\"BLOCK\"), GameObject(string_controller.intern(\"BLOCK\"), 0, 1, true));\n\n	// ==========\n	// Game Loop Test\n	// ==========\n\n	//game_controller.setupGameLoop();\n	game_controller.setupGameLoop(argc, argv);\n	game_controller.runGameLoop();\n\n	return 0;\n}\n",
+			"file": "/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Test/Test.cpp",
+			"file_size": 1193,
+			"file_write_time": 130684420850000000,
+			"settings":
+			{
+				"buffer_size": 1193,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "Packages/C++/C++.sublime-build",
 	"command_palette":
@@ -500,22 +535,30 @@
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Base",
-		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Resources",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine",
-		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/Properties",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Game",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/Events",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Object",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Test"
 	],
 	"file_history":
 	[
-		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/Controller.cpp",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Base/Event.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Base/Queue.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Base/Clock.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Base/Object.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Base/Property.h",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Base/Table.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Base/Types.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Base/Singleton.h",
+		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/Controller.cpp",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Test/Test.cpp",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Scheduler/Controller.h",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Scheduler/Controller.cpp",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Scheduler/Events/ScheduleEvent.h",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Systems/OpenGL.h",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Scheduler/Model.h",
-		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Base/Queue.h",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Base/Handler.h",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Base/Scheduler.h",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Object/View.cpp",
@@ -533,7 +576,6 @@
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Test/Makefile",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/Events/PushAction.h",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Object/Events/AddProperty.h",
-		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Base/Event.h",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/Events/MouseAction.h",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/Events/KeyboardAction.h",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Object/Events/RemoveProperty.h",
@@ -541,7 +583,6 @@
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/Properties/MouseActionQueue.h",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/Properties/KeyboardActionQueue.h",
 		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Scheduler/View.h",
-		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Base/Singleton.h",
 		"/Users/tim/Desktop/Backup/src/Engine/Input/Model.h",
 		"/Users/tim/Desktop/Backup/src/Engine/Input/Controller.h",
 		"/Users/tim/Desktop/Backup/src/Engine/Objects/Events/AddProperty.h",
@@ -630,11 +671,7 @@
 		"/Users/tim/Desktop/Common/Base/Singleton.h",
 		"/Users/tim/Desktop/Common/Objects/PropertyTable.h",
 		"/Users/tim/Desktop/Common/Objects/ObjectReferenceTable.h",
-		"/Users/tim/Desktop/Common/Objects/ObjectPropertyTable.h",
-		"/Users/tim/Desktop/Common/Strings/String.h",
-		"/Users/tim/Desktop/src/Common/String.h",
-		"/Users/tim/Desktop/src/Engine/Input/Events/InputAddQueue.h",
-		"/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Strings/StringTable.cpp"
+		"/Users/tim/Desktop/Common/Objects/ObjectPropertyTable.h"
 	],
 	"find":
 	{
@@ -684,8 +721,124 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/Events/KeyboardEvent.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 486,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								486,
+								486
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Common/Base/Clock.h",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 346,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Engine/Input/Events/MouseEvent.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 505,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								278,
+								288
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/Users/tim/Documents/Baylor/2015/Spring/CSI/4342/Gaming-Frameworks/Project/src/Test/Test.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1193,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								467,
+								486
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
 			]
 		}
 	],

@@ -1,6 +1,8 @@
 #ifndef _QUEUE_H
 #define _QUEUE_H
 
+#include "../Resources/Clock.h"
+
 #include <queue>
 #include <vector>
 
@@ -13,8 +15,16 @@ private:
 
 public:
 	
+	bool empty( TimeStamp limit ) const {
+		if ( !queue.empty() ) {
+			return queue.next() < limit;
+		}
+		else {
+			return true;
+		}
+	}
 	bool empty() const {
-		return queue.empty();
+		return empty( clock.getTime() );
 	}
 	void push( const T & item ) {
 		queue.push( T( item ) );

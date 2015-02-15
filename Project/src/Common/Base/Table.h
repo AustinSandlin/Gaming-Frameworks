@@ -1,7 +1,7 @@
 #ifndef _TABLE_H
 #define _TABLE_H
 
-#include "../Types/Types.h"
+#include "../Base/Types.h"
 
 #include <unordered_map>
 
@@ -24,10 +24,10 @@ public:
 	}
 	~TableIterator() {
 	}
-	StringID get_id() {
+	StringID getID() {
 		return iterator->first;
 	}
-	T & get_value() {
+	T & getValue() {
 		return iterator->second;
 	}
 	TableIterator< T > & operator=( const TableIterator< T > & other) {
@@ -68,10 +68,10 @@ public:
 	}
 	~ConstTableIterator() {
 	}
-	StringID get_id() {
+	StringID getID() {
 		return iterator->first;
 	}
-	const T & get_value() {
+	const T & getValue() {
 		return iterator->second;
 	}
 	ConstTableIterator< T > & operator=( const ConstTableIterator< T > & other) {

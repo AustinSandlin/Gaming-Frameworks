@@ -4,7 +4,7 @@
 #include "../../../Common/Base/Event.h"
 
 class KeyboardEvent:
-	public Event< KeyboardEvent > {
+	public Event {
 		
 	private:
 		
@@ -14,19 +14,15 @@ class KeyboardEvent:
 
 	public:
 		KeyboardEvent( const unsigned char key, const int x, const int y ) :
-			Event< KeyboardEvent >( std::chrono::high_resolution_clock::now() ), key{ key }, x{ x }, y{ y } {
-			//I hate this. Can't send const uchar as a string.
-			String temp = "";
-			temp += key;
-			set_id(temp);
+			Event( "KeyboardEvent" ), key{ key }, x{ x }, y{ y } {
 		}
-		const unsigned char get_key() const {
+		const unsigned char getKey() const {
 			return key;
 		}
-		const int get_x() const {
+		const int getX() const {
 			return x;
 		}
-		const int get_y() const {
+		const int getY() const {
 			return y;
 		}
 };

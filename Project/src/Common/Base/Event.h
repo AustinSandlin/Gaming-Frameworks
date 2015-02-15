@@ -1,42 +1,45 @@
 #ifndef _EVENT_H
 #define _EVENT_H
 
-#include "../Types/Types.h"
+#include "../Resources/Clock.h"
 #include "../Resources/Strings.h"
 
-static Strings& EventStrController = Strings::instance();
-
-template< typename T >
 class Event {
 
 private:
+
+	static strings = Strings::instance();
+	static clock = Clock::instance();
 
 	StringID id;
 	TimeStamp time;
 
 protected:
 
-	Event( TimeStamp time ) :
-		time{ time } {
+	Event( String name ) : id{ strings.intern( name ) }, time{ clock.getTime() } {
 	}
-
-	void set_id( String str ) {
-	    id = EventStrController.intern(str);
+	Event( String name, TimeStamp time ) : id{ strings.intern( name ) }, time{ time } {
 	}
 
 public:
 
-	bool operator>( const T & other ) const {
+	bool operator>( const Evetn & other ) const {
 		return time > other.time;
 	}
-	bool operator<( const T & other ) const {
+	bool operator<( const Event & other ) const {
 		return time < other.time;
 	}
-	TimeStamp get_time() {
-		return time;
+	bool operator>( const TimeStamp & other ) const {
+		return time > other;
 	}
-	StringID get_id() const {
+	bool operator<( const TimeStamp & other ) const {
+		return time < other;
+	}
+	StringID getID() const {
 		return id;
+	}
+	TimeStamp getTime() const {
+		return time;
 	}
 };
 

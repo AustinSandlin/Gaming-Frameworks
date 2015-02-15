@@ -1,37 +1,47 @@
 #ifndef _PROPERTIES_H
 #define _PROPERTIES_H
 
-#include "../Types/Types.h"
+#include "../Resources/Clock.h"
 
 class Property {
 
 private:
 
 	StringID id;
-    String name;
-    String value;
+    TypeName type;
+    TypeValue value;
 	
 protected:
 
-	Property( StringID id, String name, String value) :
-        id{ id }, name{ name }, value{ value }{
+	Property( StringID id, String name, String value ) : id{ id }, name{ name }, value{ value } {
 	}
 
 public:
 
-    StringID get_id() const {
+    StringID getID() const {
         return id;
-    }    
-    String get_name() const {
+    }
+    TypeName getType() const {
         return name;
     }
-    String get_value() const {
-        return value;
-    }
 
-    void set_value( String val) {
-        value = val;
+
+
+
+
+    void setInteger( const int & val ) {
+        value.integer = val;
+    }
+    int & getInteger() {
+        if ( type != INTEGER ) {
+            assert( false );
+        }
+        return value.integer;
     }
 };
 
 #endif
+
+auto & value = property.getInteger( value );
+
+Table<  > properties;
