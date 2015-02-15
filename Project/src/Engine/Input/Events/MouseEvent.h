@@ -9,8 +9,6 @@ class MouseEvent:
 
 	private:
 
-		static strings = 
-
 		int button;
 		int state;
 		int x;

@@ -1,10 +1,9 @@
 #ifndef _PLAYER_OBJECT_H
 #define _PLAYER_OBJECT_H
 
-#include "../../Common/Base/Object.h"
+#include "../../../Common/Base/Object.h"
 
-class PlayerObject:
-    public Object< PlayerObject > {
+class PlayerObject : public Object {
         
     private:
         //Location
@@ -12,7 +11,7 @@ class PlayerObject:
     
     public:
         PlayerObject( const StringID& id, int x, int y ) :
-            Object< PlayerObject >( id ), x( x ), y( y ) {
+            Object ( id ), x( x ), y( y ) {
         }
 
         //Get location methods

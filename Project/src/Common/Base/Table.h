@@ -1,7 +1,7 @@
 #ifndef _TABLE_H
 #define _TABLE_H
 
-#include "../Base/Types.h"
+#include "Types.h"
 
 #include <unordered_map>
 

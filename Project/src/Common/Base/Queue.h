@@ -15,16 +15,17 @@ private:
 
 public:
 	
-	bool empty( TimeStamp limit ) const {
-		if ( !queue.empty() ) {
-			return queue.next() < limit;
-		}
-		else {
-			return true;
-		}
-	}
+	// bool empty( TimeStamp limit ) const {
+	// 	if ( !queue.empty() ) {
+	// 		return (queue.top() < limit);
+	// 	}
+	// 	else {
+	// 		return true;
+	// 	}
+	// }
 	bool empty() const {
-		return empty( clock.getTime() );
+		// static Clock& clock = Clock::instance();
+		return queue.empty(); //empty( clock.getTime() );
 	}
 	void push( const T & item ) {
 		queue.push( T( item ) );

@@ -9,7 +9,7 @@
 
 #include "../../Common/Base/Singleton.h"
 #include "../../Common/Base/Table.h"
-#include "../../Common/Types/Types.h"
+#include "../../Common/Base/Types.h"
 
 class RenderController:
 	
@@ -18,13 +18,15 @@ class RenderController:
 	private:
 
 		friend class Singleton< RenderController >;
-		Table< String > textureFilePaths;
+		Table< String > texture_paths;
 
 		RenderController() {
 
 		}
 
 	public:
+
+		void registerObjectTexture( StringID, String );
 
 		void prepareScreen( int x, int y, String name );
 		void renderScreen( );

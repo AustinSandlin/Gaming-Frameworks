@@ -8,22 +8,36 @@ class Event {
 
 private:
 
-	static strings = Strings::instance();
-	static clock = Clock::instance();
-
 	StringID id;
 	TimeStamp time;
 
 protected:
 
-	Event( String name ) : id{ strings.intern( name ) }, time{ clock.getTime() } {
+	Event() {
+
 	}
-	Event( String name, TimeStamp time ) : id{ strings.intern( name ) }, time{ time } {
+
+	Event( String name ) {
+		static Strings& strings = Strings::instance();
+		static Clock& clock = Clock::instance();
+		
+		id = strings.intern( name );
+		time = clock.getTime();
+	}
+	Event( String name, TimeStamp time ) : time{ time } {
+		static Strings& strings = Strings::instance();
+
+		id = strings.intern( name );
+	}
+
+	void setID(const String name) {
+		static Strings& strings = Strings::instance();
+		id = strings.intern(name);
 	}
 
 public:
 
-	bool operator>( const Evetn & other ) const {
+	bool operator>( const Event & other ) const {
 		return time > other.time;
 	}
 	bool operator<( const Event & other ) const {
@@ -42,5 +56,7 @@ public:
 		return time;
 	}
 };
+
+
 
 #endif

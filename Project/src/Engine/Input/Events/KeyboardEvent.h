@@ -8,15 +8,18 @@ class KeyboardEvent:
 		
 	private:
 		
-		unsigned char key;
+		char key;
 		int x;
 		int y;
 
 	public:
-		KeyboardEvent( const unsigned char key, const int x, const int y ) :
-			Event( "KeyboardEvent" ), key{ key }, x{ x }, y{ y } {
+		KeyboardEvent( const char key, const int x, const int y ) :
+			Event( String(&key) ), key{ key }, x{ x }, y{ y } {
+			String temp = "";
+			temp += key;
+			setID(temp);
 		}
-		const unsigned char getKey() const {
+		const char getKey() const {
 			return key;
 		}
 		const int getX() const {

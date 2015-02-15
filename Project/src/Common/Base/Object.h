@@ -1,7 +1,7 @@
 #ifndef _OBJECT_H
 #define _OBJECT_H
 
-#include "../Base/Property.h"
+#include "Property.h"
 
 class Object {
 
@@ -29,8 +29,8 @@ public:
     bool hasProperty( StringID id ) const {
     	return properties.has( id );
     }
-    Property & getProperty( StringID id ) const {
-		return properties.get( id );
+    Property & getProperty( StringID id ) {
+		return properties.get( id ).getValue();
     }
 };
 

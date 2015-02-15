@@ -11,7 +11,7 @@ void GameController::handleInputEvent( const StringID& id ) {
         return;
     }
     //Grab the appropriate input action.
-    InputAction action = (input_action_table.get(id)).get_value();
+    InputAction action = (input_action_table.get(id)).getValue();
     //Do something based on that input.
     if(action == UP || action == DOWN || action == LEFT || action == RIGHT) {
         object_controller.handlePlayerAction(action);
@@ -50,7 +50,7 @@ void GameController::updateGameLoop(int value) {
 
     if ( difftime(currentTime, lastTime) >= 1.0 ){ // If last prinf() was more than 1 sec ago
         // printf and reset timer
-        // std::cout << numFrames << std::endl;
+        std::cout << numFrames << std::endl;
         numFrames = 0;
         lastTime += 1.0;
     }

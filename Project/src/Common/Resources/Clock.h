@@ -1,15 +1,16 @@
 #ifndef _CLOCK_H
 #define _CLOCK_H
 
+#include "../Base/Singleton.h"
 #include "../Base/Types.h"
 
 #include <chrono>
 
-class Clock : Singleton< Clock > {
+class Clock : public Singleton< Clock > {
 
 private:
 
-	friend Singleton< Clock >;
+	friend class Singleton< Clock >;
 	Clock() {
 	}
 

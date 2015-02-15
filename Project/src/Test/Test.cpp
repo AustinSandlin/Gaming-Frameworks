@@ -25,6 +25,11 @@ int main(int argc, char **argv) {
 	// Object Register Test
 	// ==========
 	object_controller.registerGameObject(string_controller.intern("BLOCK"), GameObject(string_controller.intern("BLOCK"), 0, 1, true));
+	object_controller.registerPlayerObject(string_controller.intern("PLAYER1"), PlayerObject(string_controller.intern("PLAYER1"), 0, 0));
+
+	// ==========
+	// Texture Register Test
+	// ==========
 
 	// ==========
 	// Game Loop Test

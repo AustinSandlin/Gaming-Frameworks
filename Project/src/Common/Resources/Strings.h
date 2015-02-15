@@ -34,7 +34,7 @@ public:
 		return Table< String >::has( id );
 	}
 	String lookup( StringID id ) {
-		return Table< String >::get( id ).get_value();
+		return Table< String >::get( id ).getValue();
 	}
 };
 

@@ -1,5 +1,9 @@
 #include "RenderController.h"
 
+void RenderController::registerObjectTexture( StringID id, String path ) {
+	texture_paths.add( id, path );
+}
+
 void RenderController::prepareScreen( int x, int y, String name ) {
 	glutInitWindowSize(x, y);
 	glutCreateWindow(name.c_str());
@@ -14,6 +18,8 @@ void RenderController::renderScreen( ) {
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
+
+	
 
 	glutSwapBuffers();
 }

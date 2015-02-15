@@ -9,7 +9,7 @@
 
 #include "../../Common/Base/Singleton.h"
 #include "../../Common/Base/Table.h"
-#include "../../Common/Types/Types.h"
+#include "../../Common/Base/Types.h"
 
 #include "../../Engine/Input/InputController.h"
 #include "../../Engine/Object/ObjectController.h"

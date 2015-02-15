@@ -2,11 +2,11 @@
 #define _OBJECT_CONTROLLER_H
 
 #include "../../Common/Base/Singleton.h"
-#include "../../Common/Types/Types.h"
+#include "../../Common/Base/Types.h"
 #include "../../Common/Resources/Strings.h"
 
-#include "GameObject.h"
-#include "PlayerObject.h"
+#include "Objects/GameObject.h"
+#include "Objects/PlayerObject.h"
 
 static Strings& ObjectStrController = Strings::instance();
 
@@ -17,22 +17,23 @@ class ObjectController:
 	private:
 
 		friend class Singleton< ObjectController >;
-		PlayerObject player;
+		Table< PlayerObject > player_objects;
 		Table< GameObject > game_objects;
 
-		ObjectController() : 
-			player( ObjectStrController.intern("Player1"), 0, 0 ) {
+		ObjectController() {
 		}
 
+		bool canMoveUpPlayer( const StringID id );
+		bool canMoveDownPlayer( const StringID id );
+		bool canMoveLeftPlayer( const StringID id );
+		bool canMoveRightPlayer( const StringID id );
+	
 	public:
 
 		void handlePlayerAction( const InputAction& action );
-		void registerGameObject( const StringID& id, GameObject go );
 
-		bool canMoveUpPlayer();
-		bool canMoveDownPlayer();
-		bool canMoveLeftPlayer();
-		bool canMoveRightPlayer();
+		void registerGameObject( const StringID& id, GameObject go );
+		void registerPlayerObject( const StringID& id, PlayerObject po );
 };
 
 #endif

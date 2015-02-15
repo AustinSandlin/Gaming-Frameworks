@@ -8,8 +8,8 @@ class Property {
 private:
 
 	StringID id;
-    TypeName type;
-    TypeValue value;
+    String name;
+    String value;
 	
 protected:
 
@@ -21,10 +21,10 @@ public:
     StringID getID() const {
         return id;
     }
+    /*
     TypeName getType() const {
         return name;
     }
-
 
 
 
@@ -38,10 +38,7 @@ public:
         }
         return value.integer;
     }
+    */
 };
 
 #endif
-
-auto & value = property.getInteger( value );
-
-Table<  > properties;

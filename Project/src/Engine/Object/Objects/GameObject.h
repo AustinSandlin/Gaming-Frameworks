@@ -1,10 +1,9 @@
 #ifndef _GAME_OBJECT_H
 #define _GAME_OBJECT_H
 
-#include "../../Common/Base/Object.h"
+#include "../../../Common/Base/Object.h"
 
-class GameObject:
-    public Object< GameObject > {
+class GameObject : public Object {
         
     private:
         //Location
@@ -14,7 +13,7 @@ class GameObject:
     
     public:
         GameObject( const StringID& id, int x, int y, bool collidable ) :
-            Object< GameObject >( id ), x( x ), y( y ), collidable( collidable ) {
+            Object ( id ), x( x ), y( y ), collidable( collidable ) {
         }
 
         void set_collidable( bool val ) {
