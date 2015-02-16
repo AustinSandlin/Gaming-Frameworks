@@ -1,7 +1,24 @@
 #include "RenderController.h"
 
 void RenderController::registerObjectTexture( StringID id, String path ) {
-	texture_paths.add( id, path );
+    Image* image = loadBMP(path.c_str());
+    GLuint textureId;
+    glGenTextures(1, &textureId); //Make room for our texture
+    glBindTexture(GL_TEXTURE_2D, textureId); //Tell OpenGL which texture to edit
+    //Map the image to the texture
+
+    glTexImage2D(GL_TEXTURE_2D,                 //Always GL_TEXTURE_2D
+                 0,                             //0 for now
+                 GL_RGB,                       //Format OpenGL uses for image
+                 image->width, image->height,   //Width and height
+                 0,                             //The border of the image
+                 GL_RGB,                        //GL_RGB, because pixels are stored in RGB format
+                 GL_UNSIGNED_BYTE,              //GL_UNSIGNED_BYTE, because pixels are stored as unsigned numbers
+                 image->pixels);                //The actual pixel data
+
+    delete image;
+
+	texture_paths.add( id, textureId );
 	//Load texture into opengl.
 }
 
@@ -16,9 +33,11 @@ void RenderController::prepareScreen( int x, int y, String name ) {
     glLoadIdentity();
 
     gluOrtho2D(0, glutGet(GLUT_WINDOW_WIDTH), 0, glutGet(GLUT_WINDOW_HEIGHT));
+
+    glEnable(GL_TEXTURE_2D);
 }
 
-void RenderController::renderScreen( Queue< StringID > objs ) {
+void RenderController::renderScreen( std::queue< StringID > objs ) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     glMatrixMode(GL_MODELVIEW);
@@ -26,44 +45,23 @@ void RenderController::renderScreen( Queue< StringID > objs ) {
 
     while(!objs.empty()) {
         //LOAD IMAGE STUFF
-        if(!texture_paths.has(objs.next())) {
+        if(!texture_paths.has(objs.front())) {
             objs.pop();
             continue;
         }
-        // std::cout << "hastexture" << std::endl;
 
-        String filename = texture_paths.get(objs.next()).getValue();
-		
-        Image* image = loadBMP(filename.c_str());
-		GLuint textureId;
-		glGenTextures(1, &textureId); //Make room for our texture
-		glBindTexture(GL_TEXTURE_2D, textureId); //Tell OpenGL which texture to edit
-		//Map the image to the texture
-
-		glTexImage2D(GL_TEXTURE_2D,                 //Always GL_TEXTURE_2D
-		             0,                             //0 for now
-		             GL_RGB,                       //Format OpenGL uses for image
-		             image->width, image->height,   //Width and height
-		             0,                             //The border of the image
-		             GL_RGB, 			   			//GL_RGB, because pixels are stored in RGB format
-		             GL_UNSIGNED_BYTE, 			    //GL_UNSIGNED_BYTE, because pixels are stored as unsigned numbers
-		             image->pixels);                //The actual pixel data
-
-        //std::cout << image->width << " " << image->height << endl;
-
-		delete image;
+        GLuint textureId = texture_paths.get(objs.front()).getValue();
 
 		//Enables textures and binds the smiley face to the texture.
-        glEnable(GL_TEXTURE_2D);
 		glBindTexture(GL_TEXTURE_2D, textureId);
 
-		//Texture stuff.
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		//Texture stuff.
 
 		//======================================================================
-		int x = object_controller.getObjectLocationX(objs.next());
-		int y = object_controller.getObjectLocationY(objs.next());
+		int x = object_controller.getObjectLocationX(objs.front());
+		int y = object_controller.getObjectLocationY(objs.front());
 
 		worldCordToScreenCord(x, y);
 

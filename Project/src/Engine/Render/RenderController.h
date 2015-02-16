@@ -26,7 +26,7 @@ class RenderController:
 	private:
 
 		friend class Singleton< RenderController >;
-		Table< String > texture_paths;
+		Table< GLuint > texture_paths;
 
 		RenderController() {
 
@@ -44,7 +44,7 @@ class RenderController:
 		void registerObjectTexture( StringID, String );
 
 		void prepareScreen( int x, int y, String name );
-		void renderScreen( Queue< StringID > objs );
+		void renderScreen( std::queue< StringID > objs );
 };
 
 #endif

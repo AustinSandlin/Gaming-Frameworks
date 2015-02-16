@@ -54,7 +54,7 @@ void GameController::updateGameLoop(int value) {
 
     if ( difftime(currentTime, lastTime) >= 1.0 ){ // If last prinf() was more than 1 sec ago
         // printf and reset timer
-        std::cout << numFrames << std::endl;
+        std::cout << "FPS: " << numFrames << std::endl;
         numFrames = 0;
         lastTime += 1.0;
     }

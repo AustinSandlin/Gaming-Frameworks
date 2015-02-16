@@ -8,38 +8,30 @@ void ObjectController::handlePlayerAction( const InputAction& action ) {
         switch(action) {
             case UP:
                 if(canMoveUpPlayer( it.getValue().getID() )) {
-                    std::cout << "WENT UP" << std::endl;
                     it.getValue().moveUp();
                 }
                 else {
-                    std::cout << "CAN'T UP" << std::endl;
                 }
                 break;
             case DOWN:
                 if(canMoveDownPlayer( it.getValue().getID() )) {
-                    std::cout << "WENT DOWN" << std::endl;
                     it.getValue().moveDown();
                 }
                 else {
-                    std::cout << "CAN'T DOWN" << std::endl;
                 }
                 break;
             case LEFT:
                 if(canMoveLeftPlayer( it.getValue().getID() )) {
-                    std::cout << "WENT LEFT" << std::endl;
                     it.getValue().moveLeft();
                 }
                 else {
-                    std::cout << "CAN'T LEFT" << std::endl;
                 }
                 break;
             case RIGHT:
                 if(canMoveRightPlayer( it.getValue().getID() )) {
-                    std::cout << "WENT RIGHT" << std::endl;
                     it.getValue().moveRight();
                 }
                 else {
-                    std::cout << "CAN'T RIGHT" << std::endl;
                 }
                 break;
             default:
@@ -137,6 +129,10 @@ int ObjectController::getObjectLocationX( const StringID id ) {
     if(game_objects.has(id)) {
         ret = game_objects.get(id).getValue().getX();
     }
+    if(background_objects.has(id)) {
+        ret = background_objects.get(id).getValue().getX();
+    }
+
     return ret;
 }
 
@@ -149,11 +145,15 @@ int ObjectController::getObjectLocationY( const StringID id ) {
     if(game_objects.has(id)) {
         ret = game_objects.get(id).getValue().getY();
     }
+    if(background_objects.has(id)) {
+        ret = background_objects.get(id).getValue().getY();
+    }
+
     return ret;
 }
 
-Queue<StringID> ObjectController::queueObjects() {
-    Queue<StringID> ret;
+std::queue<StringID> ObjectController::queueObjects() {
+    std::queue<StringID> ret;
 
     //The order this is done is important! Background first, then objects, then players, then HUD.
     TableIterator<BackgroundObject> it1 = background_objects.begin();

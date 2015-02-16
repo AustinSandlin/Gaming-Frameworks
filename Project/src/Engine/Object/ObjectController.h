@@ -10,6 +10,8 @@
 #include "Objects/PlayerObject.h"
 #include "Objects/BackgroundObject.h"
 
+#include <queue>
+
 static Strings& ObjectStrController = Strings::instance();
 
 class ObjectController:
@@ -42,7 +44,7 @@ class ObjectController:
 		int getObjectLocationX( const StringID );
 		int getObjectLocationY( const StringID );
 
-		Queue<StringID> queueObjects();
+		std::queue<StringID> queueObjects();
 };
 
 #endif

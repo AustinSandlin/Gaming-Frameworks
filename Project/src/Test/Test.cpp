@@ -16,6 +16,8 @@ int main(int argc, char **argv) {
 	// Action Register Test
 	// ==========
 
+	game_controller.setupGameLoop(argc, argv);
+
 	game_controller.registerInputAction(string_controller.intern("w"), UP);
 	game_controller.registerInputAction(string_controller.intern("a"), LEFT);
 	game_controller.registerInputAction(string_controller.intern("s"), DOWN);
@@ -29,7 +31,7 @@ int main(int argc, char **argv) {
 	for(int i = 0; i < 64; ++i) {
 		for(int j = 0; j < 48; ++j) {
 			String name = "BACKGROUND_TILE_" + std::to_string(i) + "_" + std::to_string(j);
-			object_controller.registerBackgroundObject(string_controller.intern(name), BackgroundObject(string_controller.intern(name), 0, 1));
+			object_controller.registerBackgroundObject(string_controller.intern(name), BackgroundObject(string_controller.intern(name), i, j));
 			if((i+j) % 2 == 1) {
 				render_controller.registerObjectTexture(string_controller.intern(name), "../Images/green.bmp");
 			}
@@ -46,15 +48,14 @@ int main(int argc, char **argv) {
 	// Texture Register Test
 	// ==========
 
-	render_controller.registerObjectTexture(string_controller.intern("BLOCK"), "../Images/green.bmp");
-	render_controller.registerObjectTexture(string_controller.intern("PLAYER1"), "../Images/yellow.bmp");
+	render_controller.registerObjectTexture(string_controller.intern("BLOCK"), "../Images/red.bmp");
+	render_controller.registerObjectTexture(string_controller.intern("PLAYER1"), "../Images/blue.bmp");
 
 	// ==========
 	// Game Loop Test
 	// ==========
 
 	//game_controller.setupGameLoop();
-	game_controller.setupGameLoop(argc, argv);
 	game_controller.runGameLoop();
 
 	return 0;
