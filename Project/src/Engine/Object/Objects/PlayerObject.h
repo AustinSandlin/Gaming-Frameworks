@@ -15,10 +15,10 @@ class PlayerObject : public Object {
         }
 
         //Get location methods
-        int get_x() {
+        int getX() {
             return x;
         }
-        int get_y() {
+        int getY() {
             return y;
         }
 

@@ -1,15 +1,23 @@
 #ifndef _RENDER_CONTROLLER_H
 #define _RENDER_CONTROLLER_H
 
-#if defined(_WIN32) || defined(WIN32)   
-#include <GL/glut.h>
-#else
+#if __APPLE__
+#include <OpenGL/OpenGL.h>
 #include <GLUT/glut.h>
+#else
+#include <GL/glut.h>
 #endif
 
 #include "../../Common/Base/Singleton.h"
 #include "../../Common/Base/Table.h"
 #include "../../Common/Base/Types.h"
+#include "Image.h"
+
+#include "../Object/ObjectController.h"
+
+#include <iostream>
+
+static ObjectController& object_controller = ObjectController::instance();
 
 class RenderController:
 	
@@ -24,12 +32,19 @@ class RenderController:
 
 		}
 
+		void worldCordToScreenCord(int& x, int& y) {
+			x *= 16;
+			y *= 16;
+		}
+
+        Image* loadBMP(const char* filename);
+
 	public:
 
 		void registerObjectTexture( StringID, String );
 
 		void prepareScreen( int x, int y, String name );
-		void renderScreen( );
+		void renderScreen( Queue< StringID > objs );
 };
 
 #endif

@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-std=c++11 -Wall -Wno-deprecated -I /usr/local/Cellar/boost/1.56.0/include
+CFLAGS=-std=c++11 -Wall -Wno-deprecated -I /usr/local/Cellar/boost/1.57.0/include
 LDFLAGS=-framework GLUT -framework OpenGL -framework Cocoa
 VPATH=../Engine/Input:../Engine/Game:../Engine/Object:../Engine/Render
 SOURCES=Test.cpp InputController.cpp GameController.cpp ObjectController.cpp RenderController.cpp

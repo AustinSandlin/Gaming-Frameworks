@@ -49,12 +49,16 @@ void ObjectController::handlePlayerAction( const InputAction& action ) {
     }
 }
 
-void ObjectController::registerGameObject( const StringID& id, GameObject go ) {
-    game_objects.add( id, go );
+void ObjectController::registerBackgroundObject( const StringID& id, BackgroundObject bo ) {
+    background_objects.add( id, bo );
 }
 
 void ObjectController::registerPlayerObject( const StringID& id, PlayerObject po ) {
     player_objects.add( id, po );
+}
+
+void ObjectController::registerGameObject( const StringID& id, GameObject go ) {
+    game_objects.add( id, go );
 }
 
 bool ObjectController::canMoveUpPlayer( const StringID id ) {
@@ -64,9 +68,9 @@ bool ObjectController::canMoveUpPlayer( const StringID id ) {
 
     TableIterator<GameObject> it = game_objects.begin();
     while(it != game_objects.end() && !coll) {
-        if(it.getValue().get_x() == player.get_x() &&
-           it.getValue().get_y() == (player.get_y()+1)) {
-            coll = it.getValue().get_collidable();
+        if(it.getValue().getX() == player.getX() &&
+           it.getValue().getY() == (player.getY()+1)) {
+            coll = it.getValue().getCollidable();
         }
         ++it;
     }
@@ -81,9 +85,9 @@ bool ObjectController::canMoveDownPlayer( const StringID id ) {
 
     TableIterator<GameObject> it = game_objects.begin();
     while(it != game_objects.end() && !coll) {
-        if(it.getValue().get_x() == player.get_x() &&
-           it.getValue().get_y() == (player.get_y()-1)) {
-            coll = it.getValue().get_collidable();
+        if(it.getValue().getX() == player.getX() &&
+           it.getValue().getY() == (player.getY()-1)) {
+            coll = it.getValue().getCollidable();
         }
         ++it;
     }
@@ -98,9 +102,9 @@ bool ObjectController::canMoveLeftPlayer( const StringID id ) {
 
     TableIterator<GameObject> it = game_objects.begin();
     while(it != game_objects.end() && !coll) {
-        if(it.getValue().get_x() == (player.get_x()-1) &&
-           it.getValue().get_y() == player.get_y()) {
-            coll = it.getValue().get_collidable();
+        if(it.getValue().getX() == (player.getX()-1) &&
+           it.getValue().getY() == player.getY()) {
+            coll = it.getValue().getCollidable();
         }
         ++it;
     }
@@ -115,12 +119,58 @@ bool ObjectController::canMoveRightPlayer( const StringID id ) {
 
     TableIterator<GameObject> it = game_objects.begin();
     while(it != game_objects.end() && !coll) {
-        if(it.getValue().get_x() == (player.get_x()+1) &&
-           it.getValue().get_y() == player.get_y()) {
-            coll = it.getValue().get_collidable();
+        if(it.getValue().getX() == (player.getX()+1) &&
+           it.getValue().getY() == player.getY()) {
+            coll = it.getValue().getCollidable();
         }
         ++it;
     }
 
     return !coll;
+}
+
+int ObjectController::getObjectLocationX( const StringID id ) {
+    int ret = -1;
+    if(player_objects.has(id)) {
+        ret = player_objects.get(id).getValue().getX();
+    }
+    if(game_objects.has(id)) {
+        ret = game_objects.get(id).getValue().getX();
+    }
+    return ret;
+}
+
+int ObjectController::getObjectLocationY( const StringID id ) {
+    int ret = -1;
+
+    if(player_objects.has(id)) {
+        ret = player_objects.get(id).getValue().getY();
+    }
+    if(game_objects.has(id)) {
+        ret = game_objects.get(id).getValue().getY();
+    }
+    return ret;
+}
+
+Queue<StringID> ObjectController::queueObjects() {
+    Queue<StringID> ret;
+
+    //The order this is done is important! Background first, then objects, then players, then HUD.
+    TableIterator<BackgroundObject> it1 = background_objects.begin();
+    while(it1 != background_objects.end()) {
+        ret.push(it1.getValue().getID());
+        ++it1;
+    }
+    TableIterator<GameObject> it2 = game_objects.begin();
+    while(it2 != game_objects.end()) {
+        ret.push(it2.getValue().getID());
+        ++it2;
+    }
+    TableIterator<PlayerObject> it3 = player_objects.begin();
+    while(it3 != player_objects.end()) {
+        ret.push(it3.getValue().getID());
+        ++it3;
+    }
+
+    return ret;
 }

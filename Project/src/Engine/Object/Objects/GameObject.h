@@ -16,17 +16,17 @@ class GameObject : public Object {
             Object ( id ), x( x ), y( y ), collidable( collidable ) {
         }
 
-        void set_collidable( bool val ) {
+        void setCollidable( bool val ) {
             collidable = val;
         }
 
-        bool get_collidable() {
+        bool getCollidable() {
             return collidable;
         }
-        int get_x() {
+        int getX() {
             return x;
         }
-        int get_y() {
+        int getY() {
             return y;
         }
 

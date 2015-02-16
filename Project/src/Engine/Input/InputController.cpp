@@ -13,7 +13,7 @@ void InputController::queueMouseEvent( int button, int state, int x, int y ) {
 }
 
 //Return the Queue of StringIDs that the input processor dealth with.
-Queue<StringID> InputController::processInput() {
+Queue<StringID> InputController::queueInputs() {
 	Queue< StringID > ret;
 
 	while(!kbqueue.empty()) {

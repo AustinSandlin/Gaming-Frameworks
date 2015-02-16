@@ -1,10 +1,11 @@
 #ifndef _GAME_CONTROLLER_H
 #define _GAME_CONTROLLER_H
 
-#if defined(_WIN32) || defined(WIN32)   
-#include <GL/glut.h>
-#else
+#if __APPLE__ 
+#include <OpenGL/OpenGL.h>
 #include <GLUT/glut.h>
+#else
+#include <GL/glut.h>
 #endif
 
 #include "../../Common/Base/Singleton.h"
@@ -44,14 +45,11 @@ class GameController : public Singleton< GameController >{
             input_controller.queueMouseEvent(button, state, x, y);
         }
 
-        static void renderDisplayCallback() {
-            render_controller.renderScreen();
-        }
-
         static void updateTimerCallback(int val) {
             game_controller.updateGameLoop(val);
         }
 
+        static void renderDisplayCallback();
 
     public:
         void handleInputEvent( const StringID& id );

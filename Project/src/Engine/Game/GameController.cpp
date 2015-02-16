@@ -5,6 +5,10 @@ ObjectController& GameController::object_controller = ObjectController::instance
 RenderController& GameController::render_controller = RenderController::instance();
 GameController& GameController::game_controller = GameController::instance();
 
+void GameController::renderDisplayCallback() {
+    render_controller.renderScreen(object_controller.queueObjects());
+}
+
 void GameController::handleInputEvent( const StringID& id ) {
     //If there's no mapping, do nothing.
     if(!input_action_table.has(id)) {
@@ -29,7 +33,7 @@ void GameController::registerInputAction( const StringID& id, const InputAction 
 void GameController::setupGameLoop(int argc, char **argv) {
     glutInit(&argc, argv);
 
-    render_controller.prepareScreen(600, 600, "test");
+    render_controller.prepareScreen(1024, 768, "test");
 
     glutKeyboardFunc(keyboardInputCallback);
     glutMouseFunc(mouseInputCallback);
@@ -56,7 +60,7 @@ void GameController::updateGameLoop(int value) {
     }
 
     //Fetch and process all the input events (by id).
-    Queue<StringID> inputEvents = input_controller.processInput();
+    Queue<StringID> inputEvents = input_controller.queueInputs();
     while(!inputEvents.empty()) {
         handleInputEvent(inputEvents.next());
         inputEvents.pop();

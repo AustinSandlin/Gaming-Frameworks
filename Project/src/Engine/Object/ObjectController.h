@@ -3,10 +3,12 @@
 
 #include "../../Common/Base/Singleton.h"
 #include "../../Common/Base/Types.h"
+#include "../../Common/Base/Queue.h"
 #include "../../Common/Resources/Strings.h"
 
 #include "Objects/GameObject.h"
 #include "Objects/PlayerObject.h"
+#include "Objects/BackgroundObject.h"
 
 static Strings& ObjectStrController = Strings::instance();
 
@@ -17,6 +19,7 @@ class ObjectController:
 	private:
 
 		friend class Singleton< ObjectController >;
+		Table< BackgroundObject > background_objects;
 		Table< PlayerObject > player_objects;
 		Table< GameObject > game_objects;
 
@@ -32,8 +35,14 @@ class ObjectController:
 
 		void handlePlayerAction( const InputAction& action );
 
+		void registerBackgroundObject( const StringID& id, BackgroundObject bo );
 		void registerGameObject( const StringID& id, GameObject go );
 		void registerPlayerObject( const StringID& id, PlayerObject po );
+
+		int getObjectLocationX( const StringID );
+		int getObjectLocationY( const StringID );
+
+		Queue<StringID> queueObjects();
 };
 
 #endif

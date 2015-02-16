@@ -28,7 +28,7 @@ class InputController : public Singleton< InputController >{
 		/* This will return all the StringIDs of the keys pressed. The game
 		 * controller will take those strings and call things as necessary.
 		 */
-		Queue<StringID> processInput();
+		Queue<StringID> queueInputs();
 };
 
 #endif
