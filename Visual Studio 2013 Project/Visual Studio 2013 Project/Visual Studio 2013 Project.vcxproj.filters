@@ -228,12 +228,6 @@
     <ClInclude Include="..\..\Project\src\Engine\Input\InputController.h">
       <Filter>Header Files\src\Engine\Input</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Project\src\Engine\Input\InputDevice.h">
-      <Filter>Header Files\src\Engine\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Project\src\Engine\Input\InputMap.h">
-      <Filter>Header Files\src\Engine\Input</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Project\src\Engine\Input\InputModel.h">
       <Filter>Header Files\src\Engine\Input</Filter>
     </ClInclude>
@@ -279,6 +273,9 @@
       <Filter>Source Files\src\Demo</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Project\src\Engine\Input\InputController.cpp">
+      <Filter>Source Files\src\Engine\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Project\src\Engine\Input\InputModel.cpp">
       <Filter>Source Files\src\Engine\Input</Filter>
     </ClCompile>
   </ItemGroup>

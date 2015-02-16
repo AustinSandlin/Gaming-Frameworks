@@ -22,7 +22,7 @@ class InputController : public Singleton< InputController >{
 
 	public:
 		// These are the functions to be used in callbacks.
-		void queueKeyboardEvent( char key, int x, int y );
+		void queueKeyboardEvent( unsigned char key, int x, int y );
 		void queueMouseEvent( int button, int state, int x, int y );
 
 		/* This will return all the StringIDs of the keys pressed. The game

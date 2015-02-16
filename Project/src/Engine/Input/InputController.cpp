@@ -1,7 +1,7 @@
 #include "InputController.h"
 
 //Create and add a keyboard event for the character pushed to the keyboard queue.
-void InputController::queueKeyboardEvent( char key, int x, int y ) {
+void InputController::queueKeyboardEvent( unsigned char key, int x, int y ) {
     KeyboardEvent event( key, x, y );
 	kbqueue.push(event);
 }
