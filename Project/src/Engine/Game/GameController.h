@@ -31,10 +31,12 @@ class GameController : public Singleton< GameController >{
 
         time_t lastTime;
         int numFrames;
+        int fps;
     
         Table< InputAction > input_action_table;
 
         GameController() {
+            fps = 0;
         }
 
         static void keyboardInputCallback(unsigned char key, int x, int y) {
@@ -54,6 +56,7 @@ class GameController : public Singleton< GameController >{
     public:
         void handleInputEvent( const StringID& id );
         void registerInputAction( const StringID& id, const InputAction action );
+        void registerDebugValue( const StringID& id, const DebugValue dval );
 
         void setupGameLoop(int argc, char **argv);
         void updateGameLoop(int val);

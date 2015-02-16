@@ -41,14 +41,29 @@ int main(int argc, char **argv) {
 		}
 	}
 
-	object_controller.registerGameObject(string_controller.intern("BLOCK"), GameObject(string_controller.intern("BLOCK"), 0, 1, true));
-	object_controller.registerPlayerObject(string_controller.intern("PLAYER1"), PlayerObject(string_controller.intern("PLAYER1"), 0, 0));
+	for(int i = 0; i < 32; ++i) {
+		for(int j = 0; j < 24; ++j) {
+			if(i == 0 || j == 0 || i == 31 || j == 23) {	
+				String name = "WALL_" + std::to_string(i) + " " + std::to_string(j);
+				object_controller.registerGameObject(string_controller.intern(name), GameObject(string_controller.intern(name), i, j, true));
+				render_controller.registerObjectTexture(string_controller.intern(name), "../Images/red.bmp");
+			}
+		}
+	}
 
-	// ==========
-	// Texture Register Test
-	// ==========
+	object_controller.registerHUDObject(string_controller.intern("HUD_ELEMENT_1"), HUDObject(string_controller.intern("HUD_ELEMENT_1"), 30, 22));
+	render_controller.registerObjectTexture(string_controller.intern("HUD_ELEMENT_1"), "../Images/purple.bmp");
+	object_controller.registerHUDObject(string_controller.intern("HUD_ELEMENT_2"), HUDObject(string_controller.intern("HUD_ELEMENT_2"), 31, 22));
+	render_controller.registerObjectTexture(string_controller.intern("HUD_ELEMENT_2"), "../Images/purple.bmp");
+	object_controller.registerHUDObject(string_controller.intern("HUD_ELEMENT_3"), HUDObject(string_controller.intern("HUD_ELEMENT_3"), 30, 23));
+	render_controller.registerObjectTexture(string_controller.intern("HUD_ELEMENT_3"), "../Images/purple.bmp");
+	object_controller.registerHUDObject(string_controller.intern("HUD_ELEMENT_4"), HUDObject(string_controller.intern("HUD_ELEMENT_4"), 31, 23));
+	render_controller.registerObjectTexture(string_controller.intern("HUD_ELEMENT_4"), "../Images/purple.bmp");
 
-	render_controller.registerObjectTexture(string_controller.intern("BLOCK"), "../Images/red.bmp");
+	object_controller.registerDebugObject(string_controller.intern("FPS_COUNTER"), HUDObject(string_controller.intern("FPS_COUNTER"), 990, 744));
+	game_controller.registerDebugValue(string_controller.intern("FPS_COUNTER"), FPS);
+
+	object_controller.registerPlayerObject(string_controller.intern("PLAYER1"), PlayerObject(string_controller.intern("PLAYER1"), 5, 5));
 	render_controller.registerObjectTexture(string_controller.intern("PLAYER1"), "../Images/blue.bmp");
 
 	// ==========

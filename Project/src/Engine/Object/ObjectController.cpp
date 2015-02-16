@@ -53,6 +53,20 @@ void ObjectController::registerGameObject( const StringID& id, GameObject go ) {
     game_objects.add( id, go );
 }
 
+void ObjectController::registerHUDObject( const StringID& id, HUDObject ho ) {
+    hud_objects.add( id, ho );
+}
+
+void ObjectController::registerDebugObject( const StringID& id, HUDObject ho ) {
+    debug_objects.add( id, ho );
+}
+
+void ObjectController::assignDebugValue( const StringID& id, int* ptr ) {
+    if(debug_objects.has(id)) {
+        debug_objects.get(id).getValue().updateValue(ptr);
+    }
+}
+
 bool ObjectController::canMoveUpPlayer( const StringID id ) {
     bool coll = false;
 
@@ -132,6 +146,9 @@ int ObjectController::getObjectLocationX( const StringID id ) {
     if(background_objects.has(id)) {
         ret = background_objects.get(id).getValue().getX();
     }
+    if(hud_objects.has(id)) {
+        ret = hud_objects.get(id).getValue().getX();
+    }
 
     return ret;
 }
@@ -147,6 +164,9 @@ int ObjectController::getObjectLocationY( const StringID id ) {
     }
     if(background_objects.has(id)) {
         ret = background_objects.get(id).getValue().getY();
+    }
+    if(hud_objects.has(id)) {
+        ret = hud_objects.get(id).getValue().getY();
     }
 
     return ret;
@@ -170,6 +190,23 @@ std::queue<StringID> ObjectController::queueObjects() {
     while(it3 != player_objects.end()) {
         ret.push(it3.getValue().getID());
         ++it3;
+    }
+    TableIterator<HUDObject> it4 = hud_objects.begin();
+    while(it4 != hud_objects.end()) {
+        ret.push(it4.getValue().getID());
+        ++it4;
+    }
+
+    return ret;
+}
+
+std::queue<HUDObject> ObjectController::queueDebugs() {
+    std::queue<HUDObject> ret;
+
+    TableIterator<HUDObject> it1 = debug_objects.begin();
+    while(it1 != debug_objects.end()) {
+        ret.push(it1.getValue());
+        ++it1;
     }
 
     return ret;

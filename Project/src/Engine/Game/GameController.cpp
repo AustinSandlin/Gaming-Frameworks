@@ -6,7 +6,7 @@ RenderController& GameController::render_controller = RenderController::instance
 GameController& GameController::game_controller = GameController::instance();
 
 void GameController::renderDisplayCallback() {
-    render_controller.renderScreen(object_controller.queueObjects());
+    render_controller.renderScreen(object_controller.queueObjects(), object_controller.queueDebugs());
 }
 
 void GameController::handleInputEvent( const StringID& id ) {
@@ -28,6 +28,12 @@ void GameController::handleInputEvent( const StringID& id ) {
 
 void GameController::registerInputAction( const StringID& id, const InputAction action ) {
     input_action_table.add(id, action);
+}
+void GameController::registerDebugValue( const StringID& id, const DebugValue dval ) {
+    if( dval == FPS ) {
+        int* temp = &fps;
+        object_controller.assignDebugValue( id, temp );
+    }
 }
 
 void GameController::setupGameLoop(int argc, char **argv) {
@@ -54,7 +60,8 @@ void GameController::updateGameLoop(int value) {
 
     if ( difftime(currentTime, lastTime) >= 1.0 ){ // If last prinf() was more than 1 sec ago
         // printf and reset timer
-        std::cout << "FPS: " << numFrames << std::endl;
+        fps = numFrames;
+
         numFrames = 0;
         lastTime += 1.0;
     }

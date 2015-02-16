@@ -14,9 +14,12 @@ typedef long TimeStamp;
 //Enumerated Actions. More to follow?
 enum InputAction : int { UP, DOWN, LEFT, RIGHT, QUIT };
 enum SoundAction : int { PLAY, STOP };
+enum DebugValue : int { FPS };
 
+/*
 enum TypeName : int { BOOLEAN, CHAR, SHORT, INT, LONG };
 union TypeValue {
 };
+*/
 
 #endif

@@ -33,16 +33,22 @@ void RenderController::prepareScreen( int x, int y, String name ) {
     glLoadIdentity();
 
     gluOrtho2D(0, glutGet(GLUT_WINDOW_WIDTH), 0, glutGet(GLUT_WINDOW_HEIGHT));
-
-    glEnable(GL_TEXTURE_2D);
 }
 
-void RenderController::renderScreen( std::queue< StringID > objs ) {
+void RenderController::renderScreen( std::queue< StringID > objs, std::queue< HUDObject > huds ) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
+    renderObjects(objs);
+    renderDebugs(huds);
+
+    glutSwapBuffers();
+}
+
+void RenderController::renderObjects( std::queue< StringID > objs ) {
+    glEnable(GL_TEXTURE_2D);
     while(!objs.empty()) {
         //LOAD IMAGE STUFF
         if(!texture_paths.has(objs.front())) {
@@ -68,19 +74,35 @@ void RenderController::renderScreen( std::queue< StringID > objs ) {
         glBegin(GL_QUADS);
     		glVertex2i( x, y );
     		glTexCoord2d(0, 0);
-    		glVertex2i( x+16, y );
+    		glVertex2i( x+PIXEL_X, y );
     		glTexCoord2d(1, 0);
-    		glVertex2i( x+16, y+16 );
+    		glVertex2i( x+PIXEL_X, y+PIXEL_Y );
     		glTexCoord2d(1, 1);
-    		glVertex2i( x, y+16 );
+    		glVertex2i( x, y+PIXEL_Y );
     		glTexCoord2d(0, 1);
         glEnd();
 		//======================================================================
 		objs.pop();
-	}	
-
-	glutSwapBuffers();
+	}
+    glDisable(GL_TEXTURE_2D);
 }
+
+void RenderController::renderDebugs( std::queue< HUDObject > huds ) {
+    while(!huds.empty()) {
+        // glPushAttrib(GL_CURRENT_BIT);
+        glColor3f( 1.0, 1.0, 1.0 );
+
+        string output = std::to_string(huds.front().getValue());
+        for (int i = 0; i < output.length(); ++i) {
+            glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, output[i]);
+        }
+
+        glRasterPos2f(huds.front().getX(), huds.front().getY());
+        // glPopAttrib();
+        huds.pop();
+    }   
+}
+
 
 Image* RenderController::loadBMP(const char* filename) {
     ifstream input;

@@ -9,6 +9,7 @@
 #include "Objects/GameObject.h"
 #include "Objects/PlayerObject.h"
 #include "Objects/BackgroundObject.h"
+#include "Objects/HUDObject.h"
 
 #include <queue>
 
@@ -24,6 +25,9 @@ class ObjectController:
 		Table< BackgroundObject > background_objects;
 		Table< PlayerObject > player_objects;
 		Table< GameObject > game_objects;
+
+		Table< HUDObject > debug_objects;
+		Table< HUDObject > hud_objects;
 
 		ObjectController() {
 		}
@@ -41,10 +45,15 @@ class ObjectController:
 		void registerGameObject( const StringID& id, GameObject go );
 		void registerPlayerObject( const StringID& id, PlayerObject po );
 
+		void registerHUDObject( const StringID& id, HUDObject ho );
+		void registerDebugObject( const StringID& id, HUDObject ho );
+		void assignDebugValue( const StringID& id, int* ptr );
+
 		int getObjectLocationX( const StringID );
 		int getObjectLocationY( const StringID );
 
 		std::queue<StringID> queueObjects();
+		std::queue<HUDObject> queueDebugs();
 };
 
 #endif
