@@ -24,6 +24,7 @@ class ObjectController:
 
 		friend class Singleton< ObjectController >;
 		static RenderController& render_controller;
+		static AudioController& audio_controller;
 		
 		Table< BackgroundObject > background_objects;
 		Table< PlayerObject > player_objects;

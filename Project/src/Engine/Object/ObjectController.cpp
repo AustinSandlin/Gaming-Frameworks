@@ -1,9 +1,9 @@
 #include "ObjectController.h"
 
 RenderController& ObjectController::render_controller = RenderController::instance();
+AudioController& ObjectController::audio_controller = AudioController::instance();
 
 void ObjectController::handlePlayerAction( const InputAction& action ) {
-    static AudioController& audio_controller = AudioController::instance();
 
     TableIterator<PlayerObject> it = player_objects.begin();
     while(it != player_objects.end()) {
