@@ -4,12 +4,15 @@
 #include "../../Common/Base/Types.h"
 
 #include <cstdlib>
+#include <cstdio>
+#include <cstring>
 
 #if __APPLE__ 
 #include <OpenAL/al.h>
 #include <OpenAL/alc.h>
 #else
-//#include <GL/glut.h>
+#include <AL/al.h>
+#include <AL/alc.h>
 #endif
 
 #include <iostream>
