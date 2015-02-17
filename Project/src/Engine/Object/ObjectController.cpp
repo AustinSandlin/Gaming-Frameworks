@@ -1,10 +1,14 @@
 #include "ObjectController.h"
 
+#include "../Audio/AudioController.h"
+
 #include <iostream>
 
 RenderController& ObjectController::render_controller = RenderController::instance();
 
 void ObjectController::handlePlayerAction( const InputAction& action ) {
+    static AudioController& audio_controller = AudioController::instance();
+
     TableIterator<PlayerObject> it = player_objects.begin();
     while(it != player_objects.end()) {
         switch(action) {
@@ -13,6 +17,8 @@ void ObjectController::handlePlayerAction( const InputAction& action ) {
                     it.getValue().moveUp();
                 }
                 else {
+                    std::cout << "CAN'T UP" << std::endl;
+                    audio_controller.playSound( "../Sounds/buzzer.wav" );
                 }
                 break;
             case DOWN:
@@ -20,6 +26,8 @@ void ObjectController::handlePlayerAction( const InputAction& action ) {
                     it.getValue().moveDown();
                 }
                 else {
+                    std::cout << "CAN'T DOWN" << std::endl;
+                    audio_controller.playSound( "../Sounds/buzzer.wav" );
                 }
                 break;
             case LEFT:
@@ -27,6 +35,8 @@ void ObjectController::handlePlayerAction( const InputAction& action ) {
                     it.getValue().moveLeft();
                 }
                 else {
+                    std::cout << "CAN'T LEFT" << std::endl;
+                    audio_controller.playSound( "../Sounds/buzzer.wav" );
                 }
                 break;
             case RIGHT:
@@ -34,6 +44,8 @@ void ObjectController::handlePlayerAction( const InputAction& action ) {
                     it.getValue().moveRight();
                 }
                 else {
+                    std::cout << "CAN'T RIGHT" << std::endl;
+                    audio_controller.playSound( "../Sounds/buzzer.wav" );
                 }
                 break;
             default:

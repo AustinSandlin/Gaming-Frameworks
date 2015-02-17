@@ -18,7 +18,25 @@ enum DebugValue : int { FPS };
 
 /*
 enum TypeName : int { BOOLEAN, CHAR, SHORT, INT, LONG };
+=======
+enum TypeName : int {
+	BOOLEAN_TYPE,
+	CHARACTER_TYPE,
+	SHORT_TYPE,
+	INTEGER_TYPE,
+	LONG_TYPE,
+	FLOAT_TYPE,
+	DOUBLE_TYPE
+};
+>>>>>>> Stashed changes
 union TypeValue {
+	bool	Boolean;
+	char	Character;
+	short	Short;
+	int		Integer;
+	long	Long;
+	float	Float;
+	double	Double;
 };
 */
 

@@ -17,7 +17,7 @@ public:
 	
 	// bool empty( TimeStamp limit ) const {
 	// 	if ( !queue.empty() ) {
-	// 		return (queue.top() < limit);
+	// 		return ( queue.top() < limit );
 	// 	}
 	// 	else {
 	// 		return true;
@@ -25,7 +25,7 @@ public:
 	// }
 	bool empty() const {
 		// static Clock& clock = Clock::instance();
-		return queue.empty(); //empty( clock.getTime() );
+		return queue.empty(); //empty( clock.getCurrentFrame() );
 	}
 	void push( const T & item ) {
 		queue.push( T( item ) );

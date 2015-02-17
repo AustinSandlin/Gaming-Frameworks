@@ -25,18 +25,14 @@ public:
     TypeName getType() const {
         return name;
     }
-
-
-
-
+    
     void setInteger( const int & val ) {
+        name = INTEGER_TYPE;
         value.integer = val;
     }
     int & getInteger() {
-        if ( type != INTEGER ) {
-            assert( false );
-        }
-        return value.integer;
+        assert( type = INTEGER_TYPE );
+        return value.Integer;
     }
     */
 };
