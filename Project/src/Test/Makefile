@@ -1,10 +1,10 @@
 CC=g++
-CFLAGS=-std=c++11 -Wall -Wno-deprecated -I /usr/local/Cellar/boost/1.56.0/include
+CFLAGS=-std=c++11 -Wall -Wno-deprecated
 LDFLAGS=-framework GLUT -framework OpenGL -framework OpenAL -framework Cocoa
 VPATH=../Engine/Audio:../Engine/Input:../Engine/Game:../Engine/Object:../Engine/Render
 SOURCES=Test.cpp AudioController.cpp InputController.cpp GameController.cpp ObjectController.cpp RenderController.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
-EXECUTABLE=test
+EXECUTABLE=test.exe
 
 all: $(SOURCES) $(EXECUTABLE)
 		$(MAKE) clean

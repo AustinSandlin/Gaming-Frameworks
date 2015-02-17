@@ -11,6 +11,7 @@
 #include "Objects/BackgroundObject.h"
 #include "Objects/HUDObject.h"
 
+#include "../Audio/AudioController.h"
 #include "../Render/RenderController.h"
 
 #include <queue>
