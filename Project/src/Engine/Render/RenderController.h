@@ -9,7 +9,6 @@
 #endif
 
 #include "../../Common/Base/Singleton.h"
-#include "../../Common/Base/Table.h"
 #include "../../Common/Base/Types.h"
 #include "Image.h"
 
@@ -22,19 +21,13 @@ class RenderController:
 	private:
 
 		friend class Singleton< RenderController >;
-		Table< GLuint > texture_paths;
-
 		RenderController() {
 
 		}
 
-        Image* loadBMP(const char* filename);
-	
 	public:
 
-		void registerObjectTexture( StringID, String );
-		GLuint getTextureID( StringID );
-
+        GLuint loadBMP(const char* filename);
 		void prepareScreen( int x, int y, String name );
 };
 

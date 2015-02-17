@@ -6,14 +6,18 @@
 class GameObject : public Object {
         
     private:
+        enum Direction{ UP = 0, DOWN = 1, LEFT = 2, RIGHT = 3 };
+
         //Location
         int x, y;
+        Direction direction;
         //Whether they have collision or not!
         bool collidable;
     
     public:
         GameObject( const StringID& id, int x, int y, bool collidable ) :
             Object ( id ), x( x ), y( y ), collidable( collidable ) {
+            direction = UP;
         }
 
         void setCollidable( bool val ) {
@@ -30,8 +34,8 @@ class GameObject : public Object {
             return y;
         }
 
-        void draw( GLuint textureId ) {
-            glBindTexture(GL_TEXTURE_2D, textureId);
+        void draw( ) {
+            glBindTexture(GL_TEXTURE_2D, textures[direction]);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 

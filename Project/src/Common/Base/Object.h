@@ -8,6 +8,8 @@
 #include <GL/glut.h>
 #endif
 
+#include <iostream>
+
 #include "Types.h"
 #include "Property.h"
 
@@ -22,9 +24,10 @@ private:
 	Table< Property > properties;
 
 protected:
+    std::vector<GLuint> textures;
 
-	Object( StringID id ) : id { id } {
-	}
+    Object( StringID id ) : id { id } {
+    }
 
     void worldCordToScreenCord(int& x, int& y) {
         x *= PIXEL_X;
@@ -36,6 +39,11 @@ public:
     StringID getID() const {
         return id;
     }
+
+    void addTexture(GLuint id) {
+        textures.push_back(id);
+    }
+
     void addProperty( StringID id, Property property ) {
     	properties.add( id, property );
     }

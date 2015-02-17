@@ -43,6 +43,8 @@ class ObjectController:
 
 		void handlePlayerAction( const InputAction& action );
 
+		void registerObjectTexture( const StringID& id, const String );
+
 		void registerBackgroundObject( const StringID& id, BackgroundObject bo );
 		void registerGameObject( const StringID& id, GameObject go );
 		void registerPlayerObject( const StringID& id, PlayerObject po );

@@ -2,12 +2,12 @@
 #define _PLAYER_OBJECT_H
 
 #include "../../../Common/Base/Object.h"
-
+#include <iostream>
 
 class PlayerObject : public Object {
         
     private:
-        enum Direction{ UP, DOWN, LEFT, RIGHT };
+        enum Direction{ UP = 0, DOWN = 1, LEFT = 2, RIGHT = 3 };
 
         //Location
         int x, y;
@@ -16,7 +16,7 @@ class PlayerObject : public Object {
     public:
         PlayerObject( const StringID& id, int x, int y ) :
             Object ( id ), x( x ), y( y ) {
-            direction = DOWN;
+            direction = UP;
         }
 
         //Get location methods
@@ -45,8 +45,9 @@ class PlayerObject : public Object {
             ++x;
         }
 
-        void draw( GLuint textureId ) {
-            glBindTexture(GL_TEXTURE_2D, textureId);
+        void draw( ) {
+            // std::cout << "drawing: " << textures[direction] << std::endl;
+            glBindTexture(GL_TEXTURE_2D, textures[direction]);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
@@ -62,14 +63,14 @@ class PlayerObject : public Object {
             glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_HEIGHT, &coord_height);
 
             glBegin(GL_QUADS);
+                glTexCoord2d(0, 1);
                 glVertex2i( coord_x, coord_y );
-                glTexCoord2d(0, 0);
+                glTexCoord2d(1, 1);
                 glVertex2i( coord_x+coord_width, coord_y );
                 glTexCoord2d(1, 0);
                 glVertex2i( coord_x+coord_width, coord_y+coord_height );
-                glTexCoord2d(1, 1);
+                glTexCoord2d(0, 0);
                 glVertex2i( coord_x, coord_y+coord_height );
-                glTexCoord2d(0, 1);
             glEnd();
         }
 };

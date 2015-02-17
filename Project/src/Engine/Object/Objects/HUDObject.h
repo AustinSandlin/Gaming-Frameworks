@@ -32,7 +32,7 @@ class HUDObject : public Object {
             value = val;
         }
 
-        void draw( GLuint textureId ) {
+        void draw( ) {
             if(debug) {
                 glDisable(GL_TEXTURE_2D);
                 glColor3f(1.0, 1.0, 1.0);
@@ -44,7 +44,7 @@ class HUDObject : public Object {
                 glEnable(GL_TEXTURE_2D);
             }
             else {
-                glBindTexture(GL_TEXTURE_2D, textureId);
+                glBindTexture(GL_TEXTURE_2D, textures[0]);
                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
@@ -70,7 +70,7 @@ class HUDObject : public Object {
                     glTexCoord2d(0, 1);
                 glEnd();
             }
-        }
+            }
 };
 
 #endif

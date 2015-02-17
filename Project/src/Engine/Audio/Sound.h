@@ -5,8 +5,12 @@
 
 #include <cstdlib>
 
+#if __APPLE__ 
 #include <OpenAL/al.h>
 #include <OpenAL/alc.h>
+#else
+//#include <GL/glut.h>
+#endif
 
 #include <iostream>
 using namespace std;
