@@ -4,8 +4,6 @@
 #include "../Base/Singleton.h"
 #include "../Base/Table.h"
 
-#include <boost/crc.hpp>
-
 class Strings:
 
 	public Singleton< Strings >,
@@ -17,16 +15,11 @@ private:
 	Strings() {
 	}
 
-	StringID hash( String string ) {
-		boost::crc_32_type result;
-		result.process_bytes( string.data(), string.length() );
-		return result.checksum();
-	}
-
 public:
 	
 	StringID intern( String string ) {
-		auto id = hash( string );
+		std::hash<String> hash_fn;
+		StringID id = hash_fn( string );
 		Table< String >::add( id, string );
 		return id;
 	}
