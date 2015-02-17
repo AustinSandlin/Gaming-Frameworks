@@ -4,7 +4,7 @@ LDFLAGS=-framework GLUT -framework OpenGL -framework OpenAL -framework Cocoa
 VPATH=../Engine/Audio:../Engine/Input:../Engine/Game:../Engine/Object:../Engine/Render
 SOURCES=Test.cpp AudioController.cpp InputController.cpp GameController.cpp ObjectController.cpp RenderController.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
-EXECUTABLE=test.exe
+EXECUTABLE=test
 
 all: $(SOURCES) $(EXECUTABLE)
 		$(MAKE) clean

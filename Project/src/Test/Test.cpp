@@ -57,6 +57,11 @@ int main(int argc, char **argv) {
 		}
 	}
 
+	object_controller.registerGameObject(string_controller.intern("OBSTACLE_1"), GameObject(string_controller.intern("OBSTACLE_1"), 12, 10, true));
+	object_controller.registerObjectTexture(string_controller.intern("OBSTACLE_1"), "../Images/black.bmp");
+	object_controller.registerGameObject(string_controller.intern("OBSTACLE_2"), GameObject(string_controller.intern("OBSTACLE_2"), 18, 10, false));
+	object_controller.registerObjectTexture(string_controller.intern("OBSTACLE_2"), "../Images/white.bmp");
+
 	object_controller.registerHUDObject(string_controller.intern("HUD_ELEMENT_1"), HUDObject(string_controller.intern("HUD_ELEMENT_1"), 30, 22, false));
 	object_controller.registerObjectTexture(string_controller.intern("HUD_ELEMENT_1"), "../Images/purple.bmp");
 
