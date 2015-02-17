@@ -1,7 +1,5 @@
 #include "ObjectController.h"
 
-#include <iostream>
-
 RenderController& ObjectController::render_controller = RenderController::instance();
 
 void ObjectController::handlePlayerAction( const InputAction& action ) {

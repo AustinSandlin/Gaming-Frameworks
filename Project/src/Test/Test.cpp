@@ -4,6 +4,7 @@
 #include "../Engine/Object/ObjectController.h"
 
 #include <iostream>
+#include <sstream>
 
 int main(int argc, char **argv) {
 
@@ -29,7 +30,10 @@ int main(int argc, char **argv) {
 
 	for(int i = 0; i < 64; ++i) {
 		for(int j = 0; j < 48; ++j) {
-			String name = "BACKGROUND_TILE_" + std::to_string(i) + "_" + std::to_string(j);
+			std::stringstream ss;
+            ss << "BACKGROUND_TILE_" << i << "_" << j;
+            String name = ss.str();
+			// String name = "BACKGROUND_TILE_" + std::to_string(i) + "_" + std::to_string(j);
 			object_controller.registerBackgroundObject(string_controller.intern(name), BackgroundObject(string_controller.intern(name), i, j));
 			if((i+j) % 2 == 1) {
 				object_controller.registerObjectTexture(string_controller.intern(name), "../Images/green.bmp");
@@ -42,8 +46,11 @@ int main(int argc, char **argv) {
 
 	for(int i = 0; i < 32; ++i) {
 		for(int j = 0; j < 24; ++j) {
-			if(i == 0 || j == 0 || i == 31 || j == 23) {	
-				String name = "WALL_" + std::to_string(i) + " " + std::to_string(j);
+			if(i == 0 || j == 0 || i == 31 || j == 23) {
+				std::stringstream ss;
+	            ss << "WALL_" << i << "_" << j;
+	            String name = ss.str();
+				// String name = "WALL_" + std::to_string(i) + "_" + std::to_string(j);
 				object_controller.registerGameObject(string_controller.intern(name), GameObject(string_controller.intern(name), i, j, true));
 				object_controller.registerObjectTexture(string_controller.intern(name), "../Images/red.bmp");
 			}
