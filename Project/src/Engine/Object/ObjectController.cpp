@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+RenderController& ObjectController::render_controller = RenderController::instance();
+
 void ObjectController::handlePlayerAction( const InputAction& action ) {
     TableIterator<PlayerObject> it = player_objects.begin();
     while(it != player_objects.end()) {
@@ -135,79 +137,107 @@ bool ObjectController::canMoveRightPlayer( const StringID id ) {
     return !coll;
 }
 
-int ObjectController::getObjectLocationX( const StringID id ) {
-    int ret = -1;
-    if(player_objects.has(id)) {
-        ret = player_objects.get(id).getValue().getX();
-    }
-    if(game_objects.has(id)) {
-        ret = game_objects.get(id).getValue().getX();
-    }
-    if(background_objects.has(id)) {
-        ret = background_objects.get(id).getValue().getX();
-    }
-    if(hud_objects.has(id)) {
-        ret = hud_objects.get(id).getValue().getX();
-    }
+void ObjectController::drawObjects() {
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    return ret;
-}
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
 
-int ObjectController::getObjectLocationY( const StringID id ) {
-    int ret = -1;
-
-    if(player_objects.has(id)) {
-        ret = player_objects.get(id).getValue().getY();
-    }
-    if(game_objects.has(id)) {
-        ret = game_objects.get(id).getValue().getY();
-    }
-    if(background_objects.has(id)) {
-        ret = background_objects.get(id).getValue().getY();
-    }
-    if(hud_objects.has(id)) {
-        ret = hud_objects.get(id).getValue().getY();
-    }
-
-    return ret;
-}
-
-std::queue<StringID> ObjectController::queueObjects() {
-    std::queue<StringID> ret;
-
-    //The order this is done is important! Background first, then objects, then players, then HUD.
     TableIterator<BackgroundObject> it1 = background_objects.begin();
     while(it1 != background_objects.end()) {
-        ret.push(it1.getValue().getID());
+        it1.getValue().draw(render_controller.getTextureID(it1.getValue().getID()));
         ++it1;
     }
     TableIterator<GameObject> it2 = game_objects.begin();
     while(it2 != game_objects.end()) {
-        ret.push(it2.getValue().getID());
+        it2.getValue().draw(render_controller.getTextureID(it2.getValue().getID()));
         ++it2;
     }
     TableIterator<PlayerObject> it3 = player_objects.begin();
     while(it3 != player_objects.end()) {
-        ret.push(it3.getValue().getID());
+        it3.getValue().draw(render_controller.getTextureID(it3.getValue().getID()));
         ++it3;
     }
     TableIterator<HUDObject> it4 = hud_objects.begin();
     while(it4 != hud_objects.end()) {
-        ret.push(it4.getValue().getID());
+        it4.getValue().draw(render_controller.getTextureID(it4.getValue().getID()));
         ++it4;
     }
-
-    return ret;
-}
-
-std::queue<HUDObject> ObjectController::queueDebugs() {
-    std::queue<HUDObject> ret;
-
-    TableIterator<HUDObject> it1 = debug_objects.begin();
-    while(it1 != debug_objects.end()) {
-        ret.push(it1.getValue());
-        ++it1;
+    TableIterator<HUDObject> it5 = debug_objects.begin();
+    while(it5 != debug_objects.end()) {
+        it5.getValue().draw(render_controller.getTextureID(it5.getValue().getID()));
+        ++it5;
     }
 
-    return ret;
+    glutSwapBuffers();
 }
+
+// void ObjectController::drawObject( const StringID id, GLuint texid ) {
+//     bool drawn = false;
+
+//     TableIterator<BackgroundObject> it1 = background_objects.begin();
+//     while(it1 != background_objects.end() && !drawn) {
+//         if(it1.getValue().getID() == id) it1.getValue().draw(texid);
+//         ++it1;
+//     }
+//     TableIterator<GameObject> it2 = game_objects.begin();
+//     while(it2 != game_objects.end() && !drawn) {
+//         if(it2.getValue().getID() == id) it2.getValue().draw(texid);
+//         ++it2;
+//     }
+//     TableIterator<PlayerObject> it3 = player_objects.begin();
+//     while(it3 != player_objects.end() && !drawn) {
+//         if(it3.getValue().getID() == id) it3.getValue().draw(texid);
+//         ++it3;
+//     }
+//     TableIterator<HUDObject> it4 = hud_objects.begin();
+//     while(it4 != hud_objects.end() && !drawn) {
+//         if(it4.getValue().getID() == id) it4.getValue().draw(texid);
+//         ++it4;
+//     }
+//     TableIterator<HUDObject> it5 = debug_objects.begin();
+//     while(it5 != debug_objects.end() && !drawn) {
+//         if(it5.getValue().getID() == id) it5.getValue().draw(texid);
+//         ++it5;
+//     }
+// }
+
+// std::queue<StringID> ObjectController::queueObjects() {
+//     std::queue<StringID> ret;
+
+//     //The order this is done is important! Background first, then objects, then players, then HUD.
+//     TableIterator<BackgroundObject> it1 = background_objects.begin();
+//     while(it1 != background_objects.end()) {
+//         ret.push(it1.getValue().getID());
+//         ++it1;
+//     }
+//     TableIterator<GameObject> it2 = game_objects.begin();
+//     while(it2 != game_objects.end()) {
+//         ret.push(it2.getValue().getID());
+//         ++it2;
+//     }
+//     TableIterator<PlayerObject> it3 = player_objects.begin();
+//     while(it3 != player_objects.end()) {
+//         ret.push(it3.getValue().getID());
+//         ++it3;
+//     }
+//     TableIterator<HUDObject> it4 = hud_objects.begin();
+//     while(it4 != hud_objects.end()) {
+//         ret.push(it4.getValue().getID());
+//         ++it4;
+//     }
+
+//     return ret;
+// }
+
+// std::queue<StringID> ObjectController::queueDebugs() {
+//     std::queue<StringID> ret;
+
+//     TableIterator<HUDObject> it1 = debug_objects.begin();
+//     while(it1 != debug_objects.end()) {
+//         ret.push(it1.getValue().getID());
+//         ++it1;
+//     }
+
+//     return ret;
+// }

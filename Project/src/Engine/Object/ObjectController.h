@@ -11,9 +11,9 @@
 #include "Objects/BackgroundObject.h"
 #include "Objects/HUDObject.h"
 
-#include <queue>
+#include "../Render/RenderController.h"
 
-static Strings& ObjectStrController = Strings::instance();
+#include <queue>
 
 class ObjectController:
 	
@@ -22,6 +22,8 @@ class ObjectController:
 	private:
 
 		friend class Singleton< ObjectController >;
+		static RenderController& render_controller;
+		
 		Table< BackgroundObject > background_objects;
 		Table< PlayerObject > player_objects;
 		Table< GameObject > game_objects;
@@ -49,11 +51,8 @@ class ObjectController:
 		void registerDebugObject( const StringID& id, HUDObject ho );
 		void assignDebugValue( const StringID& id, int* ptr );
 
-		int getObjectLocationX( const StringID );
-		int getObjectLocationY( const StringID );
-
-		std::queue<StringID> queueObjects();
-		std::queue<HUDObject> queueDebugs();
+		void drawObjects();
+		// void drawObjects( const StringID id, GLuint texid );
 };
 
 #endif

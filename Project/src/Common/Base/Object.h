@@ -1,7 +1,18 @@
 #ifndef _OBJECT_H
 #define _OBJECT_H
 
+#if __APPLE__
+#include <OpenGL/OpenGL.h>
+#include <GLUT/glut.h>
+#else
+#include <GL/glut.h>
+#endif
+
+#include "Types.h"
 #include "Property.h"
+
+const int PIXEL_X = 32;
+const int PIXEL_Y = 32;
 
 class Object {
 
@@ -14,6 +25,11 @@ protected:
 
 	Object( StringID id ) : id { id } {
 	}
+
+    void worldCordToScreenCord(int& x, int& y) {
+        x *= PIXEL_X;
+        y *= PIXEL_Y;
+    }
 
 public:
 	

@@ -6,7 +6,8 @@ RenderController& GameController::render_controller = RenderController::instance
 GameController& GameController::game_controller = GameController::instance();
 
 void GameController::renderDisplayCallback() {
-    render_controller.renderScreen(object_controller.queueObjects(), object_controller.queueDebugs());
+    object_controller.drawObjects();
+    //render_controller.renderScreen(object_controller.queueObjects(), object_controller.queueDebugs());
 }
 
 void GameController::handleInputEvent( const StringID& id ) {
@@ -61,7 +62,6 @@ void GameController::updateGameLoop(int value) {
     if ( difftime(currentTime, lastTime) >= 1.0 ){ // If last prinf() was more than 1 sec ago
         // printf and reset timer
         fps = numFrames;
-
         numFrames = 0;
         lastTime += 1.0;
     }

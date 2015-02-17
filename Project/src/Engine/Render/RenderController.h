@@ -13,14 +13,7 @@
 #include "../../Common/Base/Types.h"
 #include "Image.h"
 
-#include "../Object/ObjectController.h"
-
 #include <iostream>
-
-static ObjectController& object_controller = ObjectController::instance();
-
-const int PIXEL_X = 32;
-const int PIXEL_Y = 32;
 
 class RenderController:
 	
@@ -35,22 +28,14 @@ class RenderController:
 
 		}
 
-		void worldCordToScreenCord(int& x, int& y) {
-			x *= PIXEL_X;
-			y *= PIXEL_Y;
-		}
-
         Image* loadBMP(const char* filename);
-
-		void renderObjects( std::queue< StringID > objs );
-		void renderDebugs( std::queue< HUDObject > huds );
 	
 	public:
 
 		void registerObjectTexture( StringID, String );
+		GLuint getTextureID( StringID );
 
 		void prepareScreen( int x, int y, String name );
-		void renderScreen( std::queue< StringID > objs, std::queue< HUDObject > huds );
 };
 
 #endif

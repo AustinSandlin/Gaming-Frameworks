@@ -51,16 +51,10 @@ int main(int argc, char **argv) {
 		}
 	}
 
-	object_controller.registerHUDObject(string_controller.intern("HUD_ELEMENT_1"), HUDObject(string_controller.intern("HUD_ELEMENT_1"), 30, 22));
+	object_controller.registerHUDObject(string_controller.intern("HUD_ELEMENT_1"), HUDObject(string_controller.intern("HUD_ELEMENT_1"), 30, 22, false));
 	render_controller.registerObjectTexture(string_controller.intern("HUD_ELEMENT_1"), "../Images/purple.bmp");
-	object_controller.registerHUDObject(string_controller.intern("HUD_ELEMENT_2"), HUDObject(string_controller.intern("HUD_ELEMENT_2"), 31, 22));
-	render_controller.registerObjectTexture(string_controller.intern("HUD_ELEMENT_2"), "../Images/purple.bmp");
-	object_controller.registerHUDObject(string_controller.intern("HUD_ELEMENT_3"), HUDObject(string_controller.intern("HUD_ELEMENT_3"), 30, 23));
-	render_controller.registerObjectTexture(string_controller.intern("HUD_ELEMENT_3"), "../Images/purple.bmp");
-	object_controller.registerHUDObject(string_controller.intern("HUD_ELEMENT_4"), HUDObject(string_controller.intern("HUD_ELEMENT_4"), 31, 23));
-	render_controller.registerObjectTexture(string_controller.intern("HUD_ELEMENT_4"), "../Images/purple.bmp");
 
-	object_controller.registerDebugObject(string_controller.intern("FPS_COUNTER"), HUDObject(string_controller.intern("FPS_COUNTER"), 990, 744));
+	object_controller.registerDebugObject(string_controller.intern("FPS_COUNTER"), HUDObject(string_controller.intern("FPS_COUNTER"), 990, 744, true));
 	game_controller.registerDebugValue(string_controller.intern("FPS_COUNTER"), FPS);
 
 	object_controller.registerPlayerObject(string_controller.intern("PLAYER1"), PlayerObject(string_controller.intern("PLAYER1"), 5, 5));

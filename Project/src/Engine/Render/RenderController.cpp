@@ -22,6 +22,14 @@ void RenderController::registerObjectTexture( StringID id, String path ) {
 	//Load texture into opengl.
 }
 
+GLuint RenderController::getTextureID( StringID id ) {
+    GLuint ret = -1;
+    if(texture_paths.has(id)) {
+        ret = texture_paths.get(id).getValue();
+    }
+    return ret;
+}
+
 void RenderController::prepareScreen( int x, int y, String name ) {
 	glutInitWindowSize(x, y);
     glutInitWindowPosition(0, 0);
@@ -34,75 +42,6 @@ void RenderController::prepareScreen( int x, int y, String name ) {
 
     gluOrtho2D(0, glutGet(GLUT_WINDOW_WIDTH), 0, glutGet(GLUT_WINDOW_HEIGHT));
 }
-
-void RenderController::renderScreen( std::queue< StringID > objs, std::queue< HUDObject > huds ) {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-
-    renderObjects(objs);
-    renderDebugs(huds);
-
-    glutSwapBuffers();
-}
-
-void RenderController::renderObjects( std::queue< StringID > objs ) {
-    glEnable(GL_TEXTURE_2D);
-    while(!objs.empty()) {
-        //LOAD IMAGE STUFF
-        if(!texture_paths.has(objs.front())) {
-            objs.pop();
-            continue;
-        }
-
-        GLuint textureId = texture_paths.get(objs.front()).getValue();
-
-		//Enables textures and binds the smiley face to the texture.
-		glBindTexture(GL_TEXTURE_2D, textureId);
-
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-		//Texture stuff.
-
-		//======================================================================
-		int x = object_controller.getObjectLocationX(objs.front());
-		int y = object_controller.getObjectLocationY(objs.front());
-
-		worldCordToScreenCord(x, y);
-
-        glBegin(GL_QUADS);
-    		glVertex2i( x, y );
-    		glTexCoord2d(0, 0);
-    		glVertex2i( x+PIXEL_X, y );
-    		glTexCoord2d(1, 0);
-    		glVertex2i( x+PIXEL_X, y+PIXEL_Y );
-    		glTexCoord2d(1, 1);
-    		glVertex2i( x, y+PIXEL_Y );
-    		glTexCoord2d(0, 1);
-        glEnd();
-		//======================================================================
-		objs.pop();
-	}
-    glDisable(GL_TEXTURE_2D);
-}
-
-void RenderController::renderDebugs( std::queue< HUDObject > huds ) {
-    while(!huds.empty()) {
-        // glPushAttrib(GL_CURRENT_BIT);
-        glColor3f( 1.0, 1.0, 1.0 );
-
-        string output = std::to_string(huds.front().getValue());
-        for (int i = 0; i < output.length(); ++i) {
-            glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, output[i]);
-        }
-
-        glRasterPos2f(huds.front().getX(), huds.front().getY());
-        // glPopAttrib();
-        huds.pop();
-    }   
-}
-
 
 Image* RenderController::loadBMP(const char* filename) {
     ifstream input;
