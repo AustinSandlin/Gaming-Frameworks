@@ -35,7 +35,7 @@ class HUDObject : public Object {
                 ss << *value;
                 String output = ss.str();
                 //String output = std::to_string(*value);
-                for (int i = 0; i < output.length(); ++i) {
+                for (unsigned int i = 0; i < output.length(); ++i) {
                     glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, output[i]);
                 }
                 glRasterPos2f(x, y);
