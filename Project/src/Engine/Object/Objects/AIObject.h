@@ -1,23 +1,28 @@
-#ifndef _PLAYER_OBJECT_H
-#define _PLAYER_OBJECT_H
+#ifndef _AI_OBJECT_H
+#define _AI_OBJECT_H
 
 #include "../../../Common/Base/Object.h"
 #include <iostream>
 
-class PlayerObject : public Object {
+class AIObject : public Object {
         
     private:
 
+        //Location
         int velocity;
         EntityState state;
+        AIType type;
 
     public:
-        PlayerObject( const StringID& id, int x, int y, int width, int height ) :
-            Object ( id, x, y, height, width ) {
+        AIObject( const StringID& id, int x, int y, int width, int height, AIType t ) :
+            Object ( id, x, y, height, width ), type { t } {
             state = FACING_UP;
             velocity = 8;
         }
 
+        AIType getType() {
+            return type;
+        }
         EntityState getState() {
             return state;
         }
@@ -29,16 +34,18 @@ class PlayerObject : public Object {
         }
 
         void update() {
-            switch(state) {
-                case FACING_UP: y += velocity; break;
-                case FACING_DOWN: y -= velocity; break;
-                case FACING_LEFT: x -= velocity; break;
-                case FACING_RIGHT: x += velocity; break;
-                default: break;
+            if(type == WANDER) {
+                switch(state) {
+                    case FACING_UP: y += velocity; break;
+                    case FACING_DOWN: y -= velocity; break;
+                    case FACING_LEFT: x -= velocity; break;
+                    case FACING_RIGHT: x += velocity; break;
+                    default: break;
+                }
             }
         }
 
-        void draw() {
+        void draw( ) {
             // std::cout << "drawing: " << textures[direction] << std::endl;
             glBindTexture(GL_TEXTURE_2D, textures[state]);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);

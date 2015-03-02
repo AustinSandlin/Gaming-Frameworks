@@ -9,29 +9,22 @@
 #endif
 
 #include <iostream>
-
 #include "Types.h"
-#include "Property.h"
-
-const int PIXEL_X = 32;
-const int PIXEL_Y = 32;
 
 class Object {
 
 private:
 
 	StringID id;
-	Table< Property > properties;
 
 protected:
+
+    int x, y;
+    int height, width;
+
     std::vector<GLuint> textures;
 
-    Object( StringID id ) : id { id } {
-    }
-
-    void worldCordToScreenCord(int& x, int& y) {
-        x *= PIXEL_X;
-        y *= PIXEL_Y;
+    Object( StringID id, int x, int y, int height, int width ) : id { id }, x { x }, y { y }, height { height }, width { width } {
     }
 
 public:
@@ -40,21 +33,28 @@ public:
         return id;
     }
 
-    void addTexture(GLuint id) {
-        textures.push_back(id);
+    int getX() {
+        return x;
+    }
+    
+    int getY() {
+        return y;
     }
 
-    void addProperty( StringID id, Property property ) {
-    	properties.add( id, property );
+    int getHeight() {
+        return height;
     }
-    void removeProperty( StringID id ) {
-    	properties.remove( id );
+
+    int getWidth() {
+        return width;
     }
-    bool hasProperty( StringID id ) const {
-    	return properties.has( id );
+
+    StringID getID() {
+        return id;
     }
-    Property & getProperty( StringID id ) {
-		return properties.get( id ).getValue();
+
+    void addTexture(GLuint id) {
+        textures.push_back(id);
     }
 };
 

@@ -8,33 +8,33 @@ void ObjectController::handlePlayerAction( const InputAction& action ) {
     TableIterator<PlayerObject> it = player_objects.begin();
     while(it != player_objects.end()) {
         switch(action) {
-            case UP:
-                if(canMoveUpPlayer( it.getValue().getID() )) {
-                    it.getValue().moveUp();
+            case MOVE_UP:
+                if(canPlayerMove( it.getValue().getID(), UP )) {
+                    it.getValue().setState(FACING_UP);
                 }
                 else {
                     audio_controller.playSound( "../Sounds/buzzer.wav" );
                 }
                 break;
-            case DOWN:
-                if(canMoveDownPlayer( it.getValue().getID() )) {
-                    it.getValue().moveDown();
+            case MOVE_DOWN:
+                if(canPlayerMove( it.getValue().getID(), DOWN )) {
+                    it.getValue().setState(FACING_DOWN);
                 }
                 else {
                     audio_controller.playSound( "../Sounds/buzzer.wav" );
                 }
                 break;
-            case LEFT:
-                if(canMoveLeftPlayer( it.getValue().getID() )) {
-                    it.getValue().moveLeft();
+            case MOVE_LEFT:
+                if(canPlayerMove( it.getValue().getID(), LEFT )) {
+                    it.getValue().setState(FACING_LEFT);
                 }
                 else {
                     audio_controller.playSound( "../Sounds/buzzer.wav" );
                 }
                 break;
-            case RIGHT:
-                if(canMoveRightPlayer( it.getValue().getID() )) {
-                    it.getValue().moveRight();
+            case MOVE_RIGHT:
+                if(canPlayerMove( it.getValue().getID(), RIGHT )) {
+                    it.getValue().setState(FACING_RIGHT);
                 }
                 else {
                     audio_controller.playSound( "../Sounds/buzzer.wav" );
@@ -64,6 +64,10 @@ void ObjectController::registerObjectTexture( const StringID& id, const String p
     }
 }
 
+void ObjectController::registerAIObject( const StringID& id, AIObject ai ) {
+    ai_objects.add( id, ai );
+}
+
 void ObjectController::registerBackgroundObject( const StringID& id, BackgroundObject bo ) {
     background_objects.add( id, bo );
 }
@@ -90,72 +94,71 @@ void ObjectController::assignDebugValue( const StringID& id, int* ptr ) {
     }
 }
 
-bool ObjectController::canMoveUpPlayer( const StringID id ) {
+bool ObjectController::doesSquareCollide( int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4 ) {
     bool coll = false;
 
-    PlayerObject player = player_objects.get( id ).getValue();
+    if((y1 < (y3+y4)) && ((y1+y2) > y3) && ((x1+x2) > x3) && (x1 < (x3+x4))) {
+        coll = true;
+    }
 
-    TableIterator<GameObject> it = game_objects.begin();
-    while(it != game_objects.end() && !coll) {
-        if(it.getValue().getX() == player.getX() &&
-           it.getValue().getY() == (player.getY()+1)) {
-            coll = it.getValue().getCollidable();
+    return coll;
+}
+
+bool ObjectController::canPlayerMove( const StringID id, Direction dir ) {
+    bool coll = false;
+
+    PlayerObject player = player_objects.get(id).getValue();
+    int testX = player.getX();
+    int testY = player.getY();
+
+    //Determine the new entity state and change the test directions.
+    //CHANGE TO VELOCITY WHEN CHANCE
+    switch(dir) {
+        case UP: testY += player.getVelocity(); break;
+        case DOWN: testY -= player.getVelocity(); break;
+        case LEFT: testX -= player.getVelocity(); break;
+        case RIGHT: testX += player.getVelocity(); break;
+        default: break;
+    }
+
+    TableIterator<GameObject> it1 = game_objects.begin();
+    while(it1 != game_objects.end() && !coll) {
+        if(it1.getValue().getCollidable() &&
+           doesSquareCollide(testX, testY, player.getWidth(), player.getHeight(),
+                             it1.getValue().getX(), it1.getValue().getY(),
+                             it1.getValue().getWidth(), it1.getValue().getHeight())) {
+            coll = true;
         }
-        ++it;
+        ++it1;
+    }
+    TableIterator<AIObject> it2 = ai_objects.begin();
+    while(it2 != ai_objects.end() && !coll) {
+        if(doesSquareCollide(testX, testY, player.getWidth(), player.getHeight(),
+                             it2.getValue().getX(), it2.getValue().getY(),
+                             it2.getValue().getWidth(), it2.getValue().getHeight())) {
+            coll = true;
+        }
+        ++it2;
     }
 
     return !coll;
 }
 
-bool ObjectController::canMoveDownPlayer( const StringID id ) {
-    bool coll = false;
+//bool ObjectController::canAIMove( const StringID id, Direction dir ) {
 
-    PlayerObject player = player_objects.get( id ).getValue();
+//}
 
-    TableIterator<GameObject> it = game_objects.begin();
-    while(it != game_objects.end() && !coll) {
-        if(it.getValue().getX() == player.getX() &&
-           it.getValue().getY() == (player.getY()-1)) {
-            coll = it.getValue().getCollidable();
-        }
-        ++it;
+void ObjectController::updateEntitys() {
+    TableIterator<AIObject> it1 = ai_objects.begin();
+    while(it1 != ai_objects.end()) {
+        it1.getValue().update();
+        ++it1;
     }
-
-    return !coll;
-}
-
-bool ObjectController::canMoveLeftPlayer( const StringID id ) {
-    bool coll = false;
-
-    PlayerObject player = player_objects.get( id ).getValue();
-
-    TableIterator<GameObject> it = game_objects.begin();
-    while(it != game_objects.end() && !coll) {
-        if(it.getValue().getX() == (player.getX()-1) &&
-           it.getValue().getY() == player.getY()) {
-            coll = it.getValue().getCollidable();
-        }
-        ++it;
+    TableIterator<PlayerObject> it2 = player_objects.begin();
+    while(it2 != player_objects.end()) {
+        it2.getValue().update();
+        ++it2;
     }
-
-    return !coll;
-}
-
-bool ObjectController::canMoveRightPlayer( const StringID id ) {
-    bool coll = false;
-
-    PlayerObject player = player_objects.get( id ).getValue();
-
-    TableIterator<GameObject> it = game_objects.begin();
-    while(it != game_objects.end() && !coll) {
-        if(it.getValue().getX() == (player.getX()+1) &&
-           it.getValue().getY() == player.getY()) {
-            coll = it.getValue().getCollidable();
-        }
-        ++it;
-    }
-
-    return !coll;
 }
 
 void ObjectController::drawObjects() {
@@ -174,20 +177,25 @@ void ObjectController::drawObjects() {
         it2.getValue().draw();
         ++it2;
     }
-    TableIterator<PlayerObject> it3 = player_objects.begin();
-    while(it3 != player_objects.end()) {
+    TableIterator<AIObject> it3 = ai_objects.begin();
+    while(it3 != ai_objects.end()) {
         it3.getValue().draw();
         ++it3;
     }
-    TableIterator<HUDObject> it4 = hud_objects.begin();
-    while(it4 != hud_objects.end()) {
+    TableIterator<PlayerObject> it4 = player_objects.begin();
+    while(it4 != player_objects.end()) {
         it4.getValue().draw();
         ++it4;
     }
-    TableIterator<HUDObject> it5 = debug_objects.begin();
-    while(it5 != debug_objects.end()) {
+    TableIterator<HUDObject> it5 = hud_objects.begin();
+    while(it5 != hud_objects.end()) {
         it5.getValue().draw();
         ++it5;
+    }
+    TableIterator<HUDObject> it6 = debug_objects.begin();
+    while(it6 != debug_objects.end()) {
+        it6.getValue().draw();
+        ++it6;
     }
 
     glutSwapBuffers();

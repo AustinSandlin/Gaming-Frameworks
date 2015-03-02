@@ -10,9 +10,11 @@
 
 #include "../../Common/Base/Singleton.h"
 #include "../../Common/Base/Types.h"
-#include "Image.h"
 
+#include <fstream>
 #include <iostream>
+
+using namespace std;
 
 class RenderController:
 	

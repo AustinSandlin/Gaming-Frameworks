@@ -12,32 +12,11 @@ typedef std::string String;
 typedef long TimeStamp;
 
 //Enumerated Actions. More to follow?
-enum InputAction : int { UP, DOWN, LEFT, RIGHT, QUIT };
+enum Direction : int { UP, DOWN, LEFT, RIGHT };
+enum InputAction : int { MOVE_UP, MOVE_DOWN, MOVE_LEFT, MOVE_RIGHT, QUIT, ATTACK };
 enum SoundAction : int { PLAY, STOP };
-enum DebugValue : int { FPS };
-
-/*
-enum TypeName : int { BOOLEAN, CHAR, SHORT, INT, LONG };
-=======
-enum TypeName : int {
-	BOOLEAN_TYPE,
-	CHARACTER_TYPE,
-	SHORT_TYPE,
-	INTEGER_TYPE,
-	LONG_TYPE,
-	FLOAT_TYPE,
-	DOUBLE_TYPE
-};
->>>>>>> Stashed changes
-union TypeValue {
-	bool	Boolean;
-	char	Character;
-	short	Short;
-	int		Integer;
-	long	Long;
-	float	Float;
-	double	Double;
-};
-*/
+enum DebugValue : int { FPS, PLAYER_HEALTH };
+enum EntityState : int { FACING_UP, FACING_DOWN, FACING_LEFT, FACING_RIGHT, ATTACKING };
+enum AIType : int { WANDER };
 
 #endif

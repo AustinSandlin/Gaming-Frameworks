@@ -10,13 +10,23 @@ void RenderController::prepareScreen( int x, int y, String name ) {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 
+    glEnable(GL_BLEND);
+    glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
+
     gluOrtho2D(0, glutGet(GLUT_WINDOW_WIDTH), 0, glutGet(GLUT_WINDOW_HEIGHT));
 }
 
 GLuint RenderController::loadBMP(const char* filename) {
+    cout << filename << ": ";
     ifstream input;
     input.open(filename, ifstream::binary);
-    assert(!input.fail() || !"Could not find file");
+    if(!input) {
+        input.close();
+        input.clear();
+        cout << "file not found" << endl;
+        exit(1);
+    }
+
     input.ignore(10);
 
     char buffer[4];
@@ -33,12 +43,16 @@ GLuint RenderController::loadBMP(const char* filename) {
                           ((unsigned char)buffer[1] << 8) |
                           (unsigned char)buffer[0]);
 
+    //std::cout << headerSize << std::endl;
+    if( headerSize != 40 ) {
+        input.close();
+        input.clear();
+        cout << "wrong header size (need 56 bit header)" << endl;
+        exit(1);
+    }
+
     int width;
     int height;
-    // std::cout << headerSize << std::endl;
-    if( headerSize != 40 ) {
-        assert(!"Need BITMAPV3INFOHEADER. (56 bit header)");
-    }
     input.read(buffer, 4);
     width = (int)(((unsigned char)buffer[3] << 24) |
             ((unsigned char)buffer[2] << 16) |
@@ -49,28 +63,28 @@ GLuint RenderController::loadBMP(const char* filename) {
             ((unsigned char)buffer[2] << 16) |
             ((unsigned char)buffer[1] << 8) |
             (unsigned char)buffer[0]);
-    input.ignore(6);
 
     //Read the data
-    int bytesPerRow = ((width * 3 + 3) / 4) * 4 - (width * 3 % 4);
+    int bytesPerRow = (width * 4);
     int size = bytesPerRow * height;
-    auto_array<char> pixels(new char[size]);
+    char* pixels = new char[size];
     input.seekg(dataOffset, ios_base::beg);
-    input.read(pixels.get(), size);
+    input.read(pixels, size);
     
     //Get the data into the right format
-    auto_array<char> pixels2(new char[width * height * 3]);
-    for(int y = 0; y < height; y++) {
-        for(int x = 0; x < width; x++) {
-            for(int c = 0; c < 3; c++) {
-                pixels2[3 * (width * y + x) + c] =
-                    pixels[bytesPerRow * y + 3 * x + (2 - c)];
+    for(int y = 0; y < height; ++y) {
+        for(int x = 0; x < width; ++x) {
+            for(int c = 0; c < 3; ++c) {
+                //Swap the blue and red bytes. (BGRA -> RGBA)
+                pixels[bytesPerRow * y + 4 * x + 0] ^= pixels[bytesPerRow * y + 4 * x + 2];
+                pixels[bytesPerRow * y + 4 * x + 2] ^= pixels[bytesPerRow * y + 4 * x + 0];
+                pixels[bytesPerRow * y + 4 * x + 0] ^= pixels[bytesPerRow * y + 4 * x + 2];
             }
         }
     }
 
     input.close();
-
+    input.clear();
 
     // Load new-fangled texture.
     GLuint textureID;
@@ -79,12 +93,14 @@ GLuint RenderController::loadBMP(const char* filename) {
 
     glTexImage2D(GL_TEXTURE_2D,
                  0,
-                 GL_RGB,
+                 GL_RGBA,
                  width, height,
                  0,
-                 GL_RGB,
+                 GL_RGBA,
                  GL_UNSIGNED_BYTE,
-                 pixels2.release());
+                 pixels);
+
+    cout << "loaded" << endl;
 
     //Return the texture id for purposes.
     return textureID;

@@ -6,8 +6,9 @@
 #include "../../Common/Base/Queue.h"
 #include "../../Common/Resources/Strings.h"
 
-#include "Objects/GameObject.h"
 #include "Objects/PlayerObject.h"
+#include "Objects/AIObject.h"
+#include "Objects/GameObject.h"
 #include "Objects/BackgroundObject.h"
 #include "Objects/HUDObject.h"
 
@@ -26,6 +27,7 @@ class ObjectController:
 		static RenderController& render_controller;
 		static AudioController& audio_controller;
 		
+		Table< AIObject > ai_objects;
 		Table< BackgroundObject > background_objects;
 		Table< PlayerObject > player_objects;
 		Table< GameObject > game_objects;
@@ -36,10 +38,9 @@ class ObjectController:
 		ObjectController() {
 		}
 
-		bool canMoveUpPlayer( const StringID id );
-		bool canMoveDownPlayer( const StringID id );
-		bool canMoveLeftPlayer( const StringID id );
-		bool canMoveRightPlayer( const StringID id );
+		bool doesSquareCollide( int, int, int, int, int, int, int, int );
+
+		bool canPlayerMove( const StringID id, Direction dir);
 	
 	public:
 
@@ -47,6 +48,7 @@ class ObjectController:
 
 		void registerObjectTexture( const StringID& id, const String );
 
+		void registerAIObject( const StringID& id, AIObject ai );
 		void registerBackgroundObject( const StringID& id, BackgroundObject bo );
 		void registerGameObject( const StringID& id, GameObject go );
 		void registerPlayerObject( const StringID& id, PlayerObject po );
@@ -55,8 +57,9 @@ class ObjectController:
 		void registerDebugObject( const StringID& id, HUDObject ho );
 		void assignDebugValue( const StringID& id, int* ptr );
 
+		void updateEntitys();
+		void resetEntitys();
 		void drawObjects();
-		// void drawObjects( const StringID id, GLuint texid );
 };
 
 #endif

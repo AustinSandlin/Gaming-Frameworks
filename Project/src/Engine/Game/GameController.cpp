@@ -18,7 +18,7 @@ void GameController::handleInputEvent( const StringID& id ) {
     //Grab the appropriate input action.
     InputAction action = (input_action_table.get(id)).getValue();
     //Do something based on that input.
-    if(action == UP || action == DOWN || action == LEFT || action == RIGHT) {
+    if(action == MOVE_UP || action == MOVE_DOWN || action == MOVE_LEFT || action == MOVE_RIGHT) {
         object_controller.handlePlayerAction(action);
     }
 
@@ -30,6 +30,7 @@ void GameController::handleInputEvent( const StringID& id ) {
 void GameController::registerInputAction( const StringID& id, const InputAction action ) {
     input_action_table.add(id, action);
 }
+
 void GameController::registerDebugValue( const StringID& id, const DebugValue dval ) {
     if( dval == FPS ) {
         int* temp = &fps;
@@ -73,6 +74,7 @@ void GameController::updateGameLoop(int value) {
         inputEvents.pop();
     }
 
+    object_controller.updateEntitys();
     glutPostRedisplay();
 
     glutTimerFunc(20, updateTimerCallback, 0);
