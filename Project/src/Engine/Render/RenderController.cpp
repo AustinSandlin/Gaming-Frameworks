@@ -17,13 +17,12 @@ void RenderController::prepareScreen( int x, int y, String name ) {
 }
 
 GLuint RenderController::loadBMP(const char* filename) {
-    cout << filename << ": ";
+    //cout << filename << ": ";
     ifstream input;
     input.open(filename, ifstream::binary);
     if(!input) {
-        input.close();
         input.clear();
-        cout << "file not found" << endl;
+        //cout << "file not found" << endl;
         exit(1);
     }
 
@@ -47,7 +46,7 @@ GLuint RenderController::loadBMP(const char* filename) {
     if( headerSize != 40 ) {
         input.close();
         input.clear();
-        cout << "wrong header size (need 56 bit header)" << endl;
+        //cout << "wrong header size (need 56 bit header)" << endl;
         exit(1);
     }
 
@@ -100,7 +99,7 @@ GLuint RenderController::loadBMP(const char* filename) {
                  GL_UNSIGNED_BYTE,
                  pixels);
 
-    cout << "loaded" << endl;
+    //cout << "loaded" << endl;
 
     //Return the texture id for purposes.
     return textureID;
