@@ -22,7 +22,13 @@ int main(int argc, char **argv) {
 	// Load Sounds
 	// ==========
 
-    audio_controller.addSound( "collision", "../Sounds/buzzer.wav" );
+	try {
+	    audio_controller.addSound( "collision", "../Sounds/buzzer.wav" );
+	    audio_controller.addSound( "background", "../Sounds/elevator.wav");
+	}
+	catch ( const char * error ) {
+		cout << error << endl;
+	}
 
 	// ==========
 	// Action Register Test

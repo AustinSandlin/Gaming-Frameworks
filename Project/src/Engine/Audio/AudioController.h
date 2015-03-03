@@ -27,6 +27,7 @@ class AudioController:
 		void removeSound( String name );
 		void playSound( String name, bool looping = false );
 		void stopSound( String name );
+		bool isPlayingSound( String name );
 };
 
 #endif

@@ -24,6 +24,7 @@ class GameController : public Singleton< GameController >{
     private:
 
         friend class Singleton< GameController >;
+        static AudioController& audio_controller;
         static InputController& input_controller;
         static ObjectController& object_controller;
         static RenderController& render_controller;
