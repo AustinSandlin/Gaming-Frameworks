@@ -9,6 +9,7 @@
 #include <AL/alc.h>
 #endif
 
+#include <stdio.h>
 #include <cstdlib>
 #include <cstring>
 
