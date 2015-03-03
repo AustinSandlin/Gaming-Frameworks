@@ -7,6 +7,7 @@
 #include "../../Engine/Input/InputController.h"
 #include "../../Engine/Object/ObjectController.h"
 #include "../../Engine/Render/RenderController.h"
+#include "../../Engine/Game/GameController.h"
 
 using namespace std;
 
@@ -18,7 +19,8 @@ class Loader {
   	static AudioController& audio_controller;
     static InputController& input_controller;
     static ObjectController& object_controller;
-    static RenderController& render_controller;
+    static GameController& game_controller;
+	static Strings& string_controller;
 
   public:
   	~Loader();

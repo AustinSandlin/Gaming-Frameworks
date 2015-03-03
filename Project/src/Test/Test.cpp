@@ -12,11 +12,16 @@ int main(int argc, char **argv) {
 
 	// LOADER TESTS
 
+
+	static GameController& game_controller = GameController::instance();
+
+
+	game_controller.setupGameLoop(argc, argv);
+
 	Loader loader;
 	loader.loadLevel("test.txt");
 
-
-
+	game_controller.runGameLoop();
 
 	
 	/*
