@@ -77,7 +77,6 @@ void Loader::loadLevel(const string filename) {
 					if ((line >> name) && (line >> path)) {
 						audio_controller.addSound(name, path);
 						cout << "Adding sound: " << name << ", " << path << endl;
-																						Sleep(1000);
 					}
 					else {
 						badData = true;
@@ -102,7 +101,6 @@ void Loader::loadLevel(const string filename) {
 					if ((line >> name) && (line >> path)) {
 						object_controller.registerObjectTexture(string_controller.intern(name), path);
 						cout << "Adding texture: " << name << ", " << path << endl;
-																							Sleep(1000);
 					}
 					else {
 						badData = true;
@@ -154,7 +152,6 @@ void Loader::loadLevel(const string filename) {
 
 						game_controller.registerInputAction(string_controller.intern(input), actionType);
 						cout << "Adding input action: " << input << ", " << action << endl;
-																						Sleep(1000);
 					}
 					else {
 						badData = true;
@@ -188,7 +185,6 @@ void Loader::loadLevel(const string filename) {
 							PlayerObject(string_controller.intern(name), xVal, yVal, widthVal, heightVal));
 							cout << "Adding player object: " << name << ", " << x << ", " << y << ", " << width 
 														     << ", " << height << endl;
-																							Sleep(1000);
 					}
 					else {
 						badData = true;
@@ -231,7 +227,6 @@ void Loader::loadLevel(const string filename) {
 							AIObject(string_controller.intern(name), xVal, yVal, widthVal, heightVal, aitype));
 							cout << "Adding AI object: " << name << ", " << x << ", " << y << ", " << width
 														 << ", " << height << ", " << ai << endl;
-																							Sleep(1000);
 					}
 					else {
 						badData = true;
@@ -275,7 +270,6 @@ void Loader::loadLevel(const string filename) {
 							GameObject(string_controller.intern(name), xVal, yVal, widthVal, heightVal, isCollidable));
 							cout << "Adding game object: " << name << ", " << x << ", " << y << ", " << width
 														   << ", " << height << ", " << collidable << endl;
-																							Sleep(1000);
 					}
 					else {
 						badData = true;
@@ -309,7 +303,6 @@ void Loader::loadLevel(const string filename) {
 							BackgroundObject(string_controller.intern(name), xVal, yVal, widthVal, heightVal));
 							cout << "Adding background object: " << name << ", " << x << ", " << y << ", " << width 
 																 << ", " << height << endl;
-																								Sleep(1000);
 					}
 					else {
 						badData = true;
@@ -348,12 +341,40 @@ void Loader::loadLevel(const string filename) {
 						else {
 							isDebug = false;
 						}
-
-						object_controller.registerHUDObject(string_controller.intern(name), 
+						if (!isDebug) {
+							object_controller.registerHUDObject(string_controller.intern(name), 
 							HUDObject(string_controller.intern(name), xVal, yVal, widthVal, heightVal, isDebug));
 							cout << "Adding HUD object: " << name << ", " << x << ", " << y << ", " << width 
-														  << ", " << height << ", " << debug << endl;
-																								Sleep(1000);
+															  << ", " << height << ", " << debug << endl;
+						}
+						else {
+							object_controller.registerDebugObject(string_controller.intern(name), 
+							HUDObject(string_controller.intern(name), xVal, yVal, widthVal, heightVal, isDebug));
+							cout << "Adding HUD object: " << name << ", " << x << ", " << y << ", " << width 
+															  << ", " << height << ", " << debug << endl;
+						}
+					}
+				}
+				else if (word == LOADER_COMMAND_B) {
+					string name, type;
+					// Get the name of the hud object and its debug value type
+					if ((line >> name) && (line >> type)) {
+						DebugValue debugType;
+
+						// Possible debug value types:
+						if (type == LOADER_DEBUG_VALUE_TYPE_1) {
+							debugType = FPS;
+						}
+						else if (type == LOADER_DEBUG_VALUE_TYPE_2) {
+							debugType = PLAYER_HEALTH;
+						}
+						// If no valid debug type is given, a default is used:
+						else {
+							debugType = FPS;
+						}
+
+						game_controller.registerDebugValue(string_controller.intern(name), debugType);
+						cout << "Registering debug value: " << name << ", " << type << endl;
 					}
 				}
 

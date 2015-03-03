@@ -1,31 +1,34 @@
-pointless header
-
-words!
-
-
-
 start
 sound add collision ../Sounds/buzzer.wav
 sound add background ../Sounds/elevator.wav
-texture add OBSTACLE_1 ../Images/black_alpha.bmp
-texture add OBSTACLE_2  ../Images/white_alpha.bmp
-input add MOVE_UP w move_up
-input add MOVE_DOWN s move_down
-input add MOVE_LEFT a move_left
-input add MOVE_RIGHT d move_right
-input add QUIT \x1b quit
+input add w move_up
+input add s move_down
+input add a move_left
+input add d move_right
+input add q quit
 playerobject add PLAYER_1 160 160 32 32
 aiobject add AI_1 320 320 32 32 wander
-gameobject add WALL_1 0 0 32 32 true
-gameobject add WALL_2 32 0 32 32 true
-backgroundobject add BACKGROUND_1 0 0 128 128
-backgroundobject add BACKGROUND_2 0 128 128 128
-backgroundobject add BACKGROUND_3 128 0 128 128
-backgroundobject add BACKGROUND_4 128 128 128 128
-hudobject add HUD_1 960 704 32 32 false
-hudobject add HUD_2 990 744 64 64 true
+gameobject add OBSTACLE_1 360 360 32 32 true
+gameobject add OBSTACLE_2 180 480 32 32 true
+backgroundobject add BACKGROUND_1 0 0 32 32
+backgroundobject add BACKGROUND_2 0 32 32 32
+backgroundobject add BACKGROUND_3 32 0 32 32
+backgroundobject add BACKGROUND_4 32 32 32 32
+hudobject add HUD_1 700 500 32 32 false
+hudobject add HUD_2 725 525 64 64 true
+texture add PLAYER_1 ../Images/player_down_alpha.bmp
+texture add PLAYER_1 ../Images/player_up_alpha.bmp
+texture add PLAYER_1 ../Images/player_left_alpha.bmp
+texture add PLAYER_1 ../Images/player_right_alpha.bmp
+texture add AI_1 ../Images/red_alpha.bmp
+texture add OBSTACLE_1 ../Images/white_alpha.bmp
+texture add OBSTACLE_2 ../Images/white_alpha.bmp
+texture add WALL_1 ../Images/red_alpha.bmp
+texture add WALL_2 ../Images/red_alpha.bmp
+texture add BACKGROUND_1 ../Images/green_alpha.bmp
+texture add BACKGROUND_2 ../Images/yellow_alpha.bmp
+texture add BACKGROUND_3 ../Images/yellow_alpha.bmp
+texture add BACKGROUND_4 ../Images/green_alpha.bmp
+texture add HUD_1 ../Images/purple_circle.bmp
+hudobject value HUD_2 fps
 end
-
-
-words words
-words

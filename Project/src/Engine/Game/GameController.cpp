@@ -42,7 +42,7 @@ void GameController::registerDebugValue( const StringID& id, const DebugValue dv
 void GameController::setupGameLoop(int argc, char **argv) {
     glutInit(&argc, argv);
 
-    render_controller.prepareScreen(1024, 768, "test");
+    render_controller.prepareScreen(WINDOW_X, WINDOW_Y, WINDOW_NAME);
 
     glutKeyboardFunc(keyboardInputCallback);
     glutKeyboardUpFunc(keyboardUpInputCallback);

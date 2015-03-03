@@ -22,6 +22,7 @@ const string LOADER_COMMAND_8 = "hudobject";
 
 // Loader subcommands
 const string LOADER_COMMAND_A = "add";
+const string LOADER_COMMAND_B = "value";
 
 // Loader recognized AI types
 const string LOADER_AI_TYPE_1 = "wander";
@@ -33,6 +34,16 @@ const string LOADER_ACTION_TYPE_3 = "move_left";
 const string LOADER_ACTION_TYPE_4 = "move_right";
 const string LOADER_ACTION_TYPE_5 = "quit";
 const string LOADER_ACTION_TYPE_6 = "attack";
+
+// Loader recognized debug value types
+const string LOADER_DEBUG_VALUE_TYPE_1 = "fps";
+const string LOADER_DEBUG_VALUE_TYPE_2 = "playerhealth";
+
+
+// Default window dimensions
+const int WINDOW_X = 800;
+const int WINDOW_Y = 600;
+const string WINDOW_NAME = "Demo";
 
 
 #endif 

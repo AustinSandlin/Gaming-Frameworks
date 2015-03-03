@@ -10,8 +10,13 @@
 
 int main(int argc, char **argv) {
 
-	// LOADER TESTS
+	// New loader level loading
 
+	if (argc != 2) {
+		cout << "Invalid number of arguments" << endl;
+		cout << "Usage: text.exe filename" << endl;
+		exit(1);
+	}
 
 	static GameController& game_controller = GameController::instance();
 
@@ -19,11 +24,14 @@ int main(int argc, char **argv) {
 	game_controller.setupGameLoop(argc, argv);
 
 	Loader loader;
-	loader.loadLevel("test.txt");
+	loader.loadLevel(argv[1]);
 
 	game_controller.runGameLoop();
 
 	
+
+	// Old level loading
+
 	/*
 	static AudioController& audio_controller = AudioController::instance();
 	static GameController& game_controller = GameController::instance();

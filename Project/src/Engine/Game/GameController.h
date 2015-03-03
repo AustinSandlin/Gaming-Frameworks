@@ -11,6 +11,7 @@
 #include "../../Common/Base/Singleton.h"
 #include "../../Common/Base/Table.h"
 #include "../../Common/Base/Types.h"
+#include "../../Common/Resources/Constants.h"
 
 #include "../../Engine/Input/InputController.h"
 #include "../../Engine/Object/ObjectController.h"
