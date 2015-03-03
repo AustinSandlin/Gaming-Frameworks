@@ -13,6 +13,7 @@ int main(int argc, char **argv) {
 	// LOADER TESTS
 
 
+	//static AudioController& audio_controller = AudioController::instance();
 	static GameController& game_controller = GameController::instance();
 
 
@@ -25,6 +26,17 @@ int main(int argc, char **argv) {
 
 	
 	/*
+	static AudioController& audio_controller = AudioController::instance();
+	static GameController& game_controller = GameController::instance();
+
+
+	game_controller.setupGameLoop(argc, argv);
+
+	Loader loader;
+	loader.loadLevel("test.txt");
+
+	game_controller.runGameLoop();
+
 	static AudioController& audio_controller = AudioController::instance();
 	static GameController& game_controller = GameController::instance();
 	static ObjectController& object_controller = ObjectController::instance();

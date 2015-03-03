@@ -5,6 +5,8 @@
 
 #include <sstream>
 
+using namespace std;
+
 class HUDObject : public Object {
         
     private:
@@ -63,7 +65,7 @@ class HUDObject : public Object {
                     glVertex2i( x, y+height );
                 glEnd();
             }
-            }
+        }
 };
 
 #endif
