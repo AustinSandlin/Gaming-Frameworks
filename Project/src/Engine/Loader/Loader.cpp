@@ -1,6 +1,5 @@
 #include "Loader.h"
 #include <sstream>
-#include <windows.h>
 #include <string>
 
 
@@ -42,7 +41,6 @@ void Loader::loadLevel(const string filename) {
 		if (!reader && word != LOADER_START_STRING) {
 			cout << "Did not find start word in file " << filename << endl;
 			cout << word;
-			Sleep(3000);
 			exit(1);
 		}
 
@@ -77,7 +75,6 @@ void Loader::loadLevel(const string filename) {
 					if ((line >> name) && (line >> path)) {
 						audio_controller.addSound(name, path);
 						cout << "Adding sound: " << name << ", " << path << endl;
-																						Sleep(1000);
 					}
 					else {
 						badData = true;
@@ -102,7 +99,6 @@ void Loader::loadLevel(const string filename) {
 					if ((line >> name) && (line >> path)) {
 						object_controller.registerObjectTexture(string_controller.intern(name), path);
 						cout << "Adding texture: " << name << ", " << path << endl;
-																							Sleep(1000);
 					}
 					else {
 						badData = true;
@@ -127,7 +123,6 @@ void Loader::loadLevel(const string filename) {
 					// corresponds
 					if ((line >> input) && (line >> action)) {
 						InputAction actionType;
-
 						// Possible action types:
 						if (action == LOADER_ACTION_TYPE_1) {
 							actionType = MOVE_UP;
@@ -154,7 +149,6 @@ void Loader::loadLevel(const string filename) {
 
 						game_controller.registerInputAction(string_controller.intern(input), actionType);
 						cout << "Adding input action: " << input << ", " << action << endl;
-																						Sleep(1000);
 					}
 					else {
 						badData = true;
@@ -188,7 +182,6 @@ void Loader::loadLevel(const string filename) {
 							PlayerObject(string_controller.intern(name), xVal, yVal, widthVal, heightVal));
 							cout << "Adding player object: " << name << ", " << x << ", " << y << ", " << width 
 														     << ", " << height << endl;
-																							Sleep(1000);
 					}
 					else {
 						badData = true;
@@ -231,7 +224,6 @@ void Loader::loadLevel(const string filename) {
 							AIObject(string_controller.intern(name), xVal, yVal, widthVal, heightVal, aitype));
 							cout << "Adding AI object: " << name << ", " << x << ", " << y << ", " << width
 														 << ", " << height << ", " << ai << endl;
-																							Sleep(1000);
 					}
 					else {
 						badData = true;
@@ -275,7 +267,6 @@ void Loader::loadLevel(const string filename) {
 							GameObject(string_controller.intern(name), xVal, yVal, widthVal, heightVal, isCollidable));
 							cout << "Adding game object: " << name << ", " << x << ", " << y << ", " << width
 														   << ", " << height << ", " << collidable << endl;
-																							Sleep(1000);
 					}
 					else {
 						badData = true;
@@ -309,7 +300,6 @@ void Loader::loadLevel(const string filename) {
 							BackgroundObject(string_controller.intern(name), xVal, yVal, widthVal, heightVal));
 							cout << "Adding background object: " << name << ", " << x << ", " << y << ", " << width 
 																 << ", " << height << endl;
-																								Sleep(1000);
 					}
 					else {
 						badData = true;
@@ -344,16 +334,43 @@ void Loader::loadLevel(const string filename) {
 						// defaulting to false on wrong input.
 						if (debug == "true") {
 							isDebug = true;
+							object_controller.registerDebugObject(string_controller.intern(name), 
+									HUDObject(string_controller.intern(name), xVal, yVal, widthVal, heightVal, isDebug));
+							cout << "Adding HUD object: " << name << ", " << x << ", " << y << ", " << width 
+														  << ", " << height << ", " << debug << endl;
 						}
 						else {
 							isDebug = false;
-						}
-
-						object_controller.registerHUDObject(string_controller.intern(name), 
-							HUDObject(string_controller.intern(name), xVal, yVal, widthVal, heightVal, isDebug));
+							object_controller.registerHUDObject(string_controller.intern(name), 
+									HUDObject(string_controller.intern(name), xVal, yVal, widthVal, heightVal, isDebug));
 							cout << "Adding HUD object: " << name << ", " << x << ", " << y << ", " << width 
 														  << ", " << height << ", " << debug << endl;
-																								Sleep(1000);
+						}
+					}
+				}
+
+				// Invalid command given after HUD object
+				else {
+					badData = true;
+				}
+			}
+
+			else if (word == LOADER_COMMAND_9)  {
+				line >> word;
+
+				// Registering a new HUD object
+				if (word == LOADER_COMMAND_A) {
+					string name, debug;
+					// Get the name of the hud object, its starting values,
+					// and whether it is debug HUD eement or not
+					if ((line >> name) && (line >> debug)) {
+						// isDebug is set to true or false if specified,
+						// defaulting to false on wrong input.
+						if(debug == "fps") {
+							DebugValue temp = FPS;
+							game_controller.registerDebugValue(string_controller.intern(name), temp);
+							cout << "Registered DEBUG object: " << name << " " << debug << endl;
+						}
 					}
 				}
 
@@ -379,7 +396,6 @@ void Loader::loadLevel(const string filename) {
 			if (!reader && word != LOADER_END_STRING) {
 				cout << "Did not find end word in file " << filename << endl;
 				cout << word;
-				Sleep(3000);
 				exit(1);
 			}
 			else {

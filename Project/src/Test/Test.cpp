@@ -13,7 +13,7 @@ int main(int argc, char **argv) {
 	// LOADER TESTS
 
 
-	static AudioController& audio_controller = AudioController::instance();
+	//static AudioController& audio_controller = AudioController::instance();
 	static GameController& game_controller = GameController::instance();
 
 

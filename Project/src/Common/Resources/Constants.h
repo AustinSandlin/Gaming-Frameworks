@@ -19,6 +19,7 @@ const string LOADER_COMMAND_5 = "aiobject";
 const string LOADER_COMMAND_6 = "gameobject";
 const string LOADER_COMMAND_7 = "backgroundobject";
 const string LOADER_COMMAND_8 = "hudobject";
+const string LOADER_COMMAND_9 = "debug";
 
 // Loader subcommands
 const string LOADER_COMMAND_A = "add";

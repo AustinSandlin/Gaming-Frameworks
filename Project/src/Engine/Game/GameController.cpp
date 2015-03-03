@@ -29,6 +29,7 @@ void GameController::handleInputEvent( const StringID& id ) {
 }
 
 void GameController::registerInputAction( const StringID& id, const InputAction action ) {
+    cout << id << " " << action << endl;
     input_action_table.add(id, action);
 }
 
@@ -60,7 +61,7 @@ void GameController::updateGameLoop(int value) {
     if ( !audio_controller.isPlayingSound( "background") ) {
         audio_controller.playSound( "background" );
     }
-    
+
     //std::cout << "input: " << key << std::endl;
     // Measure speed
     time_t currentTime;
