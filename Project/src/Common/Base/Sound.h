@@ -10,13 +10,7 @@
 #endif
 
 #include <cstdlib>
-
-
-
-#include <iostream>
-using namespace std;
-
-
+#include <cstring>
 
 class Sound {
 
