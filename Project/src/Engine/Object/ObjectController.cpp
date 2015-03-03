@@ -9,32 +9,36 @@ void ObjectController::handlePlayerAction( const InputAction& action ) {
     while(it != player_objects.end()) {
         switch(action) {
             case MOVE_UP:
-                if(canPlayerMove( it.getValue().getID(), UP )) {
-                    it.getValue().setState(FACING_UP);
+                if(canPlayerMove( it.getValue().getID(), UP)) {
+                    it.getValue().setState(MOVING);
+                    it.getValue().setDir(UP);
                 }
                 else {
                     audio_controller.playSound( "../Sounds/buzzer.wav" );
                 }
                 break;
             case MOVE_DOWN:
-                if(canPlayerMove( it.getValue().getID(), DOWN )) {
-                    it.getValue().setState(FACING_DOWN);
+                if(canPlayerMove( it.getValue().getID(), DOWN)) {
+                    it.getValue().setState(MOVING);
+                    it.getValue().setDir(DOWN);
                 }
                 else {
                     audio_controller.playSound( "../Sounds/buzzer.wav" );
                 }
                 break;
             case MOVE_LEFT:
-                if(canPlayerMove( it.getValue().getID(), LEFT )) {
-                    it.getValue().setState(FACING_LEFT);
+                if(canPlayerMove( it.getValue().getID(), LEFT)) {
+                    it.getValue().setState(MOVING);
+                    it.getValue().setDir(LEFT);
                 }
                 else {
                     audio_controller.playSound( "../Sounds/buzzer.wav" );
                 }
                 break;
             case MOVE_RIGHT:
-                if(canPlayerMove( it.getValue().getID(), RIGHT )) {
-                    it.getValue().setState(FACING_RIGHT);
+                if(canPlayerMove( it.getValue().getID(), RIGHT)) {
+                    it.getValue().setState(MOVING);
+                    it.getValue().setDir(RIGHT);
                 }
                 else {
                     audio_controller.playSound( "../Sounds/buzzer.wav" );
@@ -56,6 +60,9 @@ void ObjectController::registerObjectTexture( const StringID& id, const String p
     else if(game_objects.has(id)) {
         game_objects.get(id).getValue().addTexture(textureID);
     }
+    else if(ai_objects.has(id)) {
+        ai_objects.get(id).getValue().addTexture(textureID);
+    }
     else if(player_objects.has(id)) {
         player_objects.get(id).getValue().addTexture(textureID);
     }
@@ -73,7 +80,16 @@ void ObjectController::registerBackgroundObject( const StringID& id, BackgroundO
 }
 
 void ObjectController::registerPlayerObject( const StringID& id, PlayerObject po ) {
-    player_objects.add( id, po );
+    int size = 0;
+    TableIterator<PlayerObject> it1 = player_objects.begin();
+    while(it1 != player_objects.end()) {
+        ++size;
+        ++it1;
+    }
+
+    if(size < 1) {
+        player_objects.add( id, po );
+    }
 }
 
 void ObjectController::registerGameObject( const StringID& id, GameObject go ) {
@@ -102,6 +118,46 @@ bool ObjectController::doesSquareCollide( int x1, int y1, int x2, int y2, int x3
     }
 
     return coll;
+}
+
+bool ObjectController::canAIMove( const StringID id, Direction dir ) {
+    bool coll = false;
+
+    AIObject ai = ai_objects.get(id).getValue();
+    int testX = ai.getX();
+    int testY = ai.getY();
+
+    //Determine the new entity state and change the test directions.
+    //CHANGE TO VELOCITY WHEN CHANCE
+    switch(dir) {
+        case UP: testY += ai.getVelocity(); break;
+        case DOWN: testY -= ai.getVelocity(); break;
+        case LEFT: testX -= ai.getVelocity(); break;
+        case RIGHT: testX += ai.getVelocity(); break;
+        default: break;
+    }
+
+    TableIterator<GameObject> it1 = game_objects.begin();
+    while(it1 != game_objects.end() && !coll) {
+        if(it1.getValue().getCollidable() &&
+           doesSquareCollide(testX, testY, ai.getWidth(), ai.getHeight(),
+                             it1.getValue().getX(), it1.getValue().getY(),
+                             it1.getValue().getWidth(), it1.getValue().getHeight())) {
+            coll = true;
+        }
+        ++it1;
+    }
+    TableIterator<PlayerObject> it2 = player_objects.begin();
+    while(it2 != player_objects.end() && !coll) {
+        if(doesSquareCollide(testX, testY, ai.getWidth(), ai.getHeight(),
+                             it2.getValue().getX(), it2.getValue().getY(),
+                             it2.getValue().getWidth(), it2.getValue().getHeight())) {
+            coll = true;
+        }
+        ++it2;
+    }
+
+    return !coll;
 }
 
 bool ObjectController::canPlayerMove( const StringID id, Direction dir ) {
@@ -144,19 +200,43 @@ bool ObjectController::canPlayerMove( const StringID id, Direction dir ) {
     return !coll;
 }
 
-//bool ObjectController::canAIMove( const StringID id, Direction dir ) {
-
-//}
-
 void ObjectController::updateEntitys() {
     TableIterator<AIObject> it1 = ai_objects.begin();
     while(it1 != ai_objects.end()) {
-        it1.getValue().update();
+        if(it1.getValue().getType() == WANDER) {
+            int x = rand()%100;
+            if(x == 0) {
+                it1.getValue().setState(IDLE);
+            }
+            else if(x > 4) {
+                it1.getValue().setState(MOVING);
+            }
+
+            if(it1.getValue().getState() == MOVING) {
+                x = rand()%40;
+                switch(x) {
+                    case 0: it1.getValue().setDir(UP); break;
+                    case 10: it1.getValue().setDir(DOWN); break;
+                    case 20: it1.getValue().setDir(LEFT); break;
+                    case 30: it1.getValue().setDir(RIGHT); break;
+                    default: break;
+                }
+                if(canAIMove(it1.getValue().getID(), it1.getValue().getDir())) {
+                    it1.getValue().move();
+                }
+            }
+        }
         ++it1;
     }
+
+
+
     TableIterator<PlayerObject> it2 = player_objects.begin();
     while(it2 != player_objects.end()) {
-        it2.getValue().update();
+        if(it2.getValue().getState() == MOVING) {
+            it2.getValue().move();
+            it2.getValue().setState(IDLE);
+        }
         ++it2;
     }
 }

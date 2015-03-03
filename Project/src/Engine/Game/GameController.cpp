@@ -73,7 +73,6 @@ void GameController::updateGameLoop(int value) {
         handleInputEvent(inputEvents.next());
         inputEvents.pop();
     }
-
     object_controller.updateEntitys();
     glutPostRedisplay();
 
