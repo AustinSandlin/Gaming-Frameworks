@@ -1,7 +1,6 @@
 #include "../../Common/Resources/Strings.h"
 
 #include "AudioController.h"
-#include "Sound.h"
 
 AudioController::AudioController() {
 
@@ -17,69 +16,120 @@ AudioController::AudioController() {
 	// Define the listener
 	// ========================================================================
 
-	alListener3f(AL_POSITION, 0, 0, 0);
-	alListener3f(AL_VELOCITY, 0, 0, 0);
-	alListener3f(AL_ORIENTATION, 0, 0, -1);
+	ALfloat position[] = { 0, 0, 0 };
+	ALfloat velocity[] = { 0, 0, 0 };
+	ALfloat orientation[] = { 0, 0, -1, 0, 0, 0 };
 
-	// ========================================================================
-	// Create the source (only one for now)
-	// ========================================================================
-
-	alGenSources( 1, &source );
-	alSourcef( source, AL_PITCH, 1 );
-	alSourcef( source, AL_GAIN, 1 );
-	alSource3f( source, AL_POSITION, 0, 0, 0 );
-	alSource3f( source, AL_VELOCITY, 0, 0, 0 );
-	alSourcei( source, AL_LOOPING, AL_FALSE );
+	alListenerfv( AL_POSITION, position );
+	alListenerfv( AL_VELOCITY, velocity );
+	alListenerfv( AL_ORIENTATION, orientation );
 }
 
 AudioController::~AudioController() {
 
 	// ========================================================================
-	// Clean up
+	// De-allocate resources
 	// ========================================================================
 
-	alDeleteSources( 1, &source );
-	for ( auto buffer : buffers ) {
-		alDeleteBuffers( 1, &(buffer.getValue()) );
+	for ( auto it : sounds ) {
+		Sound & sound = it.getValue();
+		if ( sound.isLoaded() ) {
+			sound.unload();
+		}
 	}
 	alcDestroyContext( context );
 	alcCloseDevice( device );
 }
 
-void AudioController::playSound( String path ) {
+void AudioController::addSound( String name, String path ) {
+
+	// ========================================================================
+	// Get static table references
+	// ========================================================================
+	
+	static Strings & strings = Strings::instance();
+
+	// ========================================================================
+	// Create a sound with the specified name
+	// ========================================================================
+
+	StringID id = strings.intern( name );
+	if ( !sounds.has( id ) ) {
+		sounds.add( id, Sound() );
+	}
+
+	// ========================================================================
+	// Load the sound from the specified file
+	// ========================================================================
+
+	Sound & sound = sounds.get( id ).getValue();
+	if ( sound.isLoaded() ) {
+		sound.unload();
+	}
+	sound.load( path );
+}
+
+void AudioController::removeSound( String name ) {
 
 	// ========================================================================
 	// Get static table references
 	// ========================================================================
 
-	static Strings& strings = Strings::instance();
+	static Strings & strings = Strings::instance();
 
 	// ========================================================================
-	// Create a buffer for the sound if one doesn't exist
+	// Remove the sound with the specified name
 	// ========================================================================
 
-	StringID id = strings.intern( path );
-	if ( !buffers.has( id ) ) {
-		Sound sound( path );
-		buffers.add( id, sound.toBuffer() );
+	StringID id = strings.intern( name );
+	if ( sounds.has( id ) ) {
+		Sound & sound = sounds.get( id ).getValue();
+		if ( sound.isLoaded() ) {
+			sound.unload();
+		}
+		sounds.remove( id );
 	}
+}
+
+void AudioController::playSound( String name, bool looping ) {
 
 	// ========================================================================
-	// Stop the sound if it's already playing
+	// Get static table references
 	// ========================================================================
 
-	ALenum state;
-	alGetSourcei( source, AL_SOURCE_STATE, &state );
-	if ( state == AL_PLAYING) {
-		alSourceStop( source );
+	static Strings & strings = Strings::instance();
+
+	// ========================================================================
+	// Atttempt to play the sound
+	// ========================================================================
+
+	StringID id = strings.intern( name );
+	if ( sounds.has( id ) ) {
+		Sound & sound = sounds.get( id ).getValue();
+		if ( sound.isPlaying() ) {
+			sound.stop();
+		}
+		sound.play( looping );
 	}
+}
+
+void AudioController::stopSound( String name ) {
 
 	// ========================================================================
-	// Play the sound
+	// Get static table references
 	// ========================================================================
 
-	ALuint buffer = buffers.get( id ).getValue();
-	alSourcei( source, AL_BUFFER, buffer );
-	alSourcePlay( source );
+	static Strings & strings = Strings::instance();
+
+	// ========================================================================
+	// Atttempt to stop playing the sound
+	// ========================================================================
+
+	StringID id = strings.intern( name );
+	if ( sounds.has( id ) ) {
+		Sound & sound = sounds.get( id ).getValue();
+		if ( sound.isPlaying() ) {
+			sound.stop();
+		}
+	}
 }

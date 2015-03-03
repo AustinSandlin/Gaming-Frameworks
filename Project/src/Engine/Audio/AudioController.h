@@ -2,10 +2,9 @@
 #define _AUDIO_CONTROLLER_H
 
 #include "../../Common/Base/Singleton.h"
+#include "../../Common/Base/Sound.h"
 #include "../../Common/Base/Table.h"
 #include "../../Common/Base/Types.h"
-
-#include "Sound.h"
 
 class AudioController:
 	
@@ -17,15 +16,17 @@ class AudioController:
 
 		ALCdevice * device;
 		ALCcontext * context;
-		ALuint source;
-		Table< ALuint > buffers;
+		Table< Sound > sounds;
 
 		AudioController();
 		~AudioController();
 
 	public:
 
-		void playSound( String path );
+		void addSound( String name, String path );
+		void removeSound( String name );
+		void playSound( String name, bool looping = false );
+		void stopSound( String name );
 };
 
 #endif

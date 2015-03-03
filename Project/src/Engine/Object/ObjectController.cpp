@@ -5,6 +5,12 @@ AudioController& ObjectController::audio_controller = AudioController::instance(
 
 void ObjectController::handlePlayerAction( const InputAction& action ) {
 
+    static bool initialized = false;
+    if ( !initialized ) {
+        audio_controller.addSound( "buzzer", "../Sounds/buzzer.wav" );
+        initialized = true;
+    }
+
     TableIterator<PlayerObject> it = player_objects.begin();
     while(it != player_objects.end()) {
         switch(action) {
@@ -14,7 +20,7 @@ void ObjectController::handlePlayerAction( const InputAction& action ) {
                     it.getValue().setDir(UP);
                 }
                 else {
-                    audio_controller.playSound( "../Sounds/buzzer.wav" );
+                    audio_controller.playSound( "buzzer" );
                 }
                 break;
             case MOVE_DOWN:
@@ -23,7 +29,7 @@ void ObjectController::handlePlayerAction( const InputAction& action ) {
                     it.getValue().setDir(DOWN);
                 }
                 else {
-                    audio_controller.playSound( "../Sounds/buzzer.wav" );
+                    audio_controller.playSound( "buzzer" );
                 }
                 break;
             case MOVE_LEFT:
@@ -32,7 +38,7 @@ void ObjectController::handlePlayerAction( const InputAction& action ) {
                     it.getValue().setDir(LEFT);
                 }
                 else {
-                    audio_controller.playSound( "../Sounds/buzzer.wav" );
+                    audio_controller.playSound( "buzzer" );
                 }
                 break;
             case MOVE_RIGHT:
@@ -41,7 +47,7 @@ void ObjectController::handlePlayerAction( const InputAction& action ) {
                     it.getValue().setDir(RIGHT);
                 }
                 else {
-                    audio_controller.playSound( "../Sounds/buzzer.wav" );
+                    audio_controller.playSound( "buzzer" );
                 }
                 break;
             default:
