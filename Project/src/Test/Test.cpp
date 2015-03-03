@@ -3,16 +3,23 @@
 #include "../Engine/Audio/AudioController.h"
 #include "../Engine/Game/GameController.h"
 #include "../Engine/Object/ObjectController.h"
+#include "../Engine/Loader/Loader.h"
 
 #include <iostream>
 #include <sstream>
 
 int main(int argc, char **argv) {
-	// ifstream input;
-	// input.open(argv[1]);
+
+	// LOADER TESTS
+
+	Loader loader;
+	loader.loadLevel("test.txt");
+
+
+
 
 	
-
+	/*
 	static AudioController& audio_controller = AudioController::instance();
 	static GameController& game_controller = GameController::instance();
 	static ObjectController& object_controller = ObjectController::instance();
@@ -101,6 +108,7 @@ int main(int argc, char **argv) {
 
 	//game_controller.setupGameLoop();
 	game_controller.runGameLoop();
+	*/
 
 	return 0;
 }

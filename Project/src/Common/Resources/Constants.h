@@ -3,7 +3,11 @@
 
 #include <string>
 
-const string LOADER_MAGIC_STRING = "level";
+using namespace std;
+
+
+const string LOADER_START_STRING = "start";
+const string LOADER_END_STRING   = "end";
 
 
 
