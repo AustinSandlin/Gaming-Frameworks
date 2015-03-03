@@ -45,6 +45,7 @@ void GameController::setupGameLoop(int argc, char **argv) {
     render_controller.prepareScreen(1024, 768, "test");
 
     glutKeyboardFunc(keyboardInputCallback);
+    glutKeyboardUpFunc(keyboardUpInputCallback);
     glutMouseFunc(mouseInputCallback);
     glutDisplayFunc(renderDisplayCallback);
     glutTimerFunc(16, updateTimerCallback, 0);

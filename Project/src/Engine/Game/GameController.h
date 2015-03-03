@@ -44,6 +44,10 @@ class GameController : public Singleton< GameController >{
             input_controller.queueKeyboardEvent(key, x, y);
         }
 
+        static void keyboardUpInputCallback(unsigned char key, int x, int y) {
+            input_controller.dequeueKeyboardEvent(key, x, y);
+        }
+
         static void mouseInputCallback(int button, int state, int x, int y) {
             input_controller.queueMouseEvent(button, state, x, y);
         }
