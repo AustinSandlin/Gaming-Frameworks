@@ -1,5 +1,6 @@
 #include "../Common/Resources/Strings.h"
 
+#include "../Engine/Audio/AudioController.h"
 #include "../Engine/Game/GameController.h"
 #include "../Engine/Object/ObjectController.h"
 
@@ -12,9 +13,22 @@ int main(int argc, char **argv) {
 
 	
 
+	static AudioController& audio_controller = AudioController::instance();
 	static GameController& game_controller = GameController::instance();
 	static ObjectController& object_controller = ObjectController::instance();
 	static Strings& string_controller = Strings::instance();
+
+	// ==========
+	// Load Sounds
+	// ==========
+
+	try {
+	    audio_controller.addSound( "collision", "../Sounds/buzzer.wav" );
+	    audio_controller.addSound( "background", "../Sounds/elevator.wav");
+	}
+	catch ( const char * error ) {
+		cout << error << endl;
+	}
 
 	// ==========
 	// Action Register Test

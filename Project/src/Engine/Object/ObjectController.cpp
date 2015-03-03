@@ -15,7 +15,7 @@ void ObjectController::handlePlayerAction( const InputAction& action ) {
                     it.getValue().move();
                 }
                 else {
-                    audio_controller.playSound( "../Sounds/buzzer.wav" );
+                    audio_controller.playSound( "collision" );
                 }
                 break;
             case MOVE_DOWN:
@@ -25,7 +25,7 @@ void ObjectController::handlePlayerAction( const InputAction& action ) {
                     it.getValue().move();
                 }
                 else {
-                    audio_controller.playSound( "../Sounds/buzzer.wav" );
+                    audio_controller.playSound( "collision" );
                 }
                 break;
             case MOVE_LEFT:
@@ -35,7 +35,7 @@ void ObjectController::handlePlayerAction( const InputAction& action ) {
                     it.getValue().move();
                 }
                 else {
-                    audio_controller.playSound( "../Sounds/buzzer.wav" );
+                    audio_controller.playSound( "collision" );
                 }
                 break;
             case MOVE_RIGHT:
@@ -45,7 +45,7 @@ void ObjectController::handlePlayerAction( const InputAction& action ) {
                     it.getValue().move();
                 }
                 else {
-                    audio_controller.playSound( "../Sounds/buzzer.wav" );
+                    audio_controller.playSound( "collision" );
                 }
                 break;
             default:
