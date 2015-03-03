@@ -32,8 +32,8 @@ int main(int argc, char **argv) {
 	// Object Register Test
 	// ==========
 
-	for(int i = 0; i < 64; ++i) {
-		for(int j = 0; j < 48; ++j) {
+	for(int i = 0; i < 32; ++i) {
+		for(int j = 0; j < 24; ++j) {
 			std::stringstream ss;
             ss << "BACKGROUND_TILE_" << i << "_" << j;
             String name = ss.str();

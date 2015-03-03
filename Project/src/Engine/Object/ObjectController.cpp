@@ -12,6 +12,7 @@ void ObjectController::handlePlayerAction( const InputAction& action ) {
                 if(canPlayerMove( it.getValue().getID(), UP)) {
                     it.getValue().setState(MOVING);
                     it.getValue().setDir(UP);
+                    it.getValue().move();
                 }
                 else {
                     audio_controller.playSound( "../Sounds/buzzer.wav" );
@@ -21,6 +22,7 @@ void ObjectController::handlePlayerAction( const InputAction& action ) {
                 if(canPlayerMove( it.getValue().getID(), DOWN)) {
                     it.getValue().setState(MOVING);
                     it.getValue().setDir(DOWN);
+                    it.getValue().move();
                 }
                 else {
                     audio_controller.playSound( "../Sounds/buzzer.wav" );
@@ -30,6 +32,7 @@ void ObjectController::handlePlayerAction( const InputAction& action ) {
                 if(canPlayerMove( it.getValue().getID(), LEFT)) {
                     it.getValue().setState(MOVING);
                     it.getValue().setDir(LEFT);
+                    it.getValue().move();
                 }
                 else {
                     audio_controller.playSound( "../Sounds/buzzer.wav" );
@@ -39,6 +42,7 @@ void ObjectController::handlePlayerAction( const InputAction& action ) {
                 if(canPlayerMove( it.getValue().getID(), RIGHT)) {
                     it.getValue().setState(MOVING);
                     it.getValue().setDir(RIGHT);
+                    it.getValue().move();
                 }
                 else {
                     audio_controller.playSound( "../Sounds/buzzer.wav" );
@@ -231,14 +235,14 @@ void ObjectController::updateEntitys() {
 
 
 
-    TableIterator<PlayerObject> it2 = player_objects.begin();
-    while(it2 != player_objects.end()) {
-        if(it2.getValue().getState() == MOVING) {
-            it2.getValue().move();
-            it2.getValue().setState(IDLE);
-        }
-        ++it2;
-    }
+    // TableIterator<PlayerObject> it2 = player_objects.begin();
+    // while(it2 != player_objects.end()) {
+    //     if(it2.getValue().getState() == MOVING) {
+    //         it2.getValue().move();
+    //         it2.getValue().setState(IDLE);
+    //     }
+    //     ++it2;
+    // }
 }
 
 void ObjectController::drawObjects() {
@@ -246,6 +250,26 @@ void ObjectController::drawObjects() {
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
+
+    int x = 0;
+    int y = 0;
+    int count = 0;
+
+    TableIterator<PlayerObject> it = player_objects.begin();
+    while(it != player_objects.end()) {
+        x += it.getValue().getX();
+        y += it.getValue().getY();
+        ++count;
+        ++it;
+    }
+
+    x /= count;
+    y /= count;
+
+    x = (glutGet(GLUT_WINDOW_WIDTH)/2) - x;
+    y = (glutGet(GLUT_WINDOW_HEIGHT)/2) - y;
+
+    glTranslatef(x, y, 0);
 
     TableIterator<BackgroundObject> it1 = background_objects.begin();
     while(it1 != background_objects.end()) {
@@ -267,6 +291,9 @@ void ObjectController::drawObjects() {
         it4.getValue().draw();
         ++it4;
     }
+    
+    glTranslatef(-x, -y, 0);
+
     TableIterator<HUDObject> it5 = hud_objects.begin();
     while(it5 != hud_objects.end()) {
         it5.getValue().draw();
