@@ -1,5 +1,6 @@
 #include "GameController.h"
 
+AudioController& GameController::audio_controller = AudioController::instance();
 InputController& GameController::input_controller = InputController::instance();
 ObjectController& GameController::object_controller = ObjectController::instance();
 RenderController& GameController::render_controller = RenderController::instance();
@@ -44,6 +45,7 @@ void GameController::setupGameLoop(int argc, char **argv) {
     render_controller.prepareScreen(1024, 768, "test");
 
     glutKeyboardFunc(keyboardInputCallback);
+    glutKeyboardUpFunc(keyboardUpInputCallback);
     glutMouseFunc(mouseInputCallback);
     glutDisplayFunc(renderDisplayCallback);
     glutTimerFunc(16, updateTimerCallback, 0);
@@ -53,6 +55,12 @@ void GameController::setupGameLoop(int argc, char **argv) {
 }
 
 void GameController::updateGameLoop(int value) {
+
+    // Start playing the background music
+    if ( !audio_controller.isPlayingSound( "background") ) {
+        audio_controller.playSound( "background" );
+    }
+    
     //std::cout << "input: " << key << std::endl;
     // Measure speed
     time_t currentTime;

@@ -12,6 +12,10 @@
 #include <cstdlib>
 #include <cstring>
 
+
+#include <iostream>
+using namespace std;
+
 class Sound {
 
 private:
@@ -91,11 +95,18 @@ public:
 
         unsigned char * data;
 
-        if ( fread( chunk_id, sizeof(char), 4, file ) != 4 ||
-        	strcmp( chunk_id, "data" ) != 0 ) {
-            throw "Invalid Chunk ID: Data";
+        while ( true ) {
+            if ( fread( chunk_id, sizeof(char), 4, file ) != 4 ) {
+                throw "Invalid Chunk ID: Data";
+            }
+            if ( strcmp( chunk_id, "data" ) == 0 ) {
+                break;
+            }
+            fread( & chunk_size, sizeof(int), 1, file );
+            data = new unsigned char[ chunk_size ];
+            fread( data, sizeof(char), chunk_size, file );
+            delete[] data;
         }
-
         fread( & chunk_size, sizeof(int), 1, file );
         data = new unsigned char[ chunk_size ];
         fread( data, sizeof(char), chunk_size, file );

@@ -24,6 +24,7 @@ class GameController : public Singleton< GameController >{
     private:
 
         friend class Singleton< GameController >;
+        static AudioController& audio_controller;
         static InputController& input_controller;
         static ObjectController& object_controller;
         static RenderController& render_controller;
@@ -41,6 +42,10 @@ class GameController : public Singleton< GameController >{
 
         static void keyboardInputCallback(unsigned char key, int x, int y) {
             input_controller.queueKeyboardEvent(key, x, y);
+        }
+
+        static void keyboardUpInputCallback(unsigned char key, int x, int y) {
+            input_controller.dequeueKeyboardEvent(key, x, y);
         }
 
         static void mouseInputCallback(int button, int state, int x, int y) {

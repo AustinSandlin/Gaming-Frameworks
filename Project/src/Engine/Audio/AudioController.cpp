@@ -133,3 +133,25 @@ void AudioController::stopSound( String name ) {
 		}
 	}
 }
+
+bool AudioController::isPlayingSound( String name ) {
+
+	// ========================================================================
+	// Get static table references
+	// ========================================================================
+
+	static Strings & strings = Strings::instance();
+
+	// ========================================================================
+	// Atttempt to stop playing the sound
+	// ========================================================================
+
+	StringID id = strings.intern( name );
+	if ( sounds.has( id ) ) {
+		Sound & sound = sounds.get( id ).getValue();
+		return sound.isPlaying();
+	}
+	else {
+		return false;
+	}
+}
