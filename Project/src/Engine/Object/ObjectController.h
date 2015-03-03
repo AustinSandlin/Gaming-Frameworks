@@ -15,6 +15,8 @@
 #include "../Audio/AudioController.h"
 #include "../Render/RenderController.h"
 
+#include <stdlib.h>
+#include <time.h>
 #include <queue>
 
 class ObjectController:
@@ -36,10 +38,12 @@ class ObjectController:
 		Table< HUDObject > hud_objects;
 
 		ObjectController() {
+			srand(time(NULL));
 		}
 
 		bool doesSquareCollide( int, int, int, int, int, int, int, int );
 
+		bool canAIMove( const StringID id, Direction dir );
 		bool canPlayerMove( const StringID id, Direction dir);
 	
 	public:

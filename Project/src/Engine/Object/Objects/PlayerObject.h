@@ -9,38 +9,44 @@ class PlayerObject : public Object {
     private:
 
         int velocity;
+        Direction dir;
         EntityState state;
 
     public:
         PlayerObject( const StringID& id, int x, int y, int width, int height ) :
             Object ( id, x, y, height, width ) {
-            state = FACING_UP;
+            state = IDLE;
             velocity = 8;
         }
 
         EntityState getState() {
             return state;
         }
+        Direction getDir() {
+            return dir;
+        }
         int getVelocity() {
             return velocity;
+        }
+        void setDir(Direction d) {
+            dir = d;
         }
         void setState(EntityState s) {
             state = s;
         }
 
-        void update() {
-            switch(state) {
-                case FACING_UP: y += velocity; break;
-                case FACING_DOWN: y -= velocity; break;
-                case FACING_LEFT: x -= velocity; break;
-                case FACING_RIGHT: x += velocity; break;
+        void move() {
+           switch(dir) {
+                case UP: y += velocity; break;
+                case DOWN: y -= velocity; break;
+                case LEFT: x -= velocity; break;
+                case RIGHT: x += velocity; break;
                 default: break;
             }
         }
 
         void draw() {
-            // std::cout << "drawing: " << textures[direction] << std::endl;
-            glBindTexture(GL_TEXTURE_2D, textures[state]);
+            glBindTexture(GL_TEXTURE_2D, textures[dir]);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 

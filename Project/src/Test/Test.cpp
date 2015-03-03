@@ -7,6 +7,10 @@
 #include <sstream>
 
 int main(int argc, char **argv) {
+	// ifstream input;
+	// input.open(argv[1]);
+
+	
 
 	static GameController& game_controller = GameController::instance();
 	static ObjectController& object_controller = ObjectController::instance();
@@ -74,6 +78,8 @@ int main(int argc, char **argv) {
 	object_controller.registerObjectTexture(string_controller.intern("PLAYER1"), "../Images/player_left_alpha.bmp");
 	object_controller.registerObjectTexture(string_controller.intern("PLAYER1"), "../Images/player_right_alpha.bmp");
 
+	object_controller.registerAIObject(string_controller.intern("AI1"), AIObject(string_controller.intern("AI1"), 10*32, 10*32, 32, 32, WANDER));
+	object_controller.registerObjectTexture(string_controller.intern("AI1"), "../Images/red_alpha.bmp");
 
 	// ==========
 	// Game Loop Test
