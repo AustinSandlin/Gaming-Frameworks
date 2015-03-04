@@ -1,6 +1,5 @@
 #include "Loader.h"
 #include <sstream>
-#include <windows.h>
 #include <string>
 
 
@@ -42,7 +41,6 @@ void Loader::loadLevel(const string filename) {
 		if (!reader && word != LOADER_START_STRING) {
 			cout << "Did not find start word in file " << filename << endl;
 			cout << word;
-			Sleep(3000);
 			exit(1);
 		}
 
@@ -125,7 +123,6 @@ void Loader::loadLevel(const string filename) {
 					// corresponds
 					if ((line >> input) && (line >> action)) {
 						InputAction actionType;
-
 						// Possible action types:
 						if (action == LOADER_ACTION_TYPE_1) {
 							actionType = MOVE_UP;
@@ -337,44 +334,43 @@ void Loader::loadLevel(const string filename) {
 						// defaulting to false on wrong input.
 						if (debug == "true") {
 							isDebug = true;
+							object_controller.registerDebugObject(string_controller.intern(name), 
+									HUDObject(string_controller.intern(name), xVal, yVal, widthVal, heightVal, isDebug));
+							cout << "Adding HUD object: " << name << ", " << x << ", " << y << ", " << width 
+														  << ", " << height << ", " << debug << endl;
 						}
 						else {
 							isDebug = false;
-						}
-						if (!isDebug) {
 							object_controller.registerHUDObject(string_controller.intern(name), 
-							HUDObject(string_controller.intern(name), xVal, yVal, widthVal, heightVal, isDebug));
+									HUDObject(string_controller.intern(name), xVal, yVal, widthVal, heightVal, isDebug));
 							cout << "Adding HUD object: " << name << ", " << x << ", " << y << ", " << width 
-															  << ", " << height << ", " << debug << endl;
-						}
-						else {
-							object_controller.registerDebugObject(string_controller.intern(name), 
-							HUDObject(string_controller.intern(name), xVal, yVal, widthVal, heightVal, isDebug));
-							cout << "Adding HUD object: " << name << ", " << x << ", " << y << ", " << width 
-															  << ", " << height << ", " << debug << endl;
+														  << ", " << height << ", " << debug << endl;
 						}
 					}
 				}
-				else if (word == LOADER_COMMAND_B) {
-					string name, type;
-					// Get the name of the hud object and its debug value type
-					if ((line >> name) && (line >> type)) {
-						DebugValue debugType;
 
-						// Possible debug value types:
-						if (type == LOADER_DEBUG_VALUE_TYPE_1) {
-							debugType = FPS;
-						}
-						else if (type == LOADER_DEBUG_VALUE_TYPE_2) {
-							debugType = PLAYER_HEALTH;
-						}
-						// If no valid debug type is given, a default is used:
-						else {
-							debugType = FPS;
-						}
+				// Invalid command given after HUD object
+				else {
+					badData = true;
+				}
+			}
 
-						game_controller.registerDebugValue(string_controller.intern(name), debugType);
-						cout << "Registering debug value: " << name << ", " << type << endl;
+			else if (word == LOADER_COMMAND_9)  {
+				line >> word;
+
+				// Registering a new HUD object
+				if (word == LOADER_COMMAND_A) {
+					string name, debug;
+					// Get the name of the hud object, its starting values,
+					// and whether it is debug HUD eement or not
+					if ((line >> name) && (line >> debug)) {
+						// isDebug is set to true or false if specified,
+						// defaulting to false on wrong input.
+						if(debug == "fps") {
+							DebugValue temp = FPS;
+							game_controller.registerDebugValue(string_controller.intern(name), temp);
+							cout << "Registered DEBUG object: " << name << " " << debug << endl;
+						}
 					}
 				}
 
@@ -400,7 +396,6 @@ void Loader::loadLevel(const string filename) {
 			if (!reader && word != LOADER_END_STRING) {
 				cout << "Did not find end word in file " << filename << endl;
 				cout << word;
-				Sleep(3000);
 				exit(1);
 			}
 			else {

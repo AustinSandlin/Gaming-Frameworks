@@ -5,30 +5,1772 @@ input add w move_up
 input add s move_down
 input add a move_left
 input add d move_right
-input add q quit
-playerobject add PLAYER_1 160 160 32 32
-aiobject add AI_1 320 320 32 32 wander
-gameobject add OBSTACLE_1 360 360 32 32 true
-gameobject add OBSTACLE_2 180 480 32 32 true
-backgroundobject add BACKGROUND_1 0 0 32 32
-backgroundobject add BACKGROUND_2 0 32 32 32
-backgroundobject add BACKGROUND_3 32 0 32 32
-backgroundobject add BACKGROUND_4 32 32 32 32
-hudobject add HUD_1 700 500 32 32 false
-hudobject add HUD_2 725 525 64 64 true
-texture add PLAYER_1 ../Images/player_down_alpha.bmp
-texture add PLAYER_1 ../Images/player_up_alpha.bmp
-texture add PLAYER_1 ../Images/player_left_alpha.bmp
-texture add PLAYER_1 ../Images/player_right_alpha.bmp
-texture add AI_1 ../Images/red_alpha.bmp
-texture add OBSTACLE_1 ../Images/white_alpha.bmp
-texture add OBSTACLE_2 ../Images/white_alpha.bmp
-texture add WALL_1 ../Images/red_alpha.bmp
-texture add WALL_2 ../Images/red_alpha.bmp
-texture add BACKGROUND_1 ../Images/green_alpha.bmp
-texture add BACKGROUND_2 ../Images/yellow_alpha.bmp
-texture add BACKGROUND_3 ../Images/yellow_alpha.bmp
-texture add BACKGROUND_4 ../Images/green_alpha.bmp
-texture add HUD_1 ../Images/purple_circle.bmp
-hudobject value HUD_2 fps
+input add quit \x1b quit
+gameobject add obstacle1 384 320 32 32 true
+gameobject add obstacle2 576 320 32 32 false
+texture add obstacle1 ../Images/black.bmp
+texture add obstacle2 ../Images/white.bmp
+playerobject add player 160 160 32 32
+texture add player ../Images/player_down.bmp
+texture add player ../Images/player_up.bmp
+texture add player ../Images/player_left.bmp
+texture add player ../Images/player_right.bmp
+aiobject add ai 320 320 32 32 WANDER
+texture add ai ../Images/red.bmp
+hudobject add hud_element 960 704 32 32 false
+texture add hud_element ../Images/purple_circle.bmp
+hudobject add fps_counter 990 744 64 64 true
+debug add fps_counter fps
+backgroundobject add background_tile_0_0 0 0 32 32
+texture add background_tile_0_0 ../Images/yellow.bmp
+backgroundobject add background_tile_0_1 0 32 32 32
+texture add background_tile_0_1 ../Images/green.bmp
+backgroundobject add background_tile_0_2 0 64 32 32
+texture add background_tile_0_2 ../Images/yellow.bmp
+backgroundobject add background_tile_0_3 0 96 32 32
+texture add background_tile_0_3 ../Images/green.bmp
+backgroundobject add background_tile_0_4 0 128 32 32
+texture add background_tile_0_4 ../Images/yellow.bmp
+backgroundobject add background_tile_0_5 0 160 32 32
+texture add background_tile_0_5 ../Images/green.bmp
+backgroundobject add background_tile_0_6 0 192 32 32
+texture add background_tile_0_6 ../Images/yellow.bmp
+backgroundobject add background_tile_0_7 0 224 32 32
+texture add background_tile_0_7 ../Images/green.bmp
+backgroundobject add background_tile_0_8 0 256 32 32
+texture add background_tile_0_8 ../Images/yellow.bmp
+backgroundobject add background_tile_0_9 0 288 32 32
+texture add background_tile_0_9 ../Images/green.bmp
+backgroundobject add background_tile_0_10 0 320 32 32
+texture add background_tile_0_10 ../Images/yellow.bmp
+backgroundobject add background_tile_0_11 0 352 32 32
+texture add background_tile_0_11 ../Images/green.bmp
+backgroundobject add background_tile_0_12 0 384 32 32
+texture add background_tile_0_12 ../Images/yellow.bmp
+backgroundobject add background_tile_0_13 0 416 32 32
+texture add background_tile_0_13 ../Images/green.bmp
+backgroundobject add background_tile_0_14 0 448 32 32
+texture add background_tile_0_14 ../Images/yellow.bmp
+backgroundobject add background_tile_0_15 0 480 32 32
+texture add background_tile_0_15 ../Images/green.bmp
+backgroundobject add background_tile_0_16 0 512 32 32
+texture add background_tile_0_16 ../Images/yellow.bmp
+backgroundobject add background_tile_0_17 0 544 32 32
+texture add background_tile_0_17 ../Images/green.bmp
+backgroundobject add background_tile_0_18 0 576 32 32
+texture add background_tile_0_18 ../Images/yellow.bmp
+backgroundobject add background_tile_0_19 0 608 32 32
+texture add background_tile_0_19 ../Images/green.bmp
+backgroundobject add background_tile_0_20 0 640 32 32
+texture add background_tile_0_20 ../Images/yellow.bmp
+backgroundobject add background_tile_0_21 0 672 32 32
+texture add background_tile_0_21 ../Images/green.bmp
+backgroundobject add background_tile_0_22 0 704 32 32
+texture add background_tile_0_22 ../Images/yellow.bmp
+backgroundobject add background_tile_0_23 0 736 32 32
+texture add background_tile_0_23 ../Images/green.bmp
+backgroundobject add background_tile_1_0 32 0 32 32
+texture add background_tile_1_0 ../Images/green.bmp
+backgroundobject add background_tile_1_1 32 32 32 32
+texture add background_tile_1_1 ../Images/yellow.bmp
+backgroundobject add background_tile_1_2 32 64 32 32
+texture add background_tile_1_2 ../Images/green.bmp
+backgroundobject add background_tile_1_3 32 96 32 32
+texture add background_tile_1_3 ../Images/yellow.bmp
+backgroundobject add background_tile_1_4 32 128 32 32
+texture add background_tile_1_4 ../Images/green.bmp
+backgroundobject add background_tile_1_5 32 160 32 32
+texture add background_tile_1_5 ../Images/yellow.bmp
+backgroundobject add background_tile_1_6 32 192 32 32
+texture add background_tile_1_6 ../Images/green.bmp
+backgroundobject add background_tile_1_7 32 224 32 32
+texture add background_tile_1_7 ../Images/yellow.bmp
+backgroundobject add background_tile_1_8 32 256 32 32
+texture add background_tile_1_8 ../Images/green.bmp
+backgroundobject add background_tile_1_9 32 288 32 32
+texture add background_tile_1_9 ../Images/yellow.bmp
+backgroundobject add background_tile_1_10 32 320 32 32
+texture add background_tile_1_10 ../Images/green.bmp
+backgroundobject add background_tile_1_11 32 352 32 32
+texture add background_tile_1_11 ../Images/yellow.bmp
+backgroundobject add background_tile_1_12 32 384 32 32
+texture add background_tile_1_12 ../Images/green.bmp
+backgroundobject add background_tile_1_13 32 416 32 32
+texture add background_tile_1_13 ../Images/yellow.bmp
+backgroundobject add background_tile_1_14 32 448 32 32
+texture add background_tile_1_14 ../Images/green.bmp
+backgroundobject add background_tile_1_15 32 480 32 32
+texture add background_tile_1_15 ../Images/yellow.bmp
+backgroundobject add background_tile_1_16 32 512 32 32
+texture add background_tile_1_16 ../Images/green.bmp
+backgroundobject add background_tile_1_17 32 544 32 32
+texture add background_tile_1_17 ../Images/yellow.bmp
+backgroundobject add background_tile_1_18 32 576 32 32
+texture add background_tile_1_18 ../Images/green.bmp
+backgroundobject add background_tile_1_19 32 608 32 32
+texture add background_tile_1_19 ../Images/yellow.bmp
+backgroundobject add background_tile_1_20 32 640 32 32
+texture add background_tile_1_20 ../Images/green.bmp
+backgroundobject add background_tile_1_21 32 672 32 32
+texture add background_tile_1_21 ../Images/yellow.bmp
+backgroundobject add background_tile_1_22 32 704 32 32
+texture add background_tile_1_22 ../Images/green.bmp
+backgroundobject add background_tile_1_23 32 736 32 32
+texture add background_tile_1_23 ../Images/yellow.bmp
+backgroundobject add background_tile_2_0 64 0 32 32
+texture add background_tile_2_0 ../Images/yellow.bmp
+backgroundobject add background_tile_2_1 64 32 32 32
+texture add background_tile_2_1 ../Images/green.bmp
+backgroundobject add background_tile_2_2 64 64 32 32
+texture add background_tile_2_2 ../Images/yellow.bmp
+backgroundobject add background_tile_2_3 64 96 32 32
+texture add background_tile_2_3 ../Images/green.bmp
+backgroundobject add background_tile_2_4 64 128 32 32
+texture add background_tile_2_4 ../Images/yellow.bmp
+backgroundobject add background_tile_2_5 64 160 32 32
+texture add background_tile_2_5 ../Images/green.bmp
+backgroundobject add background_tile_2_6 64 192 32 32
+texture add background_tile_2_6 ../Images/yellow.bmp
+backgroundobject add background_tile_2_7 64 224 32 32
+texture add background_tile_2_7 ../Images/green.bmp
+backgroundobject add background_tile_2_8 64 256 32 32
+texture add background_tile_2_8 ../Images/yellow.bmp
+backgroundobject add background_tile_2_9 64 288 32 32
+texture add background_tile_2_9 ../Images/green.bmp
+backgroundobject add background_tile_2_10 64 320 32 32
+texture add background_tile_2_10 ../Images/yellow.bmp
+backgroundobject add background_tile_2_11 64 352 32 32
+texture add background_tile_2_11 ../Images/green.bmp
+backgroundobject add background_tile_2_12 64 384 32 32
+texture add background_tile_2_12 ../Images/yellow.bmp
+backgroundobject add background_tile_2_13 64 416 32 32
+texture add background_tile_2_13 ../Images/green.bmp
+backgroundobject add background_tile_2_14 64 448 32 32
+texture add background_tile_2_14 ../Images/yellow.bmp
+backgroundobject add background_tile_2_15 64 480 32 32
+texture add background_tile_2_15 ../Images/green.bmp
+backgroundobject add background_tile_2_16 64 512 32 32
+texture add background_tile_2_16 ../Images/yellow.bmp
+backgroundobject add background_tile_2_17 64 544 32 32
+texture add background_tile_2_17 ../Images/green.bmp
+backgroundobject add background_tile_2_18 64 576 32 32
+texture add background_tile_2_18 ../Images/yellow.bmp
+backgroundobject add background_tile_2_19 64 608 32 32
+texture add background_tile_2_19 ../Images/green.bmp
+backgroundobject add background_tile_2_20 64 640 32 32
+texture add background_tile_2_20 ../Images/yellow.bmp
+backgroundobject add background_tile_2_21 64 672 32 32
+texture add background_tile_2_21 ../Images/green.bmp
+backgroundobject add background_tile_2_22 64 704 32 32
+texture add background_tile_2_22 ../Images/yellow.bmp
+backgroundobject add background_tile_2_23 64 736 32 32
+texture add background_tile_2_23 ../Images/green.bmp
+backgroundobject add background_tile_3_0 96 0 32 32
+texture add background_tile_3_0 ../Images/green.bmp
+backgroundobject add background_tile_3_1 96 32 32 32
+texture add background_tile_3_1 ../Images/yellow.bmp
+backgroundobject add background_tile_3_2 96 64 32 32
+texture add background_tile_3_2 ../Images/green.bmp
+backgroundobject add background_tile_3_3 96 96 32 32
+texture add background_tile_3_3 ../Images/yellow.bmp
+backgroundobject add background_tile_3_4 96 128 32 32
+texture add background_tile_3_4 ../Images/green.bmp
+backgroundobject add background_tile_3_5 96 160 32 32
+texture add background_tile_3_5 ../Images/yellow.bmp
+backgroundobject add background_tile_3_6 96 192 32 32
+texture add background_tile_3_6 ../Images/green.bmp
+backgroundobject add background_tile_3_7 96 224 32 32
+texture add background_tile_3_7 ../Images/yellow.bmp
+backgroundobject add background_tile_3_8 96 256 32 32
+texture add background_tile_3_8 ../Images/green.bmp
+backgroundobject add background_tile_3_9 96 288 32 32
+texture add background_tile_3_9 ../Images/yellow.bmp
+backgroundobject add background_tile_3_10 96 320 32 32
+texture add background_tile_3_10 ../Images/green.bmp
+backgroundobject add background_tile_3_11 96 352 32 32
+texture add background_tile_3_11 ../Images/yellow.bmp
+backgroundobject add background_tile_3_12 96 384 32 32
+texture add background_tile_3_12 ../Images/green.bmp
+backgroundobject add background_tile_3_13 96 416 32 32
+texture add background_tile_3_13 ../Images/yellow.bmp
+backgroundobject add background_tile_3_14 96 448 32 32
+texture add background_tile_3_14 ../Images/green.bmp
+backgroundobject add background_tile_3_15 96 480 32 32
+texture add background_tile_3_15 ../Images/yellow.bmp
+backgroundobject add background_tile_3_16 96 512 32 32
+texture add background_tile_3_16 ../Images/green.bmp
+backgroundobject add background_tile_3_17 96 544 32 32
+texture add background_tile_3_17 ../Images/yellow.bmp
+backgroundobject add background_tile_3_18 96 576 32 32
+texture add background_tile_3_18 ../Images/green.bmp
+backgroundobject add background_tile_3_19 96 608 32 32
+texture add background_tile_3_19 ../Images/yellow.bmp
+backgroundobject add background_tile_3_20 96 640 32 32
+texture add background_tile_3_20 ../Images/green.bmp
+backgroundobject add background_tile_3_21 96 672 32 32
+texture add background_tile_3_21 ../Images/yellow.bmp
+backgroundobject add background_tile_3_22 96 704 32 32
+texture add background_tile_3_22 ../Images/green.bmp
+backgroundobject add background_tile_3_23 96 736 32 32
+texture add background_tile_3_23 ../Images/yellow.bmp
+backgroundobject add background_tile_4_0 128 0 32 32
+texture add background_tile_4_0 ../Images/yellow.bmp
+backgroundobject add background_tile_4_1 128 32 32 32
+texture add background_tile_4_1 ../Images/green.bmp
+backgroundobject add background_tile_4_2 128 64 32 32
+texture add background_tile_4_2 ../Images/yellow.bmp
+backgroundobject add background_tile_4_3 128 96 32 32
+texture add background_tile_4_3 ../Images/green.bmp
+backgroundobject add background_tile_4_4 128 128 32 32
+texture add background_tile_4_4 ../Images/yellow.bmp
+backgroundobject add background_tile_4_5 128 160 32 32
+texture add background_tile_4_5 ../Images/green.bmp
+backgroundobject add background_tile_4_6 128 192 32 32
+texture add background_tile_4_6 ../Images/yellow.bmp
+backgroundobject add background_tile_4_7 128 224 32 32
+texture add background_tile_4_7 ../Images/green.bmp
+backgroundobject add background_tile_4_8 128 256 32 32
+texture add background_tile_4_8 ../Images/yellow.bmp
+backgroundobject add background_tile_4_9 128 288 32 32
+texture add background_tile_4_9 ../Images/green.bmp
+backgroundobject add background_tile_4_10 128 320 32 32
+texture add background_tile_4_10 ../Images/yellow.bmp
+backgroundobject add background_tile_4_11 128 352 32 32
+texture add background_tile_4_11 ../Images/green.bmp
+backgroundobject add background_tile_4_12 128 384 32 32
+texture add background_tile_4_12 ../Images/yellow.bmp
+backgroundobject add background_tile_4_13 128 416 32 32
+texture add background_tile_4_13 ../Images/green.bmp
+backgroundobject add background_tile_4_14 128 448 32 32
+texture add background_tile_4_14 ../Images/yellow.bmp
+backgroundobject add background_tile_4_15 128 480 32 32
+texture add background_tile_4_15 ../Images/green.bmp
+backgroundobject add background_tile_4_16 128 512 32 32
+texture add background_tile_4_16 ../Images/yellow.bmp
+backgroundobject add background_tile_4_17 128 544 32 32
+texture add background_tile_4_17 ../Images/green.bmp
+backgroundobject add background_tile_4_18 128 576 32 32
+texture add background_tile_4_18 ../Images/yellow.bmp
+backgroundobject add background_tile_4_19 128 608 32 32
+texture add background_tile_4_19 ../Images/green.bmp
+backgroundobject add background_tile_4_20 128 640 32 32
+texture add background_tile_4_20 ../Images/yellow.bmp
+backgroundobject add background_tile_4_21 128 672 32 32
+texture add background_tile_4_21 ../Images/green.bmp
+backgroundobject add background_tile_4_22 128 704 32 32
+texture add background_tile_4_22 ../Images/yellow.bmp
+backgroundobject add background_tile_4_23 128 736 32 32
+texture add background_tile_4_23 ../Images/green.bmp
+backgroundobject add background_tile_5_0 160 0 32 32
+texture add background_tile_5_0 ../Images/green.bmp
+backgroundobject add background_tile_5_1 160 32 32 32
+texture add background_tile_5_1 ../Images/yellow.bmp
+backgroundobject add background_tile_5_2 160 64 32 32
+texture add background_tile_5_2 ../Images/green.bmp
+backgroundobject add background_tile_5_3 160 96 32 32
+texture add background_tile_5_3 ../Images/yellow.bmp
+backgroundobject add background_tile_5_4 160 128 32 32
+texture add background_tile_5_4 ../Images/green.bmp
+backgroundobject add background_tile_5_5 160 160 32 32
+texture add background_tile_5_5 ../Images/yellow.bmp
+backgroundobject add background_tile_5_6 160 192 32 32
+texture add background_tile_5_6 ../Images/green.bmp
+backgroundobject add background_tile_5_7 160 224 32 32
+texture add background_tile_5_7 ../Images/yellow.bmp
+backgroundobject add background_tile_5_8 160 256 32 32
+texture add background_tile_5_8 ../Images/green.bmp
+backgroundobject add background_tile_5_9 160 288 32 32
+texture add background_tile_5_9 ../Images/yellow.bmp
+backgroundobject add background_tile_5_10 160 320 32 32
+texture add background_tile_5_10 ../Images/green.bmp
+backgroundobject add background_tile_5_11 160 352 32 32
+texture add background_tile_5_11 ../Images/yellow.bmp
+backgroundobject add background_tile_5_12 160 384 32 32
+texture add background_tile_5_12 ../Images/green.bmp
+backgroundobject add background_tile_5_13 160 416 32 32
+texture add background_tile_5_13 ../Images/yellow.bmp
+backgroundobject add background_tile_5_14 160 448 32 32
+texture add background_tile_5_14 ../Images/green.bmp
+backgroundobject add background_tile_5_15 160 480 32 32
+texture add background_tile_5_15 ../Images/yellow.bmp
+backgroundobject add background_tile_5_16 160 512 32 32
+texture add background_tile_5_16 ../Images/green.bmp
+backgroundobject add background_tile_5_17 160 544 32 32
+texture add background_tile_5_17 ../Images/yellow.bmp
+backgroundobject add background_tile_5_18 160 576 32 32
+texture add background_tile_5_18 ../Images/green.bmp
+backgroundobject add background_tile_5_19 160 608 32 32
+texture add background_tile_5_19 ../Images/yellow.bmp
+backgroundobject add background_tile_5_20 160 640 32 32
+texture add background_tile_5_20 ../Images/green.bmp
+backgroundobject add background_tile_5_21 160 672 32 32
+texture add background_tile_5_21 ../Images/yellow.bmp
+backgroundobject add background_tile_5_22 160 704 32 32
+texture add background_tile_5_22 ../Images/green.bmp
+backgroundobject add background_tile_5_23 160 736 32 32
+texture add background_tile_5_23 ../Images/yellow.bmp
+backgroundobject add background_tile_6_0 192 0 32 32
+texture add background_tile_6_0 ../Images/yellow.bmp
+backgroundobject add background_tile_6_1 192 32 32 32
+texture add background_tile_6_1 ../Images/green.bmp
+backgroundobject add background_tile_6_2 192 64 32 32
+texture add background_tile_6_2 ../Images/yellow.bmp
+backgroundobject add background_tile_6_3 192 96 32 32
+texture add background_tile_6_3 ../Images/green.bmp
+backgroundobject add background_tile_6_4 192 128 32 32
+texture add background_tile_6_4 ../Images/yellow.bmp
+backgroundobject add background_tile_6_5 192 160 32 32
+texture add background_tile_6_5 ../Images/green.bmp
+backgroundobject add background_tile_6_6 192 192 32 32
+texture add background_tile_6_6 ../Images/yellow.bmp
+backgroundobject add background_tile_6_7 192 224 32 32
+texture add background_tile_6_7 ../Images/green.bmp
+backgroundobject add background_tile_6_8 192 256 32 32
+texture add background_tile_6_8 ../Images/yellow.bmp
+backgroundobject add background_tile_6_9 192 288 32 32
+texture add background_tile_6_9 ../Images/green.bmp
+backgroundobject add background_tile_6_10 192 320 32 32
+texture add background_tile_6_10 ../Images/yellow.bmp
+backgroundobject add background_tile_6_11 192 352 32 32
+texture add background_tile_6_11 ../Images/green.bmp
+backgroundobject add background_tile_6_12 192 384 32 32
+texture add background_tile_6_12 ../Images/yellow.bmp
+backgroundobject add background_tile_6_13 192 416 32 32
+texture add background_tile_6_13 ../Images/green.bmp
+backgroundobject add background_tile_6_14 192 448 32 32
+texture add background_tile_6_14 ../Images/yellow.bmp
+backgroundobject add background_tile_6_15 192 480 32 32
+texture add background_tile_6_15 ../Images/green.bmp
+backgroundobject add background_tile_6_16 192 512 32 32
+texture add background_tile_6_16 ../Images/yellow.bmp
+backgroundobject add background_tile_6_17 192 544 32 32
+texture add background_tile_6_17 ../Images/green.bmp
+backgroundobject add background_tile_6_18 192 576 32 32
+texture add background_tile_6_18 ../Images/yellow.bmp
+backgroundobject add background_tile_6_19 192 608 32 32
+texture add background_tile_6_19 ../Images/green.bmp
+backgroundobject add background_tile_6_20 192 640 32 32
+texture add background_tile_6_20 ../Images/yellow.bmp
+backgroundobject add background_tile_6_21 192 672 32 32
+texture add background_tile_6_21 ../Images/green.bmp
+backgroundobject add background_tile_6_22 192 704 32 32
+texture add background_tile_6_22 ../Images/yellow.bmp
+backgroundobject add background_tile_6_23 192 736 32 32
+texture add background_tile_6_23 ../Images/green.bmp
+backgroundobject add background_tile_7_0 224 0 32 32
+texture add background_tile_7_0 ../Images/green.bmp
+backgroundobject add background_tile_7_1 224 32 32 32
+texture add background_tile_7_1 ../Images/yellow.bmp
+backgroundobject add background_tile_7_2 224 64 32 32
+texture add background_tile_7_2 ../Images/green.bmp
+backgroundobject add background_tile_7_3 224 96 32 32
+texture add background_tile_7_3 ../Images/yellow.bmp
+backgroundobject add background_tile_7_4 224 128 32 32
+texture add background_tile_7_4 ../Images/green.bmp
+backgroundobject add background_tile_7_5 224 160 32 32
+texture add background_tile_7_5 ../Images/yellow.bmp
+backgroundobject add background_tile_7_6 224 192 32 32
+texture add background_tile_7_6 ../Images/green.bmp
+backgroundobject add background_tile_7_7 224 224 32 32
+texture add background_tile_7_7 ../Images/yellow.bmp
+backgroundobject add background_tile_7_8 224 256 32 32
+texture add background_tile_7_8 ../Images/green.bmp
+backgroundobject add background_tile_7_9 224 288 32 32
+texture add background_tile_7_9 ../Images/yellow.bmp
+backgroundobject add background_tile_7_10 224 320 32 32
+texture add background_tile_7_10 ../Images/green.bmp
+backgroundobject add background_tile_7_11 224 352 32 32
+texture add background_tile_7_11 ../Images/yellow.bmp
+backgroundobject add background_tile_7_12 224 384 32 32
+texture add background_tile_7_12 ../Images/green.bmp
+backgroundobject add background_tile_7_13 224 416 32 32
+texture add background_tile_7_13 ../Images/yellow.bmp
+backgroundobject add background_tile_7_14 224 448 32 32
+texture add background_tile_7_14 ../Images/green.bmp
+backgroundobject add background_tile_7_15 224 480 32 32
+texture add background_tile_7_15 ../Images/yellow.bmp
+backgroundobject add background_tile_7_16 224 512 32 32
+texture add background_tile_7_16 ../Images/green.bmp
+backgroundobject add background_tile_7_17 224 544 32 32
+texture add background_tile_7_17 ../Images/yellow.bmp
+backgroundobject add background_tile_7_18 224 576 32 32
+texture add background_tile_7_18 ../Images/green.bmp
+backgroundobject add background_tile_7_19 224 608 32 32
+texture add background_tile_7_19 ../Images/yellow.bmp
+backgroundobject add background_tile_7_20 224 640 32 32
+texture add background_tile_7_20 ../Images/green.bmp
+backgroundobject add background_tile_7_21 224 672 32 32
+texture add background_tile_7_21 ../Images/yellow.bmp
+backgroundobject add background_tile_7_22 224 704 32 32
+texture add background_tile_7_22 ../Images/green.bmp
+backgroundobject add background_tile_7_23 224 736 32 32
+texture add background_tile_7_23 ../Images/yellow.bmp
+backgroundobject add background_tile_8_0 256 0 32 32
+texture add background_tile_8_0 ../Images/yellow.bmp
+backgroundobject add background_tile_8_1 256 32 32 32
+texture add background_tile_8_1 ../Images/green.bmp
+backgroundobject add background_tile_8_2 256 64 32 32
+texture add background_tile_8_2 ../Images/yellow.bmp
+backgroundobject add background_tile_8_3 256 96 32 32
+texture add background_tile_8_3 ../Images/green.bmp
+backgroundobject add background_tile_8_4 256 128 32 32
+texture add background_tile_8_4 ../Images/yellow.bmp
+backgroundobject add background_tile_8_5 256 160 32 32
+texture add background_tile_8_5 ../Images/green.bmp
+backgroundobject add background_tile_8_6 256 192 32 32
+texture add background_tile_8_6 ../Images/yellow.bmp
+backgroundobject add background_tile_8_7 256 224 32 32
+texture add background_tile_8_7 ../Images/green.bmp
+backgroundobject add background_tile_8_8 256 256 32 32
+texture add background_tile_8_8 ../Images/yellow.bmp
+backgroundobject add background_tile_8_9 256 288 32 32
+texture add background_tile_8_9 ../Images/green.bmp
+backgroundobject add background_tile_8_10 256 320 32 32
+texture add background_tile_8_10 ../Images/yellow.bmp
+backgroundobject add background_tile_8_11 256 352 32 32
+texture add background_tile_8_11 ../Images/green.bmp
+backgroundobject add background_tile_8_12 256 384 32 32
+texture add background_tile_8_12 ../Images/yellow.bmp
+backgroundobject add background_tile_8_13 256 416 32 32
+texture add background_tile_8_13 ../Images/green.bmp
+backgroundobject add background_tile_8_14 256 448 32 32
+texture add background_tile_8_14 ../Images/yellow.bmp
+backgroundobject add background_tile_8_15 256 480 32 32
+texture add background_tile_8_15 ../Images/green.bmp
+backgroundobject add background_tile_8_16 256 512 32 32
+texture add background_tile_8_16 ../Images/yellow.bmp
+backgroundobject add background_tile_8_17 256 544 32 32
+texture add background_tile_8_17 ../Images/green.bmp
+backgroundobject add background_tile_8_18 256 576 32 32
+texture add background_tile_8_18 ../Images/yellow.bmp
+backgroundobject add background_tile_8_19 256 608 32 32
+texture add background_tile_8_19 ../Images/green.bmp
+backgroundobject add background_tile_8_20 256 640 32 32
+texture add background_tile_8_20 ../Images/yellow.bmp
+backgroundobject add background_tile_8_21 256 672 32 32
+texture add background_tile_8_21 ../Images/green.bmp
+backgroundobject add background_tile_8_22 256 704 32 32
+texture add background_tile_8_22 ../Images/yellow.bmp
+backgroundobject add background_tile_8_23 256 736 32 32
+texture add background_tile_8_23 ../Images/green.bmp
+backgroundobject add background_tile_9_0 288 0 32 32
+texture add background_tile_9_0 ../Images/green.bmp
+backgroundobject add background_tile_9_1 288 32 32 32
+texture add background_tile_9_1 ../Images/yellow.bmp
+backgroundobject add background_tile_9_2 288 64 32 32
+texture add background_tile_9_2 ../Images/green.bmp
+backgroundobject add background_tile_9_3 288 96 32 32
+texture add background_tile_9_3 ../Images/yellow.bmp
+backgroundobject add background_tile_9_4 288 128 32 32
+texture add background_tile_9_4 ../Images/green.bmp
+backgroundobject add background_tile_9_5 288 160 32 32
+texture add background_tile_9_5 ../Images/yellow.bmp
+backgroundobject add background_tile_9_6 288 192 32 32
+texture add background_tile_9_6 ../Images/green.bmp
+backgroundobject add background_tile_9_7 288 224 32 32
+texture add background_tile_9_7 ../Images/yellow.bmp
+backgroundobject add background_tile_9_8 288 256 32 32
+texture add background_tile_9_8 ../Images/green.bmp
+backgroundobject add background_tile_9_9 288 288 32 32
+texture add background_tile_9_9 ../Images/yellow.bmp
+backgroundobject add background_tile_9_10 288 320 32 32
+texture add background_tile_9_10 ../Images/green.bmp
+backgroundobject add background_tile_9_11 288 352 32 32
+texture add background_tile_9_11 ../Images/yellow.bmp
+backgroundobject add background_tile_9_12 288 384 32 32
+texture add background_tile_9_12 ../Images/green.bmp
+backgroundobject add background_tile_9_13 288 416 32 32
+texture add background_tile_9_13 ../Images/yellow.bmp
+backgroundobject add background_tile_9_14 288 448 32 32
+texture add background_tile_9_14 ../Images/green.bmp
+backgroundobject add background_tile_9_15 288 480 32 32
+texture add background_tile_9_15 ../Images/yellow.bmp
+backgroundobject add background_tile_9_16 288 512 32 32
+texture add background_tile_9_16 ../Images/green.bmp
+backgroundobject add background_tile_9_17 288 544 32 32
+texture add background_tile_9_17 ../Images/yellow.bmp
+backgroundobject add background_tile_9_18 288 576 32 32
+texture add background_tile_9_18 ../Images/green.bmp
+backgroundobject add background_tile_9_19 288 608 32 32
+texture add background_tile_9_19 ../Images/yellow.bmp
+backgroundobject add background_tile_9_20 288 640 32 32
+texture add background_tile_9_20 ../Images/green.bmp
+backgroundobject add background_tile_9_21 288 672 32 32
+texture add background_tile_9_21 ../Images/yellow.bmp
+backgroundobject add background_tile_9_22 288 704 32 32
+texture add background_tile_9_22 ../Images/green.bmp
+backgroundobject add background_tile_9_23 288 736 32 32
+texture add background_tile_9_23 ../Images/yellow.bmp
+backgroundobject add background_tile_10_0 320 0 32 32
+texture add background_tile_10_0 ../Images/yellow.bmp
+backgroundobject add background_tile_10_1 320 32 32 32
+texture add background_tile_10_1 ../Images/green.bmp
+backgroundobject add background_tile_10_2 320 64 32 32
+texture add background_tile_10_2 ../Images/yellow.bmp
+backgroundobject add background_tile_10_3 320 96 32 32
+texture add background_tile_10_3 ../Images/green.bmp
+backgroundobject add background_tile_10_4 320 128 32 32
+texture add background_tile_10_4 ../Images/yellow.bmp
+backgroundobject add background_tile_10_5 320 160 32 32
+texture add background_tile_10_5 ../Images/green.bmp
+backgroundobject add background_tile_10_6 320 192 32 32
+texture add background_tile_10_6 ../Images/yellow.bmp
+backgroundobject add background_tile_10_7 320 224 32 32
+texture add background_tile_10_7 ../Images/green.bmp
+backgroundobject add background_tile_10_8 320 256 32 32
+texture add background_tile_10_8 ../Images/yellow.bmp
+backgroundobject add background_tile_10_9 320 288 32 32
+texture add background_tile_10_9 ../Images/green.bmp
+backgroundobject add background_tile_10_10 320 320 32 32
+texture add background_tile_10_10 ../Images/yellow.bmp
+backgroundobject add background_tile_10_11 320 352 32 32
+texture add background_tile_10_11 ../Images/green.bmp
+backgroundobject add background_tile_10_12 320 384 32 32
+texture add background_tile_10_12 ../Images/yellow.bmp
+backgroundobject add background_tile_10_13 320 416 32 32
+texture add background_tile_10_13 ../Images/green.bmp
+backgroundobject add background_tile_10_14 320 448 32 32
+texture add background_tile_10_14 ../Images/yellow.bmp
+backgroundobject add background_tile_10_15 320 480 32 32
+texture add background_tile_10_15 ../Images/green.bmp
+backgroundobject add background_tile_10_16 320 512 32 32
+texture add background_tile_10_16 ../Images/yellow.bmp
+backgroundobject add background_tile_10_17 320 544 32 32
+texture add background_tile_10_17 ../Images/green.bmp
+backgroundobject add background_tile_10_18 320 576 32 32
+texture add background_tile_10_18 ../Images/yellow.bmp
+backgroundobject add background_tile_10_19 320 608 32 32
+texture add background_tile_10_19 ../Images/green.bmp
+backgroundobject add background_tile_10_20 320 640 32 32
+texture add background_tile_10_20 ../Images/yellow.bmp
+backgroundobject add background_tile_10_21 320 672 32 32
+texture add background_tile_10_21 ../Images/green.bmp
+backgroundobject add background_tile_10_22 320 704 32 32
+texture add background_tile_10_22 ../Images/yellow.bmp
+backgroundobject add background_tile_10_23 320 736 32 32
+texture add background_tile_10_23 ../Images/green.bmp
+backgroundobject add background_tile_11_0 352 0 32 32
+texture add background_tile_11_0 ../Images/green.bmp
+backgroundobject add background_tile_11_1 352 32 32 32
+texture add background_tile_11_1 ../Images/yellow.bmp
+backgroundobject add background_tile_11_2 352 64 32 32
+texture add background_tile_11_2 ../Images/green.bmp
+backgroundobject add background_tile_11_3 352 96 32 32
+texture add background_tile_11_3 ../Images/yellow.bmp
+backgroundobject add background_tile_11_4 352 128 32 32
+texture add background_tile_11_4 ../Images/green.bmp
+backgroundobject add background_tile_11_5 352 160 32 32
+texture add background_tile_11_5 ../Images/yellow.bmp
+backgroundobject add background_tile_11_6 352 192 32 32
+texture add background_tile_11_6 ../Images/green.bmp
+backgroundobject add background_tile_11_7 352 224 32 32
+texture add background_tile_11_7 ../Images/yellow.bmp
+backgroundobject add background_tile_11_8 352 256 32 32
+texture add background_tile_11_8 ../Images/green.bmp
+backgroundobject add background_tile_11_9 352 288 32 32
+texture add background_tile_11_9 ../Images/yellow.bmp
+backgroundobject add background_tile_11_10 352 320 32 32
+texture add background_tile_11_10 ../Images/green.bmp
+backgroundobject add background_tile_11_11 352 352 32 32
+texture add background_tile_11_11 ../Images/yellow.bmp
+backgroundobject add background_tile_11_12 352 384 32 32
+texture add background_tile_11_12 ../Images/green.bmp
+backgroundobject add background_tile_11_13 352 416 32 32
+texture add background_tile_11_13 ../Images/yellow.bmp
+backgroundobject add background_tile_11_14 352 448 32 32
+texture add background_tile_11_14 ../Images/green.bmp
+backgroundobject add background_tile_11_15 352 480 32 32
+texture add background_tile_11_15 ../Images/yellow.bmp
+backgroundobject add background_tile_11_16 352 512 32 32
+texture add background_tile_11_16 ../Images/green.bmp
+backgroundobject add background_tile_11_17 352 544 32 32
+texture add background_tile_11_17 ../Images/yellow.bmp
+backgroundobject add background_tile_11_18 352 576 32 32
+texture add background_tile_11_18 ../Images/green.bmp
+backgroundobject add background_tile_11_19 352 608 32 32
+texture add background_tile_11_19 ../Images/yellow.bmp
+backgroundobject add background_tile_11_20 352 640 32 32
+texture add background_tile_11_20 ../Images/green.bmp
+backgroundobject add background_tile_11_21 352 672 32 32
+texture add background_tile_11_21 ../Images/yellow.bmp
+backgroundobject add background_tile_11_22 352 704 32 32
+texture add background_tile_11_22 ../Images/green.bmp
+backgroundobject add background_tile_11_23 352 736 32 32
+texture add background_tile_11_23 ../Images/yellow.bmp
+backgroundobject add background_tile_12_0 384 0 32 32
+texture add background_tile_12_0 ../Images/yellow.bmp
+backgroundobject add background_tile_12_1 384 32 32 32
+texture add background_tile_12_1 ../Images/green.bmp
+backgroundobject add background_tile_12_2 384 64 32 32
+texture add background_tile_12_2 ../Images/yellow.bmp
+backgroundobject add background_tile_12_3 384 96 32 32
+texture add background_tile_12_3 ../Images/green.bmp
+backgroundobject add background_tile_12_4 384 128 32 32
+texture add background_tile_12_4 ../Images/yellow.bmp
+backgroundobject add background_tile_12_5 384 160 32 32
+texture add background_tile_12_5 ../Images/green.bmp
+backgroundobject add background_tile_12_6 384 192 32 32
+texture add background_tile_12_6 ../Images/yellow.bmp
+backgroundobject add background_tile_12_7 384 224 32 32
+texture add background_tile_12_7 ../Images/green.bmp
+backgroundobject add background_tile_12_8 384 256 32 32
+texture add background_tile_12_8 ../Images/yellow.bmp
+backgroundobject add background_tile_12_9 384 288 32 32
+texture add background_tile_12_9 ../Images/green.bmp
+backgroundobject add background_tile_12_10 384 320 32 32
+texture add background_tile_12_10 ../Images/yellow.bmp
+backgroundobject add background_tile_12_11 384 352 32 32
+texture add background_tile_12_11 ../Images/green.bmp
+backgroundobject add background_tile_12_12 384 384 32 32
+texture add background_tile_12_12 ../Images/yellow.bmp
+backgroundobject add background_tile_12_13 384 416 32 32
+texture add background_tile_12_13 ../Images/green.bmp
+backgroundobject add background_tile_12_14 384 448 32 32
+texture add background_tile_12_14 ../Images/yellow.bmp
+backgroundobject add background_tile_12_15 384 480 32 32
+texture add background_tile_12_15 ../Images/green.bmp
+backgroundobject add background_tile_12_16 384 512 32 32
+texture add background_tile_12_16 ../Images/yellow.bmp
+backgroundobject add background_tile_12_17 384 544 32 32
+texture add background_tile_12_17 ../Images/green.bmp
+backgroundobject add background_tile_12_18 384 576 32 32
+texture add background_tile_12_18 ../Images/yellow.bmp
+backgroundobject add background_tile_12_19 384 608 32 32
+texture add background_tile_12_19 ../Images/green.bmp
+backgroundobject add background_tile_12_20 384 640 32 32
+texture add background_tile_12_20 ../Images/yellow.bmp
+backgroundobject add background_tile_12_21 384 672 32 32
+texture add background_tile_12_21 ../Images/green.bmp
+backgroundobject add background_tile_12_22 384 704 32 32
+texture add background_tile_12_22 ../Images/yellow.bmp
+backgroundobject add background_tile_12_23 384 736 32 32
+texture add background_tile_12_23 ../Images/green.bmp
+backgroundobject add background_tile_13_0 416 0 32 32
+texture add background_tile_13_0 ../Images/green.bmp
+backgroundobject add background_tile_13_1 416 32 32 32
+texture add background_tile_13_1 ../Images/yellow.bmp
+backgroundobject add background_tile_13_2 416 64 32 32
+texture add background_tile_13_2 ../Images/green.bmp
+backgroundobject add background_tile_13_3 416 96 32 32
+texture add background_tile_13_3 ../Images/yellow.bmp
+backgroundobject add background_tile_13_4 416 128 32 32
+texture add background_tile_13_4 ../Images/green.bmp
+backgroundobject add background_tile_13_5 416 160 32 32
+texture add background_tile_13_5 ../Images/yellow.bmp
+backgroundobject add background_tile_13_6 416 192 32 32
+texture add background_tile_13_6 ../Images/green.bmp
+backgroundobject add background_tile_13_7 416 224 32 32
+texture add background_tile_13_7 ../Images/yellow.bmp
+backgroundobject add background_tile_13_8 416 256 32 32
+texture add background_tile_13_8 ../Images/green.bmp
+backgroundobject add background_tile_13_9 416 288 32 32
+texture add background_tile_13_9 ../Images/yellow.bmp
+backgroundobject add background_tile_13_10 416 320 32 32
+texture add background_tile_13_10 ../Images/green.bmp
+backgroundobject add background_tile_13_11 416 352 32 32
+texture add background_tile_13_11 ../Images/yellow.bmp
+backgroundobject add background_tile_13_12 416 384 32 32
+texture add background_tile_13_12 ../Images/green.bmp
+backgroundobject add background_tile_13_13 416 416 32 32
+texture add background_tile_13_13 ../Images/yellow.bmp
+backgroundobject add background_tile_13_14 416 448 32 32
+texture add background_tile_13_14 ../Images/green.bmp
+backgroundobject add background_tile_13_15 416 480 32 32
+texture add background_tile_13_15 ../Images/yellow.bmp
+backgroundobject add background_tile_13_16 416 512 32 32
+texture add background_tile_13_16 ../Images/green.bmp
+backgroundobject add background_tile_13_17 416 544 32 32
+texture add background_tile_13_17 ../Images/yellow.bmp
+backgroundobject add background_tile_13_18 416 576 32 32
+texture add background_tile_13_18 ../Images/green.bmp
+backgroundobject add background_tile_13_19 416 608 32 32
+texture add background_tile_13_19 ../Images/yellow.bmp
+backgroundobject add background_tile_13_20 416 640 32 32
+texture add background_tile_13_20 ../Images/green.bmp
+backgroundobject add background_tile_13_21 416 672 32 32
+texture add background_tile_13_21 ../Images/yellow.bmp
+backgroundobject add background_tile_13_22 416 704 32 32
+texture add background_tile_13_22 ../Images/green.bmp
+backgroundobject add background_tile_13_23 416 736 32 32
+texture add background_tile_13_23 ../Images/yellow.bmp
+backgroundobject add background_tile_14_0 448 0 32 32
+texture add background_tile_14_0 ../Images/yellow.bmp
+backgroundobject add background_tile_14_1 448 32 32 32
+texture add background_tile_14_1 ../Images/green.bmp
+backgroundobject add background_tile_14_2 448 64 32 32
+texture add background_tile_14_2 ../Images/yellow.bmp
+backgroundobject add background_tile_14_3 448 96 32 32
+texture add background_tile_14_3 ../Images/green.bmp
+backgroundobject add background_tile_14_4 448 128 32 32
+texture add background_tile_14_4 ../Images/yellow.bmp
+backgroundobject add background_tile_14_5 448 160 32 32
+texture add background_tile_14_5 ../Images/green.bmp
+backgroundobject add background_tile_14_6 448 192 32 32
+texture add background_tile_14_6 ../Images/yellow.bmp
+backgroundobject add background_tile_14_7 448 224 32 32
+texture add background_tile_14_7 ../Images/green.bmp
+backgroundobject add background_tile_14_8 448 256 32 32
+texture add background_tile_14_8 ../Images/yellow.bmp
+backgroundobject add background_tile_14_9 448 288 32 32
+texture add background_tile_14_9 ../Images/green.bmp
+backgroundobject add background_tile_14_10 448 320 32 32
+texture add background_tile_14_10 ../Images/yellow.bmp
+backgroundobject add background_tile_14_11 448 352 32 32
+texture add background_tile_14_11 ../Images/green.bmp
+backgroundobject add background_tile_14_12 448 384 32 32
+texture add background_tile_14_12 ../Images/yellow.bmp
+backgroundobject add background_tile_14_13 448 416 32 32
+texture add background_tile_14_13 ../Images/green.bmp
+backgroundobject add background_tile_14_14 448 448 32 32
+texture add background_tile_14_14 ../Images/yellow.bmp
+backgroundobject add background_tile_14_15 448 480 32 32
+texture add background_tile_14_15 ../Images/green.bmp
+backgroundobject add background_tile_14_16 448 512 32 32
+texture add background_tile_14_16 ../Images/yellow.bmp
+backgroundobject add background_tile_14_17 448 544 32 32
+texture add background_tile_14_17 ../Images/green.bmp
+backgroundobject add background_tile_14_18 448 576 32 32
+texture add background_tile_14_18 ../Images/yellow.bmp
+backgroundobject add background_tile_14_19 448 608 32 32
+texture add background_tile_14_19 ../Images/green.bmp
+backgroundobject add background_tile_14_20 448 640 32 32
+texture add background_tile_14_20 ../Images/yellow.bmp
+backgroundobject add background_tile_14_21 448 672 32 32
+texture add background_tile_14_21 ../Images/green.bmp
+backgroundobject add background_tile_14_22 448 704 32 32
+texture add background_tile_14_22 ../Images/yellow.bmp
+backgroundobject add background_tile_14_23 448 736 32 32
+texture add background_tile_14_23 ../Images/green.bmp
+backgroundobject add background_tile_15_0 480 0 32 32
+texture add background_tile_15_0 ../Images/green.bmp
+backgroundobject add background_tile_15_1 480 32 32 32
+texture add background_tile_15_1 ../Images/yellow.bmp
+backgroundobject add background_tile_15_2 480 64 32 32
+texture add background_tile_15_2 ../Images/green.bmp
+backgroundobject add background_tile_15_3 480 96 32 32
+texture add background_tile_15_3 ../Images/yellow.bmp
+backgroundobject add background_tile_15_4 480 128 32 32
+texture add background_tile_15_4 ../Images/green.bmp
+backgroundobject add background_tile_15_5 480 160 32 32
+texture add background_tile_15_5 ../Images/yellow.bmp
+backgroundobject add background_tile_15_6 480 192 32 32
+texture add background_tile_15_6 ../Images/green.bmp
+backgroundobject add background_tile_15_7 480 224 32 32
+texture add background_tile_15_7 ../Images/yellow.bmp
+backgroundobject add background_tile_15_8 480 256 32 32
+texture add background_tile_15_8 ../Images/green.bmp
+backgroundobject add background_tile_15_9 480 288 32 32
+texture add background_tile_15_9 ../Images/yellow.bmp
+backgroundobject add background_tile_15_10 480 320 32 32
+texture add background_tile_15_10 ../Images/green.bmp
+backgroundobject add background_tile_15_11 480 352 32 32
+texture add background_tile_15_11 ../Images/yellow.bmp
+backgroundobject add background_tile_15_12 480 384 32 32
+texture add background_tile_15_12 ../Images/green.bmp
+backgroundobject add background_tile_15_13 480 416 32 32
+texture add background_tile_15_13 ../Images/yellow.bmp
+backgroundobject add background_tile_15_14 480 448 32 32
+texture add background_tile_15_14 ../Images/green.bmp
+backgroundobject add background_tile_15_15 480 480 32 32
+texture add background_tile_15_15 ../Images/yellow.bmp
+backgroundobject add background_tile_15_16 480 512 32 32
+texture add background_tile_15_16 ../Images/green.bmp
+backgroundobject add background_tile_15_17 480 544 32 32
+texture add background_tile_15_17 ../Images/yellow.bmp
+backgroundobject add background_tile_15_18 480 576 32 32
+texture add background_tile_15_18 ../Images/green.bmp
+backgroundobject add background_tile_15_19 480 608 32 32
+texture add background_tile_15_19 ../Images/yellow.bmp
+backgroundobject add background_tile_15_20 480 640 32 32
+texture add background_tile_15_20 ../Images/green.bmp
+backgroundobject add background_tile_15_21 480 672 32 32
+texture add background_tile_15_21 ../Images/yellow.bmp
+backgroundobject add background_tile_15_22 480 704 32 32
+texture add background_tile_15_22 ../Images/green.bmp
+backgroundobject add background_tile_15_23 480 736 32 32
+texture add background_tile_15_23 ../Images/yellow.bmp
+backgroundobject add background_tile_16_0 512 0 32 32
+texture add background_tile_16_0 ../Images/yellow.bmp
+backgroundobject add background_tile_16_1 512 32 32 32
+texture add background_tile_16_1 ../Images/green.bmp
+backgroundobject add background_tile_16_2 512 64 32 32
+texture add background_tile_16_2 ../Images/yellow.bmp
+backgroundobject add background_tile_16_3 512 96 32 32
+texture add background_tile_16_3 ../Images/green.bmp
+backgroundobject add background_tile_16_4 512 128 32 32
+texture add background_tile_16_4 ../Images/yellow.bmp
+backgroundobject add background_tile_16_5 512 160 32 32
+texture add background_tile_16_5 ../Images/green.bmp
+backgroundobject add background_tile_16_6 512 192 32 32
+texture add background_tile_16_6 ../Images/yellow.bmp
+backgroundobject add background_tile_16_7 512 224 32 32
+texture add background_tile_16_7 ../Images/green.bmp
+backgroundobject add background_tile_16_8 512 256 32 32
+texture add background_tile_16_8 ../Images/yellow.bmp
+backgroundobject add background_tile_16_9 512 288 32 32
+texture add background_tile_16_9 ../Images/green.bmp
+backgroundobject add background_tile_16_10 512 320 32 32
+texture add background_tile_16_10 ../Images/yellow.bmp
+backgroundobject add background_tile_16_11 512 352 32 32
+texture add background_tile_16_11 ../Images/green.bmp
+backgroundobject add background_tile_16_12 512 384 32 32
+texture add background_tile_16_12 ../Images/yellow.bmp
+backgroundobject add background_tile_16_13 512 416 32 32
+texture add background_tile_16_13 ../Images/green.bmp
+backgroundobject add background_tile_16_14 512 448 32 32
+texture add background_tile_16_14 ../Images/yellow.bmp
+backgroundobject add background_tile_16_15 512 480 32 32
+texture add background_tile_16_15 ../Images/green.bmp
+backgroundobject add background_tile_16_16 512 512 32 32
+texture add background_tile_16_16 ../Images/yellow.bmp
+backgroundobject add background_tile_16_17 512 544 32 32
+texture add background_tile_16_17 ../Images/green.bmp
+backgroundobject add background_tile_16_18 512 576 32 32
+texture add background_tile_16_18 ../Images/yellow.bmp
+backgroundobject add background_tile_16_19 512 608 32 32
+texture add background_tile_16_19 ../Images/green.bmp
+backgroundobject add background_tile_16_20 512 640 32 32
+texture add background_tile_16_20 ../Images/yellow.bmp
+backgroundobject add background_tile_16_21 512 672 32 32
+texture add background_tile_16_21 ../Images/green.bmp
+backgroundobject add background_tile_16_22 512 704 32 32
+texture add background_tile_16_22 ../Images/yellow.bmp
+backgroundobject add background_tile_16_23 512 736 32 32
+texture add background_tile_16_23 ../Images/green.bmp
+backgroundobject add background_tile_17_0 544 0 32 32
+texture add background_tile_17_0 ../Images/green.bmp
+backgroundobject add background_tile_17_1 544 32 32 32
+texture add background_tile_17_1 ../Images/yellow.bmp
+backgroundobject add background_tile_17_2 544 64 32 32
+texture add background_tile_17_2 ../Images/green.bmp
+backgroundobject add background_tile_17_3 544 96 32 32
+texture add background_tile_17_3 ../Images/yellow.bmp
+backgroundobject add background_tile_17_4 544 128 32 32
+texture add background_tile_17_4 ../Images/green.bmp
+backgroundobject add background_tile_17_5 544 160 32 32
+texture add background_tile_17_5 ../Images/yellow.bmp
+backgroundobject add background_tile_17_6 544 192 32 32
+texture add background_tile_17_6 ../Images/green.bmp
+backgroundobject add background_tile_17_7 544 224 32 32
+texture add background_tile_17_7 ../Images/yellow.bmp
+backgroundobject add background_tile_17_8 544 256 32 32
+texture add background_tile_17_8 ../Images/green.bmp
+backgroundobject add background_tile_17_9 544 288 32 32
+texture add background_tile_17_9 ../Images/yellow.bmp
+backgroundobject add background_tile_17_10 544 320 32 32
+texture add background_tile_17_10 ../Images/green.bmp
+backgroundobject add background_tile_17_11 544 352 32 32
+texture add background_tile_17_11 ../Images/yellow.bmp
+backgroundobject add background_tile_17_12 544 384 32 32
+texture add background_tile_17_12 ../Images/green.bmp
+backgroundobject add background_tile_17_13 544 416 32 32
+texture add background_tile_17_13 ../Images/yellow.bmp
+backgroundobject add background_tile_17_14 544 448 32 32
+texture add background_tile_17_14 ../Images/green.bmp
+backgroundobject add background_tile_17_15 544 480 32 32
+texture add background_tile_17_15 ../Images/yellow.bmp
+backgroundobject add background_tile_17_16 544 512 32 32
+texture add background_tile_17_16 ../Images/green.bmp
+backgroundobject add background_tile_17_17 544 544 32 32
+texture add background_tile_17_17 ../Images/yellow.bmp
+backgroundobject add background_tile_17_18 544 576 32 32
+texture add background_tile_17_18 ../Images/green.bmp
+backgroundobject add background_tile_17_19 544 608 32 32
+texture add background_tile_17_19 ../Images/yellow.bmp
+backgroundobject add background_tile_17_20 544 640 32 32
+texture add background_tile_17_20 ../Images/green.bmp
+backgroundobject add background_tile_17_21 544 672 32 32
+texture add background_tile_17_21 ../Images/yellow.bmp
+backgroundobject add background_tile_17_22 544 704 32 32
+texture add background_tile_17_22 ../Images/green.bmp
+backgroundobject add background_tile_17_23 544 736 32 32
+texture add background_tile_17_23 ../Images/yellow.bmp
+backgroundobject add background_tile_18_0 576 0 32 32
+texture add background_tile_18_0 ../Images/yellow.bmp
+backgroundobject add background_tile_18_1 576 32 32 32
+texture add background_tile_18_1 ../Images/green.bmp
+backgroundobject add background_tile_18_2 576 64 32 32
+texture add background_tile_18_2 ../Images/yellow.bmp
+backgroundobject add background_tile_18_3 576 96 32 32
+texture add background_tile_18_3 ../Images/green.bmp
+backgroundobject add background_tile_18_4 576 128 32 32
+texture add background_tile_18_4 ../Images/yellow.bmp
+backgroundobject add background_tile_18_5 576 160 32 32
+texture add background_tile_18_5 ../Images/green.bmp
+backgroundobject add background_tile_18_6 576 192 32 32
+texture add background_tile_18_6 ../Images/yellow.bmp
+backgroundobject add background_tile_18_7 576 224 32 32
+texture add background_tile_18_7 ../Images/green.bmp
+backgroundobject add background_tile_18_8 576 256 32 32
+texture add background_tile_18_8 ../Images/yellow.bmp
+backgroundobject add background_tile_18_9 576 288 32 32
+texture add background_tile_18_9 ../Images/green.bmp
+backgroundobject add background_tile_18_10 576 320 32 32
+texture add background_tile_18_10 ../Images/yellow.bmp
+backgroundobject add background_tile_18_11 576 352 32 32
+texture add background_tile_18_11 ../Images/green.bmp
+backgroundobject add background_tile_18_12 576 384 32 32
+texture add background_tile_18_12 ../Images/yellow.bmp
+backgroundobject add background_tile_18_13 576 416 32 32
+texture add background_tile_18_13 ../Images/green.bmp
+backgroundobject add background_tile_18_14 576 448 32 32
+texture add background_tile_18_14 ../Images/yellow.bmp
+backgroundobject add background_tile_18_15 576 480 32 32
+texture add background_tile_18_15 ../Images/green.bmp
+backgroundobject add background_tile_18_16 576 512 32 32
+texture add background_tile_18_16 ../Images/yellow.bmp
+backgroundobject add background_tile_18_17 576 544 32 32
+texture add background_tile_18_17 ../Images/green.bmp
+backgroundobject add background_tile_18_18 576 576 32 32
+texture add background_tile_18_18 ../Images/yellow.bmp
+backgroundobject add background_tile_18_19 576 608 32 32
+texture add background_tile_18_19 ../Images/green.bmp
+backgroundobject add background_tile_18_20 576 640 32 32
+texture add background_tile_18_20 ../Images/yellow.bmp
+backgroundobject add background_tile_18_21 576 672 32 32
+texture add background_tile_18_21 ../Images/green.bmp
+backgroundobject add background_tile_18_22 576 704 32 32
+texture add background_tile_18_22 ../Images/yellow.bmp
+backgroundobject add background_tile_18_23 576 736 32 32
+texture add background_tile_18_23 ../Images/green.bmp
+backgroundobject add background_tile_19_0 608 0 32 32
+texture add background_tile_19_0 ../Images/green.bmp
+backgroundobject add background_tile_19_1 608 32 32 32
+texture add background_tile_19_1 ../Images/yellow.bmp
+backgroundobject add background_tile_19_2 608 64 32 32
+texture add background_tile_19_2 ../Images/green.bmp
+backgroundobject add background_tile_19_3 608 96 32 32
+texture add background_tile_19_3 ../Images/yellow.bmp
+backgroundobject add background_tile_19_4 608 128 32 32
+texture add background_tile_19_4 ../Images/green.bmp
+backgroundobject add background_tile_19_5 608 160 32 32
+texture add background_tile_19_5 ../Images/yellow.bmp
+backgroundobject add background_tile_19_6 608 192 32 32
+texture add background_tile_19_6 ../Images/green.bmp
+backgroundobject add background_tile_19_7 608 224 32 32
+texture add background_tile_19_7 ../Images/yellow.bmp
+backgroundobject add background_tile_19_8 608 256 32 32
+texture add background_tile_19_8 ../Images/green.bmp
+backgroundobject add background_tile_19_9 608 288 32 32
+texture add background_tile_19_9 ../Images/yellow.bmp
+backgroundobject add background_tile_19_10 608 320 32 32
+texture add background_tile_19_10 ../Images/green.bmp
+backgroundobject add background_tile_19_11 608 352 32 32
+texture add background_tile_19_11 ../Images/yellow.bmp
+backgroundobject add background_tile_19_12 608 384 32 32
+texture add background_tile_19_12 ../Images/green.bmp
+backgroundobject add background_tile_19_13 608 416 32 32
+texture add background_tile_19_13 ../Images/yellow.bmp
+backgroundobject add background_tile_19_14 608 448 32 32
+texture add background_tile_19_14 ../Images/green.bmp
+backgroundobject add background_tile_19_15 608 480 32 32
+texture add background_tile_19_15 ../Images/yellow.bmp
+backgroundobject add background_tile_19_16 608 512 32 32
+texture add background_tile_19_16 ../Images/green.bmp
+backgroundobject add background_tile_19_17 608 544 32 32
+texture add background_tile_19_17 ../Images/yellow.bmp
+backgroundobject add background_tile_19_18 608 576 32 32
+texture add background_tile_19_18 ../Images/green.bmp
+backgroundobject add background_tile_19_19 608 608 32 32
+texture add background_tile_19_19 ../Images/yellow.bmp
+backgroundobject add background_tile_19_20 608 640 32 32
+texture add background_tile_19_20 ../Images/green.bmp
+backgroundobject add background_tile_19_21 608 672 32 32
+texture add background_tile_19_21 ../Images/yellow.bmp
+backgroundobject add background_tile_19_22 608 704 32 32
+texture add background_tile_19_22 ../Images/green.bmp
+backgroundobject add background_tile_19_23 608 736 32 32
+texture add background_tile_19_23 ../Images/yellow.bmp
+backgroundobject add background_tile_20_0 640 0 32 32
+texture add background_tile_20_0 ../Images/yellow.bmp
+backgroundobject add background_tile_20_1 640 32 32 32
+texture add background_tile_20_1 ../Images/green.bmp
+backgroundobject add background_tile_20_2 640 64 32 32
+texture add background_tile_20_2 ../Images/yellow.bmp
+backgroundobject add background_tile_20_3 640 96 32 32
+texture add background_tile_20_3 ../Images/green.bmp
+backgroundobject add background_tile_20_4 640 128 32 32
+texture add background_tile_20_4 ../Images/yellow.bmp
+backgroundobject add background_tile_20_5 640 160 32 32
+texture add background_tile_20_5 ../Images/green.bmp
+backgroundobject add background_tile_20_6 640 192 32 32
+texture add background_tile_20_6 ../Images/yellow.bmp
+backgroundobject add background_tile_20_7 640 224 32 32
+texture add background_tile_20_7 ../Images/green.bmp
+backgroundobject add background_tile_20_8 640 256 32 32
+texture add background_tile_20_8 ../Images/yellow.bmp
+backgroundobject add background_tile_20_9 640 288 32 32
+texture add background_tile_20_9 ../Images/green.bmp
+backgroundobject add background_tile_20_10 640 320 32 32
+texture add background_tile_20_10 ../Images/yellow.bmp
+backgroundobject add background_tile_20_11 640 352 32 32
+texture add background_tile_20_11 ../Images/green.bmp
+backgroundobject add background_tile_20_12 640 384 32 32
+texture add background_tile_20_12 ../Images/yellow.bmp
+backgroundobject add background_tile_20_13 640 416 32 32
+texture add background_tile_20_13 ../Images/green.bmp
+backgroundobject add background_tile_20_14 640 448 32 32
+texture add background_tile_20_14 ../Images/yellow.bmp
+backgroundobject add background_tile_20_15 640 480 32 32
+texture add background_tile_20_15 ../Images/green.bmp
+backgroundobject add background_tile_20_16 640 512 32 32
+texture add background_tile_20_16 ../Images/yellow.bmp
+backgroundobject add background_tile_20_17 640 544 32 32
+texture add background_tile_20_17 ../Images/green.bmp
+backgroundobject add background_tile_20_18 640 576 32 32
+texture add background_tile_20_18 ../Images/yellow.bmp
+backgroundobject add background_tile_20_19 640 608 32 32
+texture add background_tile_20_19 ../Images/green.bmp
+backgroundobject add background_tile_20_20 640 640 32 32
+texture add background_tile_20_20 ../Images/yellow.bmp
+backgroundobject add background_tile_20_21 640 672 32 32
+texture add background_tile_20_21 ../Images/green.bmp
+backgroundobject add background_tile_20_22 640 704 32 32
+texture add background_tile_20_22 ../Images/yellow.bmp
+backgroundobject add background_tile_20_23 640 736 32 32
+texture add background_tile_20_23 ../Images/green.bmp
+backgroundobject add background_tile_21_0 672 0 32 32
+texture add background_tile_21_0 ../Images/green.bmp
+backgroundobject add background_tile_21_1 672 32 32 32
+texture add background_tile_21_1 ../Images/yellow.bmp
+backgroundobject add background_tile_21_2 672 64 32 32
+texture add background_tile_21_2 ../Images/green.bmp
+backgroundobject add background_tile_21_3 672 96 32 32
+texture add background_tile_21_3 ../Images/yellow.bmp
+backgroundobject add background_tile_21_4 672 128 32 32
+texture add background_tile_21_4 ../Images/green.bmp
+backgroundobject add background_tile_21_5 672 160 32 32
+texture add background_tile_21_5 ../Images/yellow.bmp
+backgroundobject add background_tile_21_6 672 192 32 32
+texture add background_tile_21_6 ../Images/green.bmp
+backgroundobject add background_tile_21_7 672 224 32 32
+texture add background_tile_21_7 ../Images/yellow.bmp
+backgroundobject add background_tile_21_8 672 256 32 32
+texture add background_tile_21_8 ../Images/green.bmp
+backgroundobject add background_tile_21_9 672 288 32 32
+texture add background_tile_21_9 ../Images/yellow.bmp
+backgroundobject add background_tile_21_10 672 320 32 32
+texture add background_tile_21_10 ../Images/green.bmp
+backgroundobject add background_tile_21_11 672 352 32 32
+texture add background_tile_21_11 ../Images/yellow.bmp
+backgroundobject add background_tile_21_12 672 384 32 32
+texture add background_tile_21_12 ../Images/green.bmp
+backgroundobject add background_tile_21_13 672 416 32 32
+texture add background_tile_21_13 ../Images/yellow.bmp
+backgroundobject add background_tile_21_14 672 448 32 32
+texture add background_tile_21_14 ../Images/green.bmp
+backgroundobject add background_tile_21_15 672 480 32 32
+texture add background_tile_21_15 ../Images/yellow.bmp
+backgroundobject add background_tile_21_16 672 512 32 32
+texture add background_tile_21_16 ../Images/green.bmp
+backgroundobject add background_tile_21_17 672 544 32 32
+texture add background_tile_21_17 ../Images/yellow.bmp
+backgroundobject add background_tile_21_18 672 576 32 32
+texture add background_tile_21_18 ../Images/green.bmp
+backgroundobject add background_tile_21_19 672 608 32 32
+texture add background_tile_21_19 ../Images/yellow.bmp
+backgroundobject add background_tile_21_20 672 640 32 32
+texture add background_tile_21_20 ../Images/green.bmp
+backgroundobject add background_tile_21_21 672 672 32 32
+texture add background_tile_21_21 ../Images/yellow.bmp
+backgroundobject add background_tile_21_22 672 704 32 32
+texture add background_tile_21_22 ../Images/green.bmp
+backgroundobject add background_tile_21_23 672 736 32 32
+texture add background_tile_21_23 ../Images/yellow.bmp
+backgroundobject add background_tile_22_0 704 0 32 32
+texture add background_tile_22_0 ../Images/yellow.bmp
+backgroundobject add background_tile_22_1 704 32 32 32
+texture add background_tile_22_1 ../Images/green.bmp
+backgroundobject add background_tile_22_2 704 64 32 32
+texture add background_tile_22_2 ../Images/yellow.bmp
+backgroundobject add background_tile_22_3 704 96 32 32
+texture add background_tile_22_3 ../Images/green.bmp
+backgroundobject add background_tile_22_4 704 128 32 32
+texture add background_tile_22_4 ../Images/yellow.bmp
+backgroundobject add background_tile_22_5 704 160 32 32
+texture add background_tile_22_5 ../Images/green.bmp
+backgroundobject add background_tile_22_6 704 192 32 32
+texture add background_tile_22_6 ../Images/yellow.bmp
+backgroundobject add background_tile_22_7 704 224 32 32
+texture add background_tile_22_7 ../Images/green.bmp
+backgroundobject add background_tile_22_8 704 256 32 32
+texture add background_tile_22_8 ../Images/yellow.bmp
+backgroundobject add background_tile_22_9 704 288 32 32
+texture add background_tile_22_9 ../Images/green.bmp
+backgroundobject add background_tile_22_10 704 320 32 32
+texture add background_tile_22_10 ../Images/yellow.bmp
+backgroundobject add background_tile_22_11 704 352 32 32
+texture add background_tile_22_11 ../Images/green.bmp
+backgroundobject add background_tile_22_12 704 384 32 32
+texture add background_tile_22_12 ../Images/yellow.bmp
+backgroundobject add background_tile_22_13 704 416 32 32
+texture add background_tile_22_13 ../Images/green.bmp
+backgroundobject add background_tile_22_14 704 448 32 32
+texture add background_tile_22_14 ../Images/yellow.bmp
+backgroundobject add background_tile_22_15 704 480 32 32
+texture add background_tile_22_15 ../Images/green.bmp
+backgroundobject add background_tile_22_16 704 512 32 32
+texture add background_tile_22_16 ../Images/yellow.bmp
+backgroundobject add background_tile_22_17 704 544 32 32
+texture add background_tile_22_17 ../Images/green.bmp
+backgroundobject add background_tile_22_18 704 576 32 32
+texture add background_tile_22_18 ../Images/yellow.bmp
+backgroundobject add background_tile_22_19 704 608 32 32
+texture add background_tile_22_19 ../Images/green.bmp
+backgroundobject add background_tile_22_20 704 640 32 32
+texture add background_tile_22_20 ../Images/yellow.bmp
+backgroundobject add background_tile_22_21 704 672 32 32
+texture add background_tile_22_21 ../Images/green.bmp
+backgroundobject add background_tile_22_22 704 704 32 32
+texture add background_tile_22_22 ../Images/yellow.bmp
+backgroundobject add background_tile_22_23 704 736 32 32
+texture add background_tile_22_23 ../Images/green.bmp
+backgroundobject add background_tile_23_0 736 0 32 32
+texture add background_tile_23_0 ../Images/green.bmp
+backgroundobject add background_tile_23_1 736 32 32 32
+texture add background_tile_23_1 ../Images/yellow.bmp
+backgroundobject add background_tile_23_2 736 64 32 32
+texture add background_tile_23_2 ../Images/green.bmp
+backgroundobject add background_tile_23_3 736 96 32 32
+texture add background_tile_23_3 ../Images/yellow.bmp
+backgroundobject add background_tile_23_4 736 128 32 32
+texture add background_tile_23_4 ../Images/green.bmp
+backgroundobject add background_tile_23_5 736 160 32 32
+texture add background_tile_23_5 ../Images/yellow.bmp
+backgroundobject add background_tile_23_6 736 192 32 32
+texture add background_tile_23_6 ../Images/green.bmp
+backgroundobject add background_tile_23_7 736 224 32 32
+texture add background_tile_23_7 ../Images/yellow.bmp
+backgroundobject add background_tile_23_8 736 256 32 32
+texture add background_tile_23_8 ../Images/green.bmp
+backgroundobject add background_tile_23_9 736 288 32 32
+texture add background_tile_23_9 ../Images/yellow.bmp
+backgroundobject add background_tile_23_10 736 320 32 32
+texture add background_tile_23_10 ../Images/green.bmp
+backgroundobject add background_tile_23_11 736 352 32 32
+texture add background_tile_23_11 ../Images/yellow.bmp
+backgroundobject add background_tile_23_12 736 384 32 32
+texture add background_tile_23_12 ../Images/green.bmp
+backgroundobject add background_tile_23_13 736 416 32 32
+texture add background_tile_23_13 ../Images/yellow.bmp
+backgroundobject add background_tile_23_14 736 448 32 32
+texture add background_tile_23_14 ../Images/green.bmp
+backgroundobject add background_tile_23_15 736 480 32 32
+texture add background_tile_23_15 ../Images/yellow.bmp
+backgroundobject add background_tile_23_16 736 512 32 32
+texture add background_tile_23_16 ../Images/green.bmp
+backgroundobject add background_tile_23_17 736 544 32 32
+texture add background_tile_23_17 ../Images/yellow.bmp
+backgroundobject add background_tile_23_18 736 576 32 32
+texture add background_tile_23_18 ../Images/green.bmp
+backgroundobject add background_tile_23_19 736 608 32 32
+texture add background_tile_23_19 ../Images/yellow.bmp
+backgroundobject add background_tile_23_20 736 640 32 32
+texture add background_tile_23_20 ../Images/green.bmp
+backgroundobject add background_tile_23_21 736 672 32 32
+texture add background_tile_23_21 ../Images/yellow.bmp
+backgroundobject add background_tile_23_22 736 704 32 32
+texture add background_tile_23_22 ../Images/green.bmp
+backgroundobject add background_tile_23_23 736 736 32 32
+texture add background_tile_23_23 ../Images/yellow.bmp
+backgroundobject add background_tile_24_0 768 0 32 32
+texture add background_tile_24_0 ../Images/yellow.bmp
+backgroundobject add background_tile_24_1 768 32 32 32
+texture add background_tile_24_1 ../Images/green.bmp
+backgroundobject add background_tile_24_2 768 64 32 32
+texture add background_tile_24_2 ../Images/yellow.bmp
+backgroundobject add background_tile_24_3 768 96 32 32
+texture add background_tile_24_3 ../Images/green.bmp
+backgroundobject add background_tile_24_4 768 128 32 32
+texture add background_tile_24_4 ../Images/yellow.bmp
+backgroundobject add background_tile_24_5 768 160 32 32
+texture add background_tile_24_5 ../Images/green.bmp
+backgroundobject add background_tile_24_6 768 192 32 32
+texture add background_tile_24_6 ../Images/yellow.bmp
+backgroundobject add background_tile_24_7 768 224 32 32
+texture add background_tile_24_7 ../Images/green.bmp
+backgroundobject add background_tile_24_8 768 256 32 32
+texture add background_tile_24_8 ../Images/yellow.bmp
+backgroundobject add background_tile_24_9 768 288 32 32
+texture add background_tile_24_9 ../Images/green.bmp
+backgroundobject add background_tile_24_10 768 320 32 32
+texture add background_tile_24_10 ../Images/yellow.bmp
+backgroundobject add background_tile_24_11 768 352 32 32
+texture add background_tile_24_11 ../Images/green.bmp
+backgroundobject add background_tile_24_12 768 384 32 32
+texture add background_tile_24_12 ../Images/yellow.bmp
+backgroundobject add background_tile_24_13 768 416 32 32
+texture add background_tile_24_13 ../Images/green.bmp
+backgroundobject add background_tile_24_14 768 448 32 32
+texture add background_tile_24_14 ../Images/yellow.bmp
+backgroundobject add background_tile_24_15 768 480 32 32
+texture add background_tile_24_15 ../Images/green.bmp
+backgroundobject add background_tile_24_16 768 512 32 32
+texture add background_tile_24_16 ../Images/yellow.bmp
+backgroundobject add background_tile_24_17 768 544 32 32
+texture add background_tile_24_17 ../Images/green.bmp
+backgroundobject add background_tile_24_18 768 576 32 32
+texture add background_tile_24_18 ../Images/yellow.bmp
+backgroundobject add background_tile_24_19 768 608 32 32
+texture add background_tile_24_19 ../Images/green.bmp
+backgroundobject add background_tile_24_20 768 640 32 32
+texture add background_tile_24_20 ../Images/yellow.bmp
+backgroundobject add background_tile_24_21 768 672 32 32
+texture add background_tile_24_21 ../Images/green.bmp
+backgroundobject add background_tile_24_22 768 704 32 32
+texture add background_tile_24_22 ../Images/yellow.bmp
+backgroundobject add background_tile_24_23 768 736 32 32
+texture add background_tile_24_23 ../Images/green.bmp
+backgroundobject add background_tile_25_0 800 0 32 32
+texture add background_tile_25_0 ../Images/green.bmp
+backgroundobject add background_tile_25_1 800 32 32 32
+texture add background_tile_25_1 ../Images/yellow.bmp
+backgroundobject add background_tile_25_2 800 64 32 32
+texture add background_tile_25_2 ../Images/green.bmp
+backgroundobject add background_tile_25_3 800 96 32 32
+texture add background_tile_25_3 ../Images/yellow.bmp
+backgroundobject add background_tile_25_4 800 128 32 32
+texture add background_tile_25_4 ../Images/green.bmp
+backgroundobject add background_tile_25_5 800 160 32 32
+texture add background_tile_25_5 ../Images/yellow.bmp
+backgroundobject add background_tile_25_6 800 192 32 32
+texture add background_tile_25_6 ../Images/green.bmp
+backgroundobject add background_tile_25_7 800 224 32 32
+texture add background_tile_25_7 ../Images/yellow.bmp
+backgroundobject add background_tile_25_8 800 256 32 32
+texture add background_tile_25_8 ../Images/green.bmp
+backgroundobject add background_tile_25_9 800 288 32 32
+texture add background_tile_25_9 ../Images/yellow.bmp
+backgroundobject add background_tile_25_10 800 320 32 32
+texture add background_tile_25_10 ../Images/green.bmp
+backgroundobject add background_tile_25_11 800 352 32 32
+texture add background_tile_25_11 ../Images/yellow.bmp
+backgroundobject add background_tile_25_12 800 384 32 32
+texture add background_tile_25_12 ../Images/green.bmp
+backgroundobject add background_tile_25_13 800 416 32 32
+texture add background_tile_25_13 ../Images/yellow.bmp
+backgroundobject add background_tile_25_14 800 448 32 32
+texture add background_tile_25_14 ../Images/green.bmp
+backgroundobject add background_tile_25_15 800 480 32 32
+texture add background_tile_25_15 ../Images/yellow.bmp
+backgroundobject add background_tile_25_16 800 512 32 32
+texture add background_tile_25_16 ../Images/green.bmp
+backgroundobject add background_tile_25_17 800 544 32 32
+texture add background_tile_25_17 ../Images/yellow.bmp
+backgroundobject add background_tile_25_18 800 576 32 32
+texture add background_tile_25_18 ../Images/green.bmp
+backgroundobject add background_tile_25_19 800 608 32 32
+texture add background_tile_25_19 ../Images/yellow.bmp
+backgroundobject add background_tile_25_20 800 640 32 32
+texture add background_tile_25_20 ../Images/green.bmp
+backgroundobject add background_tile_25_21 800 672 32 32
+texture add background_tile_25_21 ../Images/yellow.bmp
+backgroundobject add background_tile_25_22 800 704 32 32
+texture add background_tile_25_22 ../Images/green.bmp
+backgroundobject add background_tile_25_23 800 736 32 32
+texture add background_tile_25_23 ../Images/yellow.bmp
+backgroundobject add background_tile_26_0 832 0 32 32
+texture add background_tile_26_0 ../Images/yellow.bmp
+backgroundobject add background_tile_26_1 832 32 32 32
+texture add background_tile_26_1 ../Images/green.bmp
+backgroundobject add background_tile_26_2 832 64 32 32
+texture add background_tile_26_2 ../Images/yellow.bmp
+backgroundobject add background_tile_26_3 832 96 32 32
+texture add background_tile_26_3 ../Images/green.bmp
+backgroundobject add background_tile_26_4 832 128 32 32
+texture add background_tile_26_4 ../Images/yellow.bmp
+backgroundobject add background_tile_26_5 832 160 32 32
+texture add background_tile_26_5 ../Images/green.bmp
+backgroundobject add background_tile_26_6 832 192 32 32
+texture add background_tile_26_6 ../Images/yellow.bmp
+backgroundobject add background_tile_26_7 832 224 32 32
+texture add background_tile_26_7 ../Images/green.bmp
+backgroundobject add background_tile_26_8 832 256 32 32
+texture add background_tile_26_8 ../Images/yellow.bmp
+backgroundobject add background_tile_26_9 832 288 32 32
+texture add background_tile_26_9 ../Images/green.bmp
+backgroundobject add background_tile_26_10 832 320 32 32
+texture add background_tile_26_10 ../Images/yellow.bmp
+backgroundobject add background_tile_26_11 832 352 32 32
+texture add background_tile_26_11 ../Images/green.bmp
+backgroundobject add background_tile_26_12 832 384 32 32
+texture add background_tile_26_12 ../Images/yellow.bmp
+backgroundobject add background_tile_26_13 832 416 32 32
+texture add background_tile_26_13 ../Images/green.bmp
+backgroundobject add background_tile_26_14 832 448 32 32
+texture add background_tile_26_14 ../Images/yellow.bmp
+backgroundobject add background_tile_26_15 832 480 32 32
+texture add background_tile_26_15 ../Images/green.bmp
+backgroundobject add background_tile_26_16 832 512 32 32
+texture add background_tile_26_16 ../Images/yellow.bmp
+backgroundobject add background_tile_26_17 832 544 32 32
+texture add background_tile_26_17 ../Images/green.bmp
+backgroundobject add background_tile_26_18 832 576 32 32
+texture add background_tile_26_18 ../Images/yellow.bmp
+backgroundobject add background_tile_26_19 832 608 32 32
+texture add background_tile_26_19 ../Images/green.bmp
+backgroundobject add background_tile_26_20 832 640 32 32
+texture add background_tile_26_20 ../Images/yellow.bmp
+backgroundobject add background_tile_26_21 832 672 32 32
+texture add background_tile_26_21 ../Images/green.bmp
+backgroundobject add background_tile_26_22 832 704 32 32
+texture add background_tile_26_22 ../Images/yellow.bmp
+backgroundobject add background_tile_26_23 832 736 32 32
+texture add background_tile_26_23 ../Images/green.bmp
+backgroundobject add background_tile_27_0 864 0 32 32
+texture add background_tile_27_0 ../Images/green.bmp
+backgroundobject add background_tile_27_1 864 32 32 32
+texture add background_tile_27_1 ../Images/yellow.bmp
+backgroundobject add background_tile_27_2 864 64 32 32
+texture add background_tile_27_2 ../Images/green.bmp
+backgroundobject add background_tile_27_3 864 96 32 32
+texture add background_tile_27_3 ../Images/yellow.bmp
+backgroundobject add background_tile_27_4 864 128 32 32
+texture add background_tile_27_4 ../Images/green.bmp
+backgroundobject add background_tile_27_5 864 160 32 32
+texture add background_tile_27_5 ../Images/yellow.bmp
+backgroundobject add background_tile_27_6 864 192 32 32
+texture add background_tile_27_6 ../Images/green.bmp
+backgroundobject add background_tile_27_7 864 224 32 32
+texture add background_tile_27_7 ../Images/yellow.bmp
+backgroundobject add background_tile_27_8 864 256 32 32
+texture add background_tile_27_8 ../Images/green.bmp
+backgroundobject add background_tile_27_9 864 288 32 32
+texture add background_tile_27_9 ../Images/yellow.bmp
+backgroundobject add background_tile_27_10 864 320 32 32
+texture add background_tile_27_10 ../Images/green.bmp
+backgroundobject add background_tile_27_11 864 352 32 32
+texture add background_tile_27_11 ../Images/yellow.bmp
+backgroundobject add background_tile_27_12 864 384 32 32
+texture add background_tile_27_12 ../Images/green.bmp
+backgroundobject add background_tile_27_13 864 416 32 32
+texture add background_tile_27_13 ../Images/yellow.bmp
+backgroundobject add background_tile_27_14 864 448 32 32
+texture add background_tile_27_14 ../Images/green.bmp
+backgroundobject add background_tile_27_15 864 480 32 32
+texture add background_tile_27_15 ../Images/yellow.bmp
+backgroundobject add background_tile_27_16 864 512 32 32
+texture add background_tile_27_16 ../Images/green.bmp
+backgroundobject add background_tile_27_17 864 544 32 32
+texture add background_tile_27_17 ../Images/yellow.bmp
+backgroundobject add background_tile_27_18 864 576 32 32
+texture add background_tile_27_18 ../Images/green.bmp
+backgroundobject add background_tile_27_19 864 608 32 32
+texture add background_tile_27_19 ../Images/yellow.bmp
+backgroundobject add background_tile_27_20 864 640 32 32
+texture add background_tile_27_20 ../Images/green.bmp
+backgroundobject add background_tile_27_21 864 672 32 32
+texture add background_tile_27_21 ../Images/yellow.bmp
+backgroundobject add background_tile_27_22 864 704 32 32
+texture add background_tile_27_22 ../Images/green.bmp
+backgroundobject add background_tile_27_23 864 736 32 32
+texture add background_tile_27_23 ../Images/yellow.bmp
+backgroundobject add background_tile_28_0 896 0 32 32
+texture add background_tile_28_0 ../Images/yellow.bmp
+backgroundobject add background_tile_28_1 896 32 32 32
+texture add background_tile_28_1 ../Images/green.bmp
+backgroundobject add background_tile_28_2 896 64 32 32
+texture add background_tile_28_2 ../Images/yellow.bmp
+backgroundobject add background_tile_28_3 896 96 32 32
+texture add background_tile_28_3 ../Images/green.bmp
+backgroundobject add background_tile_28_4 896 128 32 32
+texture add background_tile_28_4 ../Images/yellow.bmp
+backgroundobject add background_tile_28_5 896 160 32 32
+texture add background_tile_28_5 ../Images/green.bmp
+backgroundobject add background_tile_28_6 896 192 32 32
+texture add background_tile_28_6 ../Images/yellow.bmp
+backgroundobject add background_tile_28_7 896 224 32 32
+texture add background_tile_28_7 ../Images/green.bmp
+backgroundobject add background_tile_28_8 896 256 32 32
+texture add background_tile_28_8 ../Images/yellow.bmp
+backgroundobject add background_tile_28_9 896 288 32 32
+texture add background_tile_28_9 ../Images/green.bmp
+backgroundobject add background_tile_28_10 896 320 32 32
+texture add background_tile_28_10 ../Images/yellow.bmp
+backgroundobject add background_tile_28_11 896 352 32 32
+texture add background_tile_28_11 ../Images/green.bmp
+backgroundobject add background_tile_28_12 896 384 32 32
+texture add background_tile_28_12 ../Images/yellow.bmp
+backgroundobject add background_tile_28_13 896 416 32 32
+texture add background_tile_28_13 ../Images/green.bmp
+backgroundobject add background_tile_28_14 896 448 32 32
+texture add background_tile_28_14 ../Images/yellow.bmp
+backgroundobject add background_tile_28_15 896 480 32 32
+texture add background_tile_28_15 ../Images/green.bmp
+backgroundobject add background_tile_28_16 896 512 32 32
+texture add background_tile_28_16 ../Images/yellow.bmp
+backgroundobject add background_tile_28_17 896 544 32 32
+texture add background_tile_28_17 ../Images/green.bmp
+backgroundobject add background_tile_28_18 896 576 32 32
+texture add background_tile_28_18 ../Images/yellow.bmp
+backgroundobject add background_tile_28_19 896 608 32 32
+texture add background_tile_28_19 ../Images/green.bmp
+backgroundobject add background_tile_28_20 896 640 32 32
+texture add background_tile_28_20 ../Images/yellow.bmp
+backgroundobject add background_tile_28_21 896 672 32 32
+texture add background_tile_28_21 ../Images/green.bmp
+backgroundobject add background_tile_28_22 896 704 32 32
+texture add background_tile_28_22 ../Images/yellow.bmp
+backgroundobject add background_tile_28_23 896 736 32 32
+texture add background_tile_28_23 ../Images/green.bmp
+backgroundobject add background_tile_29_0 928 0 32 32
+texture add background_tile_29_0 ../Images/green.bmp
+backgroundobject add background_tile_29_1 928 32 32 32
+texture add background_tile_29_1 ../Images/yellow.bmp
+backgroundobject add background_tile_29_2 928 64 32 32
+texture add background_tile_29_2 ../Images/green.bmp
+backgroundobject add background_tile_29_3 928 96 32 32
+texture add background_tile_29_3 ../Images/yellow.bmp
+backgroundobject add background_tile_29_4 928 128 32 32
+texture add background_tile_29_4 ../Images/green.bmp
+backgroundobject add background_tile_29_5 928 160 32 32
+texture add background_tile_29_5 ../Images/yellow.bmp
+backgroundobject add background_tile_29_6 928 192 32 32
+texture add background_tile_29_6 ../Images/green.bmp
+backgroundobject add background_tile_29_7 928 224 32 32
+texture add background_tile_29_7 ../Images/yellow.bmp
+backgroundobject add background_tile_29_8 928 256 32 32
+texture add background_tile_29_8 ../Images/green.bmp
+backgroundobject add background_tile_29_9 928 288 32 32
+texture add background_tile_29_9 ../Images/yellow.bmp
+backgroundobject add background_tile_29_10 928 320 32 32
+texture add background_tile_29_10 ../Images/green.bmp
+backgroundobject add background_tile_29_11 928 352 32 32
+texture add background_tile_29_11 ../Images/yellow.bmp
+backgroundobject add background_tile_29_12 928 384 32 32
+texture add background_tile_29_12 ../Images/green.bmp
+backgroundobject add background_tile_29_13 928 416 32 32
+texture add background_tile_29_13 ../Images/yellow.bmp
+backgroundobject add background_tile_29_14 928 448 32 32
+texture add background_tile_29_14 ../Images/green.bmp
+backgroundobject add background_tile_29_15 928 480 32 32
+texture add background_tile_29_15 ../Images/yellow.bmp
+backgroundobject add background_tile_29_16 928 512 32 32
+texture add background_tile_29_16 ../Images/green.bmp
+backgroundobject add background_tile_29_17 928 544 32 32
+texture add background_tile_29_17 ../Images/yellow.bmp
+backgroundobject add background_tile_29_18 928 576 32 32
+texture add background_tile_29_18 ../Images/green.bmp
+backgroundobject add background_tile_29_19 928 608 32 32
+texture add background_tile_29_19 ../Images/yellow.bmp
+backgroundobject add background_tile_29_20 928 640 32 32
+texture add background_tile_29_20 ../Images/green.bmp
+backgroundobject add background_tile_29_21 928 672 32 32
+texture add background_tile_29_21 ../Images/yellow.bmp
+backgroundobject add background_tile_29_22 928 704 32 32
+texture add background_tile_29_22 ../Images/green.bmp
+backgroundobject add background_tile_29_23 928 736 32 32
+texture add background_tile_29_23 ../Images/yellow.bmp
+backgroundobject add background_tile_30_0 960 0 32 32
+texture add background_tile_30_0 ../Images/yellow.bmp
+backgroundobject add background_tile_30_1 960 32 32 32
+texture add background_tile_30_1 ../Images/green.bmp
+backgroundobject add background_tile_30_2 960 64 32 32
+texture add background_tile_30_2 ../Images/yellow.bmp
+backgroundobject add background_tile_30_3 960 96 32 32
+texture add background_tile_30_3 ../Images/green.bmp
+backgroundobject add background_tile_30_4 960 128 32 32
+texture add background_tile_30_4 ../Images/yellow.bmp
+backgroundobject add background_tile_30_5 960 160 32 32
+texture add background_tile_30_5 ../Images/green.bmp
+backgroundobject add background_tile_30_6 960 192 32 32
+texture add background_tile_30_6 ../Images/yellow.bmp
+backgroundobject add background_tile_30_7 960 224 32 32
+texture add background_tile_30_7 ../Images/green.bmp
+backgroundobject add background_tile_30_8 960 256 32 32
+texture add background_tile_30_8 ../Images/yellow.bmp
+backgroundobject add background_tile_30_9 960 288 32 32
+texture add background_tile_30_9 ../Images/green.bmp
+backgroundobject add background_tile_30_10 960 320 32 32
+texture add background_tile_30_10 ../Images/yellow.bmp
+backgroundobject add background_tile_30_11 960 352 32 32
+texture add background_tile_30_11 ../Images/green.bmp
+backgroundobject add background_tile_30_12 960 384 32 32
+texture add background_tile_30_12 ../Images/yellow.bmp
+backgroundobject add background_tile_30_13 960 416 32 32
+texture add background_tile_30_13 ../Images/green.bmp
+backgroundobject add background_tile_30_14 960 448 32 32
+texture add background_tile_30_14 ../Images/yellow.bmp
+backgroundobject add background_tile_30_15 960 480 32 32
+texture add background_tile_30_15 ../Images/green.bmp
+backgroundobject add background_tile_30_16 960 512 32 32
+texture add background_tile_30_16 ../Images/yellow.bmp
+backgroundobject add background_tile_30_17 960 544 32 32
+texture add background_tile_30_17 ../Images/green.bmp
+backgroundobject add background_tile_30_18 960 576 32 32
+texture add background_tile_30_18 ../Images/yellow.bmp
+backgroundobject add background_tile_30_19 960 608 32 32
+texture add background_tile_30_19 ../Images/green.bmp
+backgroundobject add background_tile_30_20 960 640 32 32
+texture add background_tile_30_20 ../Images/yellow.bmp
+backgroundobject add background_tile_30_21 960 672 32 32
+texture add background_tile_30_21 ../Images/green.bmp
+backgroundobject add background_tile_30_22 960 704 32 32
+texture add background_tile_30_22 ../Images/yellow.bmp
+backgroundobject add background_tile_30_23 960 736 32 32
+texture add background_tile_30_23 ../Images/green.bmp
+backgroundobject add background_tile_31_0 992 0 32 32
+texture add background_tile_31_0 ../Images/green.bmp
+backgroundobject add background_tile_31_1 992 32 32 32
+texture add background_tile_31_1 ../Images/yellow.bmp
+backgroundobject add background_tile_31_2 992 64 32 32
+texture add background_tile_31_2 ../Images/green.bmp
+backgroundobject add background_tile_31_3 992 96 32 32
+texture add background_tile_31_3 ../Images/yellow.bmp
+backgroundobject add background_tile_31_4 992 128 32 32
+texture add background_tile_31_4 ../Images/green.bmp
+backgroundobject add background_tile_31_5 992 160 32 32
+texture add background_tile_31_5 ../Images/yellow.bmp
+backgroundobject add background_tile_31_6 992 192 32 32
+texture add background_tile_31_6 ../Images/green.bmp
+backgroundobject add background_tile_31_7 992 224 32 32
+texture add background_tile_31_7 ../Images/yellow.bmp
+backgroundobject add background_tile_31_8 992 256 32 32
+texture add background_tile_31_8 ../Images/green.bmp
+backgroundobject add background_tile_31_9 992 288 32 32
+texture add background_tile_31_9 ../Images/yellow.bmp
+backgroundobject add background_tile_31_10 992 320 32 32
+texture add background_tile_31_10 ../Images/green.bmp
+backgroundobject add background_tile_31_11 992 352 32 32
+texture add background_tile_31_11 ../Images/yellow.bmp
+backgroundobject add background_tile_31_12 992 384 32 32
+texture add background_tile_31_12 ../Images/green.bmp
+backgroundobject add background_tile_31_13 992 416 32 32
+texture add background_tile_31_13 ../Images/yellow.bmp
+backgroundobject add background_tile_31_14 992 448 32 32
+texture add background_tile_31_14 ../Images/green.bmp
+backgroundobject add background_tile_31_15 992 480 32 32
+texture add background_tile_31_15 ../Images/yellow.bmp
+backgroundobject add background_tile_31_16 992 512 32 32
+texture add background_tile_31_16 ../Images/green.bmp
+backgroundobject add background_tile_31_17 992 544 32 32
+texture add background_tile_31_17 ../Images/yellow.bmp
+backgroundobject add background_tile_31_18 992 576 32 32
+texture add background_tile_31_18 ../Images/green.bmp
+backgroundobject add background_tile_31_19 992 608 32 32
+texture add background_tile_31_19 ../Images/yellow.bmp
+backgroundobject add background_tile_31_20 992 640 32 32
+texture add background_tile_31_20 ../Images/green.bmp
+backgroundobject add background_tile_31_21 992 672 32 32
+texture add background_tile_31_21 ../Images/yellow.bmp
+backgroundobject add background_tile_31_22 992 704 32 32
+texture add background_tile_31_22 ../Images/green.bmp
+backgroundobject add background_tile_31_23 992 736 32 32
+texture add background_tile_31_23 ../Images/yellow.bmp
+gameobject add wall_0_0 0 0 32 32 true
+texture add wall_0_0 ../Images/red.bmp
+gameobject add wall_0_1 0 32 32 32 true
+texture add wall_0_1 ../Images/red.bmp
+gameobject add wall_0_2 0 64 32 32 true
+texture add wall_0_2 ../Images/red.bmp
+gameobject add wall_0_3 0 96 32 32 true
+texture add wall_0_3 ../Images/red.bmp
+gameobject add wall_0_4 0 128 32 32 true
+texture add wall_0_4 ../Images/red.bmp
+gameobject add wall_0_5 0 160 32 32 true
+texture add wall_0_5 ../Images/red.bmp
+gameobject add wall_0_6 0 192 32 32 true
+texture add wall_0_6 ../Images/red.bmp
+gameobject add wall_0_7 0 224 32 32 true
+texture add wall_0_7 ../Images/red.bmp
+gameobject add wall_0_8 0 256 32 32 true
+texture add wall_0_8 ../Images/red.bmp
+gameobject add wall_0_9 0 288 32 32 true
+texture add wall_0_9 ../Images/red.bmp
+gameobject add wall_0_10 0 320 32 32 true
+texture add wall_0_10 ../Images/red.bmp
+gameobject add wall_0_11 0 352 32 32 true
+texture add wall_0_11 ../Images/red.bmp
+gameobject add wall_0_12 0 384 32 32 true
+texture add wall_0_12 ../Images/red.bmp
+gameobject add wall_0_13 0 416 32 32 true
+texture add wall_0_13 ../Images/red.bmp
+gameobject add wall_0_14 0 448 32 32 true
+texture add wall_0_14 ../Images/red.bmp
+gameobject add wall_0_15 0 480 32 32 true
+texture add wall_0_15 ../Images/red.bmp
+gameobject add wall_0_16 0 512 32 32 true
+texture add wall_0_16 ../Images/red.bmp
+gameobject add wall_0_17 0 544 32 32 true
+texture add wall_0_17 ../Images/red.bmp
+gameobject add wall_0_18 0 576 32 32 true
+texture add wall_0_18 ../Images/red.bmp
+gameobject add wall_0_19 0 608 32 32 true
+texture add wall_0_19 ../Images/red.bmp
+gameobject add wall_0_20 0 640 32 32 true
+texture add wall_0_20 ../Images/red.bmp
+gameobject add wall_0_21 0 672 32 32 true
+texture add wall_0_21 ../Images/red.bmp
+gameobject add wall_0_22 0 704 32 32 true
+texture add wall_0_22 ../Images/red.bmp
+gameobject add wall_0_23 0 736 32 32 true
+texture add wall_0_23 ../Images/red.bmp
+gameobject add wall_1_0 32 0 32 32 true
+texture add wall_1_0 ../Images/red.bmp
+gameobject add wall_1_23 32 736 32 32 true
+texture add wall_1_23 ../Images/red.bmp
+gameobject add wall_2_0 64 0 32 32 true
+texture add wall_2_0 ../Images/red.bmp
+gameobject add wall_2_23 64 736 32 32 true
+texture add wall_2_23 ../Images/red.bmp
+gameobject add wall_3_0 96 0 32 32 true
+texture add wall_3_0 ../Images/red.bmp
+gameobject add wall_3_23 96 736 32 32 true
+texture add wall_3_23 ../Images/red.bmp
+gameobject add wall_4_0 128 0 32 32 true
+texture add wall_4_0 ../Images/red.bmp
+gameobject add wall_4_23 128 736 32 32 true
+texture add wall_4_23 ../Images/red.bmp
+gameobject add wall_5_0 160 0 32 32 true
+texture add wall_5_0 ../Images/red.bmp
+gameobject add wall_5_23 160 736 32 32 true
+texture add wall_5_23 ../Images/red.bmp
+gameobject add wall_6_0 192 0 32 32 true
+texture add wall_6_0 ../Images/red.bmp
+gameobject add wall_6_23 192 736 32 32 true
+texture add wall_6_23 ../Images/red.bmp
+gameobject add wall_7_0 224 0 32 32 true
+texture add wall_7_0 ../Images/red.bmp
+gameobject add wall_7_23 224 736 32 32 true
+texture add wall_7_23 ../Images/red.bmp
+gameobject add wall_8_0 256 0 32 32 true
+texture add wall_8_0 ../Images/red.bmp
+gameobject add wall_8_23 256 736 32 32 true
+texture add wall_8_23 ../Images/red.bmp
+gameobject add wall_9_0 288 0 32 32 true
+texture add wall_9_0 ../Images/red.bmp
+gameobject add wall_9_23 288 736 32 32 true
+texture add wall_9_23 ../Images/red.bmp
+gameobject add wall_10_0 320 0 32 32 true
+texture add wall_10_0 ../Images/red.bmp
+gameobject add wall_10_23 320 736 32 32 true
+texture add wall_10_23 ../Images/red.bmp
+gameobject add wall_11_0 352 0 32 32 true
+texture add wall_11_0 ../Images/red.bmp
+gameobject add wall_11_23 352 736 32 32 true
+texture add wall_11_23 ../Images/red.bmp
+gameobject add wall_12_0 384 0 32 32 true
+texture add wall_12_0 ../Images/red.bmp
+gameobject add wall_12_23 384 736 32 32 true
+texture add wall_12_23 ../Images/red.bmp
+gameobject add wall_13_0 416 0 32 32 true
+texture add wall_13_0 ../Images/red.bmp
+gameobject add wall_13_23 416 736 32 32 true
+texture add wall_13_23 ../Images/red.bmp
+gameobject add wall_14_0 448 0 32 32 true
+texture add wall_14_0 ../Images/red.bmp
+gameobject add wall_14_23 448 736 32 32 true
+texture add wall_14_23 ../Images/red.bmp
+gameobject add wall_15_0 480 0 32 32 true
+texture add wall_15_0 ../Images/red.bmp
+gameobject add wall_15_23 480 736 32 32 true
+texture add wall_15_23 ../Images/red.bmp
+gameobject add wall_16_0 512 0 32 32 true
+texture add wall_16_0 ../Images/red.bmp
+gameobject add wall_16_23 512 736 32 32 true
+texture add wall_16_23 ../Images/red.bmp
+gameobject add wall_17_0 544 0 32 32 true
+texture add wall_17_0 ../Images/red.bmp
+gameobject add wall_17_23 544 736 32 32 true
+texture add wall_17_23 ../Images/red.bmp
+gameobject add wall_18_0 576 0 32 32 true
+texture add wall_18_0 ../Images/red.bmp
+gameobject add wall_18_23 576 736 32 32 true
+texture add wall_18_23 ../Images/red.bmp
+gameobject add wall_19_0 608 0 32 32 true
+texture add wall_19_0 ../Images/red.bmp
+gameobject add wall_19_23 608 736 32 32 true
+texture add wall_19_23 ../Images/red.bmp
+gameobject add wall_20_0 640 0 32 32 true
+texture add wall_20_0 ../Images/red.bmp
+gameobject add wall_20_23 640 736 32 32 true
+texture add wall_20_23 ../Images/red.bmp
+gameobject add wall_21_0 672 0 32 32 true
+texture add wall_21_0 ../Images/red.bmp
+gameobject add wall_21_23 672 736 32 32 true
+texture add wall_21_23 ../Images/red.bmp
+gameobject add wall_22_0 704 0 32 32 true
+texture add wall_22_0 ../Images/red.bmp
+gameobject add wall_22_23 704 736 32 32 true
+texture add wall_22_23 ../Images/red.bmp
+gameobject add wall_23_0 736 0 32 32 true
+texture add wall_23_0 ../Images/red.bmp
+gameobject add wall_23_23 736 736 32 32 true
+texture add wall_23_23 ../Images/red.bmp
+gameobject add wall_24_0 768 0 32 32 true
+texture add wall_24_0 ../Images/red.bmp
+gameobject add wall_24_23 768 736 32 32 true
+texture add wall_24_23 ../Images/red.bmp
+gameobject add wall_25_0 800 0 32 32 true
+texture add wall_25_0 ../Images/red.bmp
+gameobject add wall_25_23 800 736 32 32 true
+texture add wall_25_23 ../Images/red.bmp
+gameobject add wall_26_0 832 0 32 32 true
+texture add wall_26_0 ../Images/red.bmp
+gameobject add wall_26_23 832 736 32 32 true
+texture add wall_26_23 ../Images/red.bmp
+gameobject add wall_27_0 864 0 32 32 true
+texture add wall_27_0 ../Images/red.bmp
+gameobject add wall_27_23 864 736 32 32 true
+texture add wall_27_23 ../Images/red.bmp
+gameobject add wall_28_0 896 0 32 32 true
+texture add wall_28_0 ../Images/red.bmp
+gameobject add wall_28_23 896 736 32 32 true
+texture add wall_28_23 ../Images/red.bmp
+gameobject add wall_29_0 928 0 32 32 true
+texture add wall_29_0 ../Images/red.bmp
+gameobject add wall_29_23 928 736 32 32 true
+texture add wall_29_23 ../Images/red.bmp
+gameobject add wall_30_0 960 0 32 32 true
+texture add wall_30_0 ../Images/red.bmp
+gameobject add wall_30_23 960 736 32 32 true
+texture add wall_30_23 ../Images/red.bmp
+gameobject add wall_31_0 992 0 32 32 true
+texture add wall_31_0 ../Images/red.bmp
+gameobject add wall_31_1 992 32 32 32 true
+texture add wall_31_1 ../Images/red.bmp
+gameobject add wall_31_2 992 64 32 32 true
+texture add wall_31_2 ../Images/red.bmp
+gameobject add wall_31_3 992 96 32 32 true
+texture add wall_31_3 ../Images/red.bmp
+gameobject add wall_31_4 992 128 32 32 true
+texture add wall_31_4 ../Images/red.bmp
+gameobject add wall_31_5 992 160 32 32 true
+texture add wall_31_5 ../Images/red.bmp
+gameobject add wall_31_6 992 192 32 32 true
+texture add wall_31_6 ../Images/red.bmp
+gameobject add wall_31_7 992 224 32 32 true
+texture add wall_31_7 ../Images/red.bmp
+gameobject add wall_31_8 992 256 32 32 true
+texture add wall_31_8 ../Images/red.bmp
+gameobject add wall_31_9 992 288 32 32 true
+texture add wall_31_9 ../Images/red.bmp
+gameobject add wall_31_10 992 320 32 32 true
+texture add wall_31_10 ../Images/red.bmp
+gameobject add wall_31_11 992 352 32 32 true
+texture add wall_31_11 ../Images/red.bmp
+gameobject add wall_31_12 992 384 32 32 true
+texture add wall_31_12 ../Images/red.bmp
+gameobject add wall_31_13 992 416 32 32 true
+texture add wall_31_13 ../Images/red.bmp
+gameobject add wall_31_14 992 448 32 32 true
+texture add wall_31_14 ../Images/red.bmp
+gameobject add wall_31_15 992 480 32 32 true
+texture add wall_31_15 ../Images/red.bmp
+gameobject add wall_31_16 992 512 32 32 true
+texture add wall_31_16 ../Images/red.bmp
+gameobject add wall_31_17 992 544 32 32 true
+texture add wall_31_17 ../Images/red.bmp
+gameobject add wall_31_18 992 576 32 32 true
+texture add wall_31_18 ../Images/red.bmp
+gameobject add wall_31_19 992 608 32 32 true
+texture add wall_31_19 ../Images/red.bmp
+gameobject add wall_31_20 992 640 32 32 true
+texture add wall_31_20 ../Images/red.bmp
+gameobject add wall_31_21 992 672 32 32 true
+texture add wall_31_21 ../Images/red.bmp
+gameobject add wall_31_22 992 704 32 32 true
+texture add wall_31_22 ../Images/red.bmp
+gameobject add wall_31_23 992 736 32 32 true
+texture add wall_31_23 ../Images/red.bmp
 end
