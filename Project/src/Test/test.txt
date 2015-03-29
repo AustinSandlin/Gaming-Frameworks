@@ -17,9 +17,9 @@ texture add player ../Images/player_left.bmp
 texture add player ../Images/player_right.bmp
 aiobject add ai 320 320 32 32 WANDER
 texture add ai ../Images/red.bmp
-hudobject add hud_element 960 704 32 32 false
+hudobject add hud_element 900 900 32 32 false
 texture add hud_element ../Images/purple_circle.bmp
-hudobject add fps_counter 990 744 64 64 true
+hudobject add fps_counter 918 918 32 32 true
 debug add fps_counter fps
 backgroundobject add background_tile_0_0 0 0 32 32
 texture add background_tile_0_0 ../Images/yellow.bmp

@@ -10,6 +10,7 @@
 
 #include "../../Common/Base/Singleton.h"
 #include "../../Common/Base/Types.h"
+#include "../../Common/Resources/Constants.h"
 
 #include <fstream>
 #include <iostream>

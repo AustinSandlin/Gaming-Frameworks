@@ -255,6 +255,7 @@ void ObjectController::drawObjects() {
     int y = 0;
     int count = 0;
 
+    // Centering camera on the players:
     TableIterator<PlayerObject> it = player_objects.begin();
     while(it != player_objects.end()) {
         x += it.getValue().getX();
@@ -266,8 +267,8 @@ void ObjectController::drawObjects() {
     x /= count;
     y /= count;
 
-    x = (glutGet(GLUT_WINDOW_WIDTH)/2) - x;
-    y = (glutGet(GLUT_WINDOW_HEIGHT)/2) - y;
+    x = (ORTHO_RIGHT / 2) - x;
+    y = (ORTHO_TOP / 2) - y;
 
     glTranslatef(x, y, 0);
 

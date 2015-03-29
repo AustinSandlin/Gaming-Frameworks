@@ -10,7 +10,7 @@
 
 int main(int argc, char **argv) {
 
-	// New loader level loading
+	// Loader level setup
 
 	if (argc != 2) {
 		cout << "Invalid number of arguments" << endl;
@@ -18,7 +18,6 @@ int main(int argc, char **argv) {
 		exit(1);
 	}
 
-	//static AudioController& audio_controller = AudioController::instance();
 	static GameController& game_controller = GameController::instance();
 
 

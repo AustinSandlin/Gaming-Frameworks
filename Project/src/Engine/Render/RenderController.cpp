@@ -1,11 +1,13 @@
 #include "RenderController.h"
 
 void RenderController::prepareScreen( int x, int y, String name ) {
+    glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
 	glutInitWindowSize(x, y);
-    glutInitWindowPosition(0, 0);
+    glutInitWindowPosition(WINDOW_OFFSET_X, WINDOW_OFFSET_Y);
     glutCreateWindow(name.c_str());
 	glEnable(GL_TEXTURE_2D);
 	glClearColor(0.0, 0.0, 0.0, 1.0);
+    glColor3f(1.0, 1.0, 1.0);
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -13,16 +15,17 @@ void RenderController::prepareScreen( int x, int y, String name ) {
     glEnable(GL_BLEND);
     glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
 
-    gluOrtho2D(0, glutGet(GLUT_WINDOW_WIDTH), 0, glutGet(GLUT_WINDOW_HEIGHT));
+    gluOrtho2D(ORTHO_LEFT, ORTHO_RIGHT, ORTHO_BOTTOM, ORTHO_TOP);
+
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
 }
 
 GLuint RenderController::loadBMP(const char* filename) {
-    //cout << filename << ": ";
     ifstream input;
     input.open(filename, ifstream::binary);
     if(!input) {
         input.clear();
-        //cout << "file not found" << endl;
         exit(1);
     }
 
@@ -42,7 +45,6 @@ GLuint RenderController::loadBMP(const char* filename) {
                           ((unsigned char)buffer[1] << 8) |
                           (unsigned char)buffer[0]);
 
-    //std::cout << headerSize << std::endl;
     if( headerSize != 40 ) {
         input.close();
         input.clear();
@@ -98,8 +100,6 @@ GLuint RenderController::loadBMP(const char* filename) {
                  GL_RGBA,
                  GL_UNSIGNED_BYTE,
                  pixels);
-
-    //cout << "loaded" << endl;
 
     //Return the texture id for purposes.
     return textureID;

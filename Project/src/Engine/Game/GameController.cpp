@@ -8,7 +8,18 @@ GameController& GameController::game_controller = GameController::instance();
 
 void GameController::renderDisplayCallback() {
     object_controller.drawObjects();
-    //render_controller.renderScreen(object_controller.queueObjects(), object_controller.queueDebugs());
+}
+
+void GameController::reshapeCallback(int width, int height) {
+    // This keeps the game in the entire screen and otherwise does not change
+    // anything when the window is reshaped.
+    glViewport(0, 0, width, height); 
+    glMatrixMode(GL_PROJECTION);
+    glPushMatrix();
+    glLoadIdentity();
+    gluOrtho2D(ORTHO_LEFT, ORTHO_RIGHT, ORTHO_BOTTOM, ORTHO_TOP);
+    glPopMatrix();
+    glMatrixMode(GL_MODELVIEW);
 }
 
 void GameController::handleInputEvent( const StringID& id ) {
@@ -49,6 +60,7 @@ void GameController::setupGameLoop(int argc, char **argv) {
     glutMouseFunc(mouseInputCallback);
     glutDisplayFunc(renderDisplayCallback);
     glutTimerFunc(16, updateTimerCallback, 0);
+    glutReshapeFunc(reshapeCallback);
 
     time(&lastTime);
     numFrames = 0;
@@ -61,7 +73,6 @@ void GameController::updateGameLoop(int value) {
         audio_controller.playSound( "background" );
     }
     
-    //std::cout << "input: " << key << std::endl;
     // Measure speed
     time_t currentTime;
     time(&currentTime);

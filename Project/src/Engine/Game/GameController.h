@@ -59,6 +59,8 @@ class GameController : public Singleton< GameController >{
 
         static void renderDisplayCallback();
 
+        static void reshapeCallback(int width, int height);
+
     public:
         void handleInputEvent( const StringID& id );
         void registerInputAction( const StringID& id, const InputAction action );
