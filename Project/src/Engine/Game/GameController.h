@@ -35,6 +35,8 @@ class GameController : public Singleton< GameController >{
         int numFrames;
         int fps;
     
+        Table< bool > flag_table;
+        Table< double > variable_table;
         Table< InputAction > input_action_table;
 
         GameController() {
@@ -62,6 +64,16 @@ class GameController : public Singleton< GameController >{
         static void reshapeCallback(int width, int height);
 
     public:
+        bool hasFlag(String name);
+        void setFlag(String name, bool state);
+        bool getFlag(String name);
+        void clearFlag(String name);
+
+        bool hasVariable(String name);
+        void setVariable(String name, double value);
+        double getVariable(String name);
+        void clearVariable(String name);
+        
         void handleInputEvent( const StringID& id );
         void registerInputAction( const StringID& id, const InputAction action );
         void registerDebugValue( const StringID& id, const DebugValue dval );
