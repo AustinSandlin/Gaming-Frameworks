@@ -54,5 +54,8 @@ const int ORTHO_RIGHT = 1000;
 const int ORTHO_BOTTOM = 0;
 const int ORTHO_TOP = 1000;
 
+// Object constants
+const double MAX_ROTATION = 360.0;
+
 
 #endif 
