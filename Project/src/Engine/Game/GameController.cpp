@@ -6,6 +6,68 @@ ObjectController& GameController::object_controller = ObjectController::instance
 RenderController& GameController::render_controller = RenderController::instance();
 GameController& GameController::game_controller = GameController::instance();
 
+bool GameController::hasFlag(String name) {
+    static Strings & strings = Strings::instance();
+    StringID id = strings.intern(name);
+    return flag_table.has(id);
+}
+
+void GameController::setFlag(String name, bool state) {
+    static Strings & strings = Strings::instance();
+    StringID id = strings.intern(name);
+    if (flag_table.has(id)) {
+        flag_table.get(id).getValue() = state;
+    }
+    else {
+        flag_table.add(id, state);
+    }
+}
+
+bool GameController::getFlag(String name) {
+    static Strings & strings = Strings::instance();
+    StringID id = strings.intern(name);
+    return flag_table.get(id).getValue();
+}
+
+void GameController::clearFlag(String name) {
+    static Strings & strings = Strings::instance();
+    StringID id = strings.intern(name);
+    if (flag_table.has(id)) {
+        flag_table.remove(id);
+    }
+}
+
+bool GameController::hasVariable(String name) {
+    static Strings & strings = Strings::instance();
+    StringID id = strings.intern(name);
+    return variable_table.has(id);
+}
+
+void GameController::setVariable(String name, double value) {
+    static Strings & strings = Strings::instance();
+    StringID id = strings.intern(name);
+    if (variable_table.has(id)) {
+        variable_table.get(id).getValue() = value;
+    }
+    else {
+        variable_table.add(id, value);
+    }
+}
+
+double GameController::getVariable(String name) {
+    static Strings & strings = Strings::instance();
+    StringID id = strings.intern(name);
+    return variable_table.get(id).getValue();
+}
+
+void GameController::clearVariable(String name) {
+    static Strings & strings = Strings::instance();
+    StringID id = strings.intern(name);
+    if (variable_table.has(id)) {
+        variable_table.remove(id);
+    }
+}
+
 void GameController::renderDisplayCallback() {
     object_controller.drawObjects();
 }
