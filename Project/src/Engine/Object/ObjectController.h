@@ -38,9 +38,28 @@ class ObjectController:
 		Table< HUDObject > debug_objects;
 		Table< HUDObject > hud_objects;
 
+
+		Table< Object > players;
+		Table< Object > backgrounds;
+		Table< Object > solidwalls;
+		Table< Object > breakablewalls;
+		Table< Object > rusherenemies;
+		Table< Object > shooterenemies;
+		Table< Object > bullets;
+		Table< Object > healthpickups;
+		Table< Object > scorepickups;
+
+
 		ObjectController() {
 			srand(time(NULL));
 		}
+
+
+		bool checkCollision(const Object a, const Object b);
+		bool checkCollisionQuadQuad(const Object a, const Object b);
+		bool checkCollisionQuadCircle (const Object a, const Object b);
+		bool checkCollisionCircleCircle(const Object a, const Object b);
+		double distance(const double x1, const double y1, const double x2, const double y2);
 
 		bool doesSquareCollide( int, int, int, int, int, int, int, int );
 
@@ -52,6 +71,9 @@ class ObjectController:
 		void handlePlayerAction( const InputAction& action );
 
 		void registerObjectTexture( const StringID& id, const String );
+
+		void addObject(const StringID& id, Object object);
+		void removeObject(const StringID& id);
 
 		void registerAIObject( const StringID& id, AIObject ai );
 		void registerBackgroundObject( const StringID& id, BackgroundObject bo );

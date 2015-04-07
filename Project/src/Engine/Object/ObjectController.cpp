@@ -3,6 +3,87 @@
 RenderController& ObjectController::render_controller = RenderController::instance();
 AudioController& ObjectController::audio_controller = AudioController::instance();
 
+
+void ObjectController::addObject(const StringID& id, Object object) {
+    // The object is added to the same table as all other objects of its type.
+    ObjectType type = object.getType();
+
+    switch(type) {
+        case PLAYER:
+            int size = 0;
+            TableIterator<Object> it1 = players.begin();
+            while(it1 != players.end()) {
+                ++size;
+                ++it1;
+            }
+
+            if(size < 1) {
+                players.add( id, object );
+            }
+            break;
+        case BACKGROUND:
+            backgrounds.add(id, object);
+            break;
+        case SOLIDWALL:
+            solidwalls.add(id, object);
+            break;
+        case BREAKABLEWALL:
+            breakablewalls.add(id, object);
+            break;
+        case RUSHERENEMY:
+            rusherenemies.add(id, object);
+            break;
+        case SHOOTERENEMY:
+            shooterenemies.add(id, object);
+            break;
+        case BULLET:
+            bullets.add(id, object);
+            break;
+        case HEALTHPICKUP:
+            healthpickups.add(id, object);
+            break;
+        case SCOREPICKUP:
+            scorepickups.add(id, object);
+            break;
+        default:
+            break;
+    }
+}
+
+
+void ObjectController::removeObject(const StringID& id) {
+    // The object is removed from the table containing all objects of the same type.
+    ObjectType type = object.getType();
+    if (players.has(id)) {
+        players.remove(id);
+    }
+    else if (backgrounds.has(id)) {
+        backgrounds.remove(id);
+    }
+    else if (solidwalls.has(id)) {
+        solidwalls.remove(id);
+    }
+    else if (breakablewalls.has(id)) {
+        breakablewalls.remove(id);
+    }
+    else if (rusherenemies.has(id)) {
+        rusherenemies.remove(id);
+    }
+    else if (shooterenemies.has(id)) {
+        shooterenemies.remove(id);
+    }
+    else if (bullets.has(id)) {
+        bullets.remove(id);
+    }
+    else if (healthpickups.has(id)) {
+        healthpickups.remove(id);
+    }
+    else if (scorepickups.has(id)) {
+        scorepickups.remove(id);
+    }
+}
+
+
 void ObjectController::handlePlayerAction( const InputAction& action ) {
 
     TableIterator<PlayerObject> it = player_objects.begin();
