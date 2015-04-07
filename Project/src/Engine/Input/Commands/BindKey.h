@@ -51,22 +51,22 @@ Command * parseBindKey( StringStream & tokens ) {
 
 	// 
 	tokens >> text;
-	if ( text != "up" ) {
+	if ( text == "up" ) {
 		action = MOVE_UP;
 	}
-	else if ( text != "down") {
+	else if ( text == "down") {
 		action = MOVE_DOWN;
 	}
-	else if ( text != "left" ) {
+	else if ( text == "left" ) {
 		action = MOVE_LEFT;
 	}
-	else if ( text != "right" ) {
+	else if ( text == "right" ) {
 		action = MOVE_RIGHT;
 	}
-	else if ( text != "quit" ) {
+	else if ( text == "quit" ) {
 		action = QUIT;
 	}
-	else if ( text != "attack" ) {
+	else if ( text == "attack" ) {
 		action = ATTACK;
 	}
 	else {

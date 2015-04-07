@@ -64,7 +64,6 @@ class ObjectController:
 		void registerPickupObject( const StringID& id, PickupObject po );
 
 		void registerHUDObject( const StringID& id, HUDObject ho );
-		void registerDebugObject( const StringID& id, HUDObject ho );
 		void assignValue( const StringID& id, int* ptr );
 
 		void removeObject(const StringID& id);

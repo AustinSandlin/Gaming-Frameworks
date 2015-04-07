@@ -11,15 +11,20 @@ texture add player ../Images/player_up.bmp
 texture add player ../Images/player_down.bmp
 texture add player ../Images/player_right.bmp
 texture add player ../Images/player_left.bmp
+
 hudobject add scorepic 26 924 50 50 false
 texture add scorepic ../Images/coin.bmp
+
 hudobject add score 86 934 50 50 true
 debug add score score
+
 hudobject add health 738 937 204 26 false
 texture add health ../Images/health.bmp
 debug add health player_health
+
 hudobject add healthbar 728 930 224 44 false
 texture add healthbar ../Images/healthbar.bmp
+
 backgroundobject add background 50 -100 2048 2048
 texture add background ../Images/background.bmp
 aiobject add ai1 250 1700 38 38 wander
