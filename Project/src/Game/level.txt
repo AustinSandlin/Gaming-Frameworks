@@ -7,13 +7,11 @@ audio add warning Sounds/buzzer.wav
 audio add background Sounds/elevator.wav
 audio loop background
 
-variable float add player_health
-variable float set player_health = 100.0
+variable integer add player_health
+variable integer set player_health = 100
 
-trigger float add player_half_health player_health < 50.0
-trigger float set player_half_health audio play warning
-
-variable float set player_health = 25.0
+trigger integer add player_half_health player_health < 50
+trigger integer set player_half_health audio play warning
 
 object player add player 1350 100 50 50
 object texture set player Images/player_up.bmp
@@ -21,7 +19,18 @@ object texture set player Images/player_down.bmp
 object texture set player Images/player_right.bmp
 object texture set player Images/player_left.bmp
 
-object hud add score 86 934 50 50 false
+object hud add scorepic 26 924 50 50 false
+object texture set scorepic Images/coin.bmp
+
+object hud add healthbar 728 930 224 44 false
+object texture set healthbar Images/healthbar.bmp
+
+object hud add score 86 934 50 50 true
+object hud bind score score
+
+object hud add health 738 937 204 26 false
+object texture set health Images/health.bmp
+object hud bind health player_health
 
 object background add background 50 -100 2048 2048
 object texture set background Images/background.bmp

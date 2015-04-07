@@ -110,9 +110,9 @@ void ObjectController::registerHUDObject( const StringID& id, HUDObject ho ) {
     hud_objects.add( id, ho );
 }
 
-void ObjectController::assignValue( const StringID& id, int* ptr ) {
+void ObjectController::assignValue( const StringID& id, String var ) {
     if(hud_objects.has(id)) {
-        hud_objects.get(id).getValue().updateValue(ptr);
+        hud_objects.get(id).getValue().updateValue(var);
     }
 }
 

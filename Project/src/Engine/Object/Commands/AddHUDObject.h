@@ -15,6 +15,7 @@ class AddHUDObject :
 private:
 
 	String name;
+	String variable;
 	int x;
 	int y;
 	int width;

@@ -2,6 +2,7 @@
 #define _HUDOBJECT_OBJECT_H
 
 #include "../../../Common/Base/Object.h"
+#include "../../Variable/VariableController.h"
 
 #include <sstream>
 
@@ -12,28 +13,34 @@ class HUDObject : public Object {
     private:
         //Location
         bool text;
-        int* value;
+        String var;
     
     public:
         HUDObject( const StringID& id, int x, int y, int width, int height, bool text ) :
             Object ( id, x, y, height, width ), text( text ) {
-            value = NULL;
+            var = "";
         }
 
-        int getValue() {
-            return *value;
+        String getVar() {
+            return var;
         }
 
-        void updateValue(int* val) {
-            value = val;
+        void updateValue(String variable) {
+            var = variable;
         }
 
         void draw( ) {
+            long value = 0;
+            VariableController& variable_controller = VariableController::instance();
+            if(variable_controller.hasIntegerVariable(var)) {
+                value = variable_controller.getIntegerVariable(var);
+            }
+
             if(text) {
                 glDisable(GL_TEXTURE_2D);
                 glColor3f(1.0, 1.0, 1.0);
                 std::stringstream ss;
-                ss << *value;
+                ss << value;
                 String output = ss.str();
                 //String output = std::to_string(*value);
                 for (unsigned int i = 0; i < output.length(); ++i) {
@@ -47,7 +54,7 @@ class HUDObject : public Object {
                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
-                if(value == NULL) {
+                if(var == "") {
                     glBegin(GL_QUADS);
                     glTexCoord2d(1, 0);
                     glVertex2i( x, y );
@@ -60,7 +67,7 @@ class HUDObject : public Object {
                     glEnd();
                 }
                 else{
-                    double val = (*value)/100.00;
+                    double val = (value)/100.00;
                     glBegin(GL_QUADS);
                         glTexCoord2d(val, 0);
                         glVertex2i( x, y );

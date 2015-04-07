@@ -103,15 +103,8 @@ void GameController::registerInputAction( const StringID& id, const InputAction 
     input_action_table.add(id, action);
 }
 
-void GameController::registerValue( const StringID& id, const DebugValue dval ) {
-    if( dval == SCORE ) {
-        int* temp = &score;
-        object_controller.assignValue( id, temp );
-    }
-    if( dval == PLAYER_HEALTH) {
-        int* temp = &player_health;
-        object_controller.assignValue( id, temp );
-    }
+void GameController::registerValue( const StringID& id, String val ) {
+    object_controller.assignValue( id, val );
 }
 
 void GameController::setupGameLoop(int argc, char **argv) {

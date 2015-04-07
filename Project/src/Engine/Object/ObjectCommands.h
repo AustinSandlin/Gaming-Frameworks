@@ -5,6 +5,7 @@
 #include "Commands/AddBackgroundObject.h"
 #include "Commands/AddGameObject.h"
 #include "Commands/AddHUDObject.h"
+#include "Commands/BindHudObject.h"
 #include "Commands/AddPlayerObject.h"
 #include "Commands/SetTexture.h"
 
@@ -45,6 +46,9 @@ Command * parseObjectCommand( StringStream & tokens ) {
 		tokens >> command;
 		if ( command == "add") {
 			return parseAddHUDObject( tokens );
+		}
+		if ( command == "bind" ) {
+			return parseBindHUDObject( tokens );
 		}
 	}
 	else if ( type == "player" ) {
