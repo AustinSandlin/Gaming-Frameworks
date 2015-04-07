@@ -21,10 +21,16 @@ protected:
 
     int x, y;
     int height, width;
+    double rotation;
 
     std::vector<GLuint> textures;
 
     Object( StringID id, int x, int y, int height, int width ) : id { id }, x { x }, y { y }, height { height }, width { width } {
+        rotation = 0.0;
+    }
+
+    Object( StringID id, int x, int y, int height, int width, double rotation ) : 
+            id { id }, x { x }, y { y }, height { height }, width { width }, rotation { rotation } {
     }
 
 public:
@@ -47,6 +53,10 @@ public:
 
     int getWidth() {
         return width;
+    }
+
+    double getRotation() {
+        return rotation;
     }
 
     StringID getID() {

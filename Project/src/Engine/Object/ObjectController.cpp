@@ -132,7 +132,6 @@ bool ObjectController::canAIMove( const StringID id, Direction dir ) {
     int testY = ai.getY();
 
     //Determine the new entity state and change the test directions.
-    //CHANGE TO VELOCITY WHEN CHANCE
     switch(dir) {
         case UP: testY += ai.getVelocity(); break;
         case DOWN: testY -= ai.getVelocity(); break;
@@ -172,7 +171,6 @@ bool ObjectController::canPlayerMove( const StringID id, Direction dir ) {
     int testY = player.getY();
 
     //Determine the new entity state and change the test directions.
-    //CHANGE TO VELOCITY WHEN CHANCE
     switch(dir) {
         case UP: testY += player.getVelocity(); break;
         case DOWN: testY -= player.getVelocity(); break;
@@ -272,34 +270,45 @@ void ObjectController::drawObjects() {
 
     glTranslatef(x, y, 0);
 
+    // Drawing background objects:
     TableIterator<BackgroundObject> it1 = background_objects.begin();
     while(it1 != background_objects.end()) {
         it1.getValue().draw();
         ++it1;
     }
+
+    // Drawing game objects:
     TableIterator<GameObject> it2 = game_objects.begin();
     while(it2 != game_objects.end()) {
         it2.getValue().draw();
         ++it2;
     }
+
+    // Drawing AI objects:
     TableIterator<AIObject> it3 = ai_objects.begin();
     while(it3 != ai_objects.end()) {
         it3.getValue().draw();
         ++it3;
     }
+
+    // Drawing player objects:
     TableIterator<PlayerObject> it4 = player_objects.begin();
     while(it4 != player_objects.end()) {
         it4.getValue().draw();
         ++it4;
     }
     
+    // stop centering on player do the hud follows the screen.
     glTranslatef(-x, -y, 0);
 
+    // Drawing HUD objects:
     TableIterator<HUDObject> it5 = hud_objects.begin();
     while(it5 != hud_objects.end()) {
         it5.getValue().draw();
         ++it5;
     }
+
+    // Drawing debug objects:
     TableIterator<HUDObject> it6 = debug_objects.begin();
     while(it6 != debug_objects.end()) {
         it6.getValue().draw();
