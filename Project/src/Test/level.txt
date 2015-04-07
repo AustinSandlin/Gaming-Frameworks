@@ -171,6 +171,12 @@ gameobject add coin16 1362 412 25 25 true
 texture add coin16 ../Images/coin.bmp
 gameobject add coin17 1362 612 25 25 true
 texture add coin17 ../Images/coin.bmp
+gameobject add medpack1 162 512 25 25 true
+texture add medpack1 ../Images/medpack.bmp
+gameobject add medpack2 562 1362 25 25 true
+texture add medpack2 ../Images/medpack.bmp
+gameobject add medpack3 762 1162 25 25 true
+texture add medpack3 ../Images/medpack.bmp
 gameobject add end1 50 1050 50 50 false
 texture add end1 ../Images/red.bmp
 gameobject add end2 100 1050 50 50 false
