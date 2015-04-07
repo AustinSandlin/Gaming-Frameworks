@@ -76,7 +76,7 @@ class GameController : public Singleton< GameController >{
         
         void handleInputEvent( const StringID& id );
         void registerInputAction( const StringID& id, const InputAction action );
-        void registerDebugValue( const StringID& id, const DebugValue dval );
+        void registerValue( const StringID& id, const DebugValue dval );
 
         void setupGameLoop(int argc, char **argv);
         void updateGameLoop(int val);

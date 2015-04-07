@@ -11,13 +11,12 @@ class HUDObject : public Object {
         
     private:
         //Location
-        bool debug;
-
+        bool text;
         int* value;
     
     public:
-        HUDObject( const StringID& id, int x, int y, int width, int height, bool debug ) :
-            Object ( id, x, y, height, width ), debug( debug ) {
+        HUDObject( const StringID& id, int x, int y, int width, int height, bool text ) :
+            Object ( id, x, y, height, width ), text( text ) {
             value = NULL;
         }
 
@@ -30,7 +29,7 @@ class HUDObject : public Object {
         }
 
         void draw( ) {
-            if(debug) {
+            if(text) {
                 glDisable(GL_TEXTURE_2D);
                 glColor3f(1.0, 1.0, 1.0);
                 std::stringstream ss;
@@ -48,13 +47,8 @@ class HUDObject : public Object {
                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
-                int width;
-                int height;
-
-                glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_WIDTH, &width);
-                glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_HEIGHT, &height);
-
-                glBegin(GL_QUADS);
+                if(value == NULL) {
+                    glBegin(GL_QUADS);
                     glTexCoord2d(0, 1);
                     glVertex2i( x, y );
                     glTexCoord2d(1, 1);
@@ -63,7 +57,21 @@ class HUDObject : public Object {
                     glVertex2i( x+width, y+height );
                     glTexCoord2d(0, 0);
                     glVertex2i( x, y+height );
-                glEnd();
+                    glEnd();
+                }
+                else{
+                    double val = (*value)/100.00;
+                    glBegin(GL_QUADS);
+                        glTexCoord2d(0, 1);
+                        glVertex2i( x, y );
+                        glTexCoord2d(val, 1);
+                        glVertex2i( x+(width*val), y );
+                        glTexCoord2d(val, 0);
+                        glVertex2i( x+(width*val), y+height );
+                        glTexCoord2d(0, 0);
+                        glVertex2i( x, y+height );
+                    glEnd();
+                }
             }
         }
 };

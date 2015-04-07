@@ -218,7 +218,7 @@ void Loader::loadLevel(const string filename) {
 						}
 						// If no valid AI type is given, a default is used:
 						else {
-							aitype = WANDER;
+							aitype = STILL;
 						}
 						object_controller.registerAIObject(string_controller.intern(name), 
 							AIObject(string_controller.intern(name), xVal, yVal, widthVal, heightVal, aitype));
@@ -318,34 +318,30 @@ void Loader::loadLevel(const string filename) {
 
 				// Registering a new HUD object
 				if (word == LOADER_COMMAND_A) {
-					string name, x, y, width, height, debug;
+					string name, x, y, width, height, text;
 					// Get the name of the hud object, its starting values,
-					// and whether it is debug HUD eement or not
+					// and whether it is text HUD eement or not
 					if ((line >> name) && (line >> x) && (line >> y) &&
-						(line >> width) && (line >> height) && (line >> debug)) {
+						(line >> width) && (line >> height) && (line >> text)) {
 						int xVal, yVal, widthVal, heightVal;
-						bool isDebug;
+						bool isText;
 						xVal = atoi(x.c_str());
 						yVal = atoi(y.c_str());
 						widthVal = atoi(width.c_str());
 						heightVal = atoi(height.c_str());
 
-						// isDebug is set to true or false if specified,
+						// isText is set to true or false if specified,
 						// defaulting to false on wrong input.
-						if (debug == "true") {
-							isDebug = true;
-							object_controller.registerDebugObject(string_controller.intern(name), 
-									HUDObject(string_controller.intern(name), xVal, yVal, widthVal, heightVal, isDebug));
-							cout << "Adding HUD object: " << name << ", " << x << ", " << y << ", " << width 
-														  << ", " << height << ", " << debug << endl;
+						if (text == "true") {
+							isText = true;
 						}
 						else {
-							isDebug = false;
-							object_controller.registerHUDObject(string_controller.intern(name), 
-									HUDObject(string_controller.intern(name), xVal, yVal, widthVal, heightVal, isDebug));
-							cout << "Adding HUD object: " << name << ", " << x << ", " << y << ", " << width 
-														  << ", " << height << ", " << debug << endl;
+							isText = false;
 						}
+						object_controller.registerHUDObject(string_controller.intern(name), 
+								HUDObject(string_controller.intern(name), xVal, yVal, widthVal, heightVal, isText));
+						cout << "Adding HUD object: " << name << ", " << x << ", " << y << ", " << width 
+													  << ", " << height << ", " << text << endl;
 					}
 				}
 
@@ -360,16 +356,16 @@ void Loader::loadLevel(const string filename) {
 
 				// Registering a new HUD object
 				if (word == LOADER_COMMAND_A) {
-					string name, debug;
+					string name, value;
 					// Get the name of the hud object, its starting values,
-					// and whether it is debug HUD eement or not
-					if ((line >> name) && (line >> debug)) {
+					// and whether it is value HUD eement or not
+					if ((line >> name) && (line >> value)) {
 						// isDebug is set to true or false if specified,
 						// defaulting to false on wrong input.
-						if(debug == "fps") {
+						if(value == "fps") {
 							DebugValue temp = FPS;
-							game_controller.registerDebugValue(string_controller.intern(name), temp);
-							cout << "Registered DEBUG object: " << name << " " << debug << endl;
+							game_controller.registerValue(string_controller.intern(name), temp);
+							cout << "Registered TEXT object: " << name << " " << value << endl;
 						}
 					}
 				}

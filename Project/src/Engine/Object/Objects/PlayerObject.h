@@ -8,6 +8,7 @@ class PlayerObject : public Object {
         
     private:
 
+        int health;
         int velocity;
         Direction dir;
         EntityState state;
@@ -17,6 +18,7 @@ class PlayerObject : public Object {
             Object ( id, x, y, height, width ) {
             state = IDLE;
             velocity = 8;
+            health = 100;
         }
 
         EntityState getState() {
@@ -24,6 +26,9 @@ class PlayerObject : public Object {
         }
         Direction getDir() {
             return dir;
+        }
+        int* getHealth() {
+            return &health;
         }
         int getVelocity() {
             return velocity;
@@ -33,6 +38,9 @@ class PlayerObject : public Object {
         }
         void setState(EntityState s) {
             state = s;
+        }
+        void setHealth(int h) {
+            health = h;
         }
 
         void move() {
@@ -49,12 +57,6 @@ class PlayerObject : public Object {
             glBindTexture(GL_TEXTURE_2D, textures[dir]);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-
-            int width;
-            int height;
-
-            glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_WIDTH, &width);
-            glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_HEIGHT, &height);
 
             glBegin(GL_QUADS);
                 glTexCoord2d(0, 1);

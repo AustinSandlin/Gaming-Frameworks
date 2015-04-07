@@ -27,6 +27,7 @@ const string LOADER_COMMAND_B = "value";
 
 // Loader recognized AI types
 const string LOADER_AI_TYPE_1 = "wander";
+const string LOADER_AI_TYPE_2 = "still";
 
 // Loader recognized action types
 const string LOADER_ACTION_TYPE_1 = "move_up";

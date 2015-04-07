@@ -17,6 +17,7 @@ enum InputAction : int { MOVE_UP, MOVE_DOWN, MOVE_LEFT, MOVE_RIGHT, QUIT, ATTACK
 enum SoundAction : int { PLAY, STOP };
 enum DebugValue : int { FPS, PLAYER_HEALTH };
 enum EntityState : int { MOVING, IDLE, ATTACKING };
-enum AIType : int { WANDER };
+enum AIType : int { WANDER, STILL, RUSHER, TURRET };
+enum BuffType : int { HEALTH, SCORE };
 
 #endif

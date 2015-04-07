@@ -96,6 +96,11 @@ void ObjectController::registerPlayerObject( const StringID& id, PlayerObject po
     }
 }
 
+int* ObjectController::getPlayerHealth() {
+    TableIterator<PlayerObject> it1 = player_objects.begin();
+    return it1.getValue().getHealth();
+}
+
 void ObjectController::registerGameObject( const StringID& id, GameObject go ) {
     game_objects.add( id, go );
 }
@@ -104,13 +109,12 @@ void ObjectController::registerHUDObject( const StringID& id, HUDObject ho ) {
     hud_objects.add( id, ho );
 }
 
-void ObjectController::registerDebugObject( const StringID& id, HUDObject ho ) {
-    debug_objects.add( id, ho );
-}
-
-void ObjectController::assignDebugValue( const StringID& id, int* ptr ) {
-    if(debug_objects.has(id)) {
-        debug_objects.get(id).getValue().updateValue(ptr);
+void ObjectController::assignValue( const StringID& id, int* ptr ) {
+    if(hud_objects.has(id)) {
+        hud_objects.get(id).getValue().updateValue(ptr);
+    }
+    if(hud_objects.has(id)) {
+        hud_objects.get(id).getValue().updateValue(ptr);
     }
 }
 
@@ -199,7 +203,8 @@ bool ObjectController::canPlayerMove( const StringID id, Direction dir ) {
         ++it2;
     }
 
-    return !coll;
+    // return !coll;
+    return true;
 }
 
 void ObjectController::updateEntitys() {
@@ -228,19 +233,17 @@ void ObjectController::updateEntitys() {
                 }
             }
         }
+        else if(it1.getValue().getType() == STILL) {
+
+        }
+        else if(it1.getValue().getType() == TURRET) {
+
+        }
+        else if(it1.getValue().getType() == RUSHER) {
+
+        }
         ++it1;
     }
-
-
-
-    // TableIterator<PlayerObject> it2 = player_objects.begin();
-    // while(it2 != player_objects.end()) {
-    //     if(it2.getValue().getState() == MOVING) {
-    //         it2.getValue().move();
-    //         it2.getValue().setState(IDLE);
-    //     }
-    //     ++it2;
-    // }
 }
 
 void ObjectController::drawObjects() {
@@ -306,13 +309,6 @@ void ObjectController::drawObjects() {
     while(it5 != hud_objects.end()) {
         it5.getValue().draw();
         ++it5;
-    }
-
-    // Drawing debug objects:
-    TableIterator<HUDObject> it6 = debug_objects.begin();
-    while(it6 != debug_objects.end()) {
-        it6.getValue().draw();
-        ++it6;
     }
 
     glutSwapBuffers();

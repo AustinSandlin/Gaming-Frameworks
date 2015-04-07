@@ -34,8 +34,6 @@ class ObjectController:
 		Table< BackgroundObject > background_objects;
 		Table< PlayerObject > player_objects;
 		Table< GameObject > game_objects;
-
-		Table< HUDObject > debug_objects;
 		Table< HUDObject > hud_objects;
 
 		ObjectController() {
@@ -50,7 +48,6 @@ class ObjectController:
 	public:
 
 		void handlePlayerAction( const InputAction& action );
-
 		void registerObjectTexture( const StringID& id, const String );
 
 		void registerAIObject( const StringID& id, AIObject ai );
@@ -60,7 +57,9 @@ class ObjectController:
 
 		void registerHUDObject( const StringID& id, HUDObject ho );
 		void registerDebugObject( const StringID& id, HUDObject ho );
-		void assignDebugValue( const StringID& id, int* ptr );
+		void assignValue( const StringID& id, int* ptr );
+
+		int* getPlayerHealth();
 
 		void updateEntitys();
 		void resetEntitys();

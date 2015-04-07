@@ -106,10 +106,14 @@ void GameController::registerInputAction( const StringID& id, const InputAction 
     input_action_table.add(id, action);
 }
 
-void GameController::registerDebugValue( const StringID& id, const DebugValue dval ) {
+void GameController::registerValue( const StringID& id, const DebugValue dval ) {
     if( dval == FPS ) {
         int* temp = &fps;
-        object_controller.assignDebugValue( id, temp );
+        object_controller.assignValue( id, temp );
+    }
+    if( dval == PLAYER_HEALTH) {
+        int* temp = object_controller.getPlayerHealth();
+        object_controller.assignValue( id, temp );
     }
 }
 
