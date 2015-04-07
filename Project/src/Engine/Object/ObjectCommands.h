@@ -7,6 +7,7 @@
 #include "Commands/AddHUDObject.h"
 #include "Commands/BindHudObject.h"
 #include "Commands/AddPlayerObject.h"
+#include "Commands/RemoveObject.h"
 #include "Commands/SetTexture.h"
 
 Command * parseObjectCommand( StringStream & tokens ) {
@@ -58,6 +59,11 @@ Command * parseObjectCommand( StringStream & tokens ) {
 		if ( command == "add") {
 			return parseAddPlayerObject( tokens );
 		}
+	}
+	else if ( type == "remove" ) {
+
+		// 
+		return parseRemoveObject( tokens );
 	}
 	else if ( type == "texture" ) {
 

@@ -4,15 +4,21 @@ input bind s down
 input bind d right
 input bind q quit
 
-audio add warning Sounds/buzzer.wav
-audio add background Sounds/elevator.wav
+
+audio add coin Sounds/coin.wav
+audio add health Sounds/health.wav
+audio add damage Sounds/explosion.wav
+audio add background Sounds/music.wav
 audio loop background
+
 
 variable integer add player_health
 variable integer set player_health = 100
+variable integer add score
+variable integer set score = 0
 
-trigger boolean add death player_health <= 0
-trigger boolean set death quit
+trigger integer add death player_health <= 0
+trigger integer set death quit
 
 object player add player 1350 100 50 50
 object texture set player Images/player_up.bmp
@@ -33,176 +39,399 @@ object hud add health 738 937 204 26 false
 object texture set health Images/health.bmp
 object hud bind health player_health
 
+
 object background add background 50 -100 2048 2048
 object texture set background Images/background.bmp
+
+
 object ai add ai1 250 1700 38 38 wander
 object texture set ai1 Images/wanderer_up.bmp
 object texture set ai1 Images/wanderer_down.bmp
 object texture set ai1 Images/wanderer_right.bmp
 object texture set ai1 Images/wanderer_left.bmp
+trigger collision add player_ai1_collision player ai1
+trigger collision set player_ai1_collision object remove ai1
+trigger collision set player_ai1_collision audio play damage
+trigger collision set player_ai1_collision variable integer set player_health -= 20
+
 object ai add ai2 400 1550 38 38 wander
 object texture set ai2 Images/wanderer_up.bmp
 object texture set ai2 Images/wanderer_down.bmp
 object texture set ai2 Images/wanderer_right.bmp
 object texture set ai2 Images/wanderer_left.bmp
+trigger collision add player_ai2_collision player ai2
+trigger collision set player_ai2_collision object remove ai2
+trigger collision set player_ai2_collision audio play damage
+trigger collision set player_ai2_collision variable integer set player_health -= 20
+
 object ai add ai3 250 1400 38 38 wander
 object texture set ai3 Images/wanderer_up.bmp
 object texture set ai3 Images/wanderer_down.bmp
 object texture set ai3 Images/wanderer_right.bmp
 object texture set ai3 Images/wanderer_left.bmp
+trigger collision add player_ai3_collision player ai3
+trigger collision set player_ai3_collision object remove ai3
+trigger collision set player_ai3_collision audio play damage
+trigger collision set player_ai3_collision variable integer set player_health -= 20
+
 object ai add ai4 400 1250 38 38 wander
 object texture set ai4 Images/wanderer_up.bmp
 object texture set ai4 Images/wanderer_down.bmp
 object texture set ai4 Images/wanderer_right.bmp
 object texture set ai4 Images/wanderer_left.bmp
+trigger collision add player_ai4_collision player ai4
+trigger collision set player_ai4_collision object remove ai4
+trigger collision set player_ai4_collision audio play damage
+trigger collision set player_ai4_collision variable integer set player_health -= 20
+
 object ai add ai5 250 1100 38 38 wander
 object texture set ai5 Images/wanderer_up.bmp
 object texture set ai5 Images/wanderer_down.bmp
 object texture set ai5 Images/wanderer_right.bmp
 object texture set ai5 Images/wanderer_left.bmp
+trigger collision add player_ai5_collision player ai5
+trigger collision set player_ai5_collision object remove ai5
+trigger collision set player_ai5_collision audio play damage
+trigger collision set player_ai5_collision variable integer set player_health -= 20
+
 object ai add ai6 550 1750 38 38 wander
 object texture set ai6 Images/wanderer_up.bmp
 object texture set ai6 Images/wanderer_down.bmp
 object texture set ai6 Images/wanderer_right.bmp
 object texture set ai6 Images/wanderer_left.bmp
+trigger collision add player_ai6_collision player ai6
+trigger collision set player_ai6_collision object remove ai6
+trigger collision set player_ai6_collision audio play damage
+trigger collision set player_ai6_collision variable integer set player_health -= 20
+
 object ai add ai7 1350 1800 38 38 wander
 object texture set ai7 Images/wanderer_up.bmp
 object texture set ai7 Images/wanderer_down.bmp
 object texture set ai7 Images/wanderer_right.bmp
 object texture set ai7 Images/wanderer_left.bmp
+trigger collision add player_ai7_collision player ai7
+trigger collision set player_ai7_collision object remove ai7
+trigger collision set player_ai7_collision audio play damage
+trigger collision set player_ai7_collision variable integer set player_health -= 20
+
 object ai add ai8 550 200 38 38 wander
 object texture set ai8 Images/wanderer_up.bmp
 object texture set ai8 Images/wanderer_down.bmp
 object texture set ai8 Images/wanderer_right.bmp
 object texture set ai8 Images/wanderer_left.bmp
+trigger collision add player_ai8_collision player ai8
+trigger collision set player_ai8_collision object remove ai8
+trigger collision set player_ai8_collision audio play damage
+trigger collision set player_ai8_collision variable integer set player_health -= 20
+
 object ai add ai9 750 200 38 38 wander
 object texture set ai9 Images/wanderer_up.bmp
 object texture set ai9 Images/wanderer_down.bmp
 object texture set ai9 Images/wanderer_right.bmp
 object texture set ai9 Images/wanderer_left.bmp
+trigger collision add player_ai9_collision player ai9
+trigger collision set player_ai9_collision object remove ai9
+trigger collision set player_ai9_collision audio play damage
+trigger collision set player_ai9_collision variable integer set player_health -= 20
+
 object ai add ai10 1350 700 38 38 wander
 object texture set ai10 Images/wanderer_up.bmp
 object texture set ai10 Images/wanderer_down.bmp
 object texture set ai10 Images/wanderer_right.bmp
 object texture set ai10 Images/wanderer_left.bmp
+trigger collision add player_ai10_collision player ai10
+trigger collision set player_ai10_collision object remove ai10
+trigger collision set player_ai10_collision audio play damage
+trigger collision set player_ai10_collision variable integer set player_health -= 20
+
 object ai add ai11 550 500 38 38 wander
 object texture set ai11 Images/wanderer_up.bmp
 object texture set ai11 Images/wanderer_down.bmp
 object texture set ai11 Images/wanderer_right.bmp
 object texture set ai11 Images/wanderer_left.bmp
+trigger collision add player_ai11_collision player ai11
+trigger collision set player_ai11_collision object remove ai11
+trigger collision set player_ai11_collision audio play damage
+trigger collision set player_ai11_collision variable integer set player_health -= 20
+
 object ai add ai12 550 700 38 38 wander
 object texture set ai12 Images/wanderer_up.bmp
 object texture set ai12 Images/wanderer_down.bmp
 object texture set ai12 Images/wanderer_right.bmp
 object texture set ai12 Images/wanderer_left.bmp
+trigger collision add player_ai12_collision player ai12
+trigger collision set player_ai12_collision object remove ai12
+trigger collision set player_ai12_collision audio play damage
+trigger collision set player_ai12_collision variable integer set player_health -= 20
+
 object ai add ai13 950 1300 38 38 wander
 object texture set ai13 Images/wanderer_up.bmp
 object texture set ai13 Images/wanderer_down.bmp
 object texture set ai13 Images/wanderer_right.bmp
 object texture set ai13 Images/wanderer_left.bmp
+trigger collision add player_ai13_collision player ai13
+trigger collision set player_ai13_collision object remove ai13
+trigger collision set player_ai13_collision audio play damage
+trigger collision set player_ai13_collision variable integer set player_health -= 10
+
 object ai add ai14 150 850 38 38 rusher
 object texture set ai14 Images/rusher_up.bmp
 object texture set ai14 Images/rusher_down.bmp
 object texture set ai14 Images/rusher_right.bmp
 object texture set ai14 Images/rusher_left.bmp
+trigger collision add player_ai14_collision player ai14
+trigger collision set player_ai14_collision object remove ai14
+trigger collision set player_ai14_collision audio play damage
+trigger collision set player_ai14_collision variable integer set player_health -= 10
+
 object ai add ai15 550 1150 38 38 rusher
 object texture set ai15 Images/rusher_up.bmp
 object texture set ai15 Images/rusher_down.bmp
 object texture set ai15 Images/rusher_right.bmp
 object texture set ai15 Images/rusher_left.bmp
+trigger collision add player_ai15_collision player ai15
+trigger collision set player_ai15_collision object remove ai15
+trigger collision set player_ai15_collision audio play damage
+trigger collision set player_ai15_collision variable integer set player_health -= 10
+
 object ai add ai16 750 1350 38 38 rusher
 object texture set ai16 Images/rusher_up.bmp
 object texture set ai16 Images/rusher_down.bmp
 object texture set ai16 Images/rusher_right.bmp
 object texture set ai16 Images/rusher_left.bmp
+trigger collision add player_ai16_collision player ai16
+trigger collision set player_ai16_collision object remove ai16
+trigger collision set player_ai16_collision audio play damage
+trigger collision set player_ai16_collision variable integer set player_health -= 10
+
 object ai add ai17 950 1850 38 38 rusher
 object texture set ai17 Images/rusher_up.bmp
 object texture set ai17 Images/rusher_down.bmp
 object texture set ai17 Images/rusher_right.bmp
 object texture set ai17 Images/rusher_left.bmp
+trigger collision add player_ai17_collision player ai17
+trigger collision set player_ai17_collision object remove ai17
+trigger collision set player_ai17_collision audio play damage
+trigger collision set player_ai17_collision variable integer set player_health -= 10
+
 object ai add ai18 1150 1100 38 38 rusher
 object texture set ai18 Images/rusher_up.bmp
 object texture set ai18 Images/rusher_down.bmp
 object texture set ai18 Images/rusher_right.bmp
 object texture set ai18 Images/rusher_left.bmp
+trigger collision add player_ai18_collision player ai18
+trigger collision set player_ai18_collision object remove ai18
+trigger collision set player_ai18_collision audio play damage
+trigger collision set player_ai18_collision variable integer set player_health -= 10
+
 object ai add ai19 950 750 38 38 rusher
 object texture set ai19 Images/rusher_up.bmp
 object texture set ai19 Images/rusher_down.bmp
 object texture set ai19 Images/rusher_right.bmp
 object texture set ai19 Images/rusher_left.bmp
+trigger collision add player_ai19_collision player ai19
+trigger collision set player_ai19_collision object remove ai19
+trigger collision set player_ai19_collision audio play damage
+trigger collision set player_ai19_collision variable integer set player_health -= 10
+
 object ai add ai20 350 350 38 38 rusher
 object texture set ai20 Images/rusher_up.bmp
 object texture set ai20 Images/rusher_down.bmp
 object texture set ai20 Images/rusher_right.bmp
 object texture set ai20 Images/rusher_left.bmp
+trigger collision add player_ai20_collision player ai20
+trigger collision set player_ai20_collision object remove ai20
+trigger collision set player_ai20_collision audio play damage
+trigger collision set player_ai20_collision variable integer set player_health -= 10
+
 object ai add ai21 150 100 38 38 rusher
 object texture set ai21 Images/rusher_up.bmp
 object texture set ai21 Images/rusher_down.bmp
 object texture set ai21 Images/rusher_right.bmp
 object texture set ai21 Images/rusher_left.bmp
+trigger collision add player_ai21_collision player ai21
+trigger collision set player_ai21_collision object remove ai21
+trigger collision set player_ai21_collision audio play damage
+trigger collision set player_ai21_collision variable integer set player_health -= 10
+
 object ai add ai22 950 100 38 38 rusher
 object texture set ai22 Images/rusher_up.bmp
 object texture set ai22 Images/rusher_down.bmp
 object texture set ai22 Images/rusher_right.bmp
 object texture set ai22 Images/rusher_left.bmp
+trigger collision add player_ai22_collision player ai22
+trigger collision set player_ai22_collision object remove ai22
+trigger collision set player_ai22_collision audio play damage
+trigger collision set player_ai22_collision variable integer set player_health -= 10
+
 object ai add ai23 1350 1500 38 38 rusher
 object texture set ai23 Images/rusher_up.bmp
 object texture set ai23 Images/rusher_down.bmp
 object texture set ai23 Images/rusher_right.bmp
 object texture set ai23 Images/rusher_left.bmp
+trigger collision add player_ai23_collision player ai23
+trigger collision set player_ai23_collision object remove ai23
+trigger collision set player_ai23_collision audio play damage
+trigger collision set player_ai23_collision variable integer set player_health -= 10
+
+
 object game add coin1 112 1512 25 25 true
 object texture set coin1 Images/coin.bmp
+trigger collision add player_coin1_collision player coin1
+trigger collision set player_coin1_collision object remove coin1
+trigger collision set player_coin1_collision audio play coin
+trigger collision set player_coin1_collision variable integer set score += 1
+
 object game add coin2 112 1312 25 25 true
 object texture set coin2 Images/coin.bmp
+trigger collision add player_coin2_collision player coin2
+trigger collision set player_coin2_collision object remove coin2
+trigger collision set player_coin2_collision audio play coin
+trigger collision set player_coin2_collision variable integer set score += 1
+
 object game add coin3 112 1112 25 25 true
 object texture set coin3 Images/coin.bmp
+trigger collision add player_coin3_collision player coin3
+trigger collision set player_coin3_collision object remove coin3
+trigger collision set player_coin3_collision audio play coin
+trigger collision set player_coin3_collision variable integer set score += 1
+
 object game add coin4 262 1762 25 25 true
 object texture set coin4 Images/coin.bmp
+trigger collision add player_coin4_collision player coin4
+trigger collision set player_coin4_collision object remove coin4
+trigger collision set player_coin4_collision audio play coin
+trigger collision set player_coin4_collision variable integer set score += 1
+
 object game add coin5 412 1612 25 25 true
 object texture set coin5 Images/coin.bmp
+trigger collision add player_coin5_collision player coin5
+trigger collision set player_coin5_collision object remove coin5
+trigger collision set player_coin5_collision audio play coin
+trigger collision set player_coin5_collision variable integer set score += 1
+
 object game add coin6 262 1462 25 25 true
 object texture set coin6 Images/coin.bmp
+trigger collision add player_coin6_collision player coin6
+trigger collision set player_coin6_collision object remove coin6
+trigger collision set player_coin6_collision audio play coin
+trigger collision set player_coin6_collision variable integer set score += 1
+
 object game add coin7 412 1312 25 25 true
 object texture set coin7 Images/coin.bmp
+trigger collision add player_coin7_collision player coin7
+trigger collision set player_coin7_collision object remove coin7
+trigger collision set player_coin7_collision audio play coin
+trigger collision set player_coin7_collision variable integer set score += 1
+
 object game add coin8 262 1162 25 25 true
 object texture set coin8 Images/coin.bmp
+trigger collision add player_coin8_collision player coin8
+trigger collision set player_coin8_collision object remove coin8
+trigger collision set player_coin8_collision audio play coin
+trigger collision set player_coin8_collision variable integer set score += 1
+
 object game add coin9 562 1862 25 25 true
 object texture set coin9 Images/coin.bmp
+trigger collision add player_coin9_collision player coin9
+trigger collision set player_coin9_collision object remove coin9
+trigger collision set player_coin9_collision audio play coin
+trigger collision set player_coin9_collision variable integer set score += 1
+
 object game add coin10 1362 1712 25 25 true
 object texture set coin10 Images/coin.bmp
+trigger collision add player_coin10_collision player coin10
+trigger collision set player_coin10_collision object remove coin10
+trigger collision set player_coin10_collision audio play coin
+trigger collision set player_coin10_collision variable integer set score += 1
+
 object game add coin11 512 1262 25 25 true
 object texture set coin11 Images/coin.bmp
+trigger collision add player_coin11_collision player coin11
+trigger collision set player_coin11_collision object remove coin11
+trigger collision set player_coin11_collision audio play coin
+trigger collision set player_coin11_collision variable integer set score += 1
+
 object game add coin12 562 112 25 25 true
 object texture set coin12 Images/coin.bmp
+trigger collision add player_coin12_collision player coin12
+trigger collision set player_coin12_collision object remove coin12
+trigger collision set player_coin12_collision audio play coin
+trigger collision set player_coin12_collision variable integer set score += 1
+
 object game add coin13 512 562 25 25 true
 object texture set coin13 Images/coin.bmp
+trigger collision add player_coin13_collision player coin13
+trigger collision set player_coin13_collision object remove coin13
+trigger collision set player_coin13_collision audio play coin
+trigger collision set player_coin13_collision variable integer set score += 1
+
 object game add coin14 612 662 25 25 true
 object texture set coin14 Images/coin.bmp
+trigger collision add player_coin14_collision player coin14
+trigger collision set player_coin14_collision object remove coin14
+trigger collision set player_coin14_collision audio play coin
+trigger collision set player_coin14_collision variable integer set score += 1
+
 object game add coin15 762 112 25 25 true
 object texture set coin15 Images/coin.bmp
+trigger collision add player_coin15_collision player coin15
+trigger collision set player_coin15_collision object remove coin15
+trigger collision set player_coin15_collision audio play coin
+trigger collision set player_coin15_collision variable integer set score += 1
+
 object game add coin16 1362 412 25 25 true
 object texture set coin16 Images/coin.bmp
+trigger collision add player_coin16_collision player coin16
+trigger collision set player_coin16_collision object remove coin16
+trigger collision set player_coin16_collision audio play coin
+trigger collision set player_coin16_collision variable integer set score += 1
+
 object game add coin17 1362 612 25 25 true
 object texture set coin17 Images/coin.bmp
+trigger collision add player_coin17_collision player coin17
+trigger collision set player_coin17_collision object remove coin17
+trigger collision set player_coin17_collision audio play coin
+trigger collision set player_coin17_collision variable integer set score += 1
+
+
 object game add medpack1 162 512 25 25 true
 object texture set medpack1 Images/medpack.bmp
+trigger collision add player_medpack1_collision player medpack1
+trigger collision set player_medpack1_collision object remove medpack1
+trigger collision set player_medpack1_collision audio play health
+trigger collision set player_medpack1_collision variable integer set health = 100
+
 object game add medpack2 562 1362 25 25 true
 object texture set medpack2 Images/medpack.bmp
+trigger collision add player_medpack2_collision player medpack2
+trigger collision set player_medpack2_collision object remove medpack2
+trigger collision set player_medpack2_collision audio play health
+trigger collision set player_medpack2_collision variable integer set health = 100
+
 object game add medpack3 762 1162 25 25 true
 object texture set medpack3 Images/medpack.bmp
+trigger collision add player_medpack3_collision player medpack3
+trigger collision set player_medpack3_collision object remove medpack3
+trigger collision set player_medpack3_collision audio play health
+trigger collision set player_medpack3_collision variable integer set health = 100
+
 
 object game add end1 50 1050 50 50 true
 object texture set end1 Images/red.bmp
 trigger collision add end1 player end1
 trigger collision set end1 quit
+
 object game add end2 100 1050 50 50 true
 object texture set end2 Images/red.bmp
 trigger collision add end2 player end2
 trigger collision set end2 quit
+
 object game add end3 150 1050 50 50 true
 object texture set end3 Images/red.bmp
 trigger collision add end3 player end3
 trigger collision set end3 quit
+
 
 object game add wall1 0 0 50 50 true
 object texture set wall1 Images/wall.bmp
