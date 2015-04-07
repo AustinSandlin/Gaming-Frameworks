@@ -5,6 +5,7 @@
 #include "../Object/ObjectCommands.h"
 #include "../Trigger/TriggerCommands.h"
 #include "../Variable/VariableCommands.h"
+#include "GameCommands.h"
 
 AudioController& GameController::audio_controller = AudioController::instance();
 InputController& GameController::input_controller = InputController::instance();
@@ -60,6 +61,9 @@ Command * GameController::parseCommand( StringStream & tokens ) {
     }
     else if ( group == "variable") {
         return parseVariableCommand( tokens );
+    }
+    else if ( group == "quit" ) {
+        return parseGameCommand( tokens );
     }
 
     // 

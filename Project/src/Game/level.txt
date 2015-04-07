@@ -11,8 +11,8 @@ audio loop background
 variable integer add player_health
 variable integer set player_health = 100
 
-trigger integer add player_half_health player_health < 50
-trigger integer set player_half_health audio play warning
+trigger boolean add death player_health <= 0
+trigger boolean set death quit
 
 object player add player 1350 100 50 50
 object texture set player Images/player_up.bmp
@@ -191,18 +191,18 @@ object texture set medpack2 Images/medpack.bmp
 object game add medpack3 762 1162 25 25 true
 object texture set medpack3 Images/medpack.bmp
 
-object game add end1 50 1050 50 50 false
+object game add end1 50 1050 50 50 true
 object texture set end1 Images/red.bmp
 trigger collision add end1 player end1
 trigger collision set end1 quit
-object game add end2 100 1050 50 50 false
+object game add end2 100 1050 50 50 true
 object texture set end2 Images/red.bmp
 trigger collision add end2 player end2
-trigger collision set end1 quit
-object game add end3 150 1050 50 50 false
+trigger collision set end2 quit
+object game add end3 150 1050 50 50 true
 object texture set end3 Images/red.bmp
 trigger collision add end3 player end3
-trigger collision set end1 quit
+trigger collision set end3 quit
 
 object game add wall1 0 0 50 50 true
 object texture set wall1 Images/wall.bmp
