@@ -9,11 +9,30 @@
 #include <sstream>
 
 int main(int argc, char **argv) {
+	// Loader level setup
+
+	if (argc != 2) {
+		cout << "Invalid number of arguments" << endl;
+		cout << "Usage: text.exe filename" << endl;
+		exit(1);
+	}
+
+	static GameController& game_controller = GameController::instance();
+
+
+	game_controller.setupGameLoop(argc, argv);
+
+	Loader loader;
+	loader.loadLevel(argv[1]);
+
+	game_controller.runGameLoop();
 
 	// LOADER TESTS
 
+	// Old level loading
 
-	//static AudioController& audio_controller = AudioController::instance();
+	/*
+	static AudioController& audio_controller = AudioController::instance();
 	static GameController& game_controller = GameController::instance();
 
 
@@ -23,9 +42,6 @@ int main(int argc, char **argv) {
 	loader.loadLevel("test.txt");
 
 	game_controller.runGameLoop();
-
-	
-	/*
 	static AudioController& audio_controller = AudioController::instance();
 	static GameController& game_controller = GameController::instance();
 	static ObjectController& object_controller = ObjectController::instance();

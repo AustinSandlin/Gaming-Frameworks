@@ -6,9 +6,82 @@ ObjectController& GameController::object_controller = ObjectController::instance
 RenderController& GameController::render_controller = RenderController::instance();
 GameController& GameController::game_controller = GameController::instance();
 
+bool GameController::hasFlag(String name) {
+    static Strings & strings = Strings::instance();
+    StringID id = strings.intern(name);
+    return flag_table.has(id);
+}
+
+void GameController::setFlag(String name, bool state) {
+    static Strings & strings = Strings::instance();
+    StringID id = strings.intern(name);
+    if (flag_table.has(id)) {
+        flag_table.get(id).getValue() = state;
+    }
+    else {
+        flag_table.add(id, state);
+    }
+}
+
+bool GameController::getFlag(String name) {
+    static Strings & strings = Strings::instance();
+    StringID id = strings.intern(name);
+    return flag_table.get(id).getValue();
+}
+
+void GameController::clearFlag(String name) {
+    static Strings & strings = Strings::instance();
+    StringID id = strings.intern(name);
+    if (flag_table.has(id)) {
+        flag_table.remove(id);
+    }
+}
+
+bool GameController::hasVariable(String name) {
+    static Strings & strings = Strings::instance();
+    StringID id = strings.intern(name);
+    return variable_table.has(id);
+}
+
+void GameController::setVariable(String name, double value) {
+    static Strings & strings = Strings::instance();
+    StringID id = strings.intern(name);
+    if (variable_table.has(id)) {
+        variable_table.get(id).getValue() = value;
+    }
+    else {
+        variable_table.add(id, value);
+    }
+}
+
+double GameController::getVariable(String name) {
+    static Strings & strings = Strings::instance();
+    StringID id = strings.intern(name);
+    return variable_table.get(id).getValue();
+}
+
+void GameController::clearVariable(String name) {
+    static Strings & strings = Strings::instance();
+    StringID id = strings.intern(name);
+    if (variable_table.has(id)) {
+        variable_table.remove(id);
+    }
+}
+
 void GameController::renderDisplayCallback() {
     object_controller.drawObjects();
-    //render_controller.renderScreen(object_controller.queueObjects(), object_controller.queueDebugs());
+}
+
+void GameController::reshapeCallback(int width, int height) {
+    // This keeps the game in the entire screen and otherwise does not change
+    // anything when the window is reshaped.
+    glViewport(0, 0, width, height); 
+    glMatrixMode(GL_PROJECTION);
+    glPushMatrix();
+    glLoadIdentity();
+    gluOrtho2D(ORTHO_LEFT, ORTHO_RIGHT, ORTHO_BOTTOM, ORTHO_TOP);
+    glPopMatrix();
+    glMatrixMode(GL_MODELVIEW);
 }
 
 void GameController::handleInputEvent( const StringID& id ) {
@@ -43,13 +116,14 @@ void GameController::registerDebugValue( const StringID& id, const DebugValue dv
 void GameController::setupGameLoop(int argc, char **argv) {
     glutInit(&argc, argv);
 
-    render_controller.prepareScreen(1024, 768, "test");
+    render_controller.prepareScreen(WINDOW_X, WINDOW_Y, WINDOW_NAME);
 
     glutKeyboardFunc(keyboardInputCallback);
     glutKeyboardUpFunc(keyboardUpInputCallback);
     glutMouseFunc(mouseInputCallback);
     glutDisplayFunc(renderDisplayCallback);
     glutTimerFunc(16, updateTimerCallback, 0);
+    glutReshapeFunc(reshapeCallback);
 
     time(&lastTime);
     numFrames = 0;
@@ -61,8 +135,7 @@ void GameController::updateGameLoop(int value) {
     if ( !audio_controller.isPlayingSound( "background") ) {
         audio_controller.playSound( "background" );
     }
-
-    //std::cout << "input: " << key << std::endl;
+    
     // Measure speed
     time_t currentTime;
     time(&currentTime);

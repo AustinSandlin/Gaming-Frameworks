@@ -23,6 +23,7 @@ const string LOADER_COMMAND_9 = "debug";
 
 // Loader subcommands
 const string LOADER_COMMAND_A = "add";
+const string LOADER_COMMAND_B = "value";
 
 // Loader recognized AI types
 const string LOADER_AI_TYPE_1 = "wander";
@@ -35,5 +36,22 @@ const string LOADER_ACTION_TYPE_4 = "move_right";
 const string LOADER_ACTION_TYPE_5 = "quit";
 const string LOADER_ACTION_TYPE_6 = "attack";
 
+// Loader recognized debug value types
+const string LOADER_DEBUG_VALUE_TYPE_1 = "fps";
+const string LOADER_DEBUG_VALUE_TYPE_2 = "playerhealth";
+
+
+// Default window dimensions
+const int WINDOW_OFFSET_X = 0;
+const int WINDOW_OFFSET_Y = 0;
+const int WINDOW_X = 600;
+const int WINDOW_Y = 600;
+const string WINDOW_NAME = "Demo";
+
+// World coordinates
+const int ORTHO_LEFT = 0;
+const int ORTHO_RIGHT = 1000;
+const int ORTHO_BOTTOM = 0;
+const int ORTHO_TOP = 1000;
 
 #endif 
