@@ -13,10 +13,15 @@ typedef long TimeStamp;
 
 //Enumerated Actions. More to follow?
 enum Direction : int { UP = 0, DOWN = 1, LEFT = 2, RIGHT = 3 };
-enum InputAction : int { MOVE_UP, MOVE_DOWN, MOVE_LEFT, MOVE_RIGHT, QUIT, ATTACK };
+enum InputAction : int { MOVE_UP, MOVE_DOWN, MOVE_LEFT, MOVE_RIGHT, 
+						 ROTATE_LEFT, ROTATE_RIGHT, QUIT, ATTACK };
 enum SoundAction : int { PLAY, STOP };
-enum DebugValue : int { FPS, PLAYER_HEALTH };
+enum DebugValue : int { FPS, PLAYER_HEALTH, SCORE };
 enum EntityState : int { MOVING, IDLE, ATTACKING };
 enum AIType : int { WANDER };
+
+enum ObjectType : int {PLAYER, BACKGROUND, BACKDROP, SOLIDWALL, BREAKABLEWALL,
+					   WANDERENEMY, SHOOTERENEMY, BULLET, HEALTHPICKUP, SCOREPICKUP};
+
 
 #endif

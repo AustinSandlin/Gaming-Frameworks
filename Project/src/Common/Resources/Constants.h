@@ -55,7 +55,17 @@ const int ORTHO_BOTTOM = 0;
 const int ORTHO_TOP = 1000;
 
 // Object constants
-const double MAX_ROTATION = 360.0;
+const double OBJECT_MIN_WIDTH = 0.0;
+const double OBJECT_DEFAULT_WIDTH = 1.0;
+const double OBJECT_MIN_HEIGHT = 0.0;
+const double OBJECT_DEFAULT_HEIGHT = 1.0;
+const double OBJECT_MIN_RADIUS = 0.0;
+const double OBJECT_DEFAULT_RADIUS = 1.0;
+const double OBJECT_MIN_ROTATION = 0.0;
+const double OBJECT_DEFAULT_ROTATION = 0.0;
+const double OBJECT_MAX_ROTATION = 360.0;
+
+const double OBJECT_NULL_VALUE = -1;
 
 
 #endif 

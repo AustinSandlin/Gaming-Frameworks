@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include "Types.h"
+#include "../Resources/Constants.h"
 
 class Object {
 
@@ -19,52 +20,102 @@ private:
 
 protected:
 
-    int x, y;
-    int height, width;
+    double x, y;
+    double height, width, radius;
     double rotation;
-
+    bool   isQuad;
+    ObjectType type;
+    std::vector<int> values;
     std::vector<GLuint> textures;
 
-    Object( StringID id, int x, int y, int height, int width ) : id { id }, x { x }, y { y }, height { height }, width { width } {
-        rotation = 0.0;
-    }
 
-    Object( StringID id, int x, int y, int height, int width, double rotation ) : 
-            id { id }, x { x }, y { y }, height { height }, width { width }, rotation { rotation } {
+    Object( StringID oId, ObjectType oType; double oX, double oY, 
+            double oWidth, double oHeight, double oRadius, double oRotation, bool oIsQuad ) {
+
+        id = oId;
+        type = oType;
+        x = oX;
+        y = oY;
+
+        if (oWidth < OBJECT_MIN_WIDTH) {
+            width = OBJECT_DEFAULT_WIDTH;
+        }
+        else {
+            width = oWidth;
+        }
+
+        if (oHeight < OBJECT_MIN_HEIGHT) {
+            height = OBJECT_DEFAULT_HEIGHT;
+        }
+        else {
+            height = oHeight;
+        }
+
+        if (oRadius < OBJECT_MIN_RADIUS) {
+            radius = OBJECT_DEFAULT_RADIUS;
+        }
+        else {
+            radius = oRadius;
+        }
+
+        if (oRotation < OBJECT_MIN_ROTATION) {
+            rotation = OBJECT_DEFAULT_ROTATION;
+        }
+        else {
+            rotation = oRotation % OBJECT_MAX_ROTATION;
+        }
+
+        isQuad = oIsQuad;
     }
 
 public:
 	
-    StringID getID() const {
+    StringID getID() {
         return id;
     }
 
-    int getX() {
+    double getX() {
         return x;
     }
     
-    int getY() {
+    double getY() {
         return y;
     }
 
-    int getHeight() {
+    double getHeight() {
         return height;
     }
 
-    int getWidth() {
+    double getWidth() {
         return width;
+    }
+
+    double getRadius() {
+        return radius;
     }
 
     double getRotation() {
         return rotation;
     }
 
-    StringID getID() {
-        return id;
+    bool isQuad() {
+        return isQuad;
+    }
+
+    ObjectType getType() {
+        return type;
     }
 
     void addTexture(GLuint id) {
         textures.push_back(id);
+    }
+
+    void setValue(int value, int index) {
+        while ((values.size() - 1) < index) {
+            values.push_back(OBJECT_NULL_VALUE);
+        }
+        
+        values[index] = value;
     }
 };
 
