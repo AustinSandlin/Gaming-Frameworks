@@ -31,6 +31,8 @@ class GameController : public Singleton< GameController >{
         static RenderController& render_controller;
         static GameController& game_controller;
 
+        int score;
+        int player_health;
         time_t lastTime;
         int numFrames;
         int fps;
@@ -41,6 +43,8 @@ class GameController : public Singleton< GameController >{
 
         GameController() {
             fps = 0;
+            player_health = 100;
+            score = 0;
         }
 
         static void keyboardInputCallback(unsigned char key, int x, int y) {

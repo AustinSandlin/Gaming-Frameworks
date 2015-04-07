@@ -27,7 +27,7 @@ const string LOADER_COMMAND_B = "value";
 
 // Loader recognized AI types
 const string LOADER_AI_TYPE_1 = "wander";
-const string LOADER_AI_TYPE_2 = "still";
+const string LOADER_AI_TYPE_2 = "rusher";
 
 // Loader recognized action types
 const string LOADER_ACTION_TYPE_1 = "move_up";
@@ -39,8 +39,7 @@ const string LOADER_ACTION_TYPE_6 = "attack";
 
 // Loader recognized debug value types
 const string LOADER_DEBUG_VALUE_TYPE_1 = "fps";
-const string LOADER_DEBUG_VALUE_TYPE_2 = "playerhealth";
-
+const string LOADER_DEBUG_VALUE_TYPE_2 = "player_health";
 
 // Default window dimensions
 const int WINDOW_OFFSET_X = 0;
@@ -57,5 +56,6 @@ const int ORTHO_TOP = 1000;
 
 // Object constants
 const double MAX_ROTATION = 360.0;
+const double AI_AGGRO_RADIUS = 150;
 
 #endif 

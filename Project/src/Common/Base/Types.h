@@ -15,9 +15,9 @@ typedef long TimeStamp;
 enum Direction : int { UP = 0, DOWN = 1, LEFT = 2, RIGHT = 3 };
 enum InputAction : int { MOVE_UP, MOVE_DOWN, MOVE_LEFT, MOVE_RIGHT, QUIT, ATTACK };
 enum SoundAction : int { PLAY, STOP };
-enum DebugValue : int { FPS, PLAYER_HEALTH };
+enum DebugValue : int { PLAYER_HEALTH, SCORE };
 enum EntityState : int { MOVING, IDLE, ATTACKING };
-enum AIType : int { WANDER, STILL, RUSHER, TURRET };
-enum BuffType : int { HEALTH, SCORE };
+enum AIType : int { WANDER, STILL, RUSHER };
+enum BuffType : int { HEALTH, POINTS };
 
 #endif

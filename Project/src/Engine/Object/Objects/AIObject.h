@@ -18,7 +18,12 @@ class AIObject : public Object {
         AIObject( const StringID& id, int x, int y, int width, int height, AIType t ) :
             Object ( id, x, y, height, width ), type { t } {
             state = IDLE;
-            velocity = 8;
+            dir = DOWN;
+            switch(type) {
+                case WANDER: velocity = 8; break;
+                case RUSHER: velocity = 2; break;
+                default: velocity = 0;
+            }
         }
 
         AIType getType() {
@@ -51,18 +56,18 @@ class AIObject : public Object {
         }
 
         void draw() {
-            glBindTexture(GL_TEXTURE_2D, textures[0]);
+            glBindTexture(GL_TEXTURE_2D, textures[dir]);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
             glBegin(GL_QUADS);
-                glTexCoord2d(0, 1);
-                glVertex2i( x, y );
-                glTexCoord2d(1, 1);
-                glVertex2i( x+width, y );
                 glTexCoord2d(1, 0);
-                glVertex2i( x+width, y+height );
+                glVertex2i( x, y );
                 glTexCoord2d(0, 0);
+                glVertex2i( x+width, y );
+                glTexCoord2d(0, 1);
+                glVertex2i( x+width, y+height );
+                glTexCoord2d(1, 1);
                 glVertex2i( x, y+height );
             glEnd();
         }

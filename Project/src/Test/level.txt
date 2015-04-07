@@ -1,103 +1,182 @@
 start
-sound add collision ../Sounds/buzzer.wav
-sound add background ../Sounds/elevator.wav
+sound add collision ../Sounds/explosion.wav
+sound add background ../Sounds/music.wav
 input add w move_up
 input add s move_down
 input add a move_left
 input add d move_right
 input add q quit
 playerobject add player 1350 100 50 50
-texture add player ../Images/player_down.bmp
 texture add player ../Images/player_up.bmp
-texture add player ../Images/player_left.bmp
+texture add player ../Images/player_down.bmp
 texture add player ../Images/player_right.bmp
-aiobject add ai1 250 1700 50 50 STILL
-texture add ai1 ../Images/turret.bmp
-aiobject add ai2 400 1550 50 50 STILL
-texture add ai2 ../Images/turret.bmp
-aiobject add ai3 250 1400 50 50 STILL
-texture add ai3 ../Images/turret.bmp
-aiobject add ai4 400 1250 50 50 STILL
-texture add ai4 ../Images/turret.bmp
-aiobject add ai5 250 1100 50 50 STILL
-texture add ai5 ../Images/turret.bmp
-aiobject add ai6 550 1750 50 50 STILL
-texture add ai6 ../Images/turret.bmp
-aiobject add ai7 1350 1800 50 50 STILL
-texture add ai7 ../Images/turret.bmp
-aiobject add ai8 550 200 50 50 STILL
-texture add ai8 ../Images/turret.bmp
-aiobject add ai9 750 200 50 50 STILL
-texture add ai9 ../Images/turret.bmp
-aiobject add ai10 1350 700 50 50 STILL
-texture add ai10 ../Images/turret.bmp
-aiobject add ai11 550 500 50 50 STILL
-texture add ai11 ../Images/turret.bmp
-aiobject add ai12 550 700 50 50 STILL
-texture add ai12 ../Images/turret.bmp
-aiobject add ai13 950 1300 50 50 STILL
-texture add ai13 ../Images/turret.bmp
-aiobject add ai14 150 850 50 50 STILL
-texture add ai14 ../Images/rusher.bmp
-aiobject add ai15 550 1150 50 50 STILL
-texture add ai15 ../Images/rusher.bmp
-aiobject add ai16 750 1350 50 50 STILL
-texture add ai16 ../Images/rusher.bmp
-aiobject add ai17 950 1850 50 50 STILL
-texture add ai17 ../Images/rusher.bmp
-aiobject add ai18 1150 1100 50 50 STILL
-texture add ai18 ../Images/rusher.bmp
-aiobject add ai19 950 750 50 50 STILL
-texture add ai19 ../Images/rusher.bmp
-aiobject add ai20 350 350 50 50 STILL
-texture add ai20 ../Images/rusher.bmp
-aiobject add ai21 150 100 50 50 STILL
-texture add ai21 ../Images/rusher.bmp
-aiobject add ai22 950 100 50 50 STILL
-texture add ai22 ../Images/rusher.bmp
-aiobject add ai23 1350 1500 50 50 STILL
-texture add ai23 ../Images/rusher.bmp
-gameobject add coin1 100 1500 25 25 true
-texture add coin1 ../Images/coin.bmp
-gameobject add coin2 100 1300 25 25 true
-texture add coin2 ../Images/coin.bmp
-gameobject add coin3 100 1100 25 25 true
-texture add coin3 ../Images/coin.bmp
-gameobject add coin4 250 1750 25 25 true
-texture add coin4 ../Images/coin.bmp
-gameobject add coin5 400 1600 25 25 true
-texture add coin5 ../Images/coin.bmp
-gameobject add coin6 250 1450 25 25 true
-texture add coin6 ../Images/coin.bmp
-gameobject add coin7 400 1300 25 25 true
-texture add coin7 ../Images/coin.bmp
-gameobject add coin8 250 1150 25 25 true
-texture add coin8 ../Images/coin.bmp
-gameobject add coin9 550 1850 25 25 true
-texture add coin9 ../Images/coin.bmp
-gameobject add coin10 1350 1700 25 25 true
-texture add coin10 ../Images/coin.bmp
-gameobject add coin11 500 1250 25 25 true
-texture add coin11 ../Images/coin.bmp
-gameobject add coin12 550 100 25 25 true
-texture add coin12 ../Images/coin.bmp
-gameobject add coin13 500 550 25 25 true
-texture add coin13 ../Images/coin.bmp
-gameobject add coin14 600 650 25 25 true
-texture add coin14 ../Images/coin.bmp
-gameobject add coin15 750 100 25 25 true
-texture add coin15 ../Images/coin.bmp
-gameobject add coin16 1350 400 25 25 true
-texture add coin16 ../Images/coin.bmp
-gameobject add coin17 1350 600 25 25 true
-texture add coin17 ../Images/coin.bmp
+texture add player ../Images/player_left.bmp
+hudobject add scorepic 26 924 50 50 false
+texture add scorepic ../Images/coin.bmp
+hudobject add score 86 934 50 50 true
+debug add score score
 hudobject add health 738 937 204 26 false
 texture add health ../Images/health.bmp
-debug add health fps
+debug add health player_health
 hudobject add healthbar 728 930 224 44 false
 texture add healthbar ../Images/healthbar.bmp
 backgroundobject add background 50 -100 2048 2048
 texture add background ../Images/background.bmp
+aiobject add ai1 250 1700 38 38 wander
+texture add ai1 ../Images/wanderer_up.bmp
+texture add ai1 ../Images/wanderer_down.bmp
+texture add ai1 ../Images/wanderer_right.bmp
+texture add ai1 ../Images/wanderer_left.bmp
+aiobject add ai2 400 1550 38 38 wander
+texture add ai2 ../Images/wanderer_up.bmp
+texture add ai2 ../Images/wanderer_down.bmp
+texture add ai2 ../Images/wanderer_right.bmp
+texture add ai2 ../Images/wanderer_left.bmp
+aiobject add ai3 250 1400 38 38 wander
+texture add ai3 ../Images/wanderer_up.bmp
+texture add ai3 ../Images/wanderer_down.bmp
+texture add ai3 ../Images/wanderer_right.bmp
+texture add ai3 ../Images/wanderer_left.bmp
+aiobject add ai4 400 1250 38 38 wander
+texture add ai4 ../Images/wanderer_up.bmp
+texture add ai4 ../Images/wanderer_down.bmp
+texture add ai4 ../Images/wanderer_right.bmp
+texture add ai4 ../Images/wanderer_left.bmp
+aiobject add ai5 250 1100 38 38 wander
+texture add ai5 ../Images/wanderer_up.bmp
+texture add ai5 ../Images/wanderer_down.bmp
+texture add ai5 ../Images/wanderer_right.bmp
+texture add ai5 ../Images/wanderer_left.bmp
+aiobject add ai6 550 1750 38 38 wander
+texture add ai6 ../Images/wanderer_up.bmp
+texture add ai6 ../Images/wanderer_down.bmp
+texture add ai6 ../Images/wanderer_right.bmp
+texture add ai6 ../Images/wanderer_left.bmp
+aiobject add ai7 1350 1800 38 38 wander
+texture add ai7 ../Images/wanderer_up.bmp
+texture add ai7 ../Images/wanderer_down.bmp
+texture add ai7 ../Images/wanderer_right.bmp
+texture add ai7 ../Images/wanderer_left.bmp
+aiobject add ai8 550 200 38 38 wander
+texture add ai8 ../Images/wanderer_up.bmp
+texture add ai8 ../Images/wanderer_down.bmp
+texture add ai8 ../Images/wanderer_right.bmp
+texture add ai8 ../Images/wanderer_left.bmp
+aiobject add ai9 750 200 38 38 wander
+texture add ai9 ../Images/wanderer_up.bmp
+texture add ai9 ../Images/wanderer_down.bmp
+texture add ai9 ../Images/wanderer_right.bmp
+texture add ai9 ../Images/wanderer_left.bmp
+aiobject add ai10 1350 700 38 38 wander
+texture add ai10 ../Images/wanderer_up.bmp
+texture add ai10 ../Images/wanderer_down.bmp
+texture add ai10 ../Images/wanderer_right.bmp
+texture add ai10 ../Images/wanderer_left.bmp
+aiobject add ai11 550 500 38 38 wander
+texture add ai11 ../Images/wanderer_up.bmp
+texture add ai11 ../Images/wanderer_down.bmp
+texture add ai11 ../Images/wanderer_right.bmp
+texture add ai11 ../Images/wanderer_left.bmp
+aiobject add ai12 550 700 38 38 wander
+texture add ai12 ../Images/wanderer_up.bmp
+texture add ai12 ../Images/wanderer_down.bmp
+texture add ai12 ../Images/wanderer_right.bmp
+texture add ai12 ../Images/wanderer_left.bmp
+aiobject add ai13 950 1300 38 38 wander
+texture add ai13 ../Images/wanderer_up.bmp
+texture add ai13 ../Images/wanderer_down.bmp
+texture add ai13 ../Images/wanderer_right.bmp
+texture add ai13 ../Images/wanderer_left.bmp
+aiobject add ai14 150 850 38 38 rusher
+texture add ai14 ../Images/rusher_up.bmp
+texture add ai14 ../Images/rusher_down.bmp
+texture add ai14 ../Images/rusher_right.bmp
+texture add ai14 ../Images/rusher_left.bmp
+aiobject add ai15 550 1150 38 38 rusher
+texture add ai15 ../Images/rusher_up.bmp
+texture add ai15 ../Images/rusher_down.bmp
+texture add ai15 ../Images/rusher_right.bmp
+texture add ai15 ../Images/rusher_left.bmp
+aiobject add ai16 750 1350 38 38 rusher
+texture add ai16 ../Images/rusher_up.bmp
+texture add ai16 ../Images/rusher_down.bmp
+texture add ai16 ../Images/rusher_right.bmp
+texture add ai16 ../Images/rusher_left.bmp
+aiobject add ai17 950 1850 38 38 rusher
+texture add ai17 ../Images/rusher_up.bmp
+texture add ai17 ../Images/rusher_down.bmp
+texture add ai17 ../Images/rusher_right.bmp
+texture add ai17 ../Images/rusher_left.bmp
+aiobject add ai18 1150 1100 38 38 rusher
+texture add ai18 ../Images/rusher_up.bmp
+texture add ai18 ../Images/rusher_down.bmp
+texture add ai18 ../Images/rusher_right.bmp
+texture add ai18 ../Images/rusher_left.bmp
+aiobject add ai19 950 750 38 38 rusher
+texture add ai19 ../Images/rusher_up.bmp
+texture add ai19 ../Images/rusher_down.bmp
+texture add ai19 ../Images/rusher_right.bmp
+texture add ai19 ../Images/rusher_left.bmp
+aiobject add ai20 350 350 38 38 rusher
+texture add ai20 ../Images/rusher_up.bmp
+texture add ai20 ../Images/rusher_down.bmp
+texture add ai20 ../Images/rusher_right.bmp
+texture add ai20 ../Images/rusher_left.bmp
+aiobject add ai21 150 100 38 38 rusher
+texture add ai21 ../Images/rusher_up.bmp
+texture add ai21 ../Images/rusher_down.bmp
+texture add ai21 ../Images/rusher_right.bmp
+texture add ai21 ../Images/rusher_left.bmp
+aiobject add ai22 950 100 38 38 rusher
+texture add ai22 ../Images/rusher_up.bmp
+texture add ai22 ../Images/rusher_down.bmp
+texture add ai22 ../Images/rusher_right.bmp
+texture add ai22 ../Images/rusher_left.bmp
+aiobject add ai23 1350 1500 38 38 rusher
+texture add ai23 ../Images/rusher_up.bmp
+texture add ai23 ../Images/rusher_down.bmp
+texture add ai23 ../Images/rusher_right.bmp
+texture add ai23 ../Images/rusher_left.bmp
+gameobject add coin1 112 1512 25 25 true
+texture add coin1 ../Images/coin.bmp
+gameobject add coin2 112 1312 25 25 true
+texture add coin2 ../Images/coin.bmp
+gameobject add coin3 112 1112 25 25 true
+texture add coin3 ../Images/coin.bmp
+gameobject add coin4 262 1762 25 25 true
+texture add coin4 ../Images/coin.bmp
+gameobject add coin5 412 1612 25 25 true
+texture add coin5 ../Images/coin.bmp
+gameobject add coin6 262 1462 25 25 true
+texture add coin6 ../Images/coin.bmp
+gameobject add coin7 412 1312 25 25 true
+texture add coin7 ../Images/coin.bmp
+gameobject add coin8 262 1162 25 25 true
+texture add coin8 ../Images/coin.bmp
+gameobject add coin9 562 1862 25 25 true
+texture add coin9 ../Images/coin.bmp
+gameobject add coin10 1362 1712 25 25 true
+texture add coin10 ../Images/coin.bmp
+gameobject add coin11 512 1262 25 25 true
+texture add coin11 ../Images/coin.bmp
+gameobject add coin12 562 112 25 25 true
+texture add coin12 ../Images/coin.bmp
+gameobject add coin13 512 562 25 25 true
+texture add coin13 ../Images/coin.bmp
+gameobject add coin14 612 662 25 25 true
+texture add coin14 ../Images/coin.bmp
+gameobject add coin15 762 112 25 25 true
+texture add coin15 ../Images/coin.bmp
+gameobject add coin16 1362 412 25 25 true
+texture add coin16 ../Images/coin.bmp
+gameobject add coin17 1362 612 25 25 true
+texture add coin17 ../Images/coin.bmp
+gameobject add end1 50 1050 50 50 false
+texture add end1 ../Images/red.bmp
+gameobject add end2 100 1050 50 50 false
+texture add end2 ../Images/red.bmp
+gameobject add end3 150 1050 50 50 false
+texture add end3 ../Images/red.bmp
 gameobject add wall1 0 0 50 50 true
 texture add wall1 ../Images/wall.bmp
 gameobject add wall2 50 0 50 50 true

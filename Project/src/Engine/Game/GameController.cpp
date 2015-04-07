@@ -107,12 +107,12 @@ void GameController::registerInputAction( const StringID& id, const InputAction 
 }
 
 void GameController::registerValue( const StringID& id, const DebugValue dval ) {
-    if( dval == FPS ) {
-        int* temp = &fps;
+    if( dval == SCORE ) {
+        int* temp = &score;
         object_controller.assignValue( id, temp );
     }
     if( dval == PLAYER_HEALTH) {
-        int* temp = object_controller.getPlayerHealth();
+        int* temp = &player_health;
         object_controller.assignValue( id, temp );
     }
 }

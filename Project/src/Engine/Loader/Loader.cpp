@@ -216,6 +216,9 @@ void Loader::loadLevel(const string filename) {
 						if (ai == LOADER_AI_TYPE_1) {
 							aitype = WANDER;
 						}
+						else if (ai == LOADER_AI_TYPE_2) {
+							aitype = RUSHER;
+						}
 						// If no valid AI type is given, a default is used:
 						else {
 							aitype = STILL;
@@ -362,10 +365,15 @@ void Loader::loadLevel(const string filename) {
 					if ((line >> name) && (line >> value)) {
 						// isDebug is set to true or false if specified,
 						// defaulting to false on wrong input.
-						if(value == "fps") {
-							DebugValue temp = FPS;
+						if(value == "player_health") {
+							DebugValue temp = PLAYER_HEALTH;
 							game_controller.registerValue(string_controller.intern(name), temp);
-							cout << "Registered TEXT object: " << name << " " << value << endl;
+							cout << "Registered hud value: " << name << " " << value << endl;
+						}
+						else if(value == "score") {
+							DebugValue temp = SCORE;
+							game_controller.registerValue(string_controller.intern(name), temp);
+							cout << "Registered hud value: " << name << " " << value << endl;
 						}
 					}
 				}

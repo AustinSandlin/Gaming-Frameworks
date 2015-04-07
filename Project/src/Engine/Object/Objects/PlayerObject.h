@@ -19,6 +19,7 @@ class PlayerObject : public Object {
             state = IDLE;
             velocity = 8;
             health = 100;
+            dir = DOWN;
         }
 
         EntityState getState() {
@@ -27,8 +28,8 @@ class PlayerObject : public Object {
         Direction getDir() {
             return dir;
         }
-        int* getHealth() {
-            return &health;
+        int getHealth() {
+            return health;
         }
         int getVelocity() {
             return velocity;
@@ -59,13 +60,13 @@ class PlayerObject : public Object {
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
             glBegin(GL_QUADS);
-                glTexCoord2d(0, 1);
-                glVertex2i( x, y );
-                glTexCoord2d(1, 1);
-                glVertex2i( x+width, y );
                 glTexCoord2d(1, 0);
-                glVertex2i( x+width, y+height );
+                glVertex2i( x, y );
                 glTexCoord2d(0, 0);
+                glVertex2i( x+width, y );
+                glTexCoord2d(0, 1);
+                glVertex2i( x+width, y+height );
+                glTexCoord2d(1, 1);
                 glVertex2i( x, y+height );
             glEnd();
         }

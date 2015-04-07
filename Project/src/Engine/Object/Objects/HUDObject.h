@@ -49,26 +49,26 @@ class HUDObject : public Object {
 
                 if(value == NULL) {
                     glBegin(GL_QUADS);
-                    glTexCoord2d(0, 1);
-                    glVertex2i( x, y );
-                    glTexCoord2d(1, 1);
-                    glVertex2i( x+width, y );
                     glTexCoord2d(1, 0);
-                    glVertex2i( x+width, y+height );
+                    glVertex2i( x, y );
                     glTexCoord2d(0, 0);
+                    glVertex2i( x+width, y );
+                    glTexCoord2d(0, 1);
+                    glVertex2i( x+width, y+height );
+                    glTexCoord2d(1, 1);
                     glVertex2i( x, y+height );
                     glEnd();
                 }
                 else{
                     double val = (*value)/100.00;
                     glBegin(GL_QUADS);
-                        glTexCoord2d(0, 1);
-                        glVertex2i( x, y );
-                        glTexCoord2d(val, 1);
-                        glVertex2i( x+(width*val), y );
                         glTexCoord2d(val, 0);
-                        glVertex2i( x+(width*val), y+height );
+                        glVertex2i( x, y );
                         glTexCoord2d(0, 0);
+                        glVertex2i( x+(width*val), y );
+                        glTexCoord2d(0, 1);
+                        glVertex2i( x+(width*val), y+height );
+                        glTexCoord2d(val, 1);
                         glVertex2i( x, y+height );
                     glEnd();
                 }

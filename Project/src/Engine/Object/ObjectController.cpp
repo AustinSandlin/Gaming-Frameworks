@@ -75,6 +75,10 @@ void ObjectController::registerObjectTexture( const StringID& id, const String p
     }
 }
 
+void ObjectController::registerPickupObject( const StringID& id, PickupObject po ) {
+    pickup_objects.add( id, po );
+}
+
 void ObjectController::registerAIObject( const StringID& id, AIObject ai ) {
     ai_objects.add( id, ai );
 }
@@ -96,11 +100,6 @@ void ObjectController::registerPlayerObject( const StringID& id, PlayerObject po
     }
 }
 
-int* ObjectController::getPlayerHealth() {
-    TableIterator<PlayerObject> it1 = player_objects.begin();
-    return it1.getValue().getHealth();
-}
-
 void ObjectController::registerGameObject( const StringID& id, GameObject go ) {
     game_objects.add( id, go );
 }
@@ -113,8 +112,27 @@ void ObjectController::assignValue( const StringID& id, int* ptr ) {
     if(hud_objects.has(id)) {
         hud_objects.get(id).getValue().updateValue(ptr);
     }
+}
+
+void ObjectController::removeObject(const StringID& id) {
+    // Removing background objects:
+    if(ai_objects.has(id)) {
+        ai_objects.remove(id);
+    }
+    if(background_objects.has(id)) {
+        background_objects.remove(id);
+    }
+    if(player_objects.has(id)) {
+        player_objects.remove(id);
+    }
+    if(game_objects.has(id)) {
+        game_objects.remove(id);
+    }
     if(hud_objects.has(id)) {
-        hud_objects.get(id).getValue().updateValue(ptr);
+        hud_objects.remove(id);
+    }
+    if(pickup_objects.has(id)) {
+        pickup_objects.remove(id);
     }
 }
 
@@ -202,20 +220,29 @@ bool ObjectController::canPlayerMove( const StringID id, Direction dir ) {
         }
         ++it2;
     }
+    TableIterator<PickupObject> it3 = pickup_objects.begin();
+    while(it3 != pickup_objects.end()) {
+        if(doesSquareCollide(testX, testY, player.getWidth(), player.getHeight(),
+                             it2.getValue().getX(), it2.getValue().getY(),
+                             it2.getValue().getWidth(), it2.getValue().getHeight())) {
+            //ADD TRIGGER FUNCTION
+        }
+        ++it2;
+    }
 
-    // return !coll;
-    return true;
+    return !coll;
+    // return true;
 }
 
 void ObjectController::updateEntitys() {
     TableIterator<AIObject> it1 = ai_objects.begin();
     while(it1 != ai_objects.end()) {
         if(it1.getValue().getType() == WANDER) {
-            int x = rand()%100;
-            if(x == 0) {
+            int x = rand()%10;
+            if(x < 5) {
                 it1.getValue().setState(IDLE);
             }
-            else if(x > 4) {
+            else if(x > 8) {
                 it1.getValue().setState(MOVING);
             }
 
@@ -234,13 +261,63 @@ void ObjectController::updateEntitys() {
             }
         }
         else if(it1.getValue().getType() == STILL) {
-
-        }
-        else if(it1.getValue().getType() == TURRET) {
-
         }
         else if(it1.getValue().getType() == RUSHER) {
+            TableIterator<PlayerObject> it2 = player_objects.begin();
+            int p_x = it2.getValue().getX();
+            int p_y = it2.getValue().getY();
+            int a_x = it1.getValue().getX();
+            int a_y = it1.getValue().getY();
 
+            if((((a_x-p_x)*(a_x-p_x))+((a_y-p_y)*(a_y-p_y))) < (AI_AGGRO_RADIUS*AI_AGGRO_RADIUS)) {
+                if(p_x == a_x && p_y < a_y) {
+                    it1.getValue().setDir(DOWN);
+                }
+                else if(p_x == a_x && p_y > a_y) {
+                    it1.getValue().setDir(UP);
+                }
+                else if(p_y == a_y && p_x < a_x) {
+                    it1.getValue().setDir(LEFT);
+                }
+                else if(p_y == a_y && p_x > a_x) {
+                    it1.getValue().setDir(RIGHT);
+                }
+                else if(p_x < a_x && p_y < a_y) {
+                    if(it1.getValue().getDir() == DOWN) {
+                        it1.getValue().setDir(LEFT);
+                    }
+                    else {
+                        it1.getValue().setDir(DOWN);
+                    }
+                }
+                else if(p_x > a_x && p_y < a_y) {
+                    if(it1.getValue().getDir() == DOWN) {
+                        it1.getValue().setDir(RIGHT);
+                    }
+                    else {
+                        it1.getValue().setDir(DOWN);
+                    }
+                }
+                else if(p_x < a_x && p_y > a_y) {
+                    if(it1.getValue().getDir() == UP) {
+                        it1.getValue().setDir(LEFT);
+                    }
+                    else {
+                        it1.getValue().setDir(UP);
+                    }
+                }
+                else if(p_x > a_x && p_y > a_y) {
+                    if(it1.getValue().getDir() == UP) {
+                        it1.getValue().setDir(RIGHT);
+                    }
+                    else {
+                        it1.getValue().setDir(UP);
+                    }
+                }
+                if(canAIMove(it1.getValue().getID(), it1.getValue().getDir())) {
+                    it1.getValue().move();
+                }
+            }
         }
         ++it1;
     }
@@ -285,6 +362,13 @@ void ObjectController::drawObjects() {
     while(it2 != game_objects.end()) {
         it2.getValue().draw();
         ++it2;
+    }
+
+    // Drawing pickup objects:
+    TableIterator<PickupObject> it6 = pickup_objects.begin();
+    while(it6 != pickup_objects.end()) {
+        it6.getValue().draw();
+        ++it6;
     }
 
     // Drawing AI objects:
