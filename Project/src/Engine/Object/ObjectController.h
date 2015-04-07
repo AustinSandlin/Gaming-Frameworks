@@ -19,6 +19,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <queue>
+#include <cmath>
 
 class ObjectController:
 	
@@ -30,6 +31,7 @@ class ObjectController:
 		static RenderController& render_controller;
 		static AudioController& audio_controller;
 		
+		// Old tables
 		Table< AIObject > ai_objects;
 		Table< BackgroundObject > background_objects;
 		Table< PlayerObject > player_objects;
@@ -79,7 +81,6 @@ class ObjectController:
 		void registerBackgroundObject( const StringID& id, BackgroundObject bo );
 		void registerGameObject( const StringID& id, GameObject go );
 		void registerPlayerObject( const StringID& id, PlayerObject po );
-
 		void registerHUDObject( const StringID& id, HUDObject ho );
 		void registerDebugObject( const StringID& id, HUDObject ho );
 		void assignDebugValue( const StringID& id, int* ptr );

@@ -52,8 +52,7 @@ void ObjectController::addObject(const StringID& id, Object object) {
 
 
 void ObjectController::removeObject(const StringID& id) {
-    // The object is removed from the table containing all objects of the same type.
-    ObjectType type = object.getType();
+    // The object is removed from the table it belongs to.
     if (players.has(id)) {
         players.remove(id);
     }
@@ -84,7 +83,105 @@ void ObjectController::removeObject(const StringID& id) {
 }
 
 
-void ObjectController::handlePlayerAction( const InputAction& action ) {
+bool ObjectController::checkCollision(const Object a, const Object b) {
+    // Check collision if A and B are both quads:
+    if (a.isQuad() && b.isQuad()) {
+        checkCollisionQuadQuad(a, b);
+    }
+    // Check collision if A and B are both circles:
+    else if (!a.isQuad() && !b.isQuad()) {
+        checkCollisionCircleCircle(a, b);
+    }
+    // Check collision if A is a quad and B is a circle:
+    else if (a.isQuad() && !b.isQuad()) {
+        checkCollisionQuadCircle(a, b);
+    }
+    // Check collision if A is a circle and B is a quad:
+    else {
+        checkCollisionQuadCircle(b, a);
+    }
+}
+
+
+
+/*      Unfinished.
+
+bool ObjectController::checkCollisionCircleCircle(const Object a, const Object b) {
+    // The two objects have collided if the distance between their centers is less than
+    // the sum of their radii.
+    bool collision = false;
+
+    double distance = distance(a.getX(), a.getY(), b.getX(), b.getY());
+
+    if (distance <= (a.getRadius() + b.getRadius())) {
+        collision = true;
+    }
+
+    return collision;
+}
+
+
+bool ObjectController::checkCollisionQuadQuad(const Object a, const Object b) {
+
+}
+
+
+bool ObjectController::checkCollisionQuadCircle(const Object a, const Object b) {
+    bool collision = false;
+
+    // The location of the points of the quad based on its center point, its
+    // angle of rotation, and its width and height. The last is a duplicate
+    // of the first so they can be considered in pairs.
+    double verticesX[5];
+    double verticesY[5];
+
+    // The location, width, height and rotation of the quad and radius of the circle:
+    double aX = a.getX();
+    double aY = a.getY();
+    double bX = b.getX();
+    double bY = b.getY();
+    double width = a.getWidth();
+    double height = a.getHeight();
+    double angle = a.getRotation() * PI / 180;
+    double radius = b.getRadius();
+
+    // Bottom left (at 0 degrees):
+    verticesX[0] = aX - (cos(angle) * (width / 2))  + (sin(angle) * (height / 2));
+    verticesY[0] = aY - (cos(angle) * (height / 2)) - (sin(angle) * (width / 2));
+
+    // Bottom right (at 0 degrees):
+    verticesX[1] = aX + (cos(angle) * (width / 2))  + (sin(angle) * (height / 2));
+    verticesY[1] = aY - (cos(angle) * (height / 2)) + (sin(angle) * (width / 2));
+
+    // Top right (at 0 degrees):
+    verticesX[2] = aX + (cos(angle) * (width / 2))  - (sin(angle) * (height / 2));
+    verticesY[2] = aY + (cos(angle) * (height / 2)) + (sin(angle) * (width / 2));
+
+    // Top left (at 0 degrees):
+    verticesX[3] = aX - (cos(angle) * (width / 2))  - (sin(angle) * (height / 2));
+    verticesY[3] = aY + (cos(angle) * (height / 2)) - (sin(angle) * (width / 2));
+
+    // Bottom left again:
+    verticesX[4] = verticesX[0];
+    verticesY[4] = verticesY[0];
+
+
+
+    return collision;
+}
+*/
+
+
+
+double ObjectController::distance(const double x1, const double y1, const double x2, const double y2) {
+    // Simple distance function for two points.
+    double distance = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
+
+    return distance;
+}
+
+
+void ObjectController::handlePlayerAction( const InputAction& action ) {                // MERGE with collision/logic functions
 
     TableIterator<PlayerObject> it = player_objects.begin();
     while(it != player_objects.end()) {
@@ -139,6 +236,37 @@ void ObjectController::handlePlayerAction( const InputAction& action ) {
 void ObjectController::registerObjectTexture( const StringID& id, const String path ) {
     GLuint textureID = render_controller.loadBMP(path.c_str());
 
+    if (players.has(id)) {
+        players.get(id).getValue().addTexture(textureID);
+    }
+    else if (backgrounds.has(id)) {
+        backgrounds.get(id).getValue().addTexture(textureID);
+    }
+    else if (solidwalls.has(id)) {
+        solidwalls.get(id).getValue().addTexture(textureID);
+    }
+    else if (breakablewalls.has(id)) {
+        breakablewalls.get(id).getValue().addTexture(textureID);
+    }
+    else if (rusherenemies.has(id)) {
+        rusherenemies.get(id).getValue().addTexture(textureID);
+    }
+    else if (shooterenemies.has(id)) {
+        shooterenemies.get(id).getValue().addTexture(textureID);
+    }
+    else if (bullets.has(id)) {
+        bullets.get(id).getValue().addTexture(textureID);
+    }
+    else if (healthpickups.has(id)) {
+        healthpickups.get(id).getValue().addTexture(textureID);
+    }
+    else if (scorepickups.has(id)) {
+        scorepickups.get(id).getValue().addTexture(textureID);
+    }
+
+
+
+    /*          // Old
     if(background_objects.has(id)) {
         background_objects.get(id).getValue().addTexture(textureID);
     }
@@ -153,18 +281,18 @@ void ObjectController::registerObjectTexture( const StringID& id, const String p
     }
     else if(hud_objects.has(id)) {
         hud_objects.get(id).getValue().addTexture(textureID);
-    }
+    }*/
 }
 
-void ObjectController::registerAIObject( const StringID& id, AIObject ai ) {
+void ObjectController::registerAIObject( const StringID& id, AIObject ai ) {                            // OLD
     ai_objects.add( id, ai );
 }
 
-void ObjectController::registerBackgroundObject( const StringID& id, BackgroundObject bo ) {
+void ObjectController::registerBackgroundObject( const StringID& id, BackgroundObject bo ) {            // OLD
     background_objects.add( id, bo );
 }
 
-void ObjectController::registerPlayerObject( const StringID& id, PlayerObject po ) {
+void ObjectController::registerPlayerObject( const StringID& id, PlayerObject po ) {                    // OLD
     int size = 0;
     TableIterator<PlayerObject> it1 = player_objects.begin();
     while(it1 != player_objects.end()) {
@@ -177,25 +305,25 @@ void ObjectController::registerPlayerObject( const StringID& id, PlayerObject po
     }
 }
 
-void ObjectController::registerGameObject( const StringID& id, GameObject go ) {
+void ObjectController::registerGameObject( const StringID& id, GameObject go ) {                        // OLD
     game_objects.add( id, go );
 }
 
-void ObjectController::registerHUDObject( const StringID& id, HUDObject ho ) {
+void ObjectController::registerHUDObject( const StringID& id, HUDObject ho ) {                          // OLD
     hud_objects.add( id, ho );
 }
 
-void ObjectController::registerDebugObject( const StringID& id, HUDObject ho ) {
+void ObjectController::registerDebugObject( const StringID& id, HUDObject ho ) {                        // OLD
     debug_objects.add( id, ho );
 }
 
-void ObjectController::assignDebugValue( const StringID& id, int* ptr ) {
+void ObjectController::assignDebugValue( const StringID& id, int* ptr ) {                               // OLD
     if(debug_objects.has(id)) {
         debug_objects.get(id).getValue().updateValue(ptr);
     }
 }
 
-bool ObjectController::doesSquareCollide( int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4 ) {
+bool ObjectController::doesSquareCollide( int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4 ) {    // OLD
     bool coll = false;
 
     if((y1 < (y3+y4)) && ((y1+y2) > y3) && ((x1+x2) > x3) && (x1 < (x3+x4))) {
@@ -205,7 +333,7 @@ bool ObjectController::doesSquareCollide( int x1, int y1, int x2, int y2, int x3
     return coll;
 }
 
-bool ObjectController::canAIMove( const StringID id, Direction dir ) {
+bool ObjectController::canAIMove( const StringID id, Direction dir ) {                        // MERGE with collision/logic functions
     bool coll = false;
 
     AIObject ai = ai_objects.get(id).getValue();
@@ -244,7 +372,7 @@ bool ObjectController::canAIMove( const StringID id, Direction dir ) {
     return !coll;
 }
 
-bool ObjectController::canPlayerMove( const StringID id, Direction dir ) {
+bool ObjectController::canPlayerMove( const StringID id, Direction dir ) {                  // MERGE with collision/logic functions
     bool coll = false;
 
     PlayerObject player = player_objects.get(id).getValue();
@@ -283,7 +411,7 @@ bool ObjectController::canPlayerMove( const StringID id, Direction dir ) {
     return !coll;
 }
 
-void ObjectController::updateEntitys() {
+void ObjectController::updateEntitys() {                                            // MERGE with collision/logic functions
     TableIterator<AIObject> it1 = ai_objects.begin();
     while(it1 != ai_objects.end()) {
         if(it1.getValue().getType() == WANDER) {
@@ -324,7 +452,7 @@ void ObjectController::updateEntitys() {
     // }
 }
 
-void ObjectController::drawObjects() {
+void ObjectController::drawObjects() {                                      // CHANGE
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     glMatrixMode(GL_MODELVIEW);
@@ -335,8 +463,8 @@ void ObjectController::drawObjects() {
     int count = 0;
 
     // Centering camera on the players:
-    TableIterator<PlayerObject> it = player_objects.begin();
-    while(it != player_objects.end()) {
+    TableIterator<Object> it = players.begin();
+    while(it != players.end()) {
         x += it.getValue().getX();
         y += it.getValue().getY();
         ++count;
@@ -352,6 +480,73 @@ void ObjectController::drawObjects() {
     glTranslatef(x, y, 0);
 
 
+    // Drawing background objects:
+    it = backgrounds.begin();
+    while(it != backgrounds.end()) {
+        it.getValue().draw();
+        ++it;
+    } 
+
+    // Drawing bullet objects:
+    it = bullets.begin();
+    while(it != bullets.end()) {
+        it.getValue().draw();
+        ++it;
+    }
+
+    // Drawing health pickup objects:
+    it = healthpickups.begin();
+    while(it != healthpickups.end()) {
+        it.getValue().draw();
+        ++it;
+    } 
+
+    // Drawing score pickup objects:
+    it = scorepickups.begin();
+    while(it != scorepickups.end()) {
+        it.getValue().draw();
+        ++it;
+    }
+
+    // Drawing rusher enemy objects:
+    it = rusherenemies.begin();
+    while(it != rusherenemies.end()) {
+        it.getValue().draw();
+        ++it;
+    }
+
+    // Drawing shooter enemy objects:
+    it = shooterenemies.begin();
+    while(it != shooterenemies.end()) {
+        it.getValue().draw();
+        ++it;
+    } 
+
+    // Drawing breakable wall objects:
+    it = breakablewalls.begin();
+    while(it != breakablewalls.end()) {
+        it.getValue().draw();
+        ++it;
+    }
+
+    // Drawing solid wall objects:
+    it = solidwalls.begin();
+    while(it != solidwalls.end()) {
+        it.getValue().draw();
+        ++it;
+    }
+
+    // Drawing player objects:
+    it = players.begin();
+    while(it != players.end()) {
+        it.getValue().draw();
+        ++it;
+    } 
+
+
+
+
+    /*
     // Drawing background objects:
     TableIterator<BackgroundObject> it1 = background_objects.begin();
     while(it1 != background_objects.end()) {
@@ -395,7 +590,7 @@ void ObjectController::drawObjects() {
     while(it6 != debug_objects.end()) {
         it6.getValue().draw();
         ++it6;
-    }
+    }*/
 
     glutSwapBuffers();
 }

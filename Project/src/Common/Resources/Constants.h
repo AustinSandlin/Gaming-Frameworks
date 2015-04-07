@@ -65,7 +65,16 @@ const double OBJECT_MIN_ROTATION = 0.0;
 const double OBJECT_DEFAULT_ROTATION = 0.0;
 const double OBJECT_MAX_ROTATION = 360.0;
 
+// Game value constants:
 const double OBJECT_NULL_VALUE = -1;
+const int PLAYER_HEALTH_INDEX = 0;
+const int PLAYER_SCORE_INDEX = 1;
+const int BULLET_DAMAGE = 2;
+const int EXPLOSION_DAMAGE = 5;
+const int PLAYER_HEALTH = 8;
+const int RUSHER_HEALTH = 2;
+const int SHOOTER_HEALTH = 6;
 
+const double PI = 3.14159;
 
 #endif 
