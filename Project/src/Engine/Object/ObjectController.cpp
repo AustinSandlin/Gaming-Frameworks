@@ -233,6 +233,27 @@ void ObjectController::handlePlayerAction( const InputAction& action ) {        
     }
 }
 
+
+void ObjectController::updateObjects() {
+    // Bullet collisions:
+    TableIterator<Object> aBullet = bullets.begin();
+
+    while (aBullet != bullets.end()) {
+        TableIterator<Object> 
+        
+
+
+
+    }
+
+
+
+
+
+}
+
+
+
 void ObjectController::registerObjectTexture( const StringID& id, const String path ) {
     GLuint textureID = render_controller.loadBMP(path.c_str());
 

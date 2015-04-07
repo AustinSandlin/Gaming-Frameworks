@@ -46,8 +46,8 @@ class ObjectController:
 		Table< Object > solidwalls;
 		Table< Object > breakablewalls;
 		Table< Object > rusherenemies;
-		Table< Object > shooterenemies;
-		Table< Object > bullets;
+		Table< Object > wanderenemies;
+		//Table< Object > bullets;
 		Table< Object > healthpickups;
 		Table< Object > scorepickups;
 

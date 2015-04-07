@@ -69,11 +69,9 @@ const double OBJECT_MAX_ROTATION = 360.0;
 const double OBJECT_NULL_VALUE = -1;
 const int PLAYER_HEALTH_INDEX = 0;
 const int PLAYER_SCORE_INDEX = 1;
-const int BULLET_DAMAGE = 2;
-const int EXPLOSION_DAMAGE = 5;
-const int PLAYER_HEALTH = 8;
-const int RUSHER_HEALTH = 2;
-const int SHOOTER_HEALTH = 6;
+const int WANDER_DAMAGE = 3;
+const int RUSHER_DAMAGE = 1;
+const int PLAYER_MAX_HEALTH = 5;
 
 const double PI = 3.14159;
 
