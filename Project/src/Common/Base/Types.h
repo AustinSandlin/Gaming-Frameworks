@@ -2,11 +2,13 @@
 #define _TYPES_H
 
 #include <string>
+#include <sstream>
 
 //A few string things. StringID is unique identifier based on a string hash.
 typedef size_t StringID;
 //Easier use of string without calling std:: everywhere.
 typedef std::string String;
+typedef std::stringstream StringStream;
 
 //Timestamp int. Soon to be 'long'?
 typedef long TimeStamp;

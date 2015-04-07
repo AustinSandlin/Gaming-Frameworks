@@ -1,0 +1,977 @@
+input bind w up
+input bind a left
+input bind s down
+input bind d right
+
+audio add warning Sounds/buzzer.wav
+audio add background Sounds/elevator.wav
+audio loop background
+
+variable float add player_health
+variable float set player_health = 100.0
+
+trigger float add player_half_health player_health < 50.0
+trigger float set player_half_health audio play warning
+
+variable float set player_health = 25.0
+
+object player add player 1350 100 50 50
+object texture set player ../Images/player_up.bmp
+object texture set player ../Images/player_down.bmp
+object texture set player ../Images/player_right.bmp
+object texture set player ../Images/player_left.bmp
+
+object hud add scorepic 26 924 50 50 false
+object texture set scorepic ../Images/coin.bmp
+object hud add score 86 934 50 50 true
+object hud add health 738 937 204 26 false
+object texture set health ../Images/health.bmp
+object hud add healthbar 728 930 224 44 false
+object texture set healthbar ../Images/healthbar.bmp
+object background add background 50 -100 2048 2048
+object texture set background ../Images/background.bmp
+object ai add ai1 250 1700 38 38 wander
+object texture set ai1 ../Images/wanderer_up.bmp
+object texture set ai1 ../Images/wanderer_down.bmp
+object texture set ai1 ../Images/wanderer_right.bmp
+object texture set ai1 ../Images/wanderer_left.bmp
+object ai add ai2 400 1550 38 38 wander
+object texture set ai2 ../Images/wanderer_up.bmp
+object texture set ai2 ../Images/wanderer_down.bmp
+object texture set ai2 ../Images/wanderer_right.bmp
+object texture set ai2 ../Images/wanderer_left.bmp
+object ai add ai3 250 1400 38 38 wander
+object texture set ai3 ../Images/wanderer_up.bmp
+object texture set ai3 ../Images/wanderer_down.bmp
+object texture set ai3 ../Images/wanderer_right.bmp
+object texture set ai3 ../Images/wanderer_left.bmp
+object ai add ai4 400 1250 38 38 wander
+object texture set ai4 ../Images/wanderer_up.bmp
+object texture set ai4 ../Images/wanderer_down.bmp
+object texture set ai4 ../Images/wanderer_right.bmp
+object texture set ai4 ../Images/wanderer_left.bmp
+object ai add ai5 250 1100 38 38 wander
+object texture set ai5 ../Images/wanderer_up.bmp
+object texture set ai5 ../Images/wanderer_down.bmp
+object texture set ai5 ../Images/wanderer_right.bmp
+object texture set ai5 ../Images/wanderer_left.bmp
+object ai add ai6 550 1750 38 38 wander
+object texture set ai6 ../Images/wanderer_up.bmp
+object texture set ai6 ../Images/wanderer_down.bmp
+object texture set ai6 ../Images/wanderer_right.bmp
+object texture set ai6 ../Images/wanderer_left.bmp
+object ai add ai7 1350 1800 38 38 wander
+object texture set ai7 ../Images/wanderer_up.bmp
+object texture set ai7 ../Images/wanderer_down.bmp
+object texture set ai7 ../Images/wanderer_right.bmp
+object texture set ai7 ../Images/wanderer_left.bmp
+object ai add ai8 550 200 38 38 wander
+object texture set ai8 ../Images/wanderer_up.bmp
+object texture set ai8 ../Images/wanderer_down.bmp
+object texture set ai8 ../Images/wanderer_right.bmp
+object texture set ai8 ../Images/wanderer_left.bmp
+object ai add ai9 750 200 38 38 wander
+object texture set ai9 ../Images/wanderer_up.bmp
+object texture set ai9 ../Images/wanderer_down.bmp
+object texture set ai9 ../Images/wanderer_right.bmp
+object texture set ai9 ../Images/wanderer_left.bmp
+object ai add ai10 1350 700 38 38 wander
+object texture set ai10 ../Images/wanderer_up.bmp
+object texture set ai10 ../Images/wanderer_down.bmp
+object texture set ai10 ../Images/wanderer_right.bmp
+object texture set ai10 ../Images/wanderer_left.bmp
+object ai add ai11 550 500 38 38 wander
+object texture set ai11 ../Images/wanderer_up.bmp
+object texture set ai11 ../Images/wanderer_down.bmp
+object texture set ai11 ../Images/wanderer_right.bmp
+object texture set ai11 ../Images/wanderer_left.bmp
+object ai add ai12 550 700 38 38 wander
+object texture set ai12 ../Images/wanderer_up.bmp
+object texture set ai12 ../Images/wanderer_down.bmp
+object texture set ai12 ../Images/wanderer_right.bmp
+object texture set ai12 ../Images/wanderer_left.bmp
+object ai add ai13 950 1300 38 38 wander
+object texture set ai13 ../Images/wanderer_up.bmp
+object texture set ai13 ../Images/wanderer_down.bmp
+object texture set ai13 ../Images/wanderer_right.bmp
+object texture set ai13 ../Images/wanderer_left.bmp
+object ai add ai14 150 850 38 38 rusher
+object texture set ai14 ../Images/rusher_up.bmp
+object texture set ai14 ../Images/rusher_down.bmp
+object texture set ai14 ../Images/rusher_right.bmp
+object texture set ai14 ../Images/rusher_left.bmp
+object ai add ai15 550 1150 38 38 rusher
+object texture set ai15 ../Images/rusher_up.bmp
+object texture set ai15 ../Images/rusher_down.bmp
+object texture set ai15 ../Images/rusher_right.bmp
+object texture set ai15 ../Images/rusher_left.bmp
+object ai add ai16 750 1350 38 38 rusher
+object texture set ai16 ../Images/rusher_up.bmp
+object texture set ai16 ../Images/rusher_down.bmp
+object texture set ai16 ../Images/rusher_right.bmp
+object texture set ai16 ../Images/rusher_left.bmp
+object ai add ai17 950 1850 38 38 rusher
+object texture set ai17 ../Images/rusher_up.bmp
+object texture set ai17 ../Images/rusher_down.bmp
+object texture set ai17 ../Images/rusher_right.bmp
+object texture set ai17 ../Images/rusher_left.bmp
+object ai add ai18 1150 1100 38 38 rusher
+object texture set ai18 ../Images/rusher_up.bmp
+object texture set ai18 ../Images/rusher_down.bmp
+object texture set ai18 ../Images/rusher_right.bmp
+object texture set ai18 ../Images/rusher_left.bmp
+object ai add ai19 950 750 38 38 rusher
+object texture set ai19 ../Images/rusher_up.bmp
+object texture set ai19 ../Images/rusher_down.bmp
+object texture set ai19 ../Images/rusher_right.bmp
+object texture set ai19 ../Images/rusher_left.bmp
+object ai add ai20 350 350 38 38 rusher
+object texture set ai20 ../Images/rusher_up.bmp
+object texture set ai20 ../Images/rusher_down.bmp
+object texture set ai20 ../Images/rusher_right.bmp
+object texture set ai20 ../Images/rusher_left.bmp
+object ai add ai21 150 100 38 38 rusher
+object texture set ai21 ../Images/rusher_up.bmp
+object texture set ai21 ../Images/rusher_down.bmp
+object texture set ai21 ../Images/rusher_right.bmp
+object texture set ai21 ../Images/rusher_left.bmp
+object ai add ai22 950 100 38 38 rusher
+object texture set ai22 ../Images/rusher_up.bmp
+object texture set ai22 ../Images/rusher_down.bmp
+object texture set ai22 ../Images/rusher_right.bmp
+object texture set ai22 ../Images/rusher_left.bmp
+object ai add ai23 1350 1500 38 38 rusher
+object texture set ai23 ../Images/rusher_up.bmp
+object texture set ai23 ../Images/rusher_down.bmp
+object texture set ai23 ../Images/rusher_right.bmp
+object texture set ai23 ../Images/rusher_left.bmp
+object game add coin1 112 1512 25 25 true
+object texture set coin1 ../Images/coin.bmp
+object game add coin2 112 1312 25 25 true
+object texture set coin2 ../Images/coin.bmp
+object game add coin3 112 1112 25 25 true
+object texture set coin3 ../Images/coin.bmp
+object game add coin4 262 1762 25 25 true
+object texture set coin4 ../Images/coin.bmp
+object game add coin5 412 1612 25 25 true
+object texture set coin5 ../Images/coin.bmp
+object game add coin6 262 1462 25 25 true
+object texture set coin6 ../Images/coin.bmp
+object game add coin7 412 1312 25 25 true
+object texture set coin7 ../Images/coin.bmp
+object game add coin8 262 1162 25 25 true
+object texture set coin8 ../Images/coin.bmp
+object game add coin9 562 1862 25 25 true
+object texture set coin9 ../Images/coin.bmp
+object game add coin10 1362 1712 25 25 true
+object texture set coin10 ../Images/coin.bmp
+object game add coin11 512 1262 25 25 true
+object texture set coin11 ../Images/coin.bmp
+object game add coin12 562 112 25 25 true
+object texture set coin12 ../Images/coin.bmp
+object game add coin13 512 562 25 25 true
+object texture set coin13 ../Images/coin.bmp
+object game add coin14 612 662 25 25 true
+object texture set coin14 ../Images/coin.bmp
+object game add coin15 762 112 25 25 true
+object texture set coin15 ../Images/coin.bmp
+object game add coin16 1362 412 25 25 true
+object texture set coin16 ../Images/coin.bmp
+object game add coin17 1362 612 25 25 true
+object texture set coin17 ../Images/coin.bmp
+object game add medpack1 162 512 25 25 true
+object texture set medpack1 ../Images/medpack.bmp
+object game add medpack2 562 1362 25 25 true
+object texture set medpack2 ../Images/medpack.bmp
+object game add medpack3 762 1162 25 25 true
+object texture set medpack3 ../Images/medpack.bmp
+object game add end1 50 1050 50 50 false
+object texture set end1 ../Images/red.bmp
+object game add end2 100 1050 50 50 false
+object texture set end2 ../Images/red.bmp
+object game add end3 150 1050 50 50 false
+object texture set end3 ../Images/red.bmp
+object game add wall1 0 0 50 50 true
+object texture set wall1 ../Images/wall.bmp
+object game add wall2 50 0 50 50 true
+object texture set wall2 ../Images/wall.bmp
+object game add wall3 100 0 50 50 true
+object texture set wall3 ../Images/wall.bmp
+object game add wall4 150 0 50 50 true
+object texture set wall4 ../Images/wall.bmp
+object game add wall5 200 0 50 50 true
+object texture set wall5 ../Images/wall.bmp
+object game add wall6 250 0 50 50 true
+object texture set wall6 ../Images/wall.bmp
+object game add wall7 300 0 50 50 true
+object texture set wall7 ../Images/wall.bmp
+object game add wall8 350 0 50 50 true
+object texture set wall8 ../Images/wall.bmp
+object game add wall9 400 0 50 50 true
+object texture set wall9 ../Images/wall.bmp
+object game add wall10 450 0 50 50 true
+object texture set wall10 ../Images/wall.bmp
+object game add wall11 500 0 50 50 true
+object texture set wall11 ../Images/wall.bmp
+object game add wall12 550 0 50 50 true
+object texture set wall12 ../Images/wall.bmp
+object game add wall13 600 0 50 50 true
+object texture set wall13 ../Images/wall.bmp
+object game add wall14 650 0 50 50 true
+object texture set wall14 ../Images/wall.bmp
+object game add wall15 700 0 50 50 true
+object texture set wall15 ../Images/wall.bmp
+object game add wall16 750 0 50 50 true
+object texture set wall16 ../Images/wall.bmp
+object game add wall17 800 0 50 50 true
+object texture set wall17 ../Images/wall.bmp
+object game add wall18 850 0 50 50 true
+object texture set wall18 ../Images/wall.bmp
+object game add wall19 900 0 50 50 true
+object texture set wall19 ../Images/wall.bmp
+object game add wall20 950 0 50 50 true
+object texture set wall20 ../Images/wall.bmp
+object game add wall21 1000 0 50 50 true
+object texture set wall21 ../Images/wall.bmp
+object game add wall22 1050 0 50 50 true
+object texture set wall22 ../Images/wall.bmp
+object game add wall23 1100 0 50 50 true
+object texture set wall23 ../Images/wall.bmp
+object game add wall24 1150 0 50 50 true
+object texture set wall24 ../Images/wall.bmp
+object game add wall25 1200 0 50 50 true
+object texture set wall25 ../Images/wall.bmp
+object game add wall26 1250 0 50 50 true
+object texture set wall26 ../Images/wall.bmp
+object game add wall27 1300 0 50 50 true
+object texture set wall27 ../Images/wall.bmp
+object game add wall28 1350 0 50 50 true
+object texture set wall28 ../Images/wall.bmp
+object game add wall29 1400 0 50 50 true
+object texture set wall29 ../Images/wall.bmp
+object game add wall30 1450 0 50 50 true
+object texture set wall30 ../Images/wall.bmp
+object game add wall31 0 50 50 50 true
+object texture set wall31 ../Images/wall.bmp
+object game add wall32 0 100 50 50 true
+object texture set wall32 ../Images/wall.bmp
+object game add wall33 0 150 50 50 true
+object texture set wall33 ../Images/wall.bmp
+object game add wall34 0 200 50 50 true
+object texture set wall34 ../Images/wall.bmp
+object game add wall35 0 250 50 50 true
+object texture set wall35 ../Images/wall.bmp
+object game add wall36 0 300 50 50 true
+object texture set wall36 ../Images/wall.bmp
+object game add wall37 0 350 50 50 true
+object texture set wall37 ../Images/wall.bmp
+object game add wall38 0 400 50 50 true
+object texture set wall38 ../Images/wall.bmp
+object game add wall39 0 450 50 50 true
+object texture set wall39 ../Images/wall.bmp
+object game add wall40 0 500 50 50 true
+object texture set wall40 ../Images/wall.bmp
+object game add wall41 0 550 50 50 true
+object texture set wall41 ../Images/wall.bmp
+object game add wall42 0 600 50 50 true
+object texture set wall42 ../Images/wall.bmp
+object game add wall43 0 650 50 50 true
+object texture set wall43 ../Images/wall.bmp
+object game add wall44 0 700 50 50 true
+object texture set wall44 ../Images/wall.bmp
+object game add wall45 0 750 50 50 true
+object texture set wall45 ../Images/wall.bmp
+object game add wall46 0 800 50 50 true
+object texture set wall46 ../Images/wall.bmp
+object game add wall47 0 850 50 50 true
+object texture set wall47 ../Images/wall.bmp
+object game add wall48 0 900 50 50 true
+object texture set wall48 ../Images/wall.bmp
+object game add wall49 0 950 50 50 true
+object texture set wall49 ../Images/wall.bmp
+object game add wall50 0 1000 50 50 true
+object texture set wall50 ../Images/wall.bmp
+object game add wall51 0 1050 50 50 true
+object texture set wall51 ../Images/wall.bmp
+object game add wall52 0 1100 50 50 true
+object texture set wall52 ../Images/wall.bmp
+object game add wall53 0 1150 50 50 true
+object texture set wall53 ../Images/wall.bmp
+object game add wall54 0 1200 50 50 true
+object texture set wall54 ../Images/wall.bmp
+object game add wall55 0 1250 50 50 true
+object texture set wall55 ../Images/wall.bmp
+object game add wall56 0 1300 50 50 true
+object texture set wall56 ../Images/wall.bmp
+object game add wall57 0 1350 50 50 true
+object texture set wall57 ../Images/wall.bmp
+object game add wall58 0 1400 50 50 true
+object texture set wall58 ../Images/wall.bmp
+object game add wall59 0 1450 50 50 true
+object texture set wall59 ../Images/wall.bmp
+object game add wall60 0 1500 50 50 true
+object texture set wall60 ../Images/wall.bmp
+object game add wall61 0 1550 50 50 true
+object texture set wall61 ../Images/wall.bmp
+object game add wall62 0 1600 50 50 true
+object texture set wall62 ../Images/wall.bmp
+object game add wall63 0 1650 50 50 true
+object texture set wall63 ../Images/wall.bmp
+object game add wall64 0 1700 50 50 true
+object texture set wall64 ../Images/wall.bmp
+object game add wall65 0 1750 50 50 true
+object texture set wall65 ../Images/wall.bmp
+object game add wall66 0 1800 50 50 true
+object texture set wall66 ../Images/wall.bmp
+object game add wall67 0 1850 50 50 true
+object texture set wall67 ../Images/wall.bmp
+object game add wall68 0 1900 50 50 true
+object texture set wall68 ../Images/wall.bmp
+object game add wall69 0 1950 50 50 true
+object texture set wall69 ../Images/wall.bmp
+object game add wall70 50 1950 50 50 true
+object texture set wall70 ../Images/wall.bmp
+object game add wall71 100 1950 50 50 true
+object texture set wall71 ../Images/wall.bmp
+object game add wall72 150 1950 50 50 true
+object texture set wall72 ../Images/wall.bmp
+object game add wall73 200 1950 50 50 true
+object texture set wall73 ../Images/wall.bmp
+object game add wall74 250 1950 50 50 true
+object texture set wall74 ../Images/wall.bmp
+object game add wall75 300 1950 50 50 true
+object texture set wall75 ../Images/wall.bmp
+object game add wall76 350 1950 50 50 true
+object texture set wall76 ../Images/wall.bmp
+object game add wall77 400 1950 50 50 true
+object texture set wall77 ../Images/wall.bmp
+object game add wall78 450 1950 50 50 true
+object texture set wall78 ../Images/wall.bmp
+object game add wall79 500 1950 50 50 true
+object texture set wall79 ../Images/wall.bmp
+object game add wall80 550 1950 50 50 true
+object texture set wall80 ../Images/wall.bmp
+object game add wall81 600 1950 50 50 true
+object texture set wall81 ../Images/wall.bmp
+object game add wall82 650 1950 50 50 true
+object texture set wall82 ../Images/wall.bmp
+object game add wall83 700 1950 50 50 true
+object texture set wall83 ../Images/wall.bmp
+object game add wall84 750 1950 50 50 true
+object texture set wall84 ../Images/wall.bmp
+object game add wall85 800 1950 50 50 true
+object texture set wall85 ../Images/wall.bmp
+object game add wall86 850 1950 50 50 true
+object texture set wall86 ../Images/wall.bmp
+object game add wall87 900 1950 50 50 true
+object texture set wall87 ../Images/wall.bmp
+object game add wall88 950 1950 50 50 true
+object texture set wall88 ../Images/wall.bmp
+object game add wall89 1000 1950 50 50 true
+object texture set wall89 ../Images/wall.bmp
+object game add wall90 1050 1950 50 50 true
+object texture set wall90 ../Images/wall.bmp
+object game add wall91 1100 1950 50 50 true
+object texture set wall91 ../Images/wall.bmp
+object game add wall92 1150 1950 50 50 true
+object texture set wall92 ../Images/wall.bmp
+object game add wall93 1200 1950 50 50 true
+object texture set wall93 ../Images/wall.bmp
+object game add wall94 1250 1950 50 50 true
+object texture set wall94 ../Images/wall.bmp
+object game add wall95 1300 1950 50 50 true
+object texture set wall95 ../Images/wall.bmp
+object game add wall96 1350 1950 50 50 true
+object texture set wall96 ../Images/wall.bmp
+object game add wall97 1400 1950 50 50 true
+object texture set wall97 ../Images/wall.bmp
+object game add wall98 1450 1950 50 50 true
+object texture set wall98 ../Images/wall.bmp
+object game add wall99 1450 50 50 50 true
+object texture set wall99 ../Images/wall.bmp
+object game add wall100 1450 100 50 50 true
+object texture set wall100 ../Images/wall.bmp
+object game add wall101 1450 150 50 50 true
+object texture set wall101 ../Images/wall.bmp
+object game add wall102 1450 200 50 50 true
+object texture set wall102 ../Images/wall.bmp
+object game add wall103 1450 250 50 50 true
+object texture set wall103 ../Images/wall.bmp
+object game add wall104 1450 300 50 50 true
+object texture set wall104 ../Images/wall.bmp
+object game add wall105 1450 350 50 50 true
+object texture set wall105 ../Images/wall.bmp
+object game add wall106 1450 400 50 50 true
+object texture set wall106 ../Images/wall.bmp
+object game add wall107 1450 450 50 50 true
+object texture set wall107 ../Images/wall.bmp
+object game add wall108 1450 500 50 50 true
+object texture set wall108 ../Images/wall.bmp
+object game add wall109 1450 550 50 50 true
+object texture set wall109 ../Images/wall.bmp
+object game add wall110 1450 600 50 50 true
+object texture set wall110 ../Images/wall.bmp
+object game add wall111 1450 650 50 50 true
+object texture set wall111 ../Images/wall.bmp
+object game add wall112 1450 700 50 50 true
+object texture set wall112 ../Images/wall.bmp
+object game add wall113 1450 750 50 50 true
+object texture set wall113 ../Images/wall.bmp
+object game add wall114 1450 800 50 50 true
+object texture set wall114 ../Images/wall.bmp
+object game add wall115 1450 850 50 50 true
+object texture set wall115 ../Images/wall.bmp
+object game add wall116 1450 900 50 50 true
+object texture set wall116 ../Images/wall.bmp
+object game add wall117 1450 950 50 50 true
+object texture set wall117 ../Images/wall.bmp
+object game add wall118 1450 1000 50 50 true
+object texture set wall118 ../Images/wall.bmp
+object game add wall119 1450 1050 50 50 true
+object texture set wall119 ../Images/wall.bmp
+object game add wall120 1450 1100 50 50 true
+object texture set wall120 ../Images/wall.bmp
+object game add wall121 1450 1150 50 50 true
+object texture set wall121 ../Images/wall.bmp
+object game add wall122 1450 1200 50 50 true
+object texture set wall122 ../Images/wall.bmp
+object game add wall123 1450 1250 50 50 true
+object texture set wall123 ../Images/wall.bmp
+object game add wall124 1450 1300 50 50 true
+object texture set wall124 ../Images/wall.bmp
+object game add wall125 1450 1350 50 50 true
+object texture set wall125 ../Images/wall.bmp
+object game add wall126 1450 1400 50 50 true
+object texture set wall126 ../Images/wall.bmp
+object game add wall127 1450 1450 50 50 true
+object texture set wall127 ../Images/wall.bmp
+object game add wall128 1450 1500 50 50 true
+object texture set wall128 ../Images/wall.bmp
+object game add wall129 1450 1550 50 50 true
+object texture set wall129 ../Images/wall.bmp
+object game add wall130 1450 1600 50 50 true
+object texture set wall130 ../Images/wall.bmp
+object game add wall131 1450 1650 50 50 true
+object texture set wall131 ../Images/wall.bmp
+object game add wall132 1450 1700 50 50 true
+object texture set wall132 ../Images/wall.bmp
+object game add wall133 1450 1750 50 50 true
+object texture set wall133 ../Images/wall.bmp
+object game add wall134 1450 1800 50 50 true
+object texture set wall134 ../Images/wall.bmp
+object game add wall135 1450 1850 50 50 true
+object texture set wall135 ../Images/wall.bmp
+object game add wall136 1450 1900 50 50 true
+object texture set wall136 ../Images/wall.bmp
+object game add wall137 50 50 50 50 true
+object texture set wall137 ../Images/wall.bmp
+object game add wall138 50 100 50 50 true
+object texture set wall138 ../Images/wall.bmp
+object game add wall139 50 150 50 50 true
+object texture set wall139 ../Images/wall.bmp
+object game add wall140 50 200 50 50 true
+object texture set wall140 ../Images/wall.bmp
+object game add wall141 50 250 50 50 true
+object texture set wall141 ../Images/wall.bmp
+object game add wall142 50 300 50 50 true
+object texture set wall142 ../Images/wall.bmp
+object game add wall143 50 350 50 50 true
+object texture set wall143 ../Images/wall.bmp
+object game add wall144 50 400 50 50 true
+object texture set wall144 ../Images/wall.bmp
+object game add wall145 50 450 50 50 true
+object texture set wall145 ../Images/wall.bmp
+object game add wall146 50 500 50 50 true
+object texture set wall146 ../Images/wall.bmp
+object game add wall147 50 550 50 50 true
+object texture set wall147 ../Images/wall.bmp
+object game add wall148 50 600 50 50 true
+object texture set wall148 ../Images/wall.bmp
+object game add wall149 50 650 50 50 true
+object texture set wall149 ../Images/wall.bmp
+object game add wall150 50 700 50 50 true
+object texture set wall150 ../Images/wall.bmp
+object game add wall151 50 750 50 50 true
+object texture set wall151 ../Images/wall.bmp
+object game add wall152 50 800 50 50 true
+object texture set wall152 ../Images/wall.bmp
+object game add wall153 50 850 50 50 true
+object texture set wall153 ../Images/wall.bmp
+object game add wall154 50 900 50 50 true
+object texture set wall154 ../Images/wall.bmp
+object game add wall155 50 950 50 50 true
+object texture set wall155 ../Images/wall.bmp
+object game add wall156 50 1000 50 50 true
+object texture set wall156 ../Images/wall.bmp
+object game add wall157 100 1000 50 50 true
+object texture set wall157 ../Images/wall.bmp
+object game add wall158 150 1000 50 50 true
+object texture set wall158 ../Images/wall.bmp
+object game add wall159 200 1000 50 50 true
+object texture set wall159 ../Images/wall.bmp
+object game add wall160 250 1000 50 50 true
+object texture set wall160 ../Images/wall.bmp
+object game add wall161 200 1000 50 50 true
+object texture set wall161 ../Images/wall.bmp
+object game add wall162 200 1050 50 50 true
+object texture set wall162 ../Images/wall.bmp
+object game add wall163 200 1100 50 50 true
+object texture set wall163 ../Images/wall.bmp
+object game add wall164 200 1150 50 50 true
+object texture set wall164 ../Images/wall.bmp
+object game add wall165 200 1200 50 50 true
+object texture set wall165 ../Images/wall.bmp
+object game add wall166 200 1250 50 50 true
+object texture set wall166 ../Images/wall.bmp
+object game add wall167 200 1300 50 50 true
+object texture set wall167 ../Images/wall.bmp
+object game add wall168 200 1350 50 50 true
+object texture set wall168 ../Images/wall.bmp
+object game add wall169 200 1400 50 50 true
+object texture set wall169 ../Images/wall.bmp
+object game add wall170 200 1450 50 50 true
+object texture set wall170 ../Images/wall.bmp
+object game add wall171 200 1500 50 50 true
+object texture set wall171 ../Images/wall.bmp
+object game add wall172 200 1550 50 50 true
+object texture set wall172 ../Images/wall.bmp
+object game add wall173 200 1600 50 50 true
+object texture set wall173 ../Images/wall.bmp
+object game add wall174 200 1650 50 50 true
+object texture set wall174 ../Images/wall.bmp
+object game add wall175 200 1700 50 50 true
+object texture set wall175 ../Images/wall.bmp
+object game add wall176 200 1750 50 50 true
+object texture set wall176 ../Images/wall.bmp
+object game add wall177 250 1000 50 50 true
+object texture set wall177 ../Images/wall.bmp
+object game add wall178 250 1050 50 50 true
+object texture set wall178 ../Images/wall.bmp
+object game add wall179 250 1250 50 50 true
+object texture set wall179 ../Images/wall.bmp
+object game add wall180 250 1300 50 50 true
+object texture set wall180 ../Images/wall.bmp
+object game add wall181 250 1350 50 50 true
+object texture set wall181 ../Images/wall.bmp
+object game add wall182 250 1550 50 50 true
+object texture set wall182 ../Images/wall.bmp
+object game add wall183 250 1600 50 50 true
+object texture set wall183 ../Images/wall.bmp
+object game add wall184 250 1650 50 50 true
+object texture set wall184 ../Images/wall.bmp
+object game add wall185 250 200 50 50 true
+object texture set wall185 ../Images/wall.bmp
+object game add wall186 250 250 50 50 true
+object texture set wall186 ../Images/wall.bmp
+object game add wall187 250 300 50 50 true
+object texture set wall187 ../Images/wall.bmp
+object game add wall188 250 350 50 50 true
+object texture set wall188 ../Images/wall.bmp
+object game add wall189 250 400 50 50 true
+object texture set wall189 ../Images/wall.bmp
+object game add wall190 250 450 50 50 true
+object texture set wall190 ../Images/wall.bmp
+object game add wall191 250 500 50 50 true
+object texture set wall191 ../Images/wall.bmp
+object game add wall192 250 550 50 50 true
+object texture set wall192 ../Images/wall.bmp
+object game add wall193 250 600 50 50 true
+object texture set wall193 ../Images/wall.bmp
+object game add wall194 250 650 50 50 true
+object texture set wall194 ../Images/wall.bmp
+object game add wall195 250 700 50 50 true
+object texture set wall195 ../Images/wall.bmp
+object game add wall196 250 750 50 50 true
+object texture set wall196 ../Images/wall.bmp
+object game add wall197 250 800 50 50 true
+object texture set wall197 ../Images/wall.bmp
+object game add wall198 300 800 50 50 true
+object texture set wall198 ../Images/wall.bmp
+object game add wall199 350 800 50 50 true
+object texture set wall199 ../Images/wall.bmp
+object game add wall200 400 800 50 50 true
+object texture set wall200 ../Images/wall.bmp
+object game add wall201 450 800 50 50 true
+object texture set wall201 ../Images/wall.bmp
+object game add wall202 450 850 50 50 true
+object texture set wall202 ../Images/wall.bmp
+object game add wall203 450 900 50 50 true
+object texture set wall203 ../Images/wall.bmp
+object game add wall204 450 950 50 50 true
+object texture set wall204 ../Images/wall.bmp
+object game add wall205 450 1000 50 50 true
+object texture set wall205 ../Images/wall.bmp
+object game add wall206 450 1050 50 50 true
+object texture set wall206 ../Images/wall.bmp
+object game add wall207 450 1100 50 50 true
+object texture set wall207 ../Images/wall.bmp
+object game add wall208 450 1150 50 50 true
+object texture set wall208 ../Images/wall.bmp
+object game add wall209 450 1200 50 50 true
+object texture set wall209 ../Images/wall.bmp
+object game add wall210 450 1250 50 50 true
+object texture set wall210 ../Images/wall.bmp
+object game add wall211 450 1300 50 50 true
+object texture set wall211 ../Images/wall.bmp
+object game add wall212 450 1350 50 50 true
+object texture set wall212 ../Images/wall.bmp
+object game add wall213 450 1400 50 50 true
+object texture set wall213 ../Images/wall.bmp
+object game add wall214 450 1450 50 50 true
+object texture set wall214 ../Images/wall.bmp
+object game add wall215 450 1500 50 50 true
+object texture set wall215 ../Images/wall.bmp
+object game add wall216 450 1550 50 50 true
+object texture set wall216 ../Images/wall.bmp
+object game add wall217 450 1600 50 50 true
+object texture set wall217 ../Images/wall.bmp
+object game add wall218 450 1650 50 50 true
+object texture set wall218 ../Images/wall.bmp
+object game add wall219 450 1700 50 50 true
+object texture set wall219 ../Images/wall.bmp
+object game add wall220 450 1750 50 50 true
+object texture set wall220 ../Images/wall.bmp
+object game add wall221 450 1800 50 50 true
+object texture set wall221 ../Images/wall.bmp
+object game add wall222 450 1850 50 50 true
+object texture set wall222 ../Images/wall.bmp
+object game add wall223 450 1900 50 50 true
+object texture set wall223 ../Images/wall.bmp
+object game add wall224 400 1100 50 50 true
+object texture set wall224 ../Images/wall.bmp
+object game add wall225 400 1150 50 50 true
+object texture set wall225 ../Images/wall.bmp
+object game add wall226 400 1200 50 50 true
+object texture set wall226 ../Images/wall.bmp
+object game add wall227 400 1400 50 50 true
+object texture set wall227 ../Images/wall.bmp
+object game add wall228 400 1450 50 50 true
+object texture set wall228 ../Images/wall.bmp
+object game add wall229 400 1500 50 50 true
+object texture set wall229 ../Images/wall.bmp
+object game add wall230 400 1700 50 50 true
+object texture set wall230 ../Images/wall.bmp
+object game add wall231 400 1750 50 50 true
+object texture set wall231 ../Images/wall.bmp
+object game add wall232 400 1800 50 50 true
+object texture set wall232 ../Images/wall.bmp
+object game add wall233 400 1850 50 50 true
+object texture set wall233 ../Images/wall.bmp
+object game add wall234 400 1900 50 50 true
+object texture set wall234 ../Images/wall.bmp
+object game add wall235 450 50 50 50 true
+object texture set wall235 ../Images/wall.bmp
+object game add wall236 450 100 50 50 true
+object texture set wall236 ../Images/wall.bmp
+object game add wall237 450 150 50 50 true
+object texture set wall237 ../Images/wall.bmp
+object game add wall238 450 200 50 50 true
+object texture set wall238 ../Images/wall.bmp
+object game add wall239 450 250 50 50 true
+object texture set wall239 ../Images/wall.bmp
+object game add wall240 500 1250 50 50 true
+object texture set wall240 ../Images/wall.bmp
+object game add wall241 550 1250 50 50 true
+object texture set wall241 ../Images/wall.bmp
+object game add wall242 600 1250 50 50 true
+object texture set wall242 ../Images/wall.bmp
+object game add wall243 650 1250 50 50 true
+object texture set wall243 ../Images/wall.bmp
+object game add wall244 700 1250 50 50 true
+object texture set wall244 ../Images/wall.bmp
+object game add wall245 750 1250 50 50 true
+object texture set wall245 ../Images/wall.bmp
+object game add wall246 800 1250 50 50 true
+object texture set wall246 ../Images/wall.bmp
+object game add wall247 450 450 50 50 true
+object texture set wall247 ../Images/wall.bmp
+object game add wall248 450 500 50 50 true
+object texture set wall248 ../Images/wall.bmp
+object game add wall249 450 550 50 50 true
+object texture set wall249 ../Images/wall.bmp
+object game add wall250 450 600 50 50 true
+object texture set wall250 ../Images/wall.bmp
+object game add wall251 500 600 50 50 true
+object texture set wall251 ../Images/wall.bmp
+object game add wall252 550 600 50 50 true
+object texture set wall252 ../Images/wall.bmp
+object game add wall253 600 600 50 50 true
+object texture set wall253 ../Images/wall.bmp
+object game add wall254 650 600 50 50 true
+object texture set wall254 ../Images/wall.bmp
+object game add wall255 650 650 50 50 true
+object texture set wall255 ../Images/wall.bmp
+object game add wall256 650 700 50 50 true
+object texture set wall256 ../Images/wall.bmp
+object game add wall257 650 750 50 50 true
+object texture set wall257 ../Images/wall.bmp
+object game add wall258 650 800 50 50 true
+object texture set wall258 ../Images/wall.bmp
+object game add wall259 650 850 50 50 true
+object texture set wall259 ../Images/wall.bmp
+object game add wall260 650 900 50 50 true
+object texture set wall260 ../Images/wall.bmp
+object game add wall261 650 950 50 50 true
+object texture set wall261 ../Images/wall.bmp
+object game add wall262 650 1000 50 50 true
+object texture set wall262 ../Images/wall.bmp
+object game add wall263 650 1050 50 50 true
+object texture set wall263 ../Images/wall.bmp
+object game add wall264 650 50 50 50 true
+object texture set wall264 ../Images/wall.bmp
+object game add wall265 650 100 50 50 true
+object texture set wall265 ../Images/wall.bmp
+object game add wall266 650 150 50 50 true
+object texture set wall266 ../Images/wall.bmp
+object game add wall267 650 200 50 50 true
+object texture set wall267 ../Images/wall.bmp
+object game add wall268 650 250 50 50 true
+object texture set wall268 ../Images/wall.bmp
+object game add wall269 650 300 50 50 true
+object texture set wall269 ../Images/wall.bmp
+object game add wall270 650 350 50 50 true
+object texture set wall270 ../Images/wall.bmp
+object game add wall271 650 400 50 50 true
+object texture set wall271 ../Images/wall.bmp
+object game add wall272 700 400 50 50 true
+object texture set wall272 ../Images/wall.bmp
+object game add wall273 750 400 50 50 true
+object texture set wall273 ../Images/wall.bmp
+object game add wall274 800 400 50 50 true
+object texture set wall274 ../Images/wall.bmp
+object game add wall275 850 400 50 50 true
+object texture set wall275 ../Images/wall.bmp
+object game add wall276 850 450 50 50 true
+object texture set wall276 ../Images/wall.bmp
+object game add wall277 850 500 50 50 true
+object texture set wall277 ../Images/wall.bmp
+object game add wall278 850 550 50 50 true
+object texture set wall278 ../Images/wall.bmp
+object game add wall279 850 600 50 50 true
+object texture set wall279 ../Images/wall.bmp
+object game add wall280 850 650 50 50 true
+object texture set wall280 ../Images/wall.bmp
+object game add wall281 850 50 50 50 true
+object texture set wall281 ../Images/wall.bmp
+object game add wall282 850 100 50 50 true
+object texture set wall282 ../Images/wall.bmp
+object game add wall283 850 150 50 50 true
+object texture set wall283 ../Images/wall.bmp
+object game add wall284 850 200 50 50 true
+object texture set wall284 ../Images/wall.bmp
+object game add wall285 650 1450 50 50 true
+object texture set wall285 ../Images/wall.bmp
+object game add wall286 650 1500 50 50 true
+object texture set wall286 ../Images/wall.bmp
+object game add wall287 650 1550 50 50 true
+object texture set wall287 ../Images/wall.bmp
+object game add wall288 650 1600 50 50 true
+object texture set wall288 ../Images/wall.bmp
+object game add wall289 650 1650 50 50 true
+object texture set wall289 ../Images/wall.bmp
+object game add wall290 650 1700 50 50 true
+object texture set wall290 ../Images/wall.bmp
+object game add wall291 650 1750 50 50 true
+object texture set wall291 ../Images/wall.bmp
+object game add wall292 650 1800 50 50 true
+object texture set wall292 ../Images/wall.bmp
+object game add wall293 650 1850 50 50 true
+object texture set wall293 ../Images/wall.bmp
+object game add wall294 650 1900 50 50 true
+object texture set wall294 ../Images/wall.bmp
+object game add wall295 850 1050 50 50 true
+object texture set wall295 ../Images/wall.bmp
+object game add wall296 850 1100 50 50 true
+object texture set wall296 ../Images/wall.bmp
+object game add wall297 850 1150 50 50 true
+object texture set wall297 ../Images/wall.bmp
+object game add wall298 850 1200 50 50 true
+object texture set wall298 ../Images/wall.bmp
+object game add wall299 850 1250 50 50 true
+object texture set wall299 ../Images/wall.bmp
+object game add wall300 850 1300 50 50 true
+object texture set wall300 ../Images/wall.bmp
+object game add wall301 850 1350 50 50 true
+object texture set wall301 ../Images/wall.bmp
+object game add wall302 850 1400 50 50 true
+object texture set wall302 ../Images/wall.bmp
+object game add wall303 850 1450 50 50 true
+object texture set wall303 ../Images/wall.bmp
+object game add wall304 850 1500 50 50 true
+object texture set wall304 ../Images/wall.bmp
+object game add wall305 850 1550 50 50 true
+object texture set wall305 ../Images/wall.bmp
+object game add wall306 850 1600 50 50 true
+object texture set wall306 ../Images/wall.bmp
+object game add wall307 850 1650 50 50 true
+object texture set wall307 ../Images/wall.bmp
+object game add wall308 850 1700 50 50 true
+object texture set wall308 ../Images/wall.bmp
+object game add wall309 850 1750 50 50 true
+object texture set wall309 ../Images/wall.bmp
+object game add wall310 900 1200 50 50 true
+object texture set wall310 ../Images/wall.bmp
+object game add wall311 950 1200 50 50 true
+object texture set wall311 ../Images/wall.bmp
+object game add wall312 1000 1200 50 50 true
+object texture set wall312 ../Images/wall.bmp
+object game add wall313 1050 1200 50 50 true
+object texture set wall313 ../Images/wall.bmp
+object game add wall314 1100 1200 50 50 true
+object texture set wall314 ../Images/wall.bmp
+object game add wall315 1150 1200 50 50 true
+object texture set wall315 ../Images/wall.bmp
+object game add wall316 1200 1200 50 50 true
+object texture set wall316 ../Images/wall.bmp
+object game add wall317 1250 1200 50 50 true
+object texture set wall317 ../Images/wall.bmp
+object game add wall318 700 850 50 50 true
+object texture set wall318 ../Images/wall.bmp
+object game add wall319 750 850 50 50 true
+object texture set wall319 ../Images/wall.bmp
+object game add wall320 800 850 50 50 true
+object texture set wall320 ../Images/wall.bmp
+object game add wall321 850 850 50 50 true
+object texture set wall321 ../Images/wall.bmp
+object game add wall322 900 850 50 50 true
+object texture set wall322 ../Images/wall.bmp
+object game add wall323 950 850 50 50 true
+object texture set wall323 ../Images/wall.bmp
+object game add wall324 1000 850 50 50 true
+object texture set wall324 ../Images/wall.bmp
+object game add wall325 1050 850 50 50 true
+object texture set wall325 ../Images/wall.bmp
+object game add wall326 1050 900 50 50 true
+object texture set wall326 ../Images/wall.bmp
+object game add wall327 1050 950 50 50 true
+object texture set wall327 ../Images/wall.bmp
+object game add wall328 1050 1000 50 50 true
+object texture set wall328 ../Images/wall.bmp
+object game add wall329 1050 200 50 50 true
+object texture set wall329 ../Images/wall.bmp
+object game add wall330 1050 250 50 50 true
+object texture set wall330 ../Images/wall.bmp
+object game add wall331 1050 300 50 50 true
+object texture set wall331 ../Images/wall.bmp
+object game add wall332 1050 350 50 50 true
+object texture set wall332 ../Images/wall.bmp
+object game add wall333 1050 400 50 50 true
+object texture set wall333 ../Images/wall.bmp
+object game add wall334 1050 450 50 50 true
+object texture set wall334 ../Images/wall.bmp
+object game add wall335 1050 500 50 50 true
+object texture set wall335 ../Images/wall.bmp
+object game add wall336 1050 550 50 50 true
+object texture set wall336 ../Images/wall.bmp
+object game add wall337 1050 600 50 50 true
+object texture set wall337 ../Images/wall.bmp
+object game add wall338 1050 650 50 50 true
+object texture set wall338 ../Images/wall.bmp
+object game add wall339 1100 650 50 50 true
+object texture set wall339 ../Images/wall.bmp
+object game add wall340 1150 650 50 50 true
+object texture set wall340 ../Images/wall.bmp
+object game add wall341 1200 650 50 50 true
+object texture set wall341 ../Images/wall.bmp
+object game add wall342 1250 650 50 50 true
+object texture set wall342 ../Images/wall.bmp
+object game add wall343 1100 500 50 50 true
+object texture set wall343 ../Images/wall.bmp
+object game add wall344 1150 500 50 50 true
+object texture set wall344 ../Images/wall.bmp
+object game add wall345 1200 500 50 50 true
+object texture set wall345 ../Images/wall.bmp
+object game add wall346 1250 500 50 50 true
+object texture set wall346 ../Images/wall.bmp
+object game add wall347 1300 500 50 50 true
+object texture set wall347 ../Images/wall.bmp
+object game add wall348 1350 500 50 50 true
+object texture set wall348 ../Images/wall.bmp
+object game add wall349 1400 500 50 50 true
+object texture set wall349 ../Images/wall.bmp
+object game add wall350 1250 550 50 50 true
+object texture set wall350 ../Images/wall.bmp
+object game add wall351 1250 600 50 50 true
+object texture set wall351 ../Images/wall.bmp
+object game add wall352 1250 1250 50 50 true
+object texture set wall352 ../Images/wall.bmp
+object game add wall353 1250 1300 50 50 true
+object texture set wall353 ../Images/wall.bmp
+object game add wall354 1250 1350 50 50 true
+object texture set wall354 ../Images/wall.bmp
+object game add wall355 1250 1400 50 50 true
+object texture set wall355 ../Images/wall.bmp
+object game add wall356 1250 50 50 50 true
+object texture set wall356 ../Images/wall.bmp
+object game add wall357 1250 100 50 50 true
+object texture set wall357 ../Images/wall.bmp
+object game add wall358 1250 150 50 50 true
+object texture set wall358 ../Images/wall.bmp
+object game add wall359 1250 200 50 50 true
+object texture set wall359 ../Images/wall.bmp
+object game add wall360 1250 250 50 50 true
+object texture set wall360 ../Images/wall.bmp
+object game add wall361 1250 300 50 50 true
+object texture set wall361 ../Images/wall.bmp
+object game add wall362 1050 1400 50 50 true
+object texture set wall362 ../Images/wall.bmp
+object game add wall363 1050 1450 50 50 true
+object texture set wall363 ../Images/wall.bmp
+object game add wall364 1050 1500 50 50 true
+object texture set wall364 ../Images/wall.bmp
+object game add wall365 1050 1550 50 50 true
+object texture set wall365 ../Images/wall.bmp
+object game add wall366 1050 1600 50 50 true
+object texture set wall366 ../Images/wall.bmp
+object game add wall367 1050 1650 50 50 true
+object texture set wall367 ../Images/wall.bmp
+object game add wall368 1050 1700 50 50 true
+object texture set wall368 ../Images/wall.bmp
+object game add wall369 1050 1750 50 50 true
+object texture set wall369 ../Images/wall.bmp
+object game add wall370 1100 1600 50 50 true
+object texture set wall370 ../Images/wall.bmp
+object game add wall371 1150 1600 50 50 true
+object texture set wall371 ../Images/wall.bmp
+object game add wall372 1200 1600 50 50 true
+object texture set wall372 ../Images/wall.bmp
+object game add wall373 1250 1600 50 50 true
+object texture set wall373 ../Images/wall.bmp
+object game add wall374 1300 1600 50 50 true
+object texture set wall374 ../Images/wall.bmp
+object game add wall375 1350 1600 50 50 true
+object texture set wall375 ../Images/wall.bmp
+object game add wall376 1400 1600 50 50 true
+object texture set wall376 ../Images/wall.bmp
+object game add wall377 1100 1750 50 50 true
+object texture set wall377 ../Images/wall.bmp
+object game add wall378 1150 1750 50 50 true
+object texture set wall378 ../Images/wall.bmp
+object game add wall379 1200 1750 50 50 true
+object texture set wall379 ../Images/wall.bmp
+object game add wall380 1250 1750 50 50 true
+object texture set wall380 ../Images/wall.bmp
+object game add wall381 1250 1650 50 50 true
+object texture set wall381 ../Images/wall.bmp
+object game add wall382 1250 1700 50 50 true
+object texture set wall382 ../Images/wall.bmp
+object game add wall383 1250 850 50 50 true
+object texture set wall383 ../Images/wall.bmp
+object game add wall384 1250 900 50 50 true
+object texture set wall384 ../Images/wall.bmp
+object game add wall385 1250 950 50 50 true
+object texture set wall385 ../Images/wall.bmp
+object game add wall386 1250 1000 50 50 true
+object texture set wall386 ../Images/wall.bmp
+object game add wall387 1300 1000 50 50 true
+object texture set wall387 ../Images/wall.bmp
+object game add wall388 1350 1000 50 50 true
+object texture set wall388 ../Images/wall.bmp
+object game add wall389 1400 1000 50 50 true
+object texture set wall389 ../Images/wall.bmp
+object game add wall390 1300 850 50 50 true
+object texture set wall390 ../Images/wall.bmp
+object game add wall391 1350 850 50 50 true
+object texture set wall391 ../Images/wall.bmp
+object game add wall392 1400 850 50 50 true
+object texture set wall392 ../Images/wall.bmp

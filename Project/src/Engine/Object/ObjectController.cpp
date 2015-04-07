@@ -1,7 +1,9 @@
 #include "ObjectController.h"
 
-RenderController& ObjectController::render_controller = RenderController::instance();
-AudioController& ObjectController::audio_controller = AudioController::instance();
+Strings & ObjectController::strings = Strings::instance();
+AudioController & ObjectController::audio_controller = AudioController::instance();
+RenderController & ObjectController::render_controller = RenderController::instance();
+TriggerController & ObjectController::trigger_controller = TriggerController::instance();
 
 void ObjectController::handlePlayerAction( const InputAction& action ) {
 
@@ -169,6 +171,11 @@ bool ObjectController::canAIMove( const StringID id, Direction dir ) {
                              it1.getValue().getX(), it1.getValue().getY(),
                              it1.getValue().getWidth(), it1.getValue().getHeight())) {
             coll = true;
+
+            // Update triggers if a collision occured
+            String first = strings.lookup( id );
+            String second = strings.lookup( it1.getValue().getID() );
+            trigger_controller.updateCollisionTriggers( first, second );
         }
         ++it1;
     }
@@ -178,6 +185,11 @@ bool ObjectController::canAIMove( const StringID id, Direction dir ) {
                              it2.getValue().getX(), it2.getValue().getY(),
                              it2.getValue().getWidth(), it2.getValue().getHeight())) {
             coll = true;
+
+            // Update triggers if a collision occured
+            String first = strings.lookup( id );
+            String second = strings.lookup( it2.getValue().getID() );
+            trigger_controller.updateCollisionTriggers( first, second );
         }
         ++it2;
     }
@@ -208,6 +220,11 @@ bool ObjectController::canPlayerMove( const StringID id, Direction dir ) {
                              it1.getValue().getX(), it1.getValue().getY(),
                              it1.getValue().getWidth(), it1.getValue().getHeight())) {
             coll = true;
+
+            // Update triggers if a collision occured
+            String first = strings.lookup( id );
+            String second = strings.lookup( it1.getValue().getID() );
+            trigger_controller.updateCollisionTriggers( first, second );
         }
         ++it1;
     }
@@ -217,6 +234,11 @@ bool ObjectController::canPlayerMove( const StringID id, Direction dir ) {
                              it2.getValue().getX(), it2.getValue().getY(),
                              it2.getValue().getWidth(), it2.getValue().getHeight())) {
             coll = true;
+
+            // Update triggers if a collision occured
+            String first = strings.lookup( id );
+            String second = strings.lookup( it2.getValue().getID() );
+            trigger_controller.updateCollisionTriggers( first, second );
         }
         ++it2;
     }
@@ -387,8 +409,6 @@ void ObjectController::drawObjects() {
     
     // stop centering on player do the hud follows the screen.
     glTranslatef(-x, -y, 0);
-
-    // Drawing HUD objects:
     TableIterator<HUDObject> it5 = hud_objects.begin();
     while(it5 != hud_objects.end()) {
         it5.getValue().draw();

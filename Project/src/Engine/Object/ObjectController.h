@@ -4,6 +4,7 @@
 #include "../../Common/Base/Singleton.h"
 #include "../../Common/Base/Types.h"
 #include "../../Common/Base/Queue.h"
+#include "../../Common/Resources/Constants.h"
 #include "../../Common/Resources/Strings.h"
 
 #include "Objects/PlayerObject.h"
@@ -16,6 +17,7 @@
 #include "../Audio/AudioController.h"
 #include "../Render/RenderController.h"
 #include "../../Common/Resources/Constants.h"
+#include "../Trigger/TriggerController.h"
 
 #include <stdlib.h>
 #include <time.h>
@@ -28,8 +30,11 @@ class ObjectController:
 	private:
 
 		friend class Singleton< ObjectController >;
-		static RenderController& render_controller;
-		static AudioController& audio_controller;
+
+		static Strings & strings;
+		static AudioController & audio_controller;
+		static RenderController & render_controller;
+		static TriggerController & trigger_controller;
 		
 		Table< AIObject > ai_objects;
 		Table< BackgroundObject > background_objects;

@@ -1,71 +1,69 @@
 #include "GameController.h"
 
+#include "../Audio/AudioCommands.h"
+#include "../Input/InputCommands.h"
+#include "../Object/ObjectCommands.h"
+#include "../Trigger/TriggerCommands.h"
+#include "../Variable/VariableCommands.h"
+
 AudioController& GameController::audio_controller = AudioController::instance();
 InputController& GameController::input_controller = InputController::instance();
 ObjectController& GameController::object_controller = ObjectController::instance();
 RenderController& GameController::render_controller = RenderController::instance();
 GameController& GameController::game_controller = GameController::instance();
 
-bool GameController::hasFlag(String name) {
-    static Strings & strings = Strings::instance();
-    StringID id = strings.intern(name);
-    return flag_table.has(id);
-}
+void GameController::runCommand( String line ) {
 
-void GameController::setFlag(String name, bool state) {
-    static Strings & strings = Strings::instance();
-    StringID id = strings.intern(name);
-    if (flag_table.has(id)) {
-        flag_table.get(id).getValue() = state;
-    }
-    else {
-        flag_table.add(id, state);
+    // 
+    StringStream tokens( line );
+    Command * command = parseCommand( tokens );
+    if ( command != NULL ) {
+        command->run();
+        delete command;
     }
 }
 
-bool GameController::getFlag(String name) {
-    static Strings & strings = Strings::instance();
-    StringID id = strings.intern(name);
-    return flag_table.get(id).getValue();
-}
+void GameController::runCommandFile( String filename ) {
 
-void GameController::clearFlag(String name) {
-    static Strings & strings = Strings::instance();
-    StringID id = strings.intern(name);
-    if (flag_table.has(id)) {
-        flag_table.remove(id);
+    // 
+    fstream reader;
+    reader.open( filename );
+    if ( !reader.is_open() ) {
+        cout << "Could not open command file " << filename << endl;
+    }
+
+    // 
+    String line;
+    while ( getline( reader, line ) ) {
+        runCommand( line );
     }
 }
 
-bool GameController::hasVariable(String name) {
-    static Strings & strings = Strings::instance();
-    StringID id = strings.intern(name);
-    return variable_table.has(id);
-}
+Command * GameController::parseCommand( StringStream & tokens ) {
 
-void GameController::setVariable(String name, double value) {
-    static Strings & strings = Strings::instance();
-    StringID id = strings.intern(name);
-    if (variable_table.has(id)) {
-        variable_table.get(id).getValue() = value;
-    }
-    else {
-        variable_table.add(id, value);
-    }
-}
+    // 
+    String group;
 
-double GameController::getVariable(String name) {
-    static Strings & strings = Strings::instance();
-    StringID id = strings.intern(name);
-    return variable_table.get(id).getValue();
-}
-
-void GameController::clearVariable(String name) {
-    static Strings & strings = Strings::instance();
-    StringID id = strings.intern(name);
-    if (variable_table.has(id)) {
-        variable_table.remove(id);
+    // 
+    tokens >> group;
+    if ( group == "audio" ) {
+        return parseAudioCommand( tokens );
     }
+    else if ( group == "input" ) {
+        return parseInputCommand( tokens );
+    }
+    else if ( group == "object" ) {
+        return parseObjectCommand( tokens );
+    }
+    else if ( group == "trigger" ) {
+        return parseTriggerCommand( tokens );
+    }
+    else if ( group == "variable") {
+        return parseVariableCommand( tokens );
+    }
+
+    // 
+    return NULL;
 }
 
 void GameController::renderDisplayCallback() {
@@ -102,7 +100,6 @@ void GameController::handleInputEvent( const StringID& id ) {
 }
 
 void GameController::registerInputAction( const StringID& id, const InputAction action ) {
-    cout << id << " " << action << endl;
     input_action_table.add(id, action);
 }
 
