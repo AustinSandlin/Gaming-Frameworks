@@ -1,0 +1,2 @@
+g++ -std=c++11 -Wall -Wno-deprecated -o game.exe ../Engine/Input/InputController.cpp ../Engine/Object/ObjectController.cpp ../Engine/Game/GameController.cpp ../Engine/Render/RenderController.cpp ../Engine/Audio/AudioController.cpp ../Engine/Loader/Loader.cpp ../Engine/Trigger/TriggerController.cpp ../Engine/Variable/VariableController.cpp Game.cpp -I ../../include -L ../../lib -lopengl32 -lglu32 -llibOpenAL32 -lfreeglut
+pause

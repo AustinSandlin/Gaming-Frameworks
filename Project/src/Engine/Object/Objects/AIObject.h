@@ -17,6 +17,7 @@ class AIObject : public Object {
     public:
         AIObject( const StringID& id, int x, int y, int width, int height, AIType t ) :
             Object ( id, x, y, height, width ), type { t } {
+            type = STILL;
             state = IDLE;
             dir = DOWN;
             switch(type) {
