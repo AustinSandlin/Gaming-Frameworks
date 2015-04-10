@@ -77,10 +77,6 @@ void ObjectController::registerObjectTexture( const StringID& id, const String p
     }
 }
 
-void ObjectController::registerPickupObject( const StringID& id, PickupObject po ) {
-    pickup_objects.add( id, po );
-}
-
 void ObjectController::registerAIObject( const StringID& id, AIObject ai ) {
     ai_objects.add( id, ai );
 }
@@ -132,9 +128,6 @@ void ObjectController::removeObject(const StringID& id) {
     }
     if(hud_objects.has(id)) {
         hud_objects.remove(id);
-    }
-    if(pickup_objects.has(id)) {
-        pickup_objects.remove(id);
     }
 }
 
@@ -239,15 +232,6 @@ bool ObjectController::canPlayerMove( const StringID id, Direction dir ) {
             String first = strings.lookup( id );
             String second = strings.lookup( it2.getValue().getID() );
             trigger_controller.updateCollisionTriggers( first, second );
-        }
-        ++it2;
-    }
-    TableIterator<PickupObject> it3 = pickup_objects.begin();
-    while(it3 != pickup_objects.end()) {
-        if(doesSquareCollide(testX, testY, player.getWidth(), player.getHeight(),
-                             it2.getValue().getX(), it2.getValue().getY(),
-                             it2.getValue().getWidth(), it2.getValue().getHeight())) {
-            //ADD TRIGGER FUNCTION
         }
         ++it2;
     }
@@ -384,13 +368,6 @@ void ObjectController::drawObjects() {
     while(it2 != game_objects.end()) {
         it2.getValue().draw();
         ++it2;
-    }
-
-    // Drawing pickup objects:
-    TableIterator<PickupObject> it6 = pickup_objects.begin();
-    while(it6 != pickup_objects.end()) {
-        it6.getValue().draw();
-        ++it6;
     }
 
     // Drawing AI objects:

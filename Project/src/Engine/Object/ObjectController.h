@@ -12,7 +12,6 @@
 #include "Objects/GameObject.h"
 #include "Objects/BackgroundObject.h"
 #include "Objects/HUDObject.h"
-#include "Objects/PickupObject.h"
 
 #include "../Audio/AudioController.h"
 #include "../Render/RenderController.h"
@@ -41,7 +40,6 @@ class ObjectController:
 		Table< PlayerObject > player_objects;
 		Table< GameObject > game_objects;
 		Table< HUDObject > hud_objects;
-		Table< PickupObject > pickup_objects;
 
 		ObjectController() {
 			srand(time(NULL));
@@ -61,7 +59,6 @@ class ObjectController:
 		void registerBackgroundObject( const StringID& id, BackgroundObject bo );
 		void registerGameObject( const StringID& id, GameObject go );
 		void registerPlayerObject( const StringID& id, PlayerObject po );
-		void registerPickupObject( const StringID& id, PickupObject po );
 
 		void registerHUDObject( const StringID& id, HUDObject ho );
 		void assignValue( const StringID& id, String var );
