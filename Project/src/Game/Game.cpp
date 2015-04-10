@@ -19,9 +19,6 @@ int main( int argc, char ** argv ) {
 	game_controller.runCommandFile( argv[1] );
 	game_controller.runGameLoop();
 
-
-    std::this_thread::sleep_for(std::chrono::seconds(10));
-
 	// 
 	return 0;
 }
