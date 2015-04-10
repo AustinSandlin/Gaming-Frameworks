@@ -243,6 +243,7 @@ bool ObjectController::canPlayerMove( const StringID id, Direction dir ) {
 void ObjectController::updateEntitys() {
     TableIterator<AIObject> it1 = ai_objects.begin();
     while(it1 != ai_objects.end()) {
+        StringID id = it1.getID();
         if(it1.getValue().getType() == WANDER) {
             int x = rand()%10;
             if(x < 5) {
@@ -325,7 +326,13 @@ void ObjectController::updateEntitys() {
                 }
             }
         }
-        ++it1;
+
+        if(!ai_objects.has(id)) {
+            it1 = ai_objects.begin();
+        }
+        else {
+            ++it1;
+        }
     }
 }
 
