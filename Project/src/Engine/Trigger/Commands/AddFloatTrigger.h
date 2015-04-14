@@ -64,9 +64,10 @@ Command * parseAddFloatTrigger( StringStream & tokens ) {
 	}
 
 	// 
-	tokens >> text;
+	//tokens >> text;
 	try {
-		value = stod( text );
+		tokens >> value;
+		//value = stod( text );
 	}
 	catch ( exception e ) {
 		return NULL;

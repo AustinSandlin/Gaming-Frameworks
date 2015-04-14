@@ -62,36 +62,40 @@ Command * parseAddAIObject( StringStream & tokens ) {
 	}
 
 	// 
-	tokens >> text;
+	//tokens >> text;
 	try {
-		x = stoi( text );
+		tokens >> x;
+		//x = stoi( text );
 	}
 	catch ( exception e ) {
 		return NULL;
 	}
 
 	// 
-	tokens >> text;
+	//tokens >> text;
 	try {
-		y = stoi( text );
+		tokens >> y;
+		//y = stoi( text );
 	}
 	catch ( exception e ) {
 		return NULL;
 	}
 
 	// 
-	tokens >> text;
+	//tokens >> text;
 	try {
-		width = stoi( text );
+		tokens >> width;
+		//width = stoi( text );
 	}
 	catch ( exception e ) {
 		return NULL;
 	}
 
 	// 
-	tokens >> text;
+	//tokens >> text;
 	try {
-		height = stoi( text );
+		tokens >> height;
+		//height = stoi( text );
 	}
 	catch ( exception e ) {
 		return NULL;

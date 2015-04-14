@@ -64,9 +64,10 @@ Command * parseAddIntegerTrigger( StringStream & tokens ) {
 	}
 
 	// 
-	tokens >> text;
+	//tokens >> text;
 	try {
-		value = stol( text );
+		tokens >> value;
+		//value = stol( text );
 	}
 	catch ( exception e ) {
 		return NULL;
